@@ -1,0 +1,352 @@
+# AGENTS.md
+
+## Project
+
+**Longinus** is my personal portfolio website.
+
+The website is not intended to feel like a traditional software portfolio. It should feel like an interactive experience where navigation, animation, typography, and 3D elements communicate personality as much as the content itself.
+
+The central visual motif is the **Spear of Longinus**.
+
+Every significant interaction should feel intentional rather than decorative.
+
+---
+
+# Primary Goal
+
+Build a portfolio that demonstrates:
+
+* Software engineering ability
+* Technical creativity
+* Attention to detail
+* Strong interaction design
+* Performance-conscious engineering
+
+When choosing between adding features and polishing existing interactions, prefer polish.
+
+---
+
+# Design Philosophy
+
+The visual direction is inspired by:
+
+* Persona menu systems
+* Metaphor: ReFantazio interfaces
+* Neon Genesis Evangelion visual language and symbolism
+* Editorial typography
+* Cinematic UI animation
+
+These are references for mood and interaction only.
+
+Never reproduce copyrighted layouts, assets, artwork, logos, or characters.
+
+---
+
+# Core Experience
+
+The homepage is a navigation scene.
+
+Layout:
+
+Left:
+
+* Page navigation
+
+Right:
+
+* Large interactive Spear of Longinus
+
+Behavior:
+
+* When nothing is selected or hovered, the spear should have a subtle base animation that makes it feel alive, such as gentle drifting, breathing motion, or slight rotation.
+
+- Hovering a page rotates the spear to point towards it.
+- Selecting a page causes the spear to thrust through the selected label.
+- The thrust initiates the page transition.
+- Route transitions should feel like part of the animation rather than separate events.
+
+Motion should feel physical.
+
+Avoid generic easing or abrupt changes.
+
+---
+
+# Planned Pages
+
+## Home
+
+Introduction and navigation.
+
+## Music
+
+Interactive vinyl player.
+
+Concept:
+
+* Records fan outward from the left.
+* Selecting a record moves it onto the player or replaces the artwork on the record already on the player.
+* The Spear of Longinus spins on its own axis like a ballerina rather than acting as a spindle.
+* Album choices are manually curated.
+
+No Spotify integration is currently planned.
+
+## Projects
+
+Showcase engineering work.
+
+Each project should support:
+
+* Title
+* Description
+* Technologies
+* Images or video
+* External links
+* Expandable detail view
+
+Project data should remain separate from presentation.
+
+## About
+
+Background, experience, interests, and philosophy.
+
+---
+
+# Technical Stack
+
+Prefer the existing stack when possible.
+
+Expected technologies:
+
+* React
+* TypeScript
+* Vite
+* React Three Fiber
+* Drei
+* Motion / Framer Motion
+
+Avoid introducing additional frameworks unless they clearly simplify the architecture.
+
+---
+
+# Engineering Principles
+
+Prioritize:
+
+* Readability
+* Maintainability
+* Simplicity
+* Performance
+
+Avoid:
+
+* Premature abstraction
+* Large monolithic components
+* Deep prop drilling
+* Duplicate logic
+* Magic numbers
+* Anonymous exports
+
+Prefer:
+
+* Named exports
+* Small focused components
+* Custom hooks only when they improve clarity
+* Data-driven UI
+* Composition over inheritance
+
+---
+
+# State Management
+
+Start simple.
+
+Use:
+
+* React state
+* Context
+* Small reducers where appropriate
+
+Do not introduce Redux, Zustand, MobX, or another global state library unless the project's complexity genuinely requires it.
+
+---
+
+# Animation Principles
+
+Animations should communicate state.
+
+Preferred characteristics:
+
+* Smooth acceleration
+* Smooth deceleration
+* Slight overshoot
+* Coordinated transitions
+* Deliberate pacing
+
+Avoid:
+
+* Excessive motion
+* Constant floating animations
+* Random particle effects
+* Flashy effects without interaction value
+
+Respect `prefers-reduced-motion`.
+
+---
+
+# Accessibility
+
+Always consider accessibility.
+
+Requirements:
+
+* Keyboard navigation
+* Visible focus states
+* Semantic HTML
+* Accessible labels
+* Color contrast
+* Reduced-motion support
+
+The site should remain usable without WebGL.
+
+---
+
+# Performance
+
+Assume users may have mid-range hardware.
+
+Optimize for:
+
+* Lazy loading
+* Code splitting
+* Efficient React rendering
+* Reused materials
+* Reused geometries
+* Bounded device pixel ratio
+* Minimal unnecessary allocations inside animation loops
+
+Do not optimize prematurely, but avoid obviously expensive implementations.
+
+---
+
+# Styling
+
+Use design tokens whenever possible.
+
+Current palette:
+
+Background:
+`#0D1117`
+
+Surface:
+`#151A24`
+
+Foreground:
+`#ECEFF4`
+
+Muted:
+`#9AA4B2`
+
+Primary Accent:
+`#E56B8A`
+
+Secondary Accent:
+`#C5A3FF`
+
+Highlight:
+`#89DCEB`
+
+Do not introduce additional colors without a strong reason.
+
+---
+
+# Repository Organization
+
+Prefer a feature-based architecture.
+
+Example:
+
+src/
+
+* app/
+* components/
+* features/
+* pages/
+* hooks/
+* assets/
+* styles/
+* lib/
+* types/
+
+Adapt to the existing repository instead of restructuring unnecessarily.
+
+---
+
+# Coding Standards
+
+TypeScript should compile without errors.
+
+Linting should pass.
+
+Avoid `any`.
+
+Avoid disabling lint rules.
+
+Avoid suppressing type errors.
+
+Document non-obvious decisions with concise comments.
+
+---
+
+# Workflow
+
+Before writing code:
+
+1. Inspect the current repository.
+2. Understand the existing architecture.
+3. Summarize the implementation plan.
+4. Identify assumptions.
+
+During implementation:
+
+* Make focused changes.
+* Keep commits logically grouped.
+* Reuse existing patterns.
+* Prefer modifying existing code over rewriting it.
+
+After implementation:
+
+* Summarize changes.
+* List modified files.
+* Explain architectural decisions.
+* Report validation steps.
+* Suggest the next logical milestone.
+
+---
+
+# Interaction State
+
+Navigation interactions should use explicit states instead of unrelated booleans.
+
+Preferred conceptual states:
+
+* idle
+* aiming
+* committing
+* transitioning
+* complete
+
+---
+
+# When Unsure
+
+When requirements are ambiguous:
+
+* Choose the simplest maintainable solution.
+* Explain tradeoffs.
+* Ask for clarification before making large architectural decisions.
+
+Never invent product requirements.
+
+Never replace existing architecture without justification.
+
+The codebase should become more organized after every change, not more complicated.
