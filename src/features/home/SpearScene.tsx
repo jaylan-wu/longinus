@@ -1,6 +1,14 @@
-import { Component, type ErrorInfo, type ReactNode, useEffect, useRef, useState } from 'react'
+import { Component, type ErrorInfo, type ReactNode, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import type { Group } from 'three'
+import { MathUtils, type Group } from 'three'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+
+export type SpearMotionPhase = 'idle' | 'aiming' | 'committing' | 'transitioning'
+
+type SpearInteraction = {
+  phase?: SpearMotionPhase
+  focusIndex?: number
+}
 
 type SceneErrorBoundaryProps = { children: ReactNode }
 type SceneErrorBoundaryState = { failed: boolean }
@@ -21,31 +29,38 @@ class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBo
   }
 }
 
-function useReducedMotion() {
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const updatePreference = () => setReducedMotion(query.matches)
-    updatePreference()
-    query.addEventListener('change', updatePreference)
-    return () => query.removeEventListener('change', updatePreference)
-  }, [])
-
-  return reducedMotion
-}
-
-function SpearGeometry() {
+function SpearGeometry({ phase = 'idle', focusIndex = 0 }: SpearInteraction) {
   const spear = useRef<Group>(null)
   const reducedMotion = useReducedMotion()
 
-  useFrame(({ clock }) => {
-    if (!spear.current || reducedMotion) return
+  useFrame(({ clock }, delta) => {
+    if (!spear.current) return
     const time = clock.getElapsedTime()
-    spear.current.rotation.z = -0.38 + Math.sin(time * 0.32) * 0.025
-    spear.current.rotation.y = -0.18 + Math.sin(time * 0.24) * 0.045
-    spear.current.position.y = Math.sin(time * 0.28) * 0.08
-    spear.current.scale.setScalar(0.84 + Math.sin(time * 0.24) * 0.006)
+    const idleDrift = phase === 'idle' && !reducedMotion ? Math.sin(time * 0.32) : 0
+    const aimRotation = 0.42 + focusIndex * 0.12
+    const targetRotationZ = phase === 'aiming'
+      ? aimRotation
+      : phase === 'committing'
+        ? -0.24
+        : phase === 'transitioning'
+          ? aimRotation + 0.42
+          : -0.38 + idleDrift * 0.025
+    const targetRotationY = phase === 'committing' ? -0.42 : phase === 'transitioning' ? 0.08 : -0.18
+    const targetX = phase === 'committing' ? 0.8 : phase === 'transitioning' ? -5.4 : 0
+    const targetY = phase === 'aiming'
+      ? 0.46 - focusIndex * 0.46
+      : phase === 'transitioning'
+        ? 0.46 - focusIndex * 0.46
+        : idleDrift * 0.08
+    const targetScale = phase === 'committing' ? 0.78 : phase === 'transitioning' ? 1.04 : 0.84
+    const speed = phase === 'transitioning' ? 11 : phase === 'committing' ? 6 : 4.2
+
+    spear.current.rotation.z = MathUtils.damp(spear.current.rotation.z, targetRotationZ, speed, delta)
+    spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, targetRotationY, speed, delta)
+    spear.current.position.x = MathUtils.damp(spear.current.position.x, targetX, speed, delta)
+    spear.current.position.y = MathUtils.damp(spear.current.position.y, targetY, speed, delta)
+    const currentScale = spear.current.scale.x
+    spear.current.scale.setScalar(MathUtils.damp(currentScale, targetScale, speed, delta))
   })
 
   return (
@@ -80,7 +95,7 @@ function SpearGeometry() {
   )
 }
 
-export function SpearScene() {
+export function SpearScene({ phase = 'idle', focusIndex = 0 }: SpearInteraction) {
   return (
     <SceneErrorBoundary>
       <Canvas
@@ -93,7 +108,7 @@ export function SpearScene() {
         <directionalLight position={[-5, 6, 7]} intensity={4.5} color="#E56B8A" />
         <pointLight position={[5, 1, 5]} intensity={30} color="#C5A3FF" distance={12} />
         <pointLight position={[-4, -5, 3]} intensity={18} color="#89DCEB" distance={10} />
-        <SpearGeometry />
+        <SpearGeometry phase={phase} focusIndex={focusIndex} />
       </Canvas>
     </SceneErrorBoundary>
   )

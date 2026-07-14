@@ -30,7 +30,7 @@ export function HomePage() {
         </div>
         <SpearPlaceholder />
         <SpearScene />
-        <div className="home__scene-index" aria-hidden="true">01</div>
+        <div className="home__scene-index" aria-hidden="true">00</div>
       </aside>
     </main>
   )
