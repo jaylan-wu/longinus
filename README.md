@@ -120,4 +120,6 @@ Navigation currently uses URL hashes. `#home` displays the homepage, `#projects`
 
 The interface uses the palette defined in `AGENTS.md` and keeps DOM content separate from the React Three Fiber scene. Navigation is keyboard accessible, focus styles are visible, and motion is reduced when the browser reports `prefers-reduced-motion: reduce`.
 
+Approved Figma exports, design-foundation notes, and motion specifications are documented in [`design/figma/README.md`](design/figma/README.md).
+
 No external 3D model is currently used. The spear is assembled from procedural Three.js geometry and backed by a styled CSS fallback.
