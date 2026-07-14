@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Project } from './projectData'
 
-export type ProjectTransitionPhase = 'idle' | 'aiming' | 'committing' | 'transitioning'
+export type ProjectTransitionPhase = 'idle' | 'focused' | 'committing' | 'impact' | 'transitioning' | 'settled'
 export type SpearPostTransitionDestination = 'inactive-offstage'
 
 // Change this value (and the destination handling in the future detail composition)
@@ -9,6 +9,7 @@ export type SpearPostTransitionDestination = 'inactive-offstage'
 export const PROJECT_SPEAR_DESTINATION: SpearPostTransitionDestination = 'inactive-offstage'
 
 const COMMIT_DURATION_MS = 420
+const IMPACT_DURATION_MS = 280
 const IMPACT_NAVIGATION_DELAY_MS = 920
 const REDUCED_MOTION_DELAY_MS = 120
 
@@ -23,7 +24,7 @@ export function useProjectTransition({ reducedMotion, onNavigate }: UseProjectTr
   const [selectedId, setSelectedId] = useState<Project['id'] | null>(null)
   const timers = useRef<number[]>([])
   const transitionLocked = useRef(false)
-  const locked = phase === 'committing' || phase === 'transitioning'
+  const locked = phase === 'committing' || phase === 'impact' || phase === 'transitioning'
 
   const clearTimers = useCallback(() => {
     timers.current.forEach(window.clearTimeout)
@@ -35,7 +36,7 @@ export function useProjectTransition({ reducedMotion, onNavigate }: UseProjectTr
   const focusProject = useCallback((projectId: Project['id'] | null) => {
     if (locked) return
     setFocusedId(projectId)
-    setPhase(projectId ? 'aiming' : 'idle')
+    setPhase(projectId ? 'focused' : 'idle')
   }, [locked])
 
   const selectProject = useCallback((project: Project) => {
@@ -48,7 +49,11 @@ export function useProjectTransition({ reducedMotion, onNavigate }: UseProjectTr
     setPhase(reducedMotion ? 'transitioning' : 'committing')
 
     if (!reducedMotion) {
-      timers.current.push(window.setTimeout(() => setPhase('transitioning'), COMMIT_DURATION_MS))
+      timers.current.push(window.setTimeout(() => setPhase('impact'), COMMIT_DURATION_MS))
+      timers.current.push(window.setTimeout(
+        () => setPhase('transitioning'),
+        COMMIT_DURATION_MS + IMPACT_DURATION_MS,
+      ))
     }
 
     timers.current.push(window.setTimeout(

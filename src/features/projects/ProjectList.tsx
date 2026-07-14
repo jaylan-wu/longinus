@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import type { Project } from './projectData'
 
 type ProjectListProps = {
@@ -17,6 +18,9 @@ export function ProjectList({
   onFocus,
   onSelect,
 }: ProjectListProps) {
+  const lastPointerType = useRef<string | null>(null)
+  const touchPrimedId = useRef<Project['id'] | null>(null)
+
   return (
     <ol className="project-list" aria-label="Selected projects" aria-busy={locked}>
       {projects.map((project, index) => {
@@ -35,7 +39,20 @@ export function ProjectList({
               onMouseLeave={() => onFocus(null)}
               onFocus={() => onFocus(project.id)}
               onBlur={() => onFocus(null)}
-              onClick={() => onSelect(project)}
+              onPointerDown={(event) => {
+                lastPointerType.current = event.pointerType
+              }}
+              onClick={() => {
+                if (lastPointerType.current === 'touch' && touchPrimedId.current !== project.id) {
+                  touchPrimedId.current = project.id
+                  onFocus(project.id)
+                  return
+                }
+
+                touchPrimedId.current = null
+                lastPointerType.current = null
+                onSelect(project)
+              }}
               aria-label={`Open project: ${project.title}`}
             >
               <span className="project-card__index">{String(index + 1).padStart(2, '0')}</span>

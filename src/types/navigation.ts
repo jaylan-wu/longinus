@@ -1,6 +1,7 @@
 export type NavigationItem = {
-  id: 'home' | 'projects' | 'music' | 'about'
+  id: 'projects' | 'music' | 'playground' | 'about'
   label: string
   index: string
   description: string
+  availability: 'available' | 'planned'
 }

@@ -1,0 +1,90 @@
+.spear-canvas {
+  position: absolute !important;
+  z-index: 2;
+  inset: -8% -10% -8% -12%;
+  width: 122% !important;
+  height: 116% !important;
+}
+
+.spear-fallback {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 52%;
+  width: 1.25rem;
+  height: 82vh;
+  filter: drop-shadow(0 0 2.5rem rgba(var(--color-primary-rgb), 0.28));
+  opacity: 0.48;
+  transform: translate(-50%, -48%) rotate(22deg);
+  animation: spear-idle 11s ease-in-out infinite alternate;
+}
+
+.spear-shadow {
+  position: absolute;
+  z-index: 1;
+  right: 8%;
+  bottom: 11%;
+  width: min(36vw, 30rem);
+  height: 3.25rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.72), rgba(var(--color-primary-rgb), 0.12) 42%, transparent 72%);
+  filter: blur(0.75rem);
+  opacity: 0.62;
+  transform: rotate(-10deg) scaleX(1);
+  transform-origin: center;
+  animation: spear-shadow-idle 11s ease-in-out infinite;
+}
+
+.spear-fallback__shaft {
+  position: absolute;
+  inset: 8rem 0 0;
+  background: linear-gradient(90deg, var(--color-primary-shadow), var(--color-primary) 42%, var(--color-primary-deep));
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+}
+
+.spear-fallback__head,
+.spear-fallback__fork {
+  position: absolute;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
+  clip-path: polygon(50% 0, 100% 66%, 60% 100%, 40% 100%, 0 66%);
+}
+
+.spear-fallback__head {
+  top: 0;
+  left: -3.25rem;
+  width: 7.75rem;
+  height: 10rem;
+}
+
+.spear-fallback__fork {
+  top: 5.25rem;
+  width: 2.4rem;
+  height: 7rem;
+}
+
+.spear-fallback__fork--left {
+  left: -3.35rem;
+  transform: rotate(-38deg);
+}
+
+.spear-fallback__fork--right {
+  right: -3.35rem;
+  transform: rotate(38deg);
+}
+
+@keyframes spear-idle {
+  from { transform: translate(-50%, -48%) rotate(21.4deg); }
+  to { transform: translate(-50%, -49%) rotate(22.5deg); }
+}
+
+@keyframes spear-shadow-idle {
+  0%, 100% { opacity: 0.48; transform: rotate(-10deg) scaleX(0.88); }
+  50% { opacity: 0.66; transform: rotate(-8deg) scaleX(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spear-fallback,
+  .spear-shadow {
+    animation: none;
+  }
+}

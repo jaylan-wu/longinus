@@ -1,4 +1,5 @@
 import { getProjectBySlug } from './projectData'
+import './projects.css'
 
 type ProjectDetailPageProps = {
   slug: string

@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import type { NavigationItem } from '../../types/navigation'
 import { HomeIdentity } from './HomeIdentity'
 import { HomeNavigation } from './HomeNavigation'
 import { navigationItems } from './navigation'
-import { SpearPlaceholder } from './SpearPlaceholder'
-import { SpearScene } from './SpearScene'
+import { SpearFallback } from '../../components/spear/SpearFallback'
+import { HomeSpearScene } from './HomeSpearScene'
+import './home.css'
 export function HomePage() {
-  const [selectedId, setSelectedId] = useState<NavigationItem['id']>('home')
-
   return (
     <main className="home" id="home">
       <div className="home__grid" aria-hidden="true" />
@@ -15,7 +12,7 @@ export function HomePage() {
 
       <section className="home__interface" aria-label="Introduction and site navigation">
         <HomeIdentity />
-        <HomeNavigation items={navigationItems} selectedId={selectedId} onSelect={setSelectedId} />
+        <HomeNavigation items={navigationItems} />
         <footer className="home__footer" aria-label="Site status">
           <span>NYC / 40.7128° N</span>
           <span>System 001—A</span>
@@ -28,8 +25,8 @@ export function HomePage() {
           <span>Object 01</span>
           <span>Temporary geometry</span>
         </div>
-        <SpearPlaceholder />
-        <SpearScene />
+        <SpearFallback />
+        <HomeSpearScene />
         <div className="home__scene-index" aria-hidden="true">00</div>
       </aside>
     </main>

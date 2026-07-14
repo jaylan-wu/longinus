@@ -1,12 +1,12 @@
 import type { CSSProperties } from 'react'
-import type { SpearMotionPhase } from './SpearScene'
+import './spear.css'
 
-type SpearPlaceholderProps = {
-  phase?: SpearMotionPhase
+type SpearFallbackProps = {
+  motionState?: string
   focusIndex?: number
 }
 
-export function SpearPlaceholder({ phase = 'idle', focusIndex = 0 }: SpearPlaceholderProps) {
+export function SpearFallback({ motionState = 'idle', focusIndex = 0 }: SpearFallbackProps) {
   const style = {
     '--spear-angle': `${31 + focusIndex * 7}deg`,
     '--spear-y': `${(focusIndex - 1) * 3.2}rem`,
@@ -14,8 +14,8 @@ export function SpearPlaceholder({ phase = 'idle', focusIndex = 0 }: SpearPlaceh
 
   return (
     <>
-      <div className={`spear-shadow spear-shadow--${phase}`} style={style} aria-hidden="true" />
-      <div className={`spear-fallback spear-fallback--${phase}`} style={style} aria-hidden="true">
+      <div className={`spear-shadow spear-shadow--${motionState}`} style={style} aria-hidden="true" />
+      <div className={`spear-fallback spear-fallback--${motionState}`} style={style} aria-hidden="true">
         <div className="spear-fallback__shaft" />
         <div className="spear-fallback__head" />
         <div className="spear-fallback__fork spear-fallback__fork--left" />

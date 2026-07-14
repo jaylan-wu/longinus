@@ -2,7 +2,7 @@ export function HomeIdentity() {
   return (
     <header className="home-identity">
       <div className="home-identity__eyebrow">
-        <span>Portfolio / 2026</span>
+        <span>alter-egoist / Portfolio 2026</span>
         <span className="home-identity__signal">Signal online</span>
       </div>
       <h1 className="home-identity__name">

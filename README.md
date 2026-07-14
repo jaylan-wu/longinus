@@ -2,7 +2,7 @@
 
 Longinus is Jaylan Wu's personal portfolio: an interactive, cinematic interface built around the visual motif of the Spear of Longinus. The project combines editorial typography, responsive interface design, restrained motion, and real-time 3D.
 
-The current implementation includes the homepage navigation scene, a procedural spear placeholder, a no-WebGL fallback, and an About page.
+The current implementation includes the homepage navigation scene, the Projects archive and detail flow, a procedural spear model, a no-WebGL fallback, and an About page.
 
 ## Stack
 
@@ -99,16 +99,22 @@ yarn build
 
 ```text
 src/
+├── components/
+│   ├── spear/       # Shared spear geometry and restrained DOM fallback
+│   └── three/       # Shared Three.js infrastructure
 ├── features/
 │   ├── about/       # About page and editable About content
-│   └── home/        # Homepage interface, navigation, and spear scene
+│   ├── home/        # Homepage interface, navigation, and page-owned spear scene
+│   └── projects/    # Project data, archive/detail views, and project-owned spear behavior
+├── hooks/           # Shared React hooks
+├── styles/          # Cross-system design values used outside CSS
 ├── types/           # Shared TypeScript types
 ├── App.tsx          # Lightweight page selection
-├── index.css        # Global tokens and all current page styles
+├── index.css        # Global tokens, reset, and application-wide behavior
 └── main.tsx         # React application entry point
 ```
 
-Navigation currently uses URL hashes. `#home` displays the homepage and `#about` displays the About page. Projects, Music, and the complete animated transition system are planned milestones.
+Navigation currently uses URL hashes. `#home` displays the homepage, `#projects` opens the project archive, `#projects/:slug` opens a project record, and `#about` displays the About page. Music and Playground remain planned destinations and are presented as unavailable until their designs are implemented.
 
 ## Design and accessibility
 

@@ -1,10 +1,11 @@
 import { capabilities, principles } from './aboutData'
+import './about.css'
 
 export function AboutPage() {
   return (
     <main className="about" id="about">
       <div className="about__grid" aria-hidden="true" />
-      <div className="about__marker" aria-hidden="true">03</div>
+      <div className="about__marker" aria-hidden="true">04</div>
 
       <header className="about__header">
         <a className="about__back" href="#home" aria-label="Return to home">
@@ -12,7 +13,7 @@ export function AboutPage() {
         </a>
         <div className="about__status" aria-hidden="true">
           <span>Profile record</span>
-          <span>03—A</span>
+          <span>04—A</span>
         </div>
       </header>
 
@@ -78,7 +79,7 @@ export function AboutPage() {
       </section>
 
       <footer className="about__footer">
-        <p>End of profile record / 03—A</p>
+        <p>End of profile record / 04—A</p>
         <a href="#home">Return to index <span aria-hidden="true">↗</span></a>
       </footer>
     </main>

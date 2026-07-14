@@ -1,11 +1,12 @@
 import { useCallback } from 'react'
-import { SpearPlaceholder } from '../home/SpearPlaceholder'
-import { SpearScene } from '../home/SpearScene'
+import { SpearFallback } from '../../components/spear/SpearFallback'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import type { Project } from './projectData'
 import { projects } from './projectData'
 import { ProjectList } from './ProjectList'
+import { ProjectSpearScene } from './ProjectSpearScene'
 import { useProjectTransition } from './projectTransition'
+import './projects.css'
 
 export function ProjectsPage() {
   const reducedMotion = useReducedMotion()
@@ -53,8 +54,8 @@ export function ProjectsPage() {
           <span>Target acquisition</span>
           <span>{transition.focusedId ?? 'Awaiting input'}</span>
         </div>
-        <SpearPlaceholder phase={transition.phase} focusIndex={focusedIndex} />
-        <SpearScene phase={transition.phase} focusIndex={focusedIndex} />
+        <SpearFallback motionState={transition.phase} focusIndex={focusedIndex} />
+        <ProjectSpearScene phase={transition.phase} focusIndex={focusedIndex} />
         <div className="projects__scene-index" aria-hidden="true">01</div>
       </aside>
     </main>

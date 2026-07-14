@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
-import { AboutPage } from './features/about/AboutPage'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { HomePage } from './features/home/HomePage'
-import { ProjectDetailPage } from './features/projects/ProjectDetailPage'
-import { ProjectsPage } from './features/projects/ProjectsPage'
 import { getProjectBySlug } from './features/projects/projectData'
+
+const AboutPage = lazy(() => import('./features/about/AboutPage').then((module) => ({ default: module.AboutPage })))
+const ProjectsPage = lazy(() => import('./features/projects/ProjectsPage').then((module) => ({ default: module.ProjectsPage })))
+const ProjectDetailPage = lazy(() => import('./features/projects/ProjectDetailPage').then((module) => ({ default: module.ProjectDetailPage })))
 
 type Route =
   | { name: 'home' }
@@ -47,8 +48,15 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [route])
 
-  if (route.name === 'about') return <AboutPage />
-  if (route.name === 'projects') return <ProjectsPage />
-  if (route.name === 'project-detail') return <ProjectDetailPage slug={route.slug} />
-  return <HomePage />
+  let page = <HomePage />
+
+  if (route.name === 'about') page = <AboutPage />
+  if (route.name === 'projects') page = <ProjectsPage />
+  if (route.name === 'project-detail') page = <ProjectDetailPage slug={route.slug} />
+
+  return (
+    <Suspense fallback={<main className="route-pending" aria-busy="true" aria-label="Loading view" />}>
+      {page}
+    </Suspense>
+  )
 }
