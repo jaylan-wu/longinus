@@ -2,7 +2,9 @@
 
 Longinus is Jaylan Wu's personal portfolio: an interactive, cinematic interface built around the visual motif of the Spear of Longinus. The project combines editorial typography, responsive interface design, restrained motion, and real-time 3D.
 
-The current implementation includes the homepage navigation scene, the Projects archive and detail flow, a procedural spear model, a no-WebGL fallback, and an About page.
+The current implementation includes a strong working version of the homepage's static 2D navigation composition, the Projects archive and detail flow, a temporary procedural spear placeholder, a no-WebGL fallback, and an About page.
+
+The homepage remains a work in progress. Its final authored 3D Spear model has not been implemented, and the complete 2D/3D composition, motion, and boot transition still require review.
 
 ## Stack
 
@@ -100,7 +102,7 @@ yarn build
 ```text
 src/
 ├── components/
-│   ├── spear/       # Shared spear geometry and restrained DOM fallback
+│   ├── spear/       # Temporary shared spear geometry and restrained DOM fallback
 │   └── three/       # Shared Three.js infrastructure
 ├── features/
 │   ├── about/       # About page and editable About content
@@ -122,4 +124,4 @@ The interface uses the palette defined in `AGENTS.md` and keeps DOM content sepa
 
 Approved Figma exports, design-foundation notes, and motion specifications are documented in [`design/figma/README.md`](design/figma/README.md).
 
-No external 3D model is currently used. The spear is assembled from procedural Three.js geometry and backed by a styled CSS fallback.
+The final authored 3D Spear model is not implemented. Current scenes use temporary procedural Three.js geometry, backed by a styled CSS fallback, to preserve layout and interaction-development seams until the approved asset is ready.

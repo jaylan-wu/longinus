@@ -1,5 +1,9 @@
 # Main Navigation Transition
 
+## Current implementation status
+
+The homepage currently provides static pointer-hover and keyboard-focus feedback, but this full coordinated navigation transition has not been implemented. The final 3D Spear model is also outstanding, so the aiming, commitment, impact, follow-through, and route-change timing below remain design targets rather than approved current behavior.
+
 ## Purpose
 
 Define how a committed navigation choice coordinates the structured DOM interface, the 3D spear, and route navigation between main portfolio sections.

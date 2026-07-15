@@ -83,7 +83,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 
 | Page | Frame | Viewport | State | Reference File | Figma Link | Implementation Status | Notes |
 |---|---|---|---|---|---|---|---|
-| Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | Ready for Implementation | Static composition only; boot and navigation motion are separate milestones |
+| Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | The static 2D composition is in a good working state. The final 3D model, complete 2D/3D review, motion, and boot transition remain open. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -118,7 +118,29 @@ Reference:
 - The primary destinations are Projects, Music, Playground, and About.
 - The spear visible in the reference is a composition guide for scale,
   silhouette, camera framing, rotation, and cropping.
-- Production must reuse the existing React Three Fiber spear asset and scene.
+- Production must use the approved final Spear asset in the existing React Three Fiber scene architecture.
 - Do not implement the Figma spear image as a DOM image.
 - Boot motion, navigation focus, spear orientation, impact, and routing are
   separate implementation milestones.
+
+### Current implementation progress
+
+- Implemented the desktop left-interface and right-spear composition at the `1440 × 900` reference viewport.
+- Matched the identity, numbered navigation, system labels, outer frame, divider, circle, `LONGINUS` watermark, and `00` scene index.
+- Staged a temporary procedural React Three Fiber spear placeholder with homepage-specific camera, scale, rotation, position, and lighting.
+- Kept Projects and About available while presenting Music and Playground as planned destinations.
+- Restored orange hover and keyboard-focus feedback for available navigation targets.
+- Added intermediate desktop-height handling to prevent the navigation and footer from crowding or clipping below the canonical viewport height.
+- Added a title-card phrase that is selected once per page load.
+- Documented the current provisional typography stacks in `foundations.md`.
+
+### Work still open
+
+- The homepage remains a work in progress and is not approved.
+- Replace the temporary procedural spear placeholder with the final authored 3D model; that model has not been implemented yet.
+- Complete a browser-based comparison at the canonical viewport and representative shorter desktop viewports.
+- Finalize and bundle legally usable display, system, content, and identifier fonts.
+- Continue refining type metrics, lower-page spacing, ambient typography, and the 2D/3D relationship.
+- Revisit camera, lighting, scale, silhouette, and cropping after the final 3D model is integrated.
+- Design and implement the final mobile composition separately.
+- Keep boot, target-focused spear motion, impact, and route transitions in their later milestones.

@@ -13,12 +13,6 @@ export function HomeNavigation({ items }: HomeNavigationProps) {
             <>
               <span className="home-navigation__index">{item.index}</span>
               <span className="home-navigation__label">{item.label}</span>
-              <span className="home-navigation__description">
-                {item.availability === 'planned' ? `${item.description} / Planned` : item.description}
-              </span>
-              <span className="home-navigation__arrow" aria-hidden="true">
-                {item.availability === 'planned' ? '—' : '↗'}
-              </span>
             </>
           )
 
@@ -27,9 +21,14 @@ export function HomeNavigation({ items }: HomeNavigationProps) {
               {item.availability === 'available' ? (
                 <a className="home-navigation__link" href={`#${item.id}`}>{content}</a>
               ) : (
-                <span className="home-navigation__link home-navigation__link--planned" aria-disabled="true">
+                <button
+                  className="home-navigation__link home-navigation__link--planned"
+                  type="button"
+                  disabled
+                  aria-label={`${item.label}: ${item.description}. Planned destination.`}
+                >
                   {content}
-                </span>
+                </button>
               )}
             </li>
           )

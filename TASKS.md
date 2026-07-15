@@ -17,7 +17,7 @@ This file defines implementation order.
 - Mark tasks complete only after the requested behavior has been verified.
 - Add newly discovered work to the appropriate milestone rather than expanding the current task without review.
 
-Status reviewed against the repository on 2026-07-13. Checkmarks below represent behavior or structure that can be confirmed from the current codebase. Visual comparison and hands-on interaction checks remain open when they require Figma, Blender, or browser/device verification.
+Status reviewed against the repository on 2026-07-14. Checkmarks below represent behavior or structure that can be confirmed from the current codebase. Visual comparison and hands-on interaction checks remain open when they require Figma, Blender, or browser/device verification.
 
 ---
 
@@ -151,29 +151,31 @@ Do not restructure the repository solely to match the conceptual folder tree in 
 
 ## Figma
 
-- [ ] Create or finalize the desktop homepage composition in Figma.
-- [ ] Use Evangelion title-card-inspired typography as a compositional influence.
-- [ ] Use structured system-interface principles inspired by analytical fictional interfaces without copying a specific MAGI screen.
-- [ ] Preserve the left-side system/navigation and right-side spear relationship.
-- [ ] Make `JAYLAN WU` unmistakable.
-- [ ] Integrate `alter-egoist` as a secondary digital identity or compositional signature.
+- [x] Create the current desktop homepage composition in Figma.
+- [x] Use Evangelion title-card-inspired typography as a compositional influence.
+- [x] Use structured system-interface principles inspired by analytical fictional interfaces without copying a specific MAGI screen.
+- [x] Preserve the left-side system/navigation and right-side spear relationship.
+- [x] Make `JAYLAN WU` unmistakable.
+- [x] Integrate `alter-egoist` as a secondary digital identity or compositional signature.
 - [ ] Represent the three personal axes with restraint:
   - Engineering
   - Game development
   - Education
-- [ ] Remove `JW-01` or other fictional subject-number identity language.
-- [ ] Define real system and ambient information only.
-- [ ] Define the intended desktop viewport for visual comparison.
+- [x] Remove `JW-01` or other fictional subject-number identity language.
+- [x] Define real system and ambient information only.
+- [x] Define the intended desktop viewport for visual comparison.
 
 ## Static Implementation
 
-- [ ] Inspect the approved homepage Figma reference.
-- [ ] Identify primary, system, navigation, and ambient regions.
+- [x] Inspect the approved homepage Figma reference.
+- [x] Identify primary, system, navigation, and ambient regions.
 - [x] Separate DOM elements from Three.js scene elements.
-- [ ] Implement the primary static 2D composition.
+- [x] Implement the primary static 2D composition.
 - [ ] Stage the spear at the correct scale, silhouette, and camera framing.
 - [ ] Compare the composition to Figma at the intended viewport.
 - [ ] Fix major scale, spacing, typography, and 2D/3D relationship differences before animation work.
+
+Homepage composition note: the static 2D composition is now in a good working state, including responsive desktop-height adjustments and current hover/focus presentation. The procedural React Three Fiber spear is only a staging placeholder. The final authored 3D model has not been implemented, so the homepage remains in progress and the final 2D/3D comparison tasks stay open.
 
 ## Navigation Data
 
@@ -662,13 +664,13 @@ Complete the strongest desktop composition and interaction first, then deliberat
 
 # Current Recommended Work Order
 
-Completed foundations: repository audit, semantic palette alignment, feature-owned CSS, primary-navigation data, shared spear geometry with page-owned scene behavior, initial Projects archive/detail routing, and non-home route code splitting.
+Completed foundations: repository audit, semantic palette alignment, feature-owned CSS, primary-navigation data, a strong working homepage 2D composition, temporary shared spear geometry with page-owned scene behavior, initial Projects archive/detail routing, and non-home route code splitting.
 
 1. Select the Longinus typography stack.
-2. Finalize the homepage Figma composition.
-3. Create the homepage spear motion reference in Blender.
-4. Implement the boot experience.
-5. Implement and visually verify the homepage static 2D/3D composition.
+2. Implement the final authored 3D Spear model and stage it against the current homepage composition.
+3. Visually verify and polish the complete homepage 2D/3D composition.
+4. Create the homepage spear motion reference in Blender.
+5. Implement the boot experience around real final-asset readiness.
 6. Prove the full homepage interaction on one navigation target.
 7. Expand the homepage interaction to all available navigation targets.
 8. Finalize the Projects archive design against Figma and replace placeholder content with curated work.

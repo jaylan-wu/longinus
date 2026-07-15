@@ -1,5 +1,9 @@
 # Project Selection Transition
 
+## Current implementation status
+
+The Projects archive currently contains an initial code-level focus, commitment, impact, and route-transition sequence using the temporary procedural spear. It has not been approved against a final motion reference or final 3D model. Its present timing and post-transition behavior are provisional; the reviewed values below therefore remain unresolved.
+
 ## Purpose
 
 Define the coordinated transition from a focused project record in the archive to its project-detail view while keeping selection feedback, route timing, and spear placement independently reviewable.
