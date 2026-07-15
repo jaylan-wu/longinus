@@ -375,6 +375,34 @@
   color: var(--color-primary);
 }
 
+@media (min-width: 1600px) {
+  .about__header {
+    right: calc(40% - 2.6rem);
+    left: 2rem;
+    font-size: 0.875rem;
+  }
+
+  .about__composition {
+    grid-template-columns: minmax(0, calc(60% + 3rem)) minmax(36rem, calc(40% - 3rem));
+    width: calc(100% - 4rem);
+  }
+
+  .about__chapter-nav {
+    left: 2rem;
+    width: 16rem;
+  }
+
+  .about__chapter-nav ol {
+    gap: 0.3rem;
+  }
+
+  .about__chapter-nav button {
+    grid-template-columns: 2.5rem 1fr;
+    padding: 1.15rem 0;
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 1080px) {
   .about__header { right: calc(23rem + 75px); left: 2rem; }
   .about__composition { grid-template-columns: minmax(0, 1fr) calc(21rem + 75px); width: calc(100% - 4rem); }

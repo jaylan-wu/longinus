@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { MathUtils, type Group } from 'three'
 import { SpearModel } from '../../components/spear/SpearModel'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
@@ -19,25 +19,55 @@ const spearPoses: Record<AboutChapterId, SpearPose> = {
   'current-direction': { axialRotation: Math.PI * 1.2 },
 }
 
+const SPEAR_IDLE_ROTATION_SPEED = 0.15
+const SPEAR_SCROLL_SPEED_FACTOR = 0.0012
+const SPEAR_MAX_SCROLL_BOOST = 2.4
+const SPEAR_SCROLL_DAMPING = 4.5
+
 function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   const spear = useRef<Group>(null)
+  const axialRotation = useRef(0)
+  const scrollSpeed = useRef(0)
+  const previousScrollY = useRef(window.scrollY)
   const reducedMotion = useReducedMotion()
+  const sceneWidth = useThree((state) => state.size.width)
   const target = spearPoses[activeChapter]
+  const usesWideScene = sceneWidth >= 576
+  const position: [number, number, number] = usesWideScene ? [0, 0.73, 0] : [0.12, 0.79, 0]
+  const scale = usesWideScene ? 0.48 : 0.52
 
   useFrame((_, delta) => {
     if (!spear.current) return
-    const damping = reducedMotion ? 18 : 2.1
-    const scrollRange = document.documentElement.scrollHeight - window.innerHeight
-    const scrollProgress = scrollRange > 0 ? window.scrollY / scrollRange : 0
-    const axialRotation = reducedMotion ? target.axialRotation : scrollProgress * Math.PI * 2.4
+
+    if (reducedMotion) {
+      spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, target.axialRotation, 18, delta)
+      previousScrollY.current = window.scrollY
+      return
+    }
+
+    const scrollDistance = Math.abs(window.scrollY - previousScrollY.current)
+    const scrollVelocity = scrollDistance / Math.max(delta, 0.001)
+    const targetScrollSpeed = Math.min(
+      scrollVelocity * SPEAR_SCROLL_SPEED_FACTOR,
+      SPEAR_MAX_SCROLL_BOOST,
+    )
+
+    scrollSpeed.current = MathUtils.damp(
+      scrollSpeed.current,
+      targetScrollSpeed,
+      SPEAR_SCROLL_DAMPING,
+      delta,
+    )
+    axialRotation.current += (SPEAR_IDLE_ROTATION_SPEED + scrollSpeed.current) * delta
+    previousScrollY.current = window.scrollY
 
     // SpearModel is authored along the Y axis, so Y rotation spins the spear
     // around its shaft while preserving the vertical silhouette.
-    spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, axialRotation, damping, delta)
+    spear.current.rotation.y = axialRotation.current
   })
 
   return (
-    <group ref={spear} position={[0.12, 0.79, 0]} rotation={[0, 0, 0]} scale={0.52}>
+    <group ref={spear} position={position} rotation={[0, 0, 0]} scale={scale}>
       <SpearModel />
     </group>
   )

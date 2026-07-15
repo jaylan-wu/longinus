@@ -560,6 +560,13 @@
   margin-block: 1rem 3rem;
 }
 
+@media (min-width: 1600px) {
+  .projects__header,
+  .projects__footer {
+    font-size: 0.875rem;
+  }
+}
+
 @media (max-width: 1050px) {
   .projects {
     grid-template-columns: minmax(31rem, 1.08fr) minmax(0, 0.92fr);
