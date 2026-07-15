@@ -682,35 +682,685 @@ The Playground is the region of Longinus where experimental interaction may be l
 
 ## About
 
-The About page explains the person, interests, and direction behind Longinus.
+The About page is the human center of Longinus.
 
-It should connect Jaylan's background in engineering, interest in game development, and experience in education into a coherent personal narrative.
+It explains the person behind the projects, experiments, visual system, and Spear of Longinus.
 
-The page should not function as a duplicate résumé.
+The page should connect Jaylan's engineering background, game-development interests, teaching, professional experience, travel, photography, and personal influences into one coherent narrative.
 
-Avoid presenting experience as a conventional chronological employment timeline unless a specific design requires it.
+It must not become:
 
-The three personal axes should act as a primary conceptual structure: Engineering, Game development, and Education.
+* A duplicate résumé
+* A conventional employment timeline
+* A travel blog
+* A standalone photography portfolio
+* A ranked list of favorite games
+* A collection of disconnected hobbies
 
-The page may visualize relationships between these areas through typography, lines, spatial relationships, or interactive connections.
+Every chapter should contribute to understanding how Jaylan observes, teaches, designs, and builds.
 
-Jaylan Wu is the human identity at the center of the page.
+The page should move conceptually from classification toward understanding.
 
-`alter-egoist` represents a recurring digital and creative identity.
+It may begin with structured system information, records, and labels, but should gradually become more personal, visual, and reflective.
 
-Do not frame `alter-egoist` as a fictional character or separate person.
+The intended progression is:
 
-The About page may include educational background, software engineering experience, game development interests, teaching and mentorship experience, creative and technical interests, personal design philosophy, current areas of exploration, and long-term interest in game development and teaching in higher education.
+`classification → context → person → influence → direction`
 
-Content should explain relationships and motivations rather than simply enumerate credentials.
+### Chapter Structure
 
-The About page may use secondary lavender more prominently to represent identity and human context.
+The About page should function as one continuous vertical narrative organized into five chapters:
 
-The Spear of Longinus does not need to dominate the About page.
+1. Identity
+2. Trajectory
+3. Outside the System
+4. Interactive Influences
+5. Current Direction
 
-If the spear appears, give it a meaningful compositional or interaction role.
+Use standard browser scrolling as the foundation.
 
-The About page should feel like the point where the system stops classifying Jaylan's work and allows the viewer to understand the person connecting it.
+Do not require hard full-screen scroll snapping.
+
+Subtle chapter alignment and chapter-aware transitions are allowed, but users must remain able to scroll naturally, revisit nearby content, and read at their own pace.
+
+### Identity
+
+Jaylan Wu is the primary identity presented by the About page.
+
+The opening composition should make Jaylan's name, perspective, and areas of interest immediately understandable.
+
+The three primary personal axes are:
+
+* Engineering
+* Game development
+* Education
+
+These axes establish the conceptual framework of the page without reducing Jaylan's identity to categories, percentages, or skill ratings.
+
+The opening personal statement should communicate how Jaylan's interests in engineering, interactive systems, games, education, travel, and photography relate to one another.
+
+Avoid beginning with a résumé summary, job-search statement, or long list of credentials.
+
+Use `alter-egoist` sparingly.
+
+`alter-egoist` is a subtle creative signature associated with Jaylan, not a second character, fictional persona, or replacement for his name.
+
+It may appear in limited contexts such as:
+
+* A small signature in the opening composition
+* A personal note
+* A photography-series credit
+* A restrained metadata field
+* A closing mark
+
+Do not repeat `alter-egoist` throughout every chapter, record, photograph, or interface label.
+
+The viewer should not need to decode fictional identity language to understand who the portfolio belongs to.
+
+### Trajectory
+
+The Trajectory chapter explains how Jaylan's education and selected professional experiences shaped his technical, creative, and educational direction.
+
+It should focus on:
+
+1. Computer Science and Computer Engineering degrees at New York University, including Game Engineering study
+2. Technology Solutions work with the New York Mets
+3. Software Engineering work at Major League Baseball
+4. Instructional Facilities Management at New York University
+5. Teaching at New York University as an Adjunct Professor
+
+These experiences should form a narrative progression rather than a complete chronological résumé.
+
+The intended progression is:
+
+`technical foundation → applied technology → software engineering → educational infrastructure → teaching`
+
+#### College Education
+
+Jaylan's education should establish the technical foundation of the chapter.
+
+Present Computer Science and Computer Engineering as complementary areas of study that allowed him to work across:
+
+* Software
+* Hardware
+* Computer architecture
+* Embedded systems
+* Graphics
+* Interactive technology
+
+Game Engineering should introduce the connection between technical systems, creativity, interaction, and play.
+
+Do not present the degrees only as credentials.
+
+Explain how the combination shaped Jaylan's approach to engineering and interactive work.
+
+#### New York Mets
+
+The New York Mets experience should emphasize technology within physical, operational, employee-facing, and fan-facing environments.
+
+Focus on the intersection of:
+
+* Software
+* Hardware
+* People
+* Physical spaces
+* Venue operations
+* Technology adoption
+
+The experience may reference relevant systems, but the About page should prioritize what Jaylan learned about usability, trust, operational context, and real-world implementation.
+
+Detailed technical work should remain within Projects when appropriate.
+
+#### Major League Baseball
+
+The Major League Baseball experience should communicate Jaylan's development as a software engineer working on internal organizational systems.
+
+Relevant themes include:
+
+* Modernizing legacy systems
+* Full-stack development
+* Internal tooling
+* Automation
+* Operational reliability
+* Cloud infrastructure
+* Supporting time-sensitive workflows
+* Collaboration with stakeholders
+
+The About page should focus on the engineering perspective developed through this work.
+
+Do not reproduce detailed technical case studies or every résumé bullet.
+
+Related project details may be linked when those case studies exist.
+
+#### Instructional Facilities Manager
+
+The Instructional Facilities Manager experience should connect technical operations with education.
+
+Focus on the systems, spaces, equipment, documentation, and support required to create reliable instructional environments.
+
+Relevant themes include:
+
+* Technical operations
+* Instructional infrastructure
+* Reliability
+* Resource coordination
+* Leadership
+* Supporting students and instructors
+
+This role should communicate that effective education depends on infrastructure that may become invisible when it functions well.
+
+#### Adjunct Professor
+
+The Adjunct Professor experience should represent teaching as a current and meaningful part of Jaylan's professional identity.
+
+Focus on:
+
+* Teaching technical and engineering material
+* Explaining complicated systems clearly
+* Mentoring students
+* Supporting confidence and independence
+* Connecting concepts to practical implementation
+* Learning through the act of teaching
+
+The chapter should communicate that education is not separate from Jaylan's engineering practice.
+
+Teaching influences how he understands, designs, documents, and evaluates technical systems.
+
+#### Experience Presentation
+
+Each experience should communicate:
+
+* The environment or context
+* Jaylan's role
+* A defining responsibility or contribution
+* What the experience taught him
+* How it influenced his current direction
+* The personal axes connected to it
+
+The primary personal axes remain:
+
+* Engineering
+* Game development
+* Education
+
+Supporting labels such as operations, infrastructure, mentorship, reliability, and human-centered technology may appear as metadata.
+
+Do not introduce additional primary axes or arbitrary percentage scores.
+
+Work-experience writing should be concise and reflective.
+
+Avoid dense résumé bullets and exhaustive responsibility lists.
+
+The same experience may appear on About and Projects only when each page answers a different question:
+
+* About explains how the experience shaped Jaylan.
+* Projects explains what was built and how the system worked.
+
+### Outside the System
+
+The Outside the System chapter presents travel and photography as meaningful parts of Jaylan's personal and creative perspective.
+
+It should explain how travel encourages:
+
+* Observation
+* Curiosity
+* Independence
+* Attention to unfamiliar environments
+* Awareness of architecture, transit, public spaces, signage, and atmosphere
+
+Photography should show how Jaylan notices and documents:
+
+* Spaces
+* Architecture
+* Landscapes
+* Transit
+* Typography
+* Environmental details
+* People within larger environments
+* Quiet or transitional moments
+
+Do not treat this chapter as a list of vacations or a generic collection of hobbies.
+
+Travel and photography should contribute to understanding how Jaylan observes the world and how that perspective relates to his technical and creative work.
+
+Music, games, and other interests may appear as supporting personal context, but should not compete with the primary travel and photography narrative.
+
+Music already has a dedicated page and does not require another full presentation within About.
+
+#### Photography Collection
+
+Begin with a small curated collection of approximately six to twelve photographs.
+
+Prefer a deliberate sequence of strong images over a large gallery.
+
+The collection may contain:
+
+* A small number of featured photographs
+* Supporting photographic records
+* Real location and year metadata
+* Optional camera or lens information
+* Short personal captions
+
+Only display metadata that is accurate and meaningful.
+
+Do not generate fictional coordinates, EXIF data, or technical readings for atmosphere.
+
+Do not expose dense capture metadata unless it contributes to the viewing experience.
+
+#### Archive and Selected States
+
+The photography experience may initially present images as structured capture records.
+
+Archive-state presentation may use:
+
+* Controlled cropping
+* Slightly reduced saturation
+* Restrained brightness or contrast adjustments
+* Structured metadata
+* Consistent framing
+* Subtle overlays required for readability
+
+When a photograph is focused or expanded, the interface should allow it to become more personal and visually open.
+
+Selected-state presentation may:
+
+* Restore the photograph's natural or intentionally edited color
+* Increase its visual scale
+* Reduce system-interface prominence
+* Reveal a personal caption
+* Preserve more of the original composition and aspect ratio
+
+The conceptual transition is:
+
+`capture record → selected image → personal memory`
+
+Apply visual treatment non-destructively through CSS, overlays, framing, and motion.
+
+Do not permanently alter source photographs solely to make them match the Longinus palette.
+
+Do not apply one aggressive red, orange, or lavender tint to every image.
+
+Standardize presentation behavior while preserving the individual character of each photograph.
+
+Use highlight orange for active system selection where appropriate.
+
+Lavender may support personal captions and reflection.
+
+Primary red should not be used as a generic photograph-selection color.
+
+### Interactive Influences
+
+Interactive Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
+
+Present approximately three to six selected games.
+
+The purpose is not to rank favorites or provide reviews.
+
+Each selection should explain a specific influence, such as:
+
+* Interface and visual direction
+* Systems design
+* Worldbuilding
+* Atmosphere
+* Environmental storytelling
+* Character writing
+* Mechanical expression
+* Music and sound
+* Player agency
+* Technical or creative ambition
+
+Focus on what Jaylan learned from each experience and how it shaped his interest in game development and interactive technology.
+
+Prefer concise original commentary over large collections of copyrighted screenshots, logos, character artwork, or promotional assets.
+
+Do not reproduce a game's identifiable interface composition within Longinus.
+
+The chapter should move the narrative from observation and personal influence toward creation and future direction.
+
+### Current Direction
+
+The Current Direction chapter brings the About narrative from Jaylan's past experiences and personal influences into the kind of work he wants to pursue next.
+
+It should explain how engineering, game development, education, travel, photography, and interactive influences contribute to one connected direction.
+
+The chapter should not function as a rigid career plan or list of aspirational job titles.
+
+It should communicate qualities Jaylan wants his future work to combine:
+
+* Strong software engineering
+* Interactive and game-oriented systems
+* Expressive visual and motion design
+* Real-time or spatial technology
+* Maintainability and performance
+* Clear technical communication
+* Teaching and mentorship
+
+Jaylan's interest in creative and interactive work should not replace his identity as a software engineer.
+
+Reliable engineering and expressive design should be presented as mutually reinforcing.
+
+Teaching should remain part of Jaylan's future direction rather than appearing only as a previous role.
+
+The chapter may express a long-term interest in continuing to teach, mentor, and connect professional engineering practice with higher education.
+
+Travel, photography, and selected games may be referenced as influences on Jaylan's attention to space, atmosphere, composition, interaction, and detail.
+
+Do not force every personal interest into a direct professional justification.
+
+The relationship should remain credible and personal.
+
+#### Longinus
+
+Current Direction may briefly frame Longinus itself as an expression of Jaylan's developing interests.
+
+Longinus brings together:
+
+* Software engineering
+* React and TypeScript
+* Real-time 3D
+* Authored motion
+* Game-inspired interaction
+* Visual-system design
+* Personal storytelling
+* Technical experimentation
+
+Do not turn this into a second Longinus project case study.
+
+Use it to explain why the portfolio takes the form of an interactive system rather than a conventional personal website.
+
+#### Current Areas of Exploration
+
+The chapter may identify a restrained set of real areas Jaylan is currently exploring, such as:
+
+* Interactive software
+* Game systems
+* Real-time graphics
+* Three-dimensional web experiences
+* Creative development
+* Technical education
+
+Do not include technologies or fields solely because they are fashionable.
+
+#### Closing
+
+The final writing should be concise, reflective, and forward-looking.
+
+It should leave the viewer with an understanding of:
+
+* What Jaylan values
+* What kind of work he wants to create
+* How his interests connect
+* Why education remains important
+* What Longinus represents within that direction
+
+Practical actions such as viewing Projects, opening a résumé, making contact, or returning Home may appear after the closing statement.
+
+These controls should remain part of the 2D interface.
+
+### Spear Role
+
+The Spear of Longinus should remain present throughout the About experience, but its role should differ from Home, Projects, Music, and Playground.
+
+On About, the spear acts as:
+
+* A quiet witness
+* A spatial anchor
+* A connective thread
+* A representation of narrative progression
+
+It should respond primarily to chapter progression rather than individual hover states, experience records, photographs, or game selections.
+
+Its motion should be:
+
+* Slow
+* Reflective
+* Smooth
+* Spatial
+* Restrained
+* Occasionally still for extended periods
+
+Avoid:
+
+* Thrusting
+* Target locking
+* Impact
+* Pointer following
+* Reactions to every local interaction
+* Constant decorative spinning
+* Red interface rupture
+
+Each chapter should define an intentional spear role:
+
+* Identity: quiet anchor
+* Trajectory: directional spine
+* Outside the System: environmental frame
+* Interactive Influences: emerging direction
+* Current Direction: forward vector
+
+During Identity, the spear may remain partially cropped, stable, or quietly suspended.
+
+During Trajectory, it may evolve through position, depth, and rotation as a representation of development.
+
+During Outside the System, it may recede into depth, frame negative space, sit behind photographs, or remain still.
+
+During Interactive Influences, it may begin moving toward a more directional posture without targeting individual games.
+
+During Current Direction, it should settle into a resolved diagonal or align with a distant vanishing point.
+
+The final state should suggest continuation and intention without automatically initiating navigation.
+
+The spear should remain recognizable as the Longinus motif without overpowering personal writing, work experiences, photography, or game commentary.
+
+### Interaction and Scroll Model
+
+The About page should use standard vertical browser scrolling.
+
+On desktop, it may use a persistent or sticky Three.js region while narrative content scrolls.
+
+The spear may remain technically present throughout the page while becoming:
+
+* Partially cropped
+* Repositioned
+* Moved into depth
+* Obscured by composition
+* Visually secondary
+* Still for extended periods
+
+The balance between content and 3D space may change by chapter.
+
+Do not require one fixed split-screen ratio for the entire page.
+
+#### Chapter State
+
+Use stable identifiers for the five chapters:
+
+* `identity`
+* `trajectory`
+* `outside-system`
+* `interactive-influences`
+* `current-direction`
+
+The active chapter may coordinate:
+
+* Chapter-interface state
+* Spear posture
+* Camera relationship
+* Lighting mood
+* Ambient treatment
+* Chapter navigation
+
+Prefer explicit active-chapter state over tightly coupling the scene to raw scroll coordinates.
+
+Continuous chapter progress may influence restrained interpolation, depth, lighting, or parallax when useful.
+
+Do not map every scroll pixel directly to dramatic spear movement.
+
+#### Local Interaction Ownership
+
+Individual experience records, photographs, and game-influence records should use local 2D interaction state.
+
+Experience records may reveal:
+
+* Reflection
+* Personal axes
+* Contributions
+* Related projects
+
+Photographs may transition between archive and selected states.
+
+Interactive-influence records may reveal concise personal commentary.
+
+These local interactions should not trigger homepage-style spear targeting or impact behavior.
+
+#### Chapter Navigation
+
+The page may include restrained chapter navigation displaying:
+
+* Identity
+* Trajectory
+* Outside the System
+* Interactive Influences
+* Current Direction
+
+Chapter navigation should:
+
+* Indicate the active chapter
+* Allow keyboard-accessible movement to each section
+* Remain visually secondary to the main content
+* Avoid imitating homepage navigation
+
+Use highlight orange for active system state where appropriate.
+
+Do not use primary red as a generic chapter-selection color.
+
+### Responsive Interpretation
+
+On narrow layouts, the spear does not need to remain permanently fixed beside the content.
+
+Mobile may:
+
+* Alternate between chapter content and intentional spear moments
+* Use a smaller sticky scene region
+* Present the spear at chapter transitions
+* Reduce ambient system information
+* Give photography additional width
+
+Preserve:
+
+* Spear narrative presence
+* Chapter identity
+* Clear content order
+* Photography scale
+* Accessible controls
+* Readable personal writing
+
+Do not sacrifice essential reading space merely to keep the full spear visible at all times.
+
+### Reduced Motion
+
+For reduced-motion preferences:
+
+* Remove continuous scroll-linked movement where possible
+* Reduce parallax and camera travel
+* Use shorter transitions between chapter postures
+* Preserve understandable chapter and spear state
+* Allow the spear to remain still in authored poses
+
+The About narrative must remain coherent without large spatial animation.
+
+### Content and Data Architecture
+
+Keep About content, presentation, interaction state, and Three.js behavior clearly separated.
+
+Do not encode all five chapters, experiences, photographs, and game influences directly inside one large page component.
+
+The About feature should own its:
+
+* Chapter components
+* Experience-record components
+* Photography components
+* Interactive-influence components
+* Page-specific data
+* Local interaction state
+* Active-chapter logic
+* Persistent Three.js scene
+* About-specific spear configurations
+
+Prefer the smallest structure that remains clear.
+
+Do not create every possible component or data abstraction before real content requires it.
+
+#### Experience Data
+
+Experience records may define:
+
+* Stable identifier
+* Organization
+* Role or degree
+* Period
+* Context
+* Defining responsibility or contribution
+* Personal reflection
+* Personal axes
+* Supporting themes
+* Related project identifiers
+
+Do not fill About records with every résumé bullet.
+
+#### Photography Data
+
+Each photograph should include:
+
+* Stable identifier
+* Image source
+* Useful alternative text
+* Location
+* Year
+
+Optional fields may include:
+
+* Country
+* Personal caption
+* Camera
+* Lens
+* Focal length
+* Orientation
+* Featured status
+
+Only display optional metadata when it improves the experience.
+
+Preserve original edited photographs and apply archive treatment non-destructively.
+
+#### Interactive-Influence Data
+
+Each selected game influence may define:
+
+* Stable identifier
+* Game title
+* Release year
+* Relevant influence categories
+* Jaylan's original reflection
+
+Do not build a rating, ranking, or review system.
+
+#### State Ownership
+
+Use shared About state only for information that coordinates separate systems, such as the active chapter.
+
+Keep local state within the chapter that owns it.
+
+Examples include:
+
+* Focused experience
+* Selected photograph
+* Focused game influence
+
+Do not create one large global About state object solely because the page contains multiple chapters.
+
+Continuous Three.js values such as spear interpolation, camera movement, depth, and lighting transitions should remain within React Three Fiber rendering patterns rather than frame-by-frame React state.
+
+About content should remain editable without requiring changes to spear animation or scene logic.
+
 
 # Technical Stack
 

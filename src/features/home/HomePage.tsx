@@ -1,6 +1,7 @@
 import { HomeIdentity } from './HomeIdentity'
 import { HomeNavigation } from './HomeNavigation'
 import { navigationItems } from './navigation'
+import { PageIndex } from '../../components/PageIndex'
 import { SpearFallback } from '../../components/spear/SpearFallback'
 import { HomeSpearScene } from './HomeSpearScene'
 import './home.css'
@@ -23,10 +24,7 @@ export function HomePage() {
         <div className="home__scene-label" aria-hidden="true">Spear of Longinus</div>
         <SpearFallback />
         <HomeSpearScene />
-        <div className="home__scene-index" aria-hidden="true">
-          <span>0</span>
-          <span>0</span>
-        </div>
+        <PageIndex value="00" />
       </aside>
     </main>
   )

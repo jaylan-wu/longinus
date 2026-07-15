@@ -472,39 +472,307 @@ Archive note: this is an initial implementation rather than a Figma-verified fin
 
 # Milestone 10 — About
 
-## Figma
+## Narrative Structure
 
-- [ ] Create the About desktop composition.
-- [ ] Use the three personal axes as a conceptual structure:
-  - Engineering
-  - Game development
-  - Education
-- [ ] Explore visual relationships between experiences across multiple axes.
-- [ ] Make Jaylan Wu the human identity at the center of the page.
-- [ ] Use `alter-egoist` as a creative alias and visual signature, not a separate fictional person.
-- [ ] Allow lavender to have greater presence.
-- [ ] Keep the page more reflective and personal than Projects.
+* [ ] Use the five approved About chapters:
 
-## Content
+  1. Identity
+  2. Trajectory
+  3. Outside the System
+  4. Interactive Influences
+  5. Current Direction
+* [ ] Ensure the page forms one connected personal narrative.
+* [ ] Preserve the conceptual progression:
 
-- [ ] Write concise personal content connecting:
-  - Dual computer science and computer engineering background
-  - Software engineering experience
-  - Game development interests
-  - Teaching and mentorship
-  - DEI and technical education experience
-  - Creative and technical interests
-  - Current areas of exploration
-  - Long-term interest in game development
-  - Long-term interest in teaching in higher education
-- [ ] Explain relationships and motivations rather than enumerating credentials.
-- [ ] Do not duplicate the resume as a chronological timeline.
+  * Classification
+  * Context
+  * Person
+  * Influence
+  * Direction
+* [ ] Avoid turning About into a résumé, travel blog, photography portfolio, game ranking, or collection of disconnected hobbies.
+* [ ] Define the intended desktop viewport for visual comparison.
 
-## Spear Role
+## Identity
 
-- [ ] Decide whether the spear has a meaningful role on About.
-- [ ] Do not include the spear solely for visual consistency.
-- [ ] Allow the spear to leave the viewport or become secondary when that better supports the page.
+* [ ] Create the Identity chapter composition in Figma.
+* [ ] Make `JAYLAN WU` the clear primary identity.
+* [ ] Introduce a concise personal statement.
+* [ ] Represent the three personal axes:
+
+  * Engineering
+  * Game development
+  * Education
+* [ ] Do not use percentage scores or skill ratings.
+* [ ] Use `alter-egoist` only as a restrained signature or secondary creative mark.
+* [ ] Do not repeat `alter-egoist` throughout every chapter.
+* [ ] Define the spear's Identity posture as a quiet anchor.
+* [ ] Ensure the spear does not overpower Jaylan's name or opening statement.
+
+## Trajectory Content
+
+* [ ] Create reflective content for Jaylan's college degrees.
+* [ ] Include:
+
+  * B.S. in Computer Science
+  * B.S. in Computer Engineering
+  * Game Engineering study or minor
+  * Relevant NYU schools or programs
+* [ ] Explain how the degrees connect software, hardware, architecture, embedded systems, graphics, and interactive technology.
+* [ ] Create the New York Mets Technology Solutions experience record.
+* [ ] Focus on technology within physical, operational, employee-facing, and fan-facing environments.
+* [ ] Create the Major League Baseball Software Engineering experience record.
+* [ ] Focus on modernization, internal systems, automation, reliability, cloud infrastructure, and organizational workflows.
+* [ ] Create the NYU Instructional Facilities Manager experience record.
+* [ ] Focus on technical operations, instructional infrastructure, reliability, resources, and support.
+* [ ] Create the NYU Adjunct Professor experience record.
+* [ ] Focus on teaching, technical communication, mentorship, student confidence, and practical implementation.
+* [ ] Verify official role names and degree wording.
+* [ ] Add date ranges only when useful to the narrative.
+* [ ] Keep detailed technical case studies on Projects rather than About.
+* [ ] Add related-project links only when those project details exist.
+
+## Trajectory Design
+
+* [ ] Create the Trajectory composition in Figma.
+* [ ] Avoid a conventional résumé timeline.
+* [ ] Create a narrative progression:
+
+  * Technical foundation
+  * Applied technology
+  * Software engineering
+  * Educational infrastructure
+  * Teaching
+* [ ] Allow experience records to reveal reflection, axes, contribution, and related projects.
+* [ ] Use orange for local active record state where appropriate.
+* [ ] Do not use red as a generic experience-selection color.
+* [ ] Define the spear's Trajectory role as a directional spine.
+* [ ] Do not make the spear target individual employers, degrees, or roles.
+
+## Travel and Personal Writing
+
+* [ ] Write a concise explanation of why travel matters to Jaylan.
+* [ ] Focus on observation, unfamiliar environments, independence, architecture, transit, signage, public space, and atmosphere.
+* [ ] Avoid listing every city or country visited.
+* [ ] Connect travel to Jaylan's perspective without forcing it into a professional justification.
+* [ ] Keep supporting hobbies secondary to travel and photography.
+
+## Photography Curation
+
+* [ ] Curate approximately six to twelve photographs.
+* [ ] Select a sequence with variation in:
+
+  * Location
+  * Subject
+  * Scale
+  * Mood
+  * Color
+  * Composition
+* [ ] Select a small number of featured photographs.
+* [ ] Avoid near-duplicate images.
+* [ ] Write meaningful alt text for every photograph.
+* [ ] Add accurate location and year metadata.
+* [ ] Add personal captions where useful.
+* [ ] Add camera or lens information only when it improves the experience.
+* [ ] Do not add fictional coordinates or EXIF information.
+* [ ] Preserve original edited masters outside the web repository.
+* [ ] Export web-appropriate image versions.
+* [ ] Consider thumbnails or responsive image variants where beneficial.
+
+## Photography Design
+
+* [ ] Create the photography archive composition in Figma.
+* [ ] Define archive-state presentation.
+* [ ] Define selected or expanded presentation.
+* [ ] Support the transition:
+
+  * Capture record
+  * Selected image
+  * Personal memory
+* [ ] Apply muted archive treatment non-destructively.
+* [ ] Restore natural or intentionally edited color in the selected state.
+* [ ] Do not apply one strong Longinus tint to every photograph.
+* [ ] Use orange for active system selection where appropriate.
+* [ ] Use lavender for personal captions or reflection where appropriate.
+* [ ] Do not use red as a generic photo-selection border.
+* [ ] Preserve photography as the visual focus of the chapter.
+* [ ] Define the spear's Outside the System role as an environmental frame.
+* [ ] Prevent the spear from obscuring important photographic subjects.
+* [ ] Do not make the spear target individual photographs.
+
+## Interactive Influences Content
+
+* [ ] Select approximately three to six games.
+* [ ] Do not structure the chapter as a ranking or top-ten list.
+* [ ] For each game, write a concise original reflection.
+* [ ] Identify the specific influence, such as:
+
+  * Interface
+  * Visual direction
+  * Systems design
+  * Worldbuilding
+  * Atmosphere
+  * Environmental storytelling
+  * Character writing
+  * Mechanical expression
+  * Music and sound
+  * Player agency
+* [ ] Focus on what each game taught Jaylan about the experiences he wants to create.
+* [ ] Avoid copied review or marketing language.
+* [ ] Avoid relying on copyrighted screenshots, logos, character artwork, or promotional assets.
+* [ ] Do not reproduce an identifiable game interface inside Longinus.
+
+## Interactive Influences Design
+
+* [ ] Create the Interactive Influences composition in Figma.
+* [ ] Use concise influence records rather than conventional cards.
+* [ ] Allow local 2D focus to reveal commentary.
+* [ ] Keep this chapter visually distinct from Music.
+* [ ] Use the chapter as a bridge from personal observation toward future creative direction.
+* [ ] Define the spear's role as emerging direction.
+* [ ] Do not make the spear target individual game records.
+
+## Current Direction Content
+
+* [ ] Write a concise statement describing the kind of work Jaylan wants to pursue.
+* [ ] Preserve software engineering as a central professional identity.
+* [ ] Connect engineering with:
+
+  * Interactive systems
+  * Game technology
+  * Real-time graphics
+  * Three-dimensional web experiences
+  * Expressive interface design
+  * Creative development
+* [ ] Include teaching and mentorship as part of Jaylan's future direction.
+* [ ] Explain how travel, photography, and games influence attention to space, atmosphere, interaction, and detail.
+* [ ] Avoid forcing every personal interest into a direct career justification.
+* [ ] Add a short explanation of what Longinus represents.
+* [ ] Do not turn the explanation into a second Longinus project case study.
+* [ ] Define a restrained set of current areas of exploration.
+* [ ] Avoid adding technologies solely because they are fashionable.
+* [ ] Write a concise closing statement.
+* [ ] Decide which practical actions appear after the closing:
+
+  * View Projects
+  * View résumé
+  * Contact
+  * Return Home
+
+## Current Direction Design
+
+* [ ] Create the Current Direction composition in Figma.
+* [ ] Make the ending reflective and forward-looking.
+* [ ] Keep practical actions visually secondary to the closing statement.
+* [ ] Define the spear's final role as a forward vector.
+* [ ] Consider:
+
+  * A resolved diagonal
+  * Alignment with a vanishing point
+  * Gradual movement into depth
+  * A final still posture
+* [ ] Do not use thrusting, impact, text penetration, or automatic navigation.
+* [ ] Ensure the final spear state suggests continuation rather than completion.
+
+## Scroll and Chapter Navigation
+
+* [ ] Use standard vertical browser scrolling.
+* [ ] Do not require hard full-screen scroll snapping.
+* [ ] Define stable chapter identifiers:
+
+  * `identity`
+  * `trajectory`
+  * `outside-system`
+  * `interactive-influences`
+  * `current-direction`
+* [ ] Implement active-chapter detection.
+* [ ] Use active chapter state to coordinate the About interface and spear scene.
+* [ ] Avoid tightly coupling all scene behavior to raw scroll coordinates.
+* [ ] Use continuous progress only for restrained interpolation, depth, lighting, or parallax.
+* [ ] Create restrained chapter navigation.
+* [ ] Make chapter navigation keyboard accessible.
+* [ ] Use orange for active chapter state where appropriate.
+* [ ] Do not make chapter navigation imitate the homepage navigation.
+
+## Persistent About Scene
+
+* [ ] Reuse the shared spear model.
+* [ ] Keep all About-specific spear behavior inside the About feature.
+* [ ] Create a persistent or sticky desktop Three.js region when supported by the final Figma design.
+* [ ] Define an authored spear posture for each chapter:
+
+  * Identity: quiet anchor
+  * Trajectory: directional spine
+  * Outside the System: environmental frame
+  * Interactive Influences: emerging direction
+  * Current Direction: forward vector
+* [ ] Define chapter-specific position, rotation, scale, camera relationship, and lighting mood.
+* [ ] Keep transitions slow, restrained, and reflective.
+* [ ] Allow the spear to remain still for extended periods.
+* [ ] Avoid target locking, impact, pointer following, and constant decorative motion.
+* [ ] Confirm the spear does not cover essential content.
+
+## Data Architecture
+
+* [ ] Keep About content separate from presentation and scene logic.
+* [ ] Create a focused experience data model.
+* [ ] Create a focused photography data model.
+* [ ] Create a focused game-influence data model.
+* [ ] Do not store every résumé bullet in experience data.
+* [ ] Do not create a game-rating or ranking system.
+* [ ] Use stable record identifiers.
+* [ ] Keep content editable without changes to `AboutScene` or `AboutSpear`.
+* [ ] Use shared About state only for cross-system coordination such as active chapter.
+* [ ] Keep focused experience, selected photo, and focused influence state local to their owning chapters.
+* [ ] Do not store frame-by-frame spear values in React state.
+* [ ] Avoid creating one large universal About reducer unless real coordination requires it.
+
+## Responsive Interpretation
+
+* [ ] Create an intentional narrow-layout interpretation after the desktop composition is stable.
+* [ ] Do not mechanically shrink the desktop layout.
+* [ ] Allow chapter content and spear moments to alternate.
+* [ ] Consider a smaller sticky scene rather than permanently displaying the full spear.
+* [ ] Preserve sufficient width for photographs and personal writing.
+* [ ] Ensure touch interactions do not depend on hover.
+* [ ] Define touch behavior for:
+
+  * Experience focus
+  * Photograph selection and expansion
+  * Game-influence focus
+  * Chapter navigation
+* [ ] Preserve chapter order and spear narrative presence.
+
+## Accessibility and Reduced Motion
+
+* [ ] Use semantic section headings and landmarks.
+* [ ] Make experience, photograph, influence, and chapter controls keyboard accessible.
+* [ ] Provide visible focus states.
+* [ ] Ensure state is not communicated through color alone.
+* [ ] Provide useful alternative text for photography.
+* [ ] Ensure expanded photographs can be closed using keyboard controls.
+* [ ] Preserve reading order when the 3D scene is unavailable.
+* [ ] Preserve the full narrative without WebGL.
+* [ ] Implement reduced-motion chapter transitions.
+* [ ] Remove continuous scroll-linked spear motion for reduced-motion users.
+* [ ] Reduce parallax and camera travel.
+* [ ] Keep the spear in stable authored poses when necessary.
+
+## Validation
+
+* [ ] Compare every chapter against its approved Figma reference.
+* [ ] Verify desktop composition.
+* [ ] Verify narrow-layout composition.
+* [ ] Verify keyboard navigation.
+* [ ] Verify touch interactions.
+* [ ] Verify reduced-motion behavior.
+* [ ] Verify WebGL fallback.
+* [ ] Verify photograph metadata and alt text.
+* [ ] Verify official role and degree wording.
+* [ ] Verify experience reflections do not duplicate project case studies.
+* [ ] Verify game commentary is original.
+* [ ] Verify the spear responds to chapters rather than local record hover.
+* [ ] Verify About does not become a duplicate résumé or separate photo portfolio.
+* [ ] Run the relevant type-check, lint, and build commands.
 
 ---
 

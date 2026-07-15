@@ -1,3 +1,4 @@
+import { PageIndex } from '../../components/PageIndex'
 import { getProjectBySlug } from './projectData'
 import './projects.css'
 
@@ -11,6 +12,7 @@ export function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   if (!project) {
     return (
       <main className="project-detail project-detail--missing">
+        <PageIndex value="01" />
         <p className="project-detail__eyebrow">Record not found / 404</p>
         <h1>Unknown transmission.</h1>
         <a className="project-detail__back" href="#projects">← Return to projects</a>
@@ -21,7 +23,7 @@ export function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   return (
     <main className="project-detail">
       <div className="project-detail__grid" aria-hidden="true" />
-      <div className="project-detail__marker" aria-hidden="true">{project.id.slice(-3)}</div>
+      <PageIndex value="01" />
       <header className="project-detail__header">
         <a className="project-detail__back" href="#projects"><span aria-hidden="true">←</span> Projects / Archive</a>
         <div className="project-detail__status" aria-hidden="true">

@@ -55,6 +55,25 @@ body {
   background: var(--color-background);
 }
 
+.page-index {
+  position: fixed;
+  z-index: 0;
+  right: 0.04em;
+  bottom: -0.18em;
+  display: flex;
+  color: rgba(var(--color-foreground-rgb), 0.032);
+  font-family: var(--font-display);
+  font-size: clamp(21rem, 31vw, 38rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.page-index span + span {
+  margin-left: -0.04em;
+}
+
 button,
 a {
   font: inherit;
@@ -81,5 +100,12 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-index {
+    right: -0.1em;
+    font-size: 70vw;
   }
 }

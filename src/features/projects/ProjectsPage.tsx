@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { PageIndex } from '../../components/PageIndex'
 import { SpearFallback } from '../../components/spear/SpearFallback'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import type { Project } from './projectData'
@@ -56,7 +57,7 @@ export function ProjectsPage() {
         </div>
         <SpearFallback motionState={transition.phase} focusIndex={focusedIndex} />
         <ProjectSpearScene phase={transition.phase} focusIndex={focusedIndex} />
-        <div className="projects__scene-index" aria-hidden="true">01</div>
+        <PageIndex value="01" />
       </aside>
     </main>
   )

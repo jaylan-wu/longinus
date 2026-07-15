@@ -338,24 +338,6 @@ a.home-navigation__link {
   letter-spacing: 0;
 }
 
-.home__scene-index {
-  position: absolute;
-  z-index: 0;
-  display: flex;
-  gap: 0;
-  right: 0.04em;
-  bottom: -0.18em;
-  color: rgba(var(--color-foreground-rgb), 0.032);
-  font-family: var(--font-display);
-  font-size: clamp(21rem, 31vw, 38rem);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.home__scene-index span + span {
-  margin-left: -0.04em;
-}
-
 .home .spear-canvas {
   inset: 0;
   width: 100% !important;
@@ -497,11 +479,6 @@ a.home-navigation__link {
 
   .home .spear-fallback {
     left: 86%;
-  }
-
-  .home__scene-index {
-    right: -0.1em;
-    font-size: 70vw;
   }
 
   .home__watermark {
