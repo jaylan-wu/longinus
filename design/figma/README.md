@@ -82,7 +82,8 @@ Avoid ambiguous names such as `final-final-2.png`.
 Valid implementation status values include `Not started`, `In progress`, `Implemented`, `Needs revision`, and `Approved`.
 
 | Page | Frame | Viewport | State | Reference File | Figma Link | Implementation Status | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|---|---|---|---|---|---|---|---|
+| Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | Ready for Implementation | Static composition only; boot and navigation motion are separate milestones |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -102,3 +103,22 @@ Do not add a Figma link or mark a frame approved until that link or approval exi
 - Whether the spear exits, remains visible, or docks into the top navigation
 - Mobile navigation behavior
 - Final project-selection transition timing
+
+## Homepage desktop idle
+
+Reference:
+
+`references/homepage/homepage-desktop-idle-v1.png`
+
+### Implementation boundaries
+
+- This reference defines the static desktop composition.
+- Jaylan Wu is the primary identity.
+- `alter-egoist` is a secondary digital/creative identity.
+- The primary destinations are Projects, Music, Playground, and About.
+- The spear visible in the reference is a composition guide for scale,
+  silhouette, camera framing, rotation, and cropping.
+- Production must reuse the existing React Three Fiber spear asset and scene.
+- Do not implement the Figma spear image as a DOM image.
+- Boot motion, navigation focus, spear orientation, impact, and routing are
+  separate implementation milestones.
