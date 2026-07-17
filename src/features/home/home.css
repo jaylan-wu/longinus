@@ -12,8 +12,8 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(rgba(var(--color-muted-rgb), 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--color-muted-rgb), 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(var(--color-muted-rgb), 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-muted-rgb), 0.038) 1px, transparent 1px),
     radial-gradient(circle at 77% 36%, rgba(var(--color-primary-rgb), 0.105), transparent 28rem),
     radial-gradient(circle at 88% 18%, rgba(var(--color-primary-rgb), 0.035), transparent 34rem),
     var(--color-background);
@@ -51,11 +51,11 @@
   font-size: clamp(12rem, 15.4vw, 14rem);
   font-weight: 400;
   line-height: 0.72;
-  letter-spacing: -0.045em;
-  opacity: 0.16;
+  letter-spacing: -0.015em;
+  opacity: 0.24;
   white-space: nowrap;
   pointer-events: none;
-  -webkit-text-stroke: 1px rgba(var(--color-primary-rgb), 0.8);
+  -webkit-text-stroke: 1.25px rgba(var(--color-primary-rgb), 0.8);
 }
 
 .home__interface {
