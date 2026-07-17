@@ -556,3 +556,24 @@ a.home-navigation__link {
   }
 
 }
+
+@media (min-width: 1051px) and (max-width: 1599px) {
+  .home {
+    --home-identity-statement-font-size: 2.44375rem;
+  }
+
+  .home-identity__statement {
+    margin-top: calc(var(--home-identity-content-gap) + var(--home-identity-statement-offset) - 1.5rem);
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 2199px) {
+  .home {
+    --home-identity-statement-font-size: 3.0546875rem;
+  }
+
+  .home-identity__statement {
+    gap: 0.75rem;
+    margin-top: calc(var(--home-identity-content-gap) + var(--home-identity-statement-offset) - 1.5rem);
+  }
+}

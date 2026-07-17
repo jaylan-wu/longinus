@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import {
   currentDirection,
@@ -102,10 +102,20 @@ function PhotoImage({ photo }: { photo: PhotoRecord }) {
 
 const PHOTO_CAROUSEL_SCROLL_DURATION = 420
 
+function centerCarouselItem(
+  carousel: HTMLUListElement,
+  item: HTMLElement,
+  behavior: ScrollBehavior,
+) {
+  const centeredPosition = item.offsetLeft - (carousel.clientWidth - item.clientWidth) / 2
+  carousel.scrollTo({ left: Math.max(0, centeredPosition), behavior })
+}
+
 function OutsideSystemChapter() {
   const photoCount = outsideSystem.photos.length
   const [carouselIndex, setCarouselIndex] = useState(photoCount)
   const carouselRef = useRef<HTMLUListElement>(null)
+  const carouselIndexRef = useRef(carouselIndex)
   const hasPositionedCarousel = useRef(false)
   const skipScrollAnimation = useRef(false)
   const reducedMotion = useReducedMotion()
@@ -120,19 +130,19 @@ function OutsideSystemChapter() {
     })),
   ).flat()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    carouselIndexRef.current = carouselIndex
+  }, [carouselIndex])
+
+  useLayoutEffect(() => {
     const carousel = carouselRef.current
     const selectedItem = carousel?.querySelector<HTMLElement>(`[data-carousel-index="${carouselIndex}"]`)
 
     if (!carousel || !selectedItem) return
 
-    const centeredPosition = selectedItem.offsetLeft - (carousel.clientWidth - selectedItem.clientWidth) / 2
     const shouldAnimate = hasPositionedCarousel.current && !skipScrollAnimation.current && !reducedMotion
 
-    carousel.scrollTo({
-      left: Math.max(0, centeredPosition),
-      behavior: shouldAnimate ? 'smooth' : 'auto',
-    })
+    centerCarouselItem(carousel, selectedItem, shouldAnimate ? 'smooth' : 'auto')
     hasPositionedCarousel.current = true
     skipScrollAnimation.current = false
 
@@ -152,6 +162,29 @@ function OutsideSystemChapter() {
     return () => window.clearTimeout(normalizationTimer)
   }, [carouselIndex, photoCount, reducedMotion])
 
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    let animationFrame = 0
+    const recenterSelectedPhoto = () => {
+      cancelAnimationFrame(animationFrame)
+      animationFrame = requestAnimationFrame(() => {
+        const selectedItem = carousel.querySelector<HTMLElement>(
+          `[data-carousel-index="${carouselIndexRef.current}"]`,
+        )
+        if (selectedItem) centerCarouselItem(carousel, selectedItem, 'auto')
+      })
+    }
+    const resizeObserver = new ResizeObserver(recenterSelectedPhoto)
+
+    resizeObserver.observe(carousel)
+    return () => {
+      cancelAnimationFrame(animationFrame)
+      resizeObserver.disconnect()
+    }
+  }, [])
+
   const selectAdjacentPhoto = (direction: -1 | 1) => {
     let currentIndex = carouselIndex
     const nextIndex = currentIndex + direction
@@ -165,9 +198,7 @@ function OutsideSystemChapter() {
       )
 
       if (carousel && matchingMiddleSlide) {
-        const centeredPosition = matchingMiddleSlide.offsetLeft
-          - (carousel.clientWidth - matchingMiddleSlide.clientWidth) / 2
-        carousel.scrollTo({ left: Math.max(0, centeredPosition), behavior: 'auto' })
+        centerCarouselItem(carousel, matchingMiddleSlide, 'auto')
       }
     }
 
@@ -212,6 +243,7 @@ function OutsideSystemChapter() {
                 className={`photo-record${photo.id === selected.id ? ' is-active' : ''}`}
                 aria-label={`Select photograph from ${photo.location}`}
                 aria-pressed={photo.id === selected.id}
+                aria-current={slideIndex === carouselIndex ? 'true' : undefined}
                 tabIndex={cycle === 1 ? 0 : -1}
                 onClick={() => setCarouselIndex(cycle === 1 ? photoCount + photoIndex : slideIndex)}
               >

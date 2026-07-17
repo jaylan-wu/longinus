@@ -289,8 +289,12 @@
 
 .about-chapter--outside .about-chapter__heading h2 { max-width: 13ch; }
 .photo-selected { display: grid; grid-template-columns: minmax(20rem, 1.7fr) minmax(14rem, 0.7fr); gap: 2rem; margin-bottom: 4rem; }
-.photo-selected__visual { min-width: 0; }
-.photo-selected__visual .photo-image { aspect-ratio: 16 / 9; font-size: 0.74rem; }
+.photo-selected__visual { min-width: 0; container-type: inline-size; }
+.photo-selected__visual .photo-image {
+  aspect-ratio: 16 / 9;
+  padding: clamp(0.45rem, 1.8cqw, 0.7rem);
+  font-size: clamp(0.62rem, 1.8cqw, 0.82rem);
+}
 .photo-selected__caption { align-self: end; padding: 1.5rem 0 1.5rem 1.5rem; border-left: 0.16rem solid var(--color-secondary); }
 .photo-selected__caption p { color: var(--color-secondary); font-size: 0.95rem; line-height: 1.6; }
 .photo-selected__caption p:first-child { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; }
@@ -324,14 +328,20 @@
   margin: 0;
   padding: 0.2rem;
   overflow-x: hidden;
+  scroll-snap-type: x mandatory;
   list-style: none;
 }
 .photo-carousel__track li {
   min-width: 0;
   flex: 0 0 calc((100% - 1.4rem) / 3);
+  scroll-snap-align: center;
 }
-.photo-record { width: 100%; padding: 0; border: 0; color: var(--color-foreground); background: transparent; text-align: left; cursor: pointer; }
-.photo-record .photo-image { aspect-ratio: 16 / 9; }
+.photo-record { width: 100%; padding: 0; border: 0; color: var(--color-foreground); background: transparent; text-align: left; cursor: pointer; container-type: inline-size; }
+.photo-record .photo-image {
+  aspect-ratio: 16 / 9;
+  padding: clamp(0.2rem, 1.6cqw, 0.4rem);
+  font-size: clamp(0.28rem, 2cqw, 0.5rem);
+}
 .photo-record.is-active .photo-image { outline: 2px solid var(--color-highlight); outline-offset: -2px; }
 .photo-record__metadata { display: grid; gap: 0.28rem; padding: 0.7rem 0.15rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.68rem; line-height: 1.4; text-transform: uppercase; }
 .photo-record__metadata strong { color: var(--color-foreground); }
@@ -342,11 +352,11 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding: 0.7rem;
+  padding: clamp(0.3rem, 2cqw, 0.7rem);
   color: var(--color-highlight);
   background-color: var(--color-surface);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.38rem, 2.2cqw, 0.82rem);
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   line-height: 1.2;
@@ -366,9 +376,6 @@
   z-index: 2;
   width: fit-content;
   padding: 0;
-  text-shadow:
-    0 1px 1px rgba(var(--color-background-rgb), 0.95),
-    0 0 0.35rem rgba(var(--color-background-rgb), 0.9);
 }
 .photo-image__record { align-self: flex-start; }
 .photo-image__imprint { align-self: flex-end; margin-top: auto; text-align: right; text-transform: none; }
