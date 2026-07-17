@@ -23,6 +23,8 @@ const SPEAR_IDLE_ROTATION_SPEED = 0.15
 const SPEAR_SCROLL_SPEED_FACTOR = 0.0012
 const SPEAR_MAX_SCROLL_BOOST = 2.4
 const SPEAR_SCROLL_DAMPING = 4.5
+const SPEAR_PANEL_HORIZONTAL_POSITION = 0.55
+const COMPACT_SCENE_MAX_WIDTH = 320
 
 function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   const spear = useRef<Group>(null)
@@ -31,9 +33,13 @@ function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   const previousScrollY = useRef(window.scrollY)
   const reducedMotion = useReducedMotion()
   const sceneWidth = useThree((state) => state.size.width)
+  const viewportWidth = useThree((state) => state.viewport.width)
   const target = spearPoses[activeChapter]
   const usesWideScene = sceneWidth >= 576
-  const position: [number, number, number] = usesWideScene ? [0, 0.73, 0] : [0.12, 0.79, 0]
+  const horizontalPosition = sceneWidth > COMPACT_SCENE_MAX_WIDTH
+    ? (SPEAR_PANEL_HORIZONTAL_POSITION - 0.5) * viewportWidth
+    : 0.12
+  const position: [number, number, number] = [horizontalPosition, usesWideScene ? 0.73 : 0.79, 0]
   const scale = usesWideScene ? 0.48 : 0.52
 
   useFrame((_, delta) => {

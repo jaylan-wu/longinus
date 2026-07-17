@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import {
-  experiences,
-  explorationAreas,
-  influences,
-  photos,
-  type ExperienceRecord,
+  currentDirection,
+  identity,
+  interactiveInfluences,
+  outsideSystem,
+  trajectory,
   type InfluenceRecord,
   type PhotoRecord,
+  type TrajectoryRecord,
 } from './aboutData'
 
 function ChapterHeading({ index, label, title }: { index: string; label: string; title: string }) {
@@ -18,37 +19,32 @@ function ChapterHeading({ index, label, title }: { index: string; label: string;
   )
 }
 
-function PlaceholderNote() {
-  return <p className="about-chapter__placeholder">Exploratory placeholder copy / pending editorial and Figma approval</p>
-}
-
 function IdentityChapter() {
   return (
     <section className="about-chapter about-chapter--identity" id="identity" aria-labelledby="identity-title">
       <div className="about-chapter__heading about-chapter__heading--identity">
-        <p className="about-chapter__kicker"><span>01</span> Identity / Subject profile</p>
-        <h1 id="identity-title">A point of view built across systems.</h1>
+        <p className="about-chapter__kicker"><span>01</span> Identity</p>
+        <h1 id="identity-title">{identity.name}</h1>
       </div>
       <p className="about-identity__statement">
-        I build software at the meeting point of engineering, interactive systems, and education—shaped by how games, travel, and photography teach me to notice space, behavior, and detail.
+        {identity.statement}
       </p>
-      <PlaceholderNote />
       <ul className="about-identity__axes" aria-label="Primary areas of interest">
-        <li><span>AX-01</span>Engineering</li>
-        <li><span>AX-02</span>Game Development</li>
-        <li><span>AX-03</span>Education</li>
+        {identity.axes.map((axis, index) => (
+          <li key={axis}><span>AX-{String(index + 1).padStart(2, '0')}</span>{axis}</li>
+        ))}
       </ul>
-      <p className="about-identity__signature">alter-egoist / personal signal</p>
+      <p className="about-identity__signature">{identity.creativeSignature} / {identity.location}</p>
     </section>
   )
 }
 
-function ExperienceDetail({ experience }: { experience: ExperienceRecord }) {
+function ExperienceDetail({ experience }: { experience: TrajectoryRecord }) {
   return (
     <article className="experience-detail" aria-live="polite">
       <div className="experience-detail__identifier"><span>Current record</span><strong>{experience.id}</strong></div>
-      <h3>{experience.role}</h3>
-      <p className="experience-detail__organization">{experience.organization}</p>
+      <h3>{experience.title}</h3>
+      <p className="experience-detail__organization">{experience.organization} / {experience.period}</p>
       <dl>
         <div><dt>Context</dt><dd>{experience.context}</dd></div>
         <div><dt>Defining contribution</dt><dd>{experience.contribution}</dd></div>
@@ -63,17 +59,16 @@ function ExperienceDetail({ experience }: { experience: ExperienceRecord }) {
 }
 
 function TrajectoryChapter() {
-  const [selectedId, setSelectedId] = useState(experiences[0].id)
-  const selected = experiences.find((experience) => experience.id === selectedId) ?? experiences[0]
+  const [selectedId, setSelectedId] = useState(trajectory.records[0].id)
+  const selected = trajectory.records.find((experience) => experience.id === selectedId) ?? trajectory.records[0]
 
   return (
     <section className="about-chapter about-chapter--trajectory" id="trajectory" aria-labelledby="trajectory-title">
-      <ChapterHeading index="02" label="Trajectory / Context" title="Systems become meaningful in use." />
-      <p className="about-chapter__lead">A selective progression through technical foundation, applied technology, software engineering, educational infrastructure, and teaching.</p>
-      <PlaceholderNote />
+      <ChapterHeading index="02" label="Trajectory" title="Trajectory" />
+      <p className="about-chapter__lead">{trajectory.lead}</p>
       <div className="trajectory-records">
         <ul className="trajectory-records__index" aria-label="Experience records">
-          {experiences.map((experience, index) => (
+          {trajectory.records.map((experience, index) => (
             <li key={experience.id}>
               <button
                 type="button"
@@ -82,7 +77,7 @@ function TrajectoryChapter() {
                 onClick={() => setSelectedId(experience.id)}
               >
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <span><strong>{experience.organization}</strong>{experience.role}</span>
+                <span><strong>{experience.organization}</strong>{experience.title}</span>
                 <span aria-hidden="true">{experience.id === selected.id ? 'Selected' : 'View'}</span>
               </button>
             </li>
@@ -94,38 +89,36 @@ function TrajectoryChapter() {
   )
 }
 
-function PhotoPlaceholder({ photo }: { photo: PhotoRecord }) {
+function PhotoImage({ photo }: { photo: PhotoRecord }) {
   return (
-    <div
-      className={`photo-placeholder photo-placeholder--${photo.composition}`}
-      role="img"
-      aria-label={photo.alt}
-    >
-      <span>{photo.id}</span>
-      <span>{photo.orientation} image placeholder</span>
+    <div className="photo-image">
+      <img src={photo.imageSrc} alt={photo.alt} />
+      <span aria-hidden="true">{photo.id}</span>
+      <span aria-hidden="true">{photo.orientation}</span>
     </div>
   )
 }
 
 function OutsideSystemChapter() {
-  const [selectedId, setSelectedId] = useState(photos[0].id)
-  const selected = photos.find((photo) => photo.id === selectedId) ?? photos[0]
+  const [selectedId, setSelectedId] = useState(outsideSystem.photos[0].id)
+  const selected = outsideSystem.photos.find((photo) => photo.id === selectedId) ?? outsideSystem.photos[0]
 
   return (
     <section className="about-chapter about-chapter--outside" id="outside-system" aria-labelledby="outside-title">
-      <ChapterHeading index="03" label="Outside the System / Person" title="Attention changes when the map is unfamiliar." />
-      <p className="about-chapter__lead">Travel creates room to observe architecture, transit, signage, public space, and the quiet intervals between destinations. Photography is how those observations become memories.</p>
-      <PlaceholderNote />
+      <ChapterHeading index="03" label="Outside the System" title="Outside the System" />
+      <p className="about-chapter__lead">{outsideSystem.travelStatement}</p>
+      <p className="about-chapter__lead">{outsideSystem.photographyStatement}</p>
       <div className="photo-selected" aria-live="polite">
-        <PhotoPlaceholder photo={selected} />
+        <PhotoImage photo={selected} />
         <div className="photo-selected__caption">
           <p><span>Selected image</span>{selected.id}</p>
-          <h3>{selected.location} / {selected.year}</h3>
+          <h3>{selected.location}, {selected.country} / {selected.year}</h3>
           <p>{selected.caption}</p>
+          <p>{selected.reflection}</p>
         </div>
       </div>
-      <ul className="photo-archive" aria-label="Photography archive placeholders">
-        {photos.map((photo) => (
+      <ul className="photo-archive" aria-label="Photography archive">
+        {outsideSystem.photos.map((photo) => (
           <li key={photo.id}>
             <button
               type="button"
@@ -133,7 +126,7 @@ function OutsideSystemChapter() {
               aria-pressed={photo.id === selected.id}
               onClick={() => setSelectedId(photo.id)}
             >
-              <PhotoPlaceholder photo={photo} />
+              <PhotoImage photo={photo} />
               <span className="photo-record__metadata"><strong>{photo.id}</strong>{photo.location} / {photo.year}</span>
             </button>
           </li>
@@ -148,6 +141,7 @@ function InfluenceDetail({ influence }: { influence: InfluenceRecord }) {
     <article className="influence-detail" aria-live="polite">
       <p>{influence.id} / Selected influence</p>
       <h3>{influence.title}</h3>
+      <p>{influence.releaseYear}</p>
       <ul>{influence.categories.map((category) => <li key={category}>{category}</li>)}</ul>
       <blockquote>{influence.reflection}</blockquote>
     </article>
@@ -155,17 +149,16 @@ function InfluenceDetail({ influence }: { influence: InfluenceRecord }) {
 }
 
 function InteractiveInfluencesChapter() {
-  const [selectedId, setSelectedId] = useState(influences[0].id)
-  const selected = influences.find((influence) => influence.id === selectedId) ?? influences[0]
+  const [selectedId, setSelectedId] = useState(interactiveInfluences.records[0].id)
+  const selected = interactiveInfluences.records.find((influence) => influence.id === selectedId) ?? interactiveInfluences.records[0]
 
   return (
     <section className="about-chapter about-chapter--influences" id="interactive-influences" aria-labelledby="influences-title">
-      <ChapterHeading index="04" label="Interactive Influences / Influence" title="What interaction can make us feel." />
-      <p className="about-chapter__lead">Not a ranking or review: a small set of records about the systems, worlds, and expressive decisions that shaped what I want to create.</p>
-      <PlaceholderNote />
+      <ChapterHeading index="04" label="Interactive Influences" title="Interactive Influences" />
+      <p className="about-chapter__lead">{interactiveInfluences.lead}</p>
       <div className="influence-records">
-        <ul aria-label="Interactive influence placeholders">
-          {influences.map((influence) => (
+        <ul aria-label="Interactive influence records">
+          {interactiveInfluences.records.map((influence) => (
             <li key={influence.id}>
               <button
                 type="button"
@@ -189,20 +182,19 @@ function InteractiveInfluencesChapter() {
 function CurrentDirectionChapter() {
   return (
     <section className="about-chapter about-chapter--direction" id="current-direction" aria-labelledby="direction-title">
-      <ChapterHeading index="05" label="Current Direction / Vector" title="Build rigorous systems that leave room for expression." />
+      <ChapterHeading index="05" label="Current Direction" title="Current Direction" />
       <p className="about-direction__statement">
-        I want to keep working where software engineering, game-oriented thinking, real-time 3D, creative development, and teaching reinforce one another. Longinus is an ongoing study in making that relationship visible—not a conclusion, but a direction.
+        {currentDirection.statement}
       </p>
-      <PlaceholderNote />
+      <p className="about-chapter__lead">{currentDirection.longinusStatement}</p>
       <ul className="about-direction__areas" aria-label="Current areas of exploration">
-        {explorationAreas.map((area, index) => <li key={area}><span>{String(index + 1).padStart(2, '0')}</span>{area}</li>)}
+        {currentDirection.explorationAreas.map((area, index) => <li key={area}><span>{String(index + 1).padStart(2, '0')}</span>{area}</li>)}
       </ul>
-      <p className="about-direction__closing">The work ahead should be technically sound, visually intentional, and clear enough to share.</p>
+      <p className="about-direction__closing">{currentDirection.closing}</p>
       <nav className="about-direction__actions" aria-label="About page actions">
-        <a href="#projects">View Projects <span aria-hidden="true">↗</span></a>
-        <button type="button" disabled>View Résumé <span>Destination pending</span></button>
-        <button type="button" disabled>Contact <span>Destination pending</span></button>
-        <a href="#home">Return Home <span aria-hidden="true">↗</span></a>
+        {currentDirection.actions.map((action) => (
+          <a key={action.label} href={action.href}>{action.label} <span aria-hidden="true">↗</span></a>
+        ))}
       </nav>
     </section>
   )

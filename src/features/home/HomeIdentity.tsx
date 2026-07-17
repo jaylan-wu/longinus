@@ -3,6 +3,8 @@ const titleCards = [
   'Take care of yourself.',
   'Love is destructive.',
   'I need you.',
+  'You are (not) alone.',
+  'You can (not) redo.',
 ] as const
 
 const titleCard = titleCards[Math.floor(Math.random() * titleCards.length)]
@@ -22,7 +24,7 @@ export function HomeIdentity() {
         <span>Wu</span>
       </h1>
       <div className="home-identity__statement">
-        <p className="home-identity__role">Portfolio:</p>
+        <p className="home-identity__role">Archive:</p>
         <p className="home-identity__question">{titleCard}</p>
       </div>
     </header>

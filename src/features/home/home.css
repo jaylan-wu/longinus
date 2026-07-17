@@ -1,4 +1,7 @@
 .home {
+  --home-identity-content-gap: clamp(1rem, min(6cqi, 4vh), 2.75rem);
+  --home-identity-statement-offset: clamp(0.5rem, min(4cqi, 3vh), 1.5rem);
+  --home-identity-statement-font-size: 2.875rem;
   --home-navigation-row-height: 4.68rem;
 
   position: relative;
@@ -128,35 +131,36 @@
 }
 
 .home-identity__statement {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  margin-top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--home-identity-content-gap) - 1rem);
+  margin-top: calc(var(--home-identity-content-gap) + var(--home-identity-statement-offset) - 0.5rem);
 }
 
 .home-identity__role,
 .home-identity__question {
+  max-width: 100%;
   margin: 0;
 }
 
 .home-identity__role {
-  font-family: var(--font-sans);
-  font-size: 2rem;
+  font-family: "Archivo Narrow", "Arial Narrow", sans-serif;
+  font-size: var(--home-identity-statement-font-size);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.06em;
+  line-height: 0.9;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
 }
 
 .home-identity__question {
-  margin-top: 2.05rem;
   padding-right: 0.1rem;
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: var(--home-identity-statement-font-size);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.035em;
-  transform: translateY(2px);
+  text-wrap: balance;
 }
 
 .home-navigation {
@@ -363,6 +367,7 @@ a.home-navigation__link {
 
 @media (min-width: 1600px) {
   .home {
+    --home-identity-statement-font-size: 3.59375rem;
     --home-navigation-row-height: 5.35rem;
 
     grid-template-columns: minmax(38rem, 40%) minmax(0, 60%);
@@ -382,15 +387,6 @@ a.home-navigation__link {
 
   .home-identity__name > span:last-child {
     font-size: clamp(8.44rem, 6.75vw, 10.85rem);
-  }
-
-  .home-identity__role {
-    font-size: 2.5rem;
-  }
-
-  .home-identity__question {
-    font-size: 2.75rem;
-    transform: translateY(1.625rem);
   }
 
   .home-navigation__label {
@@ -421,20 +417,11 @@ a.home-navigation__link {
   .home-identity__name > span:first-child {
     font-size: clamp(5.8rem, min(14vw, 31cqi), 9rem);
   }
-
-  .home-identity__statement {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-
-  .home-identity__question {
-    margin-top: 0;
-    justify-self: end;
-  }
 }
 
 @media (max-width: 760px) {
   .home {
+    --home-identity-statement-font-size: 2.3rem;
     --home-navigation-row-height: 4rem;
 
     display: block;
@@ -470,14 +457,6 @@ a.home-navigation__link {
 
   .home-identity__name > span:last-child {
     font-size: clamp(4rem, 17vw, 5.5rem);
-  }
-
-  .home-identity__role {
-    font-size: 1.55rem;
-  }
-
-  .home-identity__question {
-    font-size: 1.8rem;
   }
 
   .home-navigation {
@@ -551,6 +530,7 @@ a.home-navigation__link {
 
 @media (max-height: 780px) and (min-width: 761px) {
   .home {
+    --home-identity-statement-font-size: 2.5875rem;
     --home-navigation-row-height: 3.65rem;
   }
 
@@ -569,10 +549,6 @@ a.home-navigation__link {
 
   .home-identity__name > span:last-child {
     font-size: 5.2rem;
-  }
-
-  .home-identity__statement {
-    margin-top: 1rem;
   }
 
   .home-navigation {
