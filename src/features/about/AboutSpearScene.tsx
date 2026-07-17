@@ -19,17 +19,18 @@ const spearPoses: Record<AboutChapterId, SpearPose> = {
   'current-direction': { axialRotation: Math.PI * 1.2 },
 }
 
-const SPEAR_IDLE_ROTATION_SPEED = 0.15
-const SPEAR_SCROLL_SPEED_FACTOR = 0.0012
-const SPEAR_MAX_SCROLL_BOOST = 2.4
-const SPEAR_SCROLL_DAMPING = 4.5
+const SPEAR_IDLE_ROTATION_SPEED = 0.2
+const SPEAR_SCROLL_SPEED_FACTOR = 0.0015
+const SPEAR_MAX_SCROLL_BOOST = 2.8
+const SPEAR_SCROLL_DAMPING = 6.5
 const SPEAR_PANEL_HORIZONTAL_POSITION = 0.55
 const COMPACT_SCENE_MAX_WIDTH = 320
 
 function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   const spear = useRef<Group>(null)
   const axialRotation = useRef(0)
-  const scrollSpeed = useRef(0)
+  const angularVelocity = useRef(SPEAR_IDLE_ROTATION_SPEED)
+  const scrollDirection = useRef<1 | -1>(1)
   const previousScrollY = useRef(window.scrollY)
   const reducedMotion = useReducedMotion()
   const sceneWidth = useThree((state) => state.size.width)
@@ -51,24 +52,27 @@ function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
       return
     }
 
-    const scrollDistance = Math.abs(window.scrollY - previousScrollY.current)
-    const scrollVelocity = scrollDistance / Math.max(delta, 0.001)
-    const targetScrollSpeed = Math.min(
+    const scrollDistance = window.scrollY - previousScrollY.current
+    if (scrollDistance !== 0) scrollDirection.current = scrollDistance > 0 ? 1 : -1
+
+    const scrollVelocity = Math.abs(scrollDistance) / Math.max(delta, 0.001)
+    const scrollBoost = Math.min(
       scrollVelocity * SPEAR_SCROLL_SPEED_FACTOR,
       SPEAR_MAX_SCROLL_BOOST,
     )
+    const targetAngularVelocity = scrollDirection.current * (SPEAR_IDLE_ROTATION_SPEED + scrollBoost)
 
-    scrollSpeed.current = MathUtils.damp(
-      scrollSpeed.current,
-      targetScrollSpeed,
+    angularVelocity.current = MathUtils.damp(
+      angularVelocity.current,
+      targetAngularVelocity,
       SPEAR_SCROLL_DAMPING,
       delta,
     )
-    axialRotation.current += (SPEAR_IDLE_ROTATION_SPEED + scrollSpeed.current) * delta
+    axialRotation.current += angularVelocity.current * delta
     previousScrollY.current = window.scrollY
 
-    // SpearModel is authored along the Y axis, so Y rotation spins the spear
-    // around its shaft while preserving the vertical silhouette.
+    // Positive axial rotation is the established clockwise direction. Signed
+    // scroll velocity reverses it smoothly when the user scrolls upward.
     spear.current.rotation.y = axialRotation.current
   })
 

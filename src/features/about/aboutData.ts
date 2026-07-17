@@ -131,7 +131,7 @@ export const outsideSystem = {
       featured: true,
       alt: 'Fisherman in the lake.',
       caption: 'fishing.',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'This was one of my favorite photos that I was able to capture in Japan. I was lucky to catch Fuji on a clear day, and the experience felt surreal.',
     },
     {
@@ -144,7 +144,7 @@ export const outsideSystem = {
       featured: false,
       alt: 'Blooming lily in a sea of lily pads.',
       caption: 'Lilies.',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'Floral images are fun to take.',
     },
     {
@@ -157,7 +157,7 @@ export const outsideSystem = {
       featured: true,
       alt: 'Torii gate at the top of the world.',
       caption: 'sky torii',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'This is a surreal image of a torii gate at the top of Mount Otaru.',
     },
     {
@@ -170,7 +170,7 @@ export const outsideSystem = {
       featured: false,
       alt: 'Ramen in Toyama.',
       caption: 'ramen',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'A personal favorite meal from my trip.',
     },
     {
@@ -183,7 +183,7 @@ export const outsideSystem = {
       featured: false,
       alt: 'Hakodate port at sunset.',
       caption: 'a port at sunset',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'I stayed around this spot for a couple of hours waiting for the right photograph. I was glad to catch the sunset, and the evening has stayed memorable for me.',
     },
     {
@@ -196,7 +196,7 @@ export const outsideSystem = {
       featured: false,
       alt: 'The inside of a bookstore located in bookstore town.',
       caption: 'stories.',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'I liked the structure of this photograph: wherever you look, there is another book containing a story that someone put their all into.',
     },
     {
@@ -209,7 +209,7 @@ export const outsideSystem = {
       featured: false,
       alt: 'Two friends sitting on a bench in front of a lake.',
       caption: 'a bench at noon',
-      camera: 'Sony a-6000',
+      camera: 'Sony α6000',
       reflection: 'I like the composition of this photograph and how it shows the intimacy of people\'s relationships with one another.',
     },
   ] satisfies PhotoRecord[],

@@ -323,7 +323,7 @@ fishing.
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -367,7 +367,7 @@ Lilies.
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -411,7 +411,7 @@ sky torii
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -455,7 +455,7 @@ ramen
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -499,7 +499,7 @@ a port at sunset
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -543,7 +543,7 @@ stories.
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 
@@ -587,7 +587,7 @@ a bench at noon
 
 Camera:
 
-Sony a-6000
+Sony α6000
 
 Why this photograph belongs in the sequence:
 

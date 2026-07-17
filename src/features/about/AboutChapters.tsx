@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import {
   currentDirection,
   identity,
@@ -93,15 +94,85 @@ function PhotoImage({ photo }: { photo: PhotoRecord }) {
   return (
     <div className="photo-image">
       <img src={photo.imageSrc} alt={photo.alt} />
-      <span aria-hidden="true">{photo.id}</span>
-      <span aria-hidden="true">{photo.orientation}</span>
+      <span className="photo-image__record" aria-hidden="true">{photo.id}</span>
+      <span className="photo-image__imprint" aria-hidden="true">{photo.camera} / {photo.year}</span>
     </div>
   )
 }
 
+const PHOTO_CAROUSEL_SCROLL_DURATION = 420
+
 function OutsideSystemChapter() {
-  const [selectedId, setSelectedId] = useState(outsideSystem.photos[0].id)
-  const selected = outsideSystem.photos.find((photo) => photo.id === selectedId) ?? outsideSystem.photos[0]
+  const photoCount = outsideSystem.photos.length
+  const [carouselIndex, setCarouselIndex] = useState(photoCount)
+  const carouselRef = useRef<HTMLUListElement>(null)
+  const hasPositionedCarousel = useRef(false)
+  const skipScrollAnimation = useRef(false)
+  const reducedMotion = useReducedMotion()
+  const selectedPhotoIndex = ((carouselIndex % photoCount) + photoCount) % photoCount
+  const selected = outsideSystem.photos[selectedPhotoIndex]
+  const carouselSlides = Array.from({ length: 3 }, (_, cycle) =>
+    outsideSystem.photos.map((photo, photoIndex) => ({
+      carouselIndex: cycle * photoCount + photoIndex,
+      cycle,
+      photo,
+      photoIndex,
+    })),
+  ).flat()
+
+  useEffect(() => {
+    const carousel = carouselRef.current
+    const selectedItem = carousel?.querySelector<HTMLElement>(`[data-carousel-index="${carouselIndex}"]`)
+
+    if (!carousel || !selectedItem) return
+
+    const centeredPosition = selectedItem.offsetLeft - (carousel.clientWidth - selectedItem.clientWidth) / 2
+    const shouldAnimate = hasPositionedCarousel.current && !skipScrollAnimation.current && !reducedMotion
+
+    carousel.scrollTo({
+      left: Math.max(0, centeredPosition),
+      behavior: shouldAnimate ? 'smooth' : 'auto',
+    })
+    hasPositionedCarousel.current = true
+    skipScrollAnimation.current = false
+
+    const normalizedIndex = carouselIndex < photoCount
+      ? carouselIndex + photoCount
+      : carouselIndex >= photoCount * 2
+        ? carouselIndex - photoCount
+        : null
+
+    if (normalizedIndex === null) return
+
+    const normalizationTimer = window.setTimeout(() => {
+      skipScrollAnimation.current = true
+      setCarouselIndex(normalizedIndex)
+    }, reducedMotion ? 0 : PHOTO_CAROUSEL_SCROLL_DURATION)
+
+    return () => window.clearTimeout(normalizationTimer)
+  }, [carouselIndex, photoCount, reducedMotion])
+
+  const selectAdjacentPhoto = (direction: -1 | 1) => {
+    let currentIndex = carouselIndex
+    const nextIndex = currentIndex + direction
+
+    if (nextIndex < 0 || nextIndex >= photoCount * 3) {
+      currentIndex = selectedPhotoIndex + photoCount
+
+      const carousel = carouselRef.current
+      const matchingMiddleSlide = carousel?.querySelector<HTMLElement>(
+        `[data-carousel-index="${currentIndex}"]`,
+      )
+
+      if (carousel && matchingMiddleSlide) {
+        const centeredPosition = matchingMiddleSlide.offsetLeft
+          - (carousel.clientWidth - matchingMiddleSlide.clientWidth) / 2
+        carousel.scrollTo({ left: Math.max(0, centeredPosition), behavior: 'auto' })
+      }
+    }
+
+    setCarouselIndex(currentIndex + direction)
+  }
 
   return (
     <section className="about-chapter about-chapter--outside" id="outside-system" aria-labelledby="outside-title">
@@ -109,29 +180,57 @@ function OutsideSystemChapter() {
       <p className="about-chapter__lead">{outsideSystem.travelStatement}</p>
       <p className="about-chapter__lead">{outsideSystem.photographyStatement}</p>
       <div className="photo-selected" aria-live="polite">
-        <PhotoImage photo={selected} />
-        <div className="photo-selected__caption">
+        <div className="photo-selected__visual" key={`visual-${selected.id}`}>
+          <PhotoImage photo={selected} />
+        </div>
+        <div className="photo-selected__caption" key={`caption-${selected.id}`}>
           <p><span>Selected image</span>{selected.id}</p>
           <h3>{selected.location}, {selected.country} / {selected.year}</h3>
           <p>{selected.caption}</p>
           <p>{selected.reflection}</p>
         </div>
       </div>
-      <ul className="photo-archive" aria-label="Photography archive">
-        {outsideSystem.photos.map((photo) => (
-          <li key={photo.id}>
-            <button
-              type="button"
-              className={`photo-record photo-record--${photo.orientation}${photo.id === selected.id ? ' is-active' : ''}`}
-              aria-pressed={photo.id === selected.id}
-              onClick={() => setSelectedId(photo.id)}
+      <div className="photo-carousel" role="region" aria-label="Photography archive carousel">
+        <button
+          type="button"
+          className="photo-carousel__control photo-carousel__control--previous"
+          aria-label="Select previous photograph"
+          aria-controls="photo-carousel-track"
+          onClick={() => selectAdjacentPhoto(-1)}
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <ul className="photo-carousel__track" id="photo-carousel-track" ref={carouselRef}>
+          {carouselSlides.map(({ carouselIndex: slideIndex, cycle, photo, photoIndex }) => (
+            <li
+              key={`${cycle}-${photo.id}`}
+              data-carousel-index={slideIndex}
+              aria-hidden={cycle !== 1}
             >
-              <PhotoImage photo={photo} />
-              <span className="photo-record__metadata"><strong>{photo.id}</strong>{photo.location} / {photo.year}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
+              <button
+                type="button"
+                className={`photo-record${photo.id === selected.id ? ' is-active' : ''}`}
+                aria-label={`Select photograph from ${photo.location}`}
+                aria-pressed={photo.id === selected.id}
+                tabIndex={cycle === 1 ? 0 : -1}
+                onClick={() => setCarouselIndex(cycle === 1 ? photoCount + photoIndex : slideIndex)}
+              >
+                <PhotoImage photo={photo} />
+                <span className="photo-record__metadata"><strong>{photo.id}</strong>{photo.location} / {photo.year}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          className="photo-carousel__control photo-carousel__control--next"
+          aria-label="Select next photograph"
+          aria-controls="photo-carousel-track"
+          onClick={() => selectAdjacentPhoto(1)}
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
     </section>
   )
 }
