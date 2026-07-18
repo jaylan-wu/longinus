@@ -17,6 +17,13 @@ export const chapterIds = [
 export type AboutChapterId = (typeof chapterIds)[number]
 export type PersonalAxis = 'Engineering' | 'Game development' | 'Education'
 
+export type IdentityAxis = {
+  id: `AX-${string}`
+  label: PersonalAxis
+  shortStatement: string
+  supportingStatement: string
+}
+
 export const chapters: Array<{ id: AboutChapterId; index: string; label: string }> = [
   { id: 'identity', index: '01', label: 'Identity' },
   { id: 'trajectory', index: '02', label: 'Trajectory' },
@@ -29,16 +36,40 @@ export type IdentityContent = {
   name: string
   creativeSignature: string
   location: string
-  statement: string
-  axes: PersonalAxis[]
+  displayStatement: readonly [string, string, string, string]
+  openingStatement: string[]
+  axes: IdentityAxis[]
 }
 
 export const identity: IdentityContent = {
   name: 'Jaylan Wu',
   creativeSignature: 'alter-egoist',
-  location: 'New York, New York',
-  statement: 'I build things that draw from the media and personal experiences that have shaped me. Through engineering and education, I want to show that rigorous work can still carry a distinct voice and leave room for creativity. I pay close attention to the small details that make work feel intentional.',
-  axes: ['Engineering', 'Game development', 'Education'],
+  location: 'New York City',
+  displayStatement: ['Technical', 'work can', 'still feel', 'personal.'],
+  openingStatement: [
+    'I build systems and interactive experiences shaped by the media, places, and people around me. My work connects engineering, game development, and education through a focus on how systems work, how interactions feel, and how clearly ideas can be shared.',
+    'I believe rigor and creativity strengthen one another. Whether I am building or teaching, I want technical work to remain thoughtful, expressive, and open to individual perspective.',
+  ],
+  axes: [
+    {
+      id: 'AX-01',
+      label: 'Engineering',
+      shortStatement: 'Build systems that hold together.',
+      supportingStatement: 'I care about how parts connect into reliable, understandable systems.',
+    },
+    {
+      id: 'AX-02',
+      label: 'Game development',
+      shortStatement: 'Create interactions that carry feeling.',
+      supportingStatement: 'I use interaction, atmosphere, and player choice to give technical systems expression.',
+    },
+    {
+      id: 'AX-03',
+      label: 'Education',
+      shortStatement: 'Make complex ideas easier to enter.',
+      supportingStatement: 'Teaching shapes how I explain, document, and evaluate the systems I build.',
+    },
+  ],
 }
 
 export type TrajectoryRecord = {

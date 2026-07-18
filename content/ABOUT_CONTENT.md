@@ -14,30 +14,82 @@ Name: Jaylan Wu
 
 Creative signature: alter-egoist
 
+Location: New York City
+
 ## Personal Axes
 
 * Engineering
 * Game development
 * Education
 
+## Display Statement
+
+Technical work can still feel personal.
+
 ## Opening Statement
 
-Write 2–5 sentences answering:
+I build systems and interactive experiences shaped by the media, places,
+and people around me. My work connects engineering, game development,
+and education through a focus on how systems work, how interactions feel,
+and how clearly ideas can be shared.
 
-* What do I build?
-* What connects engineering, games, and education for me?
-* What do I pay attention to when designing or building something?
-* What should someone understand about me before seeing my résumé?
+I believe rigor and creativity strengthen one another. Whether I am
+building or teaching, I want technical work to remain thoughtful,
+expressive, and open to individual perspective.
 
-Draft:
+## Identity Axes
 
-I like to build things that draw inspiration from the experiences that have shaped me to this point. Whether it is from media or my personal experiences throughout the world, I'm try not to shy away from what makes me who I am. Through engineering and education, I want to show others that they can still have a voice and personality even through rigorous work and there are ways to still be creative. I pay attention to the small details of my work.
+### AX-01 — Engineering
 
-## Short Personal Details
+Short statement:
 
-Current location, if I want it displayed:
+Build systems that hold together.
 
-New York, New York
+Supporting statement:
+
+I care about how parts connect into reliable, understandable systems.
+
+### AX-02 — Game Development
+
+Short statement:
+
+Create interactions that carry feeling.
+
+Supporting statement:
+
+I use interaction, atmosphere, and player choice to give technical
+systems expression.
+
+### AX-03 — Education
+
+Short statement:
+
+Make complex ideas easier to enter.
+
+Supporting statement:
+
+Teaching shapes how I explain, document, and evaluate the systems I
+build.
+
+## Identity Design Notes
+
+* Do not repeat `JAYLAN WU` as the dominant display text.
+* Use `TECHNICAL WORK CAN STILL FEEL PERSONAL` as the primary display statement.
+* Preserve the three personal axes.
+* Use the three axes as meaningful background structure rather than generic decoration.
+* Keep `alter-egoist` as a restrained signature.
+* Preserve the right-side chapter navigation and quiet spear composition.
+* Keep the complete Identity content visible without scrolling at a 2500 × 1350 viewport.
+* Keep the primary display statement on four lines and reduce its size only moderately if required.
+* Move the opening statement upward beside the primary display statement.
+* Begin the three-axis region higher by reducing unnecessary vertical spacing.
+* Present the axis records as compact editorial columns rather than tall generic cards.
+* Keep every axis statement visible without hover, focus, or an internal scrollbar.
+* Do not add oversized decorative background words.
+* Increase very small system text where it is difficult to read.
+* Keep the Identity composition responsive to desktop viewport height rather than relying only on rigid pixel positioning.
+* Preserve the established color roles.
+* Do not use red as generic background styling.
 
 ---
 
