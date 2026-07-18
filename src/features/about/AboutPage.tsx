@@ -1,6 +1,6 @@
 import { PageIndex } from '../../components/PageIndex'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
-import { AboutChapters } from './AboutChapters'
+import { AboutChapters } from './components/AboutChapters'
 import { chapters } from './aboutData'
 import { AboutSpearScene } from './AboutSpearScene'
 import { useActiveChapter } from './useActiveChapter'

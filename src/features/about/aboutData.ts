@@ -5,6 +5,9 @@ import photo004 from './assets/photography/PHOTO-004-toyama-ramen-2025.JPG'
 import photo005 from './assets/photography/PHOTO-005-hakodate-2025.JPG'
 import photo006 from './assets/photography/PHOTO-006-jimbocho-2025.JPG'
 import photo007 from './assets/photography/PHOTO-007-chicago-2026.JPG'
+import majorLeagueBaseballMark from './assets/organizations/mlb.webp'
+import newYorkMetsMark from './assets/organizations/mets.webp'
+import newYorkUniversityMark from './assets/organizations/nyu.png'
 
 export const chapterIds = [
   'identity',
@@ -20,7 +23,7 @@ export type PersonalAxis = 'Engineering' | 'Game development' | 'Education'
 export type IdentityAxis = {
   id: `AX-${string}`
   label: PersonalAxis
-  shortStatement: string
+  shortStatement: readonly [string, string, string]
   supportingStatement: string
 }
 
@@ -36,7 +39,7 @@ export type IdentityContent = {
   name: string
   creativeSignature: string
   location: string
-  displayStatement: readonly [string, string, string, string]
+  displayStatement: readonly string[]
   openingStatement: string[]
   axes: IdentityAxis[]
 }
@@ -45,91 +48,222 @@ export const identity: IdentityContent = {
   name: 'Jaylan Wu',
   creativeSignature: 'alter-egoist',
   location: 'New York City',
-  displayStatement: ['Technical', 'work can', 'still feel', 'personal.'],
+  displayStatement: ['Bringing', 'creativity into', 'my technical', 'work.'],
   openingStatement: [
-    'I build systems and interactive experiences shaped by the media, places, and people around me. My work connects engineering, game development, and education through a focus on how systems work, how interactions feel, and how clearly ideas can be shared.',
-    'I believe rigor and creativity strengthen one another. Whether I am building or teaching, I want technical work to remain thoughtful, expressive, and open to individual perspective.',
+    'Media, places, and people shape the way I connect engineering, game development, and education. I care about how systems work, how interactions feel, and how clearly ideas are shared.',
+    'Creativity belongs in technical work. Through teaching, I want others to feel that their perspective belongs in technical spaces too.',
   ],
   axes: [
     {
       id: 'AX-01',
       label: 'Engineering',
-      shortStatement: 'Build systems that hold together.',
-      supportingStatement: 'I care about how parts connect into reliable, understandable systems.',
+      shortStatement: ['Prototype,', 'test, and', 'refine.'],
+      supportingStatement: 'I approach engineering through iteration—building early, learning from each version, and improving ideas through testing.',
     },
     {
       id: 'AX-02',
       label: 'Game development',
-      shortStatement: 'Create interactions that carry feeling.',
-      supportingStatement: 'I use interaction, atmosphere, and player choice to give technical systems expression.',
+      shortStatement: ['Create', 'interactions that', 'evoke feeling.'],
+      supportingStatement: 'I use systems, atmosphere, and player choice to shape how an experience feels.',
     },
     {
       id: 'AX-03',
       label: 'Education',
-      shortStatement: 'Make complex ideas easier to enter.',
-      supportingStatement: 'Teaching shapes how I explain, document, and evaluate the systems I build.',
+      shortStatement: ['Introduce', 'the unknown to', 'those who seek it.'],
+      supportingStatement: 'Teaching gives people the tools and confidence to approach unfamiliar ideas for themselves.',
     },
   ],
+}
+
+export type TrajectoryOrganizationMarkId = 'nyu' | 'new-york-mets' | 'major-league-baseball'
+export type TrajectoryOrganizationMarkPosition = 'center' | 'lower-right' | 'upper-right'
+
+export type TrajectoryOrganizationMark = {
+  id: TrajectoryOrganizationMarkId
+  imageSrc: string
+  position: TrajectoryOrganizationMarkPosition
+}
+
+export const trajectoryOrganizationMarks = {
+  nyu: {
+    id: 'nyu',
+    imageSrc: newYorkUniversityMark,
+    position: 'lower-right',
+  },
+  'new-york-mets': {
+    id: 'new-york-mets',
+    imageSrc: newYorkMetsMark,
+    position: 'center',
+  },
+  'major-league-baseball': {
+    id: 'major-league-baseball',
+    imageSrc: majorLeagueBaseballMark,
+    position: 'upper-right',
+  },
+} satisfies Record<TrajectoryOrganizationMarkId, TrajectoryOrganizationMark>
+
+export type TrajectorySection = {
+  label: string
+  body: string
+  reflection?: boolean
 }
 
 export type TrajectoryRecord = {
   id: `EDU-${string}` | `EXP-${string}`
   organization: string
+  officialRole?: string
   title: string
+  displayTitle: readonly string[]
+  interpretiveStatement?: string
   period: string
-  context: string
-  contribution: string
-  reflection: string
+  detailMetadata: string[]
+  sections: readonly TrajectorySection[]
   axes: PersonalAxis[]
   themes: string[]
+  organizationMark: TrajectoryOrganizationMarkId
 }
 
 export const trajectory = {
-  lead: 'My education and work have connected software, physical technology, organizational systems, and teaching.',
+  lead: 'I have learned to move between software, physical systems, organizational workflows, and teaching. Each environment has changed how I think about the people, spaces, and systems that technical work must support.',
   records: [
     {
       id: 'EDU-001',
       organization: 'New York University',
-      title: 'Bachelors of Science in Computer Science / Bachelors of Science in Computer Engineering',
-      period: '2020 - 2025',
-      context: 'Studied through the College of Arts and Sciences and Tandon School of Engineering, with additional study in Game Engineering.',
-      contribution: 'Developed a foundation in algorithms, object-oriented programming, computer architecture, system design, and the relationship between hardware and software.',
-      reflection: 'Game Engineering gave me a creative way to understand computer science and became the part of my coursework I most enjoyed.',
+      title: 'Dual-Degree Undergraduate',
+      displayTitle: ['Dual-Degree', 'Undergraduate.'],
+      period: '2020–2025',
+      detailMetadata: [
+        'Bachelors of Science in Computer Science',
+        'Bachelors of Science in Computer Engineering',
+        'Game Engineering',
+      ],
+      sections: [
+        {
+          label: 'Context',
+          body: 'Studying computer science and computer engineering allowed me to move between algorithms, software design, computer architecture, embedded systems, and the boundary where hardware and software meet.',
+        },
+        {
+          label: 'Foundation',
+          body: 'The two degrees taught me to think about systems in layers: how user-facing software depends on architecture, how physical constraints influence implementation, and how decisions at one layer affect everything built above it.',
+        },
+        {
+          label: 'Reflection',
+          body: 'Game Engineering gave that technical foundation a creative outlet. Building games made abstract concepts tangible and showed me that rigorous technical work could still carry personality, atmosphere, and play.',
+          reflection: true,
+        },
+      ],
       axes: ['Engineering', 'Game development', 'Education'],
-      themes: ['Software and hardware', 'Game Engineering', 'Study abroad in Paris, France'],
+      themes: ['Software and hardware', 'Game Engineering'],
+      organizationMark: 'nyu',
     },
     {
       id: 'EXP-001',
-      organization: 'New York Mets',
-      title: 'Technology Solutions Intern',
-      period: 'May 2023 - October 2023',
-      context: 'Worked at Citi Field with the Technology Solutions department on the business operations side, learning how technology supports a sports organization and its audience.',
-      contribution: 'Served as an ambassador for an opt-in facial-recognition ticketing system, explained its benefits to fans, and analyzed patron data to help shape marketing presentations.',
-      reflection: 'Explaining unfamiliar technology to fans taught me to make technical ideas useful in a physical, public setting. It also helped me see entertainment technology as a direction I could choose for myself.',
-      axes: ['Engineering'],
-      themes: ['Physical technology', 'Technology solutions'],
+      organization: 'New York University',
+      officialRole: 'General Engineering EG1004 Teaching Assistant',
+      title: 'Teaching Assistant',
+      displayTitle: ['Teaching', 'Assistant.'],
+      interpretiveStatement: 'Learning through teaching.',
+      period: 'August 2022 - 2025',
+      detailMetadata: ['General Engineering / EG1004'],
+      sections: [
+        {
+          label: 'Teaching Context',
+          body: 'As a Teaching Assistant for NYU’s first-year General Engineering course, I co-instructed weekly labs and supported students learning Figma, C++, Arduino, Autodesk Fusion 360, and Python through semester-long design projects.',
+        },
+        {
+          label: 'Mentorship',
+          body: 'I mentored teams of four from problem definition through building, testing, and presenting a working prototype. Alongside technical guidance, I asked questions that helped students understand their decisions and continue independently.',
+        },
+        {
+          label: 'What I Learned',
+          body: 'Teaching showed me that understanding a technical concept and explaining it clearly are different skills. Adapting explanations to different experience levels—and contributing to technical and inclusive-leadership training—made education a meaningful part of my engineering practice.',
+          reflection: true,
+        },
+      ],
+      axes: ['Engineering', 'Education'],
+      themes: ['Mentorship', 'Technical communication', 'Prototyping', 'Inclusive instruction', 'Student confidence'],
+      organizationMark: 'nyu',
     },
     {
       id: 'EXP-002',
-      organization: 'Major League Baseball',
-      title: 'Full Stack Software Engineering Intern',
-      period: 'June 2024 - August 2024',
-      context: 'Worked on Baseball Enterprise, developing web applications that support teams throughout Major League Baseball.',
-      contribution: 'Built internal administrative and notification tools and helped modernize a legacy marketing application.',
-      reflection: 'This experience grounded my understanding of full-stack engineering, hosting, workflows, and engineering stacks. Having room to choose an approach—and ask many questions—helped me learn how an engineering team works in practice.',
+      organization: 'New York Mets',
+      officialRole: 'Technology Solutions Intern',
+      title: 'Technology Solutions Intern',
+      displayTitle: ['Technology Solutions', 'Intern.'],
+      period: 'May 2023 - October 2023',
+      detailMetadata: [],
+      sections: [
+        {
+          label: 'Environment',
+          body: 'Worked at Citi Field with the Technology Solutions department on the business operations side, learning how technology supports a sports organization and its audience.',
+        },
+        {
+          label: 'Contribution',
+          body: 'Served as an ambassador for an opt-in facial-recognition ticketing system, explained its benefits to fans, and analyzed patron data to help shape marketing presentations.',
+        },
+        {
+          label: 'What Changed',
+          body: 'Explaining unfamiliar technology to fans taught me to make technical ideas useful in a physical, public setting. It also helped me see entertainment technology as a direction I could choose for myself.',
+          reflection: true,
+        },
+      ],
       axes: ['Engineering'],
-      themes: ['Modernization', 'Automation', 'Reliability', 'Cloud infrastructure', 'Full stack'],
+      themes: ['Physical technology', 'Technology solutions'],
+      organizationMark: 'new-york-mets',
     },
     {
       id: 'EXP-003',
+      organization: 'Major League Baseball',
+      officialRole: 'Full Stack Software Engineering Intern',
+      title: 'Software Engineering Intern',
+      displayTitle: ['Software Engineering', 'Intern.'],
+      period: 'June 2024 - August 2024',
+      detailMetadata: [],
+      sections: [
+        {
+          label: 'Environment',
+          body: 'Worked on Baseball Enterprise, developing web applications that support teams throughout Major League Baseball.',
+        },
+        {
+          label: 'Contribution',
+          body: 'Built internal administrative and notification tools and helped modernize a legacy marketing application.',
+        },
+        {
+          label: 'What Changed',
+          body: 'This experience grounded my understanding of full-stack engineering, hosting, workflows, and engineering stacks. Having room to choose an approach—and ask many questions—helped me learn how an engineering team works in practice.',
+          reflection: true,
+        },
+      ],
+      axes: ['Engineering'],
+      themes: ['Modernization', 'Automation', 'Reliability', 'Cloud infrastructure', 'Full stack'],
+      organizationMark: 'major-league-baseball',
+    },
+    {
+      id: 'EXP-004',
       organization: 'New York University',
+      officialRole: 'Instructional Facilities Manager',
       title: 'Instructional Facilities Manager',
+      displayTitle: ['Instructional Facilities', 'Manager.'],
       period: 'September 2025 - Present',
-      context: 'Manage more than 100 Teaching Assistants and oversee lab operations for a first-year general engineering course built around a semester-long design project.',
-      contribution: 'Coordinate lab safety and prototyping operations, guide the course website as a project manager and QA engineer, and develop technical training for Teaching Assistants.',
-      reflection: 'The role has shown me how instructional systems improve through repeated trial and error. Guiding students as they learn to think through engineering problems has deepened my passion for teaching.',
+      detailMetadata: [],
+      sections: [
+        {
+          label: 'Environment',
+          body: 'Manage more than 100 Teaching Assistants and oversee lab operations for a first-year general engineering course built around a semester-long design project.',
+        },
+        {
+          label: 'Contribution',
+          body: 'Coordinate lab safety and prototyping operations, guide the course website as a project manager and QA engineer, and develop technical training for Teaching Assistants.',
+        },
+        {
+          label: 'What Changed',
+          body: 'The role has shown me how instructional systems improve through repeated trial and error. Guiding students as they learn to think through engineering problems has deepened my passion for teaching.',
+          reflection: true,
+        },
+      ],
       axes: ['Engineering', 'Education'],
       themes: ['Operations', 'Project management', 'Leadership', 'Problem solving'],
+      organizationMark: 'nyu',
     },
   ] satisfies TrajectoryRecord[],
 }

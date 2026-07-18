@@ -24,18 +24,16 @@ Location: New York City
 
 ## Display Statement
 
-Technical work can still feel personal.
+Bringing creativity into my technical work.
 
 ## Opening Statement
 
-I build systems and interactive experiences shaped by the media, places,
-and people around me. My work connects engineering, game development,
-and education through a focus on how systems work, how interactions feel,
-and how clearly ideas can be shared.
+Media, places, and people shape the way I connect engineering, game
+development, and education. I care about how systems work, how interactions
+feel, and how clearly ideas are shared.
 
-I believe rigor and creativity strengthen one another. Whether I am
-building or teaching, I want technical work to remain thoughtful,
-expressive, and open to individual perspective.
+Creativity belongs in technical work. Through teaching, I want others to feel
+that their perspective belongs in technical spaces too.
 
 ## Identity Axes
 
@@ -43,53 +41,80 @@ expressive, and open to individual perspective.
 
 Short statement:
 
-Build systems that hold together.
+Prototype, test, and refine.
 
 Supporting statement:
 
-I care about how parts connect into reliable, understandable systems.
+I approach engineering through iteration—building early, learning from each
+version, and improving ideas through testing.
 
 ### AX-02 — Game Development
 
 Short statement:
 
-Create interactions that carry feeling.
+Create interactions that evoke feeling.
 
 Supporting statement:
 
-I use interaction, atmosphere, and player choice to give technical
-systems expression.
+I use systems, atmosphere, and player choice to shape how an experience
+feels.
 
 ### AX-03 — Education
 
 Short statement:
 
-Make complex ideas easier to enter.
+Introduce the unknown to those who seek it.
 
 Supporting statement:
 
-Teaching shapes how I explain, document, and evaluate the systems I
-build.
+Teaching gives people the tools and confidence to approach unfamiliar ideas
+for themselves.
 
 ## Identity Design Notes
 
-* Do not repeat `JAYLAN WU` as the dominant display text.
-* Use `TECHNICAL WORK CAN STILL FEEL PERSONAL` as the primary display statement.
-* Preserve the three personal axes.
-* Use the three axes as meaningful background structure rather than generic decoration.
-* Keep `alter-egoist` as a restrained signature.
-* Preserve the right-side chapter navigation and quiet spear composition.
-* Keep the complete Identity content visible without scrolling at a 2500 × 1350 viewport.
-* Keep the primary display statement on four lines and reduce its size only moderately if required.
-* Move the opening statement upward beside the primary display statement.
-* Begin the three-axis region higher by reducing unnecessary vertical spacing.
-* Present the axis records as compact editorial columns rather than tall generic cards.
-* Keep every axis statement visible without hover, focus, or an internal scrollbar.
-* Do not add oversized decorative background words.
-* Increase very small system text where it is difficult to read.
-* Keep the Identity composition responsive to desktop viewport height rather than relying only on rigid pixel positioning.
-* Preserve the established color roles.
-* Do not use red as generic background styling.
+Target desktop comparison viewport:
+
+- Width: 2500px
+- Height: 1350px
+
+The complete Identity chapter should be visible within the initial desktop
+viewport at the target size and remain overflow-safe on shorter desktop
+viewports.
+
+Visible content must include:
+
+- Chapter label
+- Name and location metadata
+- Display statement
+- Full opening statement
+- All three Identity-axis records
+- Each axis short statement
+- Each axis supporting statement
+
+Do not hide axis supporting content behind hover or focus.
+
+Preserve the existing right-side chapter-navigation and spear composition.
+
+Audit the opening statement and axis records together. Minimize repeated ideas
+while preserving the personal relationship between engineering, game
+development, education, creativity, systems, interaction, communication, and
+teaching.
+
+Use the current page-header and chapter-navigation typography as the minimum
+readable reference for system, identifier, and metadata text.
+
+On the left side:
+
+- Keep `BRINGING CREATIVITY INTO MY TECHNICAL WORK.` as the primary display statement.
+- Use a compact three-zone composition for metadata, primary content, and axes.
+- Move the opening statement upward beside the display statement.
+- Begin the three-axis region higher in the viewport.
+- Reduce unnecessary vertical gaps before reducing readable text sizes.
+- Keep all meaningful system text readable.
+- Vertically balance the complete left-side composition with approximately
+  equal visual space above and below it, accounting for the persistent header.
+- Do not add oversized decorative background words.
+- Do not introduce an internal chapter scrollbar.
 
 ---
 
@@ -99,9 +124,49 @@ Use official organization, degree, and role wording.
 
 For every record, include only verified facts.
 
+Introductory statement:
+
+I have learned to move between software, physical systems, organizational
+workflows, and teaching. Each environment has changed how I think about the
+people, spaces, and systems that technical work must support.
+
+Narrative progression:
+
+technical foundation → early teaching and mentorship → applied technology →
+professional software engineering → instructional systems and leadership →
+formal teaching
+
+Published record order:
+
+1. `EDU-001` — Dual-Degree Undergraduate — New York University
+2. `EXP-001` — Teaching Assistant — New York University
+3. `EXP-002` — Technology Solutions Intern — New York Mets
+4. `EXP-003` — Software Engineering Intern — Major League Baseball
+5. `EXP-004` — Instructional Facilities Manager — New York University
+
+`EXP-005` — New York University Adjunct Professor remains incomplete and
+unpublished.
+
 ## Education Record
 
 Identifier: EDU-001
+
+Publication status:
+
+Published
+
+Organization mark:
+
+New York University
+
+Display title:
+
+Dual-Degree Undergraduate
+
+Selected-record display title:
+
+DUAL-DEGREE
+UNDERGRADUATE.
 
 Verification note:
 
@@ -136,35 +201,137 @@ Graduation year:
 
 2025
 
-Technical foundation developed:
+Context:
 
-Provided me a strong foundation on Computer Science topics such as Algorithms, Object Oriented Programming, and Architecture. It also taught me the foundations of system design and how it relates to the software that communicates with it.
+Studying computer science and computer engineering allowed me to move between
+algorithms, software design, computer architecture, embedded systems, and the
+boundary where hardware and software meet.
 
-How the degrees complemented one another:
+Foundation:
 
-I was interested in how hardware and software worked together. 
+The two degrees taught me to think about systems in layers: how user-facing
+software depends on architecture, how physical constraints influence
+implementation, and how decisions at one layer affect everything built above
+it.
 
-How Game Engineering influenced my direction:
+Reflection:
 
-Throughout my academic coursework, I felt as if there were times where creativity was really limited or restricted due to the rigorous nature of the degrees. Since making games interested me and was how I was able to understand the concepts of computer science, it was not only a way to present my voice but also became what I really enjoyed during my time at NYU.
+Game Engineering gave that technical foundation a creative outlet. Building
+games made abstract concepts tangible and showed me that rigorous technical
+work could still carry personality, atmosphere, and play.
 
 Personal axes:
 
 Engineering, Game development, Education
 
+Source note for later Outside the System review:
+
+Study abroad in Paris, France.
+
+## New York University Teaching Assistant
+
+Identifier: EXP-001
+
+Publication status:
+
+Published
+
+Organization:
+
+New York University
+
+Organization mark:
+
+New York University
+
+Official role:
+
+General Engineering EG1004 Teaching Assistant
+
+Display title:
+
+Teaching Assistant
+
+Selected-record display title:
+
+TEACHING
+ASSISTANT.
+
+Interpretive statement:
+
+Learning through teaching.
+
+Date range:
+
+August 2022 - 2025
+
+Verification note:
+
+Confirm the final month of the Teaching Assistant appointment before final
+publication.
+
+Course or program:
+
+General Engineering, EG1004
+
+Environment or context:
+
+As a Teaching Assistant for NYU's first-year General Engineering course, I
+co-instructed weekly labs and supported students as they learned Figma, C++,
+Arduino, Autodesk Fusion 360, and Python while developing semester-long design
+projects.
+
+Defining responsibility or contribution:
+
+I mentored teams of four as they moved from identifying a problem to building,
+testing, and presenting a working prototype. My role was not only to help
+students resolve technical problems, but to ask questions that helped them
+understand their decisions and continue independently.
+
+I also contributed to technical and inclusive-leadership training for the
+larger Teaching Assistant community.
+
+What I learned:
+
+Teaching showed me that understanding a technical concept and explaining it
+clearly are different skills. I learned to adapt my explanations to different
+levels of experience, make unfamiliar ideas feel approachable, and treat
+iteration as part of both engineering and learning.
+
+How the experience changed my direction:
+
+This was where education became a meaningful part of my engineering practice.
+Helping students gain confidence in unfamiliar technical work made me
+interested not only in building systems, but in creating the conditions that
+help others understand and build them too.
+
+Personal axes:
+
+Engineering, Education
+
 Supporting themes:
 
-Study abroad in Paris, France. 
+Mentorship, Technical communication, Prototyping, Inclusive instruction,
+Student confidence
+
 
 ## New York Mets
 
-Identifier: EXP-001
+Identifier: EXP-002
 
 Organization:
 
 New York Mets
 
+Organization mark:
+
+New York Mets
+
 Official role:
+
+Technology Solutions Intern
+
+Display title:
 
 Technology Solutions Intern
 
@@ -194,15 +361,23 @@ Physical technology, technology solutions
 
 ## Major League Baseball
 
-Identifier: EXP-002
+Identifier: EXP-003
 
 Organization:
+
+Major League Baseball
+
+Organization mark:
 
 Major League Baseball
 
 Official role:
 
 Full Stack Software Engineering Intern
+
+Display title:
+
+Software Engineering Intern
 
 Date range:
 
@@ -230,13 +405,21 @@ Modernization, automation, reliability, cloud infrastructure, full stack
 
 ## NYU Instructional Facilities Manager
 
-Identifier: EXP-003
+Identifier: EXP-004
 
 Organization:
 
 New York University
 
+Organization mark:
+
+New York University
+
 Official role:
+
+Instructional Facilities Manager
+
+Display title:
 
 Instructional Facilities Manager
 
@@ -268,17 +451,26 @@ Operations, project management, managerial roles, problem solving.
 
 ## NYU Adjunct Professor
 
-Identifier: EXP-004
+Identifier: EXP-005
 
-Status: INCOMPLETE — verify the official role spelling and the future September 2026 start before adding this record to published About data.
+Status: INCOMPLETE AND UNPUBLISHED — verify the official role spelling and the
+future September 2026 start before adding this record to published About data.
 
 Organization:
+
+New York University
+
+Organization mark:
 
 New York University
 
 Official role:
 
 Adjuct Professor
+
+Display title:
+
+Adjunct Professor
 
 Course or department:
 
@@ -303,6 +495,42 @@ For this course, I'm in charge of the technical training that is attached to the
 Supporting themes:
 
 Teachining.
+
+## Trajectory Organization Marks
+
+The selected Trajectory record may display the associated organization's
+official mark as an oversized, faint background identifier.
+
+Associations:
+
+- `EDU-001` → New York University
+- `EXP-001` → New York University
+- `EXP-002` → New York Mets
+- `EXP-003` → Major League Baseball
+- `EXP-004` → New York University
+- `EXP-005` → New York University, but the record remains unpublished
+
+Requirements:
+
+- Show only the mark associated with the currently selected record.
+- Apply grayscale treatment non-destructively through CSS.
+- Preserve the original logo proportions.
+- Use very low opacity so the mark does not compete with the record title
+  or body content.
+- Allow the mark to be partially cropped by the selected-record region.
+- Use a neutral foreground or muted treatment.
+- Do not tint organization marks red, orange, or lavender.
+- Do not display logos as badges, cards, or a wall of employers.
+- Treat the images as decorative because the organization is already
+  represented through semantic text.
+- Use a restrained opacity transition when the selected record changes.
+- Remove or shorten that transition for reduced-motion users.
+- Reuse one New York University asset for all NYU records.
+- Store organization marks within the About feature.
+- Use named position or scale variants such as `center`, `lower-right`, or
+  `upper-right` rather than arbitrary record-specific pixel coordinates.
+- Do not modify the source organization assets.
+- Do not create a replacement mark when a suitable official asset is missing.
 
 ---
 
