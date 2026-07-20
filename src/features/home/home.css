@@ -2,7 +2,7 @@
   --home-identity-content-gap: clamp(1rem, min(6cqi, 4vh), 2.75rem);
   --home-identity-statement-offset: clamp(0.5rem, min(4cqi, 3vh), 1.5rem);
   --home-identity-statement-font-size: 2.875rem;
-  --home-navigation-row-height: 4.68rem;
+  --home-navigation-row-height: 4.35rem;
 
   position: relative;
   display: grid;
@@ -236,7 +236,7 @@ a.home-navigation__link {
 
 .home-navigation__label {
   font-family: var(--font-display);
-  font-size: 3.3rem;
+  font-size: 3.05rem;
   font-weight: 600;
   line-height: 0.88;
   letter-spacing: -0.06em;
@@ -368,7 +368,7 @@ a.home-navigation__link {
 @media (min-width: 1600px) {
   .home {
     --home-identity-statement-font-size: 3.59375rem;
-    --home-navigation-row-height: 5.35rem;
+    --home-navigation-row-height: 4.95rem;
 
     grid-template-columns: minmax(38rem, 40%) minmax(0, 60%);
   }
@@ -390,7 +390,7 @@ a.home-navigation__link {
   }
 
   .home-navigation__label {
-    font-size: clamp(3.65rem, 2.65vw, 4.25rem);
+    font-size: clamp(3.4rem, 2.45vw, 3.95rem);
   }
 
   .home__scene::before {
@@ -422,7 +422,7 @@ a.home-navigation__link {
 @media (max-width: 760px) {
   .home {
     --home-identity-statement-font-size: 2.3rem;
-    --home-navigation-row-height: 4rem;
+    --home-navigation-row-height: 3.75rem;
 
     display: block;
     min-height: 100svh;
@@ -464,7 +464,7 @@ a.home-navigation__link {
   }
 
   .home-navigation__label {
-    font-size: clamp(2.25rem, 11vw, 3.1rem);
+    font-size: clamp(2.1rem, 10.25vw, 2.9rem);
   }
 
   .home__footer {
@@ -514,7 +514,7 @@ a.home-navigation__link {
 
 @media (max-height: 880px) and (min-width: 761px) {
   .home {
-    --home-navigation-row-height: 4.125rem;
+    --home-navigation-row-height: 3.85rem;
   }
 
   .home__interface {
@@ -531,7 +531,7 @@ a.home-navigation__link {
 @media (max-height: 780px) and (min-width: 761px) {
   .home {
     --home-identity-statement-font-size: 2.5875rem;
-    --home-navigation-row-height: 3.65rem;
+    --home-navigation-row-height: 3.4rem;
   }
 
   .home__interface {
