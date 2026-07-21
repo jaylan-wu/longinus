@@ -41,6 +41,66 @@ Do not turn the website into a traditional academic portfolio or game studio por
 
 The goal is to show that engineering, interactive design, and teaching are connected parts of my work and interests.
 
+# Documentation Status and Current Repository Snapshot
+
+This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-21.
+
+Use these status terms consistently:
+
+- **Implemented** means the behavior or structure is present and verifiable in source.
+- **Partially implemented** means a meaningful subset exists but the intended experience is incomplete.
+- **Staged** means provisional UI, data, procedural geometry, or timing exists to support later work.
+- **Planned** means approved direction exists without a current implementation.
+- **Deferred** means work is intentionally waiting for a design, asset, motion reference, content, or decision.
+- **Unverified** means code exists but required visual or hands-on validation is not recorded.
+
+## Current Routes and Experiences
+
+`src/App.tsx` contains a lightweight hash router; React Router is not installed.
+
+- Home is available at the empty hash, `#home`, and any unrecognized hash. Its static DOM composition is partially implemented. Its spear is staged procedural geometry, and the coordinated homepage interaction and boot experience are planned.
+- Projects is available at `#projects`. Its archive, local interaction state, temporary spear response, and timed transition are staged and have not been approved against a Projects Figma or motion reference.
+- Project detail is available at `#projects/<slug>`. It currently renders summary metadata and technologies, or an in-app not-found state. Narrative and demonstration regions are planned.
+- About is available at `#about`. Its five chapters, active-chapter navigation, local record selection, photography carousel, content data, and sticky spear scene are partially implemented. No About Figma export or authored motion reference is stored in the repository.
+- Music and Playground are planned. Their homepage controls are disabled, and neither feature folder nor route exists.
+
+Home is imported eagerly. About, Projects, and project detail are lazy-loaded with `React.lazy`. Hash changes update the document title and scroll to the top; route-level focus transfer is not implemented.
+
+## Current Assets and Rendering
+
+- `src/components/spear/SpearModel.tsx` constructs a temporary spear from Three.js primitives. No GLTF or GLB asset is present.
+- Home, Projects, and About own separate React Three Fiber canvases and staging. The shared base geometry does not imply a shared camera or scene controller.
+- Home and Projects also render the shared CSS `SpearFallback` silhouette beneath their canvases. About has no CSS spear silhouette, but its semantic DOM narrative remains when `SceneErrorBoundary` removes a failed canvas.
+- No font assets are bundled. The display, sans-serif, and monospace CSS stacks are provisional system stacks.
+- About runtime assets live under `src/features/about/assets/`; general static assets live under `src/assets/` or `public/`.
+- `src/assets/hero.png`, `src/assets/react.svg`, and `src/assets/vite.svg` are tracked but unused.
+- The seven About photographs are high-resolution source-sized JPEGs. Responsive variants, explicit lazy-image loading, and production image optimization are not implemented.
+- The only stored Figma export is `design/figma/references/homepage/homepage-desktop-idle-v1.png` at `1440 × 900`. Its tracker status is in progress, not approved.
+
+## Current State, Styling, and Data Patterns
+
+- Feature-specific components, data, scene behavior, and CSS live under `src/features/home/`, `src/features/projects/`, and `src/features/about/`.
+- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, shared color values, and the navigation type.
+- Local React state and focused feature hooks own current interaction state. There are no Context providers, reducers, or global state-library stores.
+- `src/index.css` owns global tokens, resets, the shared page-index treatment, and the application-wide reduced-motion baseline. Each implemented feature owns its distinctive stylesheet.
+- Project data lives in `src/features/projects/projectData.ts`. Its three records and detail copy are provisional portfolio content, not a verified final project archive.
+- About data lives in `src/features/about/aboutData.ts`; editorial source material and verification flags live in `content/ABOUT_CONTENT.md`. The published data intentionally excludes the incomplete future Adjunct Professor record.
+- The Projects transition uses explicit phases in `src/features/projects/projectTransition.ts`, but its current coordination is a provisional timeout sequence. Do not treat those values as authored or approved motion.
+
+## Current Tooling and Validation
+
+The checked-in lockfile and `.yarnrc.yml` use Yarn `4.17.1` with the `node-modules` linker. `package.json` pins that release through its `packageManager` field. Do not run Yarn Classic 1.x against this lockfile; use `corepack yarn` so the repository-pinned release owns installs and scripts.
+
+`package.json` defines only these scripts:
+
+- `dev`
+- `typecheck`
+- `lint`
+- `build`
+- `preview`
+
+There is no automated test script, test configuration, Markdown linter, formatter, or deployment configuration. Do not report tests or deployment validation as completed. The available automated source validation is `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`.
+
 # Design Philosophy
 
 Longinus should feel like an interactive visual system rather than a traditional portfolio website.
@@ -265,7 +325,7 @@ Choose the implementation based on interaction requirements:
 
 - Use procedural React Three Fiber animation when motion must react continuously to pointer, keyboard, navigation, or application state.
 - Use exported GLTF animation clips when motion is authored, fixed, cinematic, or difficult to reproduce accurately through procedural animation.
-- Use Motion / Framer Motion, CSS, or browser-native animation for DOM-based 2D interface elements.
+- Use CSS or browser-native animation for current DOM-based 2D interface elements. Consider Motion / Framer Motion only if a scoped task adds it for a reviewed need; it is not installed today.
 - Coordinate 2D and 3D animation through shared interaction state rather than isolated timers and unrelated animation triggers.
 
 When reproducing a supplied Blender motion procedurally, preserve the motion's visual intent and physical character as closely as practical.
@@ -483,7 +543,7 @@ The spear may move, rotate, change scale, leave the viewport, become partially o
 
 Do not assume the spear must remain continuously visible.
 
-# Planned Pages
+# Experience Direction
 
 The primary navigation structure is:
 
@@ -494,7 +554,11 @@ The primary navigation structure is:
 
 The homepage is the navigation scene and does not need to appear as one of its own primary navigation targets.
 
+The status notes below describe current availability. The remaining text in each section describes approved direction, including work that is not implemented.
+
 ## Home
+
+**Current status: partially implemented and staged.** The route, desktop-first DOM composition, direct hash navigation, system labels, temporary procedural spear, Home-owned canvas, and narrow-layout CSS exist. Boot, shared target/phase state, target-oriented spear motion, impact, and coordinated route transitions are not implemented. The stored desktop-idle Figma frame remains in progress and browser comparison is unverified.
 
 The homepage is the primary introduction to Jaylan, the Longinus visual system, and the spear interaction model.
 
@@ -505,6 +569,8 @@ Identity information may use labels, identifiers, or structured metadata, but th
 Avoid long biography text, detailed experience history, project summaries, or large content sections.
 
 ## Music
+
+**Current status: planned and unavailable.** No route, feature folder, content data, record-player scene, or Music interaction exists. The disabled homepage control exposes the destination without implying availability.
 
 The Music page presents a curated collection of records selected by Jaylan.
 
@@ -537,6 +603,8 @@ Structure music data and components so audio playback may be introduced later wi
 The Music page may use secondary lavender more prominently to reinforce its personal and atmospheric role.
 
 ## Projects
+
+**Current status: staged.** The archive route, three provisional project records, focus and selection state, two-tap touch selection, temporary spear response, timeout-driven transition, and metadata-only detail routes exist. No Projects or project-detail Figma export, final project curation, authored motion reference, narrative case-study data, or demonstration region exists.
 
 The Projects page presents a curated archive of selected software engineering, interactive, embedded, and game development work.
 
@@ -618,6 +686,8 @@ Do not force each project into a single category or display arbitrary percentage
 
 ## Playground
 
+**Current status: planned and unavailable.** No route, feature folder, experiment contract, observation interface, or chamber exists. The disabled homepage control exposes the destination without implying availability.
+
 The Playground presents small technical, visual, game, and interaction experiments that do not require the scope or completion level of a full project.
 
 Projects demonstrate completed work.
@@ -681,6 +751,8 @@ Use boundary disruption sparingly and deliberately.
 The Playground is the region of Longinus where experimental interaction may be less restrained than the rest of the portfolio.
 
 ## About
+
+**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The spear remains temporary procedural geometry with provisional continuous scroll-responsive rotation. No About Figma reference or authored motion reference is stored, the experience has not received recorded manual accessibility/device validation, and official organization, role, and degree wording remains partly unverified.
 
 The About page is the human center of Longinus.
 
@@ -764,16 +836,18 @@ The Trajectory chapter explains how Jaylan's education and selected professional
 It should focus on:
 
 1. Computer Science and Computer Engineering degrees at New York University, including Game Engineering study
-2. Technology Solutions work with the New York Mets
-3. Software Engineering work at Major League Baseball
-4. Instructional Facilities Management at New York University
-5. Teaching at New York University as an Adjunct Professor
+2. Early teaching and mentorship as a New York University Teaching Assistant
+3. Technology Solutions work with the New York Mets
+4. Software Engineering work at Major League Baseball
+5. Instructional Facilities Management at New York University
+
+The planned New York University Adjunct Professor record must remain unpublished until the role begins and its official title, course wording, and dates are verified. As of the repository audit on 2026-07-21, `EXP-005` appears only as incomplete future source material in `content/ABOUT_CONTENT.md` and is intentionally absent from `aboutData.ts`.
 
 These experiences should form a narrative progression rather than a complete chronological résumé.
 
-The intended progression is:
+The current published progression is:
 
-`technical foundation → applied technology → software engineering → educational infrastructure → teaching`
+`technical foundation → early teaching and mentorship → applied technology → software engineering → educational infrastructure and leadership`
 
 #### College Education
 
@@ -793,6 +867,14 @@ Game Engineering should introduce the connection between technical systems, crea
 Do not present the degrees only as credentials.
 
 Explain how the combination shaped Jaylan's approach to engineering and interactive work.
+
+#### Teaching Assistant
+
+The New York University Teaching Assistant record should establish teaching and mentorship as an early part of Jaylan's technical practice.
+
+Focus on first-year engineering labs, multidisciplinary prototyping, adapting explanations to different experience levels, mentoring student teams, and developing technical and inclusive instructional practice.
+
+Keep course, tool, and date wording aligned with verified source material rather than expanding the record into a complete teaching résumé.
 
 #### New York Mets
 
@@ -851,7 +933,7 @@ This role should communicate that effective education depends on infrastructure 
 
 #### Adjunct Professor
 
-The Adjunct Professor experience should represent teaching as a current and meaningful part of Jaylan's professional identity.
+**Deferred content direction:** once the role has begun and the record is verified, the Adjunct Professor experience should represent formal teaching as a meaningful part of Jaylan's professional identity.
 
 Focus on:
 
@@ -1098,6 +1180,8 @@ Practical actions such as viewing Projects, opening a résumé, making contact, 
 These controls should remain part of the 2D interface.
 
 ### Spear Role
+
+The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: normal-motion mode applies continuous axial rotation whose velocity responds to scroll direction and speed, while reduced-motion mode damps toward chapter-specific axial values. This does not yet satisfy the authored chapter-posture direction below. Preserve the implementation seam, but do not treat its constant rotation or pose values as approved motion.
 
 The Spear of Longinus should remain present throughout the About experience, but its role should differ from Home, Projects, Music, and Playground.
 
@@ -1364,17 +1448,22 @@ About content should remain editable without requiring changes to spear animatio
 
 # Technical Stack
 
-Prefer the existing stack and established project patterns when possible.
+Prefer the existing stack and established project patterns.
 
-Expected technologies include:
+The current implemented stack is:
 
-- React
-- TypeScript
-- Vite
+- React 19 and React DOM
+- TypeScript 5 with strict no-emit configuration
+- Vite 8
+- Three.js
 - React Three Fiber
-- Drei
-- Motion / Framer Motion
-- Blender-authored GLTF / GLB assets and animations when appropriate
+- Feature-owned CSS plus global CSS tokens and foundations
+- ESLint with TypeScript, React Hooks, and React Refresh rules
+- Yarn 4.17.1 with the `node-modules` linker
+
+The dependency manifest also contains Drei, React Three Postprocessing, React Three Rapier, and GSAP, but current source does not import them. Treat them as installed but unused, not as established implementation patterns. Motion / Framer Motion is not installed. No Blender-authored GLTF or GLB asset is present.
+
+Use an already installed dependency only when it directly supports approved work. Do not add Motion, a router, a state library, a test framework, or another package without a concrete need and an in-scope request.
 
 ## Technology Responsibilities
 
@@ -1384,11 +1473,11 @@ Use TypeScript to define application data, interaction state, content models, an
 
 Use React Three Fiber for visually meaningful 3D scenes, models, cameras, lighting, and interactive spatial behavior.
 
-Use Drei when its utilities simplify standard React Three Fiber behavior without obscuring important project-specific logic.
+Use Drei when its installed utilities simplify standard React Three Fiber behavior without obscuring important project-specific logic; current scenes use React Three Fiber and Three.js directly.
 
-Use Motion / Framer Motion for DOM-based interface animation and transitions when appropriate.
+Use CSS or browser-native animation for current DOM behavior. Motion / Framer Motion may be evaluated later when a reviewed interaction clearly benefits from it; it is not a current dependency.
 
-Use Blender for 3D asset creation and authored motion references or exported animation clips.
+Use Blender for future 3D asset creation and authored motion references or exported animation clips when supplied.
 
 Do not move semantic interface content into WebGL solely to achieve a visual effect.
 
@@ -1488,6 +1577,8 @@ Use animation completion events, shared interaction phases, or explicit callback
 
 Avoid duplicated arbitrary timeout values as the primary synchronization mechanism.
 
+`src/features/projects/projectTransition.ts` is a known staged exception: named timeouts currently advance the archive through commitment, impact, transition, and hash navigation. Keep its provisional status visible. Replace or retune it only when a reviewed motion reference or focused transition task supplies a better completion signal.
+
 ## Reduced Motion
 
 Respect `prefers-reduced-motion`.
@@ -1584,13 +1675,7 @@ Prefer semantic tokens and visual roles over tokens named after individual pages
 
 ## Color
 
-Use the established Longinus palette and semantic roles defined in the Visual System section.
-
-Treat accent color as a limited resource.
-
-Do not use primary red as a generic hover, border, or decorative accent when the interaction has no relationship to the spear.
-
-Do not introduce additional colors without a clear visual, semantic, or interaction role.
+Follow the palette and semantic rules in **Visual System → Color Roles**. Do not redefine page-local color meanings that conflict with those shared roles.
 
 ## Typography
 
@@ -1661,22 +1746,31 @@ Organize code by feature and responsibility.
 
 Prefer page or feature ownership over large global folders containing unrelated components.
 
-A conceptual structure may resemble:
+The established structure is:
 
 ```text
-src/
-├── app/
-├── components/
-├── data/
-├── features/
-│   ├── home/
-│   ├── music/
-│   ├── projects/
-│   ├── playground/
-│   └── about/
-├── scenes/
-├── styles/
-└── types/
+.
+├── content/
+│   └── ABOUT_CONTENT.md
+├── design/figma/
+│   ├── README.md
+│   ├── foundations.md
+│   ├── motion/
+│   └── references/
+├── public/
+└── src/
+    ├── components/
+    │   ├── spear/
+    │   └── three/
+    ├── features/
+    │   ├── about/
+    │   │   ├── assets/
+    │   │   └── components/chapters/
+    │   ├── home/
+    │   └── projects/
+    ├── hooks/
+    ├── styles/
+    └── types/
 ```
 
 Feature folders may contain their own components, hooks, scene elements, animation logic, types, utilities, and styles.
@@ -1686,6 +1780,8 @@ Keep behavior close to the feature that owns it.
 Shared components should represent genuinely reusable interface behavior or visual primitives.
 
 Do not move a component into a shared folder solely because it may theoretically be reused later.
+
+Do not create empty Music, Playground, application, data, or scene directories to imitate a conceptual architecture. Add a feature boundary when implementation of that approved feature actually begins.
 
 ## Three.js Scenes
 
@@ -1703,6 +1799,8 @@ Do not create one universal scene configuration for every page.
 
 Project content should be data-driven where practical.
 
+The current `Project` type and three records live in `src/features/projects/projectData.ts`. The model currently contains `id`, `slug`, `title`, `shortDescription`, `description`, `technologies`, `role`, `year`, and `status`. The records are provisional and must not be presented as a verified final archive.
+
 Separate project content from presentation logic.
 
 Project data may define identifier, name, type, year, role, technologies, personal axes, narrative sections, demonstration type, and relevant assets.
@@ -1714,6 +1812,8 @@ Allow distinctive projects to provide specialized demonstration behavior when re
 ## Playground Experiments
 
 Playground experiments should remain independently owned.
+
+This section is planned architecture. No Playground directory or experiment implementation currently exists.
 
 A conceptual structure may resemble:
 
@@ -1775,7 +1875,7 @@ Follow the repository's existing linting, formatting, and TypeScript configurati
 
 Do not weaken TypeScript, ESLint, or build rules solely to make a new implementation pass.
 
-Before considering a task complete, verify the relevant build, type-check, and lint commands defined by the repository.
+Before considering a source task complete, run the relevant commands that actually exist: `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`. There is no automated test command. Do not claim automated test coverage.
 
 # Workflow
 
@@ -1863,7 +1963,7 @@ Before considering a task complete:
 - Verify the intended desktop composition.
 - Check the relevant narrow or mobile interpretation.
 - Confirm Three.js resources and animation loops are not unintentionally active after leaving the feature.
-- Run the relevant type-check, lint, test, and build commands available in the repository.
+- Run the relevant type-check, lint, and build commands available in the repository. Run tests only if a future task adds a real test script and configuration.
 - Review the final result for dead code and abandoned implementation paths.
 
 When implementing from a visual or motion reference, explicitly compare the result against that reference before declaring the work complete.

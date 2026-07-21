@@ -1,109 +1,104 @@
-# Approved Design Foundations
+# Design Foundations
 
-Record only reviewed decisions here. Reconcile Figma values with existing CSS tokens deliberately; do not automatically turn every Figma measurement into a new CSS variable.
+This file records current implementation values and reviewed design decisions without treating provisional code as final approval. Reconcile Figma values with existing CSS tokens deliberately; do not create a token for every one-off measurement.
 
-## Current implementation status
+## Current status
 
-These values reflect the homepage's current working 2D implementation as of 2026-07-14. The homepage composition is in a good state but remains in progress: font assets are still provisional, and the final authored 3D Spear model has not been implemented. Spear geometry, materials, lighting, and camera decisions should be recorded after that asset is integrated and reviewed.
+Audited against source on **2026-07-21**.
+
+- The homepage desktop-idle frame is stored at `references/homepage/homepage-desktop-idle-v1.png` and tracked as **In progress**.
+- Current homepage CSS implements the frame's major regions, but no recorded browser comparison establishes a match.
+- Fonts are unbundled system fallbacks.
+- The spear is procedural staging geometry rather than the final asset.
+- Spacing, responsive behavior, accessibility, and the complete 2D/3D composition remain unapproved.
 
 ## Color palette
 
-The current palette is defined by CSS custom properties in `src/index.css` and semantic rules in `AGENTS.md`. Reference the existing token (for example, `var(--color-background)`) instead of duplicating its value here unless a comparison is required during review.
+The application palette is defined by CSS custom properties in `src/index.css`; scene code mirrors required values in `src/styles/colors.ts`. `AGENTS.md` defines the semantic rules.
 
-| Role | Figma style or variable | Existing CSS token | Status | Notes |
-| --- | --- | --- | --- | --- |
-| Background | TBD | `var(--color-background)` | Existing | |
-| Surface | TBD | `var(--color-surface)` | Existing | |
-| Foreground | TBD | `var(--color-foreground)` | Existing | |
-| Muted | TBD | `var(--color-muted)` | Existing | |
-| Spear / disruption | TBD | `var(--color-primary)` | Existing | Use only for spear-related impact and disruption. |
-| Identity / personal context | TBD | `var(--color-secondary)` | Existing | |
-| Active system state | TBD | `var(--color-highlight)` | Existing | |
+| Role | Value | CSS token | Current status |
+| --- | --- | --- | --- |
+| Background | `#09090b` | `var(--color-background)` | Implemented |
+| Surface | `#141317` | `var(--color-surface)` | Implemented |
+| Foreground | `#e8e4dc` | `var(--color-foreground)` | Implemented |
+| Muted | `#8d8882` | `var(--color-muted)` | Implemented |
+| Spear / disruption | `#d92332` | `var(--color-primary)` | Implemented; reserve for spear-related impact and disruption |
+| Identity / personal context | `#7a5aa6` | `var(--color-secondary)` | Implemented |
+| Active system state | `#f28c28` | `var(--color-highlight)` | Implemented |
+
+The procedural spear also uses the implementation-only deep/shadow reds `#86131f` and `#510b14`. Re-evaluate those material colors with the final asset.
 
 ## Typography
 
-Existing font-family tokens are `var(--font-display)`, `var(--font-sans)`, and `var(--font-mono)` in `src/index.css`.
+No font files are present. The current CSS tokens are provisional:
 
-| Text role | Current font stack | Existing CSS token | Current use | Status / notes |
-| --- | --- | --- | --- | --- |
-| Display | `"Times New Roman Condensed", "Times New Roman", Times, serif` | `var(--font-display)` | Large identity type, title-card text, `LONGINUS`, and `00` | Provisional system stack; no font asset is bundled. `Times New Roman Condensed` may fall back to Times New Roman depending on the device. |
-| Interface | `Arial, Helvetica, sans-serif` | `var(--font-sans)` | Base interface text and the homepage `PORTFOLIO:` label | Existing system stack; no font asset is bundled. |
-| Metadata / identifier | `"SFMono-Regular", Consolas, "Liberation Mono", monospace` | `var(--font-mono)` | System labels, navigation indices, location, and availability state | Existing system stack; the rendered face varies by operating system. |
-| Homepage navigation display | `"Times New Roman Condensed", "Times New Roman", Times, serif` | `var(--font-display)` | Projects, Music, Playground, and About labels | Current homepage treatment at weight `600`; no font asset is bundled. |
-
-### Current homepage type mapping
-
-| Element | Font role | Current implementation value | Figma note |
+| Current role | CSS token or stack | Current use | Status |
 | --- | --- | --- | --- |
-| `JAYLAN WU` | Display | `var(--font-display)`, weight `600` | Uses the original Times-based display stack with a moderately stronger weight. |
-| `PORTFOLIO:` | Interface | `var(--font-sans)`, `2rem`, weight `700` | Uppercase sans-serif structural label. |
-| Random title-card phrase | Display | `var(--font-display)`, `2.2rem`, weight `700` | Copy changes once per page load; design enough horizontal room for the longest approved phrase. |
-| Primary navigation labels | Homepage navigation display | `var(--font-display)`, `3.3rem`, line height `0.88`, weight `600`, letter spacing `-0.06em` | Times-based direction; still under visual review. |
-| System and footer labels | Metadata / identifier | `var(--font-mono)`, generally `0.875rem` | Uppercase analytical interface text. |
-| `LONGINUS` watermark | Display | `var(--font-display)`, outlined, weight `400` | Right-aligned ambient typography with restrained opacity. |
-| `00` scene index | Display | `var(--font-display)`, weight `700` | Two separately spaced glyphs; intentionally heavier than the current Figma reference. |
+| Display | `var(--font-display)` → `"Times New Roman Condensed", "Times New Roman", Times, serif` | Identity display, navigation labels, title-card copy, watermark, and page index | Staged system stack; rendered face varies by device |
+| Base interface/content | `var(--font-sans)` → `Arial, Helvetica, sans-serif` | Body default and interface/content not otherwise overridden | Staged system stack |
+| Metadata/identifier | `var(--font-mono)` → `"SFMono-Regular", Consolas, "Liberation Mono", monospace` | System labels, indices, footer metadata | Staged system stack; rendered face varies by device |
+| Homepage structural label | `"Archivo Narrow", "Arial Narrow", sans-serif` | `ARCHIVE:` label | One-off staged stack; Archivo Narrow is not bundled and normally falls back |
 
-These fonts are current implementation choices, not final approved font assets. Figma should use the closest available face from each stack and record any metric differences. If a final typeface is approved, add the licensed font asset to the repository and update both the CSS token and this document together.
+The intended Display, System, Content, and Identifier roles are not yet a complete approved typography system.
 
-## Spacing
+### Current homepage mapping
 
-| Use | Figma value | Existing token or implementation | Status | Notes |
-| --- | --- | --- | --- | --- |
-| Page inset | TBD | TBD | Unresolved | |
-| Region gap | TBD | TBD | Unresolved | |
-| Component spacing | TBD | TBD | Unresolved | |
+| Element | Current implementation | Verification note |
+| --- | --- | --- |
+| `JAYLAN WU` | `var(--font-display)`, weight `600`, responsive per-line sizing and horizontal scaling in `src/features/home/home.css` | Differs by installed system fonts; not comparison-approved |
+| `ARCHIVE:` | narrow sans fallback, `2.875rem`, weight `700`, uppercase | The stored export says `PORTFOLIO:`; this copy difference is unresolved |
+| Random title-card phrase | `var(--font-display)`, `2.875rem`, weight `700` | Selected from six phrases once when the module loads; content and longest-line fit require review |
+| Primary navigation labels | `var(--font-display)`, `3.05rem`, line height `0.88`, weight `600`, letter spacing `-0.06em` | Pointer/keyboard focus styling exists; exact metrics are unverified |
+| System/footer labels | `var(--font-mono)`, generally `0.875rem` | Media queries adjust some desktop sizes |
+| `LONGINUS` watermark | `var(--font-display)`, outlined, weight `400` | Ambient, cropped, and non-interactive |
+| `00` scene index | `var(--font-display)`, `clamp(21rem, 31vw, 38rem)`, weight `700` | Shared `PageIndex` treatment; unverified against Figma |
+
+If a final typeface is approved, add the legally usable assets, update CSS, and update this document in the same change.
 
 ## Layout and canonical viewport
 
-The canonical desktop comparison viewport is `1440 × 900`. It is a reference frame, not a fixed implementation size.
+The canonical homepage desktop comparison viewport is `1440 × 900`. It is a comparison frame, not a fixed browser requirement.
 
-| Viewport / region | Grid or bounds | Alignment rules | Responsive intent | Status |
-| --- | --- | --- | --- | --- |
-| Desktop — 1440 × 900 | 90 px ambient square grid; 16 columns across the viewport | Aligns to the viewport origin and supports compositional measurement without defining component boundaries | Primary art direction | In review |
-| Mobile | TBD | TBD | Intentional reinterpretation | Unresolved |
+| Region | Current implementation | Status |
+| --- | --- | --- |
+| Desktop split | `45.14% / 54.86%` columns with a divider at `45.14%` | Staged from current CSS |
+| Ambient grid | `90px × 90px` background lines | Implemented visual treatment; not an approved component grid |
+| Outer frame | Fixed insets defined in `src/features/home/home.css` | Implemented; comparison unverified |
+| Narrow layout | Single-column interface with the scene as an absolute, lower-opacity layer below `760px` | Implemented CSS; manual/device review unverified |
+| Intermediate/short desktop | Width and height media queries in `src/features/home/home.css` | Implemented CSS; manual review unverified |
 
-## Borders and dividers
+## Borders, dividers, and focus
 
-| Purpose | Figma style | Existing token or implementation | Status | Notes |
-| --- | --- | --- | --- | --- |
-| Separation | TBD | TBD | Unresolved | Must communicate structure or state. |
-| Connection | TBD | TBD | Unresolved | Must communicate a real relationship. |
-| Focus / selection | TBD | TBD | Unresolved | Preserve visible keyboard focus. |
+- The outer frame, navigation separators, main divider, and scene circle are current structural treatments.
+- Available Home links use orange background/edge feedback plus type movement on hover and `:focus-visible`.
+- Planned destinations are disabled buttons and do not show available-link focus/hover behavior.
+- Exact contrast, focus visibility, and state comprehension have not received a recorded manual audit.
 
-## Iconography
+## Iconography and imagery
 
-| Icon / function | Source | Size | Accessible label behavior | Status / notes |
-| --- | --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD | |
+- Home does not currently use runtime iconography.
+- `public/icons.svg` is tracked but not imported by current source.
+- The stored homepage export is a review reference only and must never be imported as full-page application UI.
+- The spear pictured in Figma defines intended silhouette and staging, but production currently renders temporary Three.js primitive geometry plus a CSS silhouette beneath the canvas.
 
-## Imagery
+Runtime assets belong in `src/assets/`, feature-owned `src/features/*/assets/`, or `public/`. Review exports belong in `design/figma/references/`.
 
-| Image / role | Source file or reference | Crop / fit | Responsive behavior | Status / notes |
-| --- | --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD | |
+## Accessibility and responsive verification
 
-Runtime imagery belongs in `src/assets/` or `public/` as appropriate. Approved full-page comparison exports belong in `design/figma/references/` and must not be used as application UI.
+| Requirement | Current code | Verification status |
+| --- | --- | --- |
+| Semantic navigation | Links for available routes; disabled buttons for planned routes | Implemented in source; keyboard review unverified |
+| Visible focus | Orange outline and non-color movement on available links | Implemented in source; contrast/visibility unverified |
+| Reduced motion | Global CSS duration override and scroll-behavior reset | Implemented baseline; browser review unverified |
+| WebGL failure | Home DOM and CSS silhouette remain when `SceneErrorBoundary` removes the canvas | Implemented boundary; forced-failure review unverified |
+| Narrow layout | `760px` branch plus desktop width/height branches | Implemented CSS; device/touch review unverified |
 
-## Accessibility
+## Open decisions
 
-| Requirement | Approved behavior | Implementation reference | Verification status |
-| --- | --- | --- | --- |
-| Color contrast | TBD | TBD | Not reviewed |
-| Keyboard focus | Visible and logical | Existing focus patterns | Not reviewed |
-| Reduced motion | Preserve state and navigation clarity | `prefers-reduced-motion` handling in `src/index.css` | Not reviewed |
-| Semantic structure | TBD | React DOM components | Not reviewed |
-
-## Responsive behavior
-
-| Element / region | Desktop intent | Touch / mobile adaptation | Intermediate widths | Status |
-| --- | --- | --- | --- | --- |
-| Navigation | TBD | TBD | TBD | Unresolved |
-| Primary content | TBD | TBD | TBD | Unresolved |
-| Spear framing | TBD | TBD | TBD | Unresolved |
-| System metadata | TBD | TBD | TBD | Unresolved |
-
-## Unresolved decisions
-
-| Decision | Options | Owner / review source | Status | Notes |
-| --- | --- | --- | --- | --- |
-| TBD | TBD | TBD | Open | |
+- Final licensed typefaces and role mapping
+- Final spear model, materials, lighting, camera, scale, silhouette, and crop
+- Resolution of stored-export versus implementation copy/type differences
+- Approved spacing and alignment values after canonical browser comparison
+- Final narrow-layout composition and touch behavior
+- Color-contrast and focus-state approval
+- Homepage focus, commitment, impact, route-transition, and reduced-motion timing

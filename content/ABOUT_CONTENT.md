@@ -1,8 +1,20 @@
 # About Content Source
 
-This document contains the verified source material for the Longinus About page.
+This document is the editorial source for the Longinus About page. It contains a mixture of published source material, working drafts, design notes, and explicitly incomplete records; the entire file is not uniformly verified.
 
 Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, metrics, locations, captions, or personal reflections.
+
+## Repository status
+
+Audited against the implementation on **2026-07-21**.
+
+- Published runtime data is maintained in [`src/features/about/aboutData.ts`](../src/features/about/aboutData.ts).
+- Current UI renders all five chapters, `EDU-001`, `EXP-001` through `EXP-004`, seven photographs, two interactive-influence records, and three final actions.
+- `EXP-005` is future, incomplete, and intentionally unpublished.
+- The two influence records are published in the current staged About page, but curation remains incomplete because the approved direction calls for approximately three to six records.
+- Degree, school/program, role, course, date, public contact, photograph metadata, and selected wording still require the specific verification flags recorded below. Repository presence is not proof of official wording.
+- Content edits do not update `aboutData.ts` automatically. Keep the editorial source and runtime data synchronized deliberately when wording is approved.
+- No About Figma reference is stored in the repository. Design notes below remain task direction or working guidance unless a later reference explicitly approves them.
 
 ---
 
@@ -71,6 +83,8 @@ Teaching gives people the tools and confidence to approach unfamiliar ideas
 for themselves.
 
 ## Identity Design Notes
+
+Status: **unverified working direction**. The `2500 × 1350` target is documented here but is not represented by an approved export under `design/figma/references/about/`.
 
 Target desktop comparison viewport:
 
@@ -569,9 +583,9 @@ Repeat this section for approximately 6–12 photographs.
 
 Identifier: PHOTO-001
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-001-fuji-2025.jpg
+`src/features/about/assets/photography/PHOTO-001-fuji-2025.jpg`
 
 Location:
 
@@ -609,13 +623,13 @@ Why this photograph belongs in the sequence:
 
 This was one of my favorite photos that I was able to capture in Japan. I was lucky to be able to catch Fuji on a sunny day and it was just a surreal experience all around.
 
-Photograph
+### Photograph
 
 Identifier: PHOTO-002
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-002-sendai-lilies-2025.jpg
+`src/features/about/assets/photography/PHOTO-002-sendai-lilies-2025.jpg`
 
 Location:
 
@@ -653,13 +667,13 @@ Why this photograph belongs in the sequence:
 
 Floral images are fun to take.
 
-Photograph
+### Photograph
 
 Identifier: PHOTO-003
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-003-otaru-2025.jpg
+`src/features/about/assets/photography/PHOTO-003-otaru-2025.jpg`
 
 Location:
 
@@ -697,13 +711,13 @@ Why this photograph belongs in the sequence:
 
 This is just a surreal image of a torii gate at the top of Mount Otaru.
 
-Photograph
+### Photograph
 
 Identifier: PHOTO-004
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-004-toyama-ramen-2025.JPG
+`src/features/about/assets/photography/PHOTO-004-toyama-ramen-2025.JPG`
 
 Location:
 
@@ -741,13 +755,13 @@ Why this photograph belongs in the sequence:
 
 A personal favorite meal that I had during my trip
 
-Photograph
+### Photograph
 
 Identifier: PHOTO-005
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-005-hakodate-2025.JPG
+`src/features/about/assets/photography/PHOTO-005-hakodate-2025.JPG`
 
 Location:
 
@@ -785,13 +799,13 @@ Why this photograph belongs in the sequence:
 
 I stayed around this specific spot for a couple hours waiting for just the right photo to take. I was really glad to have caught the sunset on this day since and it has been really memorable for me
 
-Photograph
+### Photograph
 
 Identifier: PHOTO-006
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-006-jimbocho-2025.JPG
+`src/features/about/assets/photography/PHOTO-006-jimbocho-2025.JPG`
 
 Location:
 
@@ -833,9 +847,9 @@ I really liked the orientation and structure of the photo, no matter where you l
 
 Identifier: PHOTO-007
 
-File path or future asset name:
+Runtime asset path:
 
-/src/features/about/assets/photography/PHOTO-007-chicago-2026.JPG
+`src/features/about/assets/photography/PHOTO-007-chicago-2026.JPG`
 
 Location:
 

@@ -2,75 +2,81 @@
 
 ## Current implementation status
 
-The homepage currently provides static pointer-hover and keyboard-focus feedback, but this full coordinated navigation transition has not been implemented. The final 3D Spear model is also outstanding, so the aiming, commitment, impact, follow-through, and route-change timing below remain design targets rather than approved current behavior.
+**Planned.** Home currently renders direct hash links for Projects and About plus disabled controls for Music and Playground. CSS provides pointer-hover and keyboard-focus feedback, but there is no Home interaction phase/target state, spear aiming, commitment lock, impact, follow-through, delayed route change, destination entry, or focus transfer. The final spear model and authored motion reference are also absent.
+
+The sequence below is approved interaction direction, not current or motion-approved behavior.
 
 ## Purpose
 
-Define how a committed navigation choice coordinates the structured DOM interface, the 3D spear, and route navigation between main portfolio sections.
+Define how an available main-navigation choice coordinates the structured DOM interface, page-owned 3D spear scene, and hash-route change.
 
-## Participating UI and 3D elements
+## Participating systems
 
-| Element | Responsibility | Motion reference / notes |
+| System | Responsibility | Current status |
 | --- | --- | --- |
-| Navigation target | Communicate focus, commitment, and lock state | TBD after motion review |
-| System UI | Report real interaction and destination state | TBD after motion review |
-| Current page content | Exit or restructure legibly | TBD after motion review |
-| Spear scene | Aim, commit, impact, and follow through | TBD after motion review |
-| Destination page | Enter and settle | TBD after motion review |
+| Navigation target | Communicate focus, commitment, lock, and destination | CSS focus/hover only |
+| System UI | Report real target and interaction phase | Planned |
+| Home content | Exit or restructure legibly | Planned |
+| Home spear scene | Aim, anticipate, impact, and follow through | Planned; current model is static procedural staging |
+| Destination | Enter, settle, and receive logical focus | Planned |
 
-## Interaction states
+## Canonical phases
+
+Use the shared Longinus terms rather than a second naming system:
 
 ```text
-idle → aiming → committing → transitioning → complete
+idle → focused → committing → impact → transitioning → settled
 ```
 
-| State | Entry condition | Expected UI state | Expected spear state | Exit condition |
+| Phase | Entry condition | DOM expectation | Spear expectation | Exit condition |
 | --- | --- | --- | --- | --- |
-| `idle` | Page is interactive | Stable; no target committed | Restrained idle behavior | A target receives focus |
-| `aiming` | Target is focused | Target and system state are clear | Acknowledges or orients toward target | Focus leaves or selection occurs |
-| `committing` | User selects target | Target locks; further selection is blocked | Anticipation / commitment begins | Defined transition event |
-| `transitioning` | Exit sequence begins | Current view exits or restructures | Impact and follow-through | Destination is ready and entered |
-| `complete` | Destination settles | Input restored with logical focus | Destination-specific placement | Next interaction |
+| `idle` | Home is interactive with no target | Stable interface | Restrained idle pose/motion | An available target receives pointer or keyboard focus |
+| `focused` | Target is identified | Target and real system state are clear | Orient toward target | Focus leaves or activation occurs |
+| `committing` | User activates target | Lock competing selections and identify destination | Anticipation/wind-up | Reviewed impact cue |
+| `impact` | Spear reaches disruption cue | Brief target-local red disruption | Thrust/impact | Impact completion event |
+| `transitioning` | Exit begins | Home leaves/restructures coherently | Follow-through | Destination route and entry are ready |
+| `settled` | Destination is active | Restore input and logical focus | Destination-owned outcome | Next interaction |
 
-## Trigger
+Not every component needs a global state machine. Home does need one clear feature-owned phase and target source when this interaction is implemented.
 
-Pointer, keyboard, or touch selection of an available main navigation target. Focus alone enters `aiming`; it does not navigate.
+## Input behavior
 
-## Input-lock behavior
+- Pointer and keyboard focus should enter the same `focused` state.
+- Focus alone must not navigate.
+- Enter, Space on an appropriate button, pointer activation, or an intentional touch commitment should enter `committing`.
+- Lock competing in-page selections after commitment without trapping browser controls.
+- Music and Playground remain disabled until routes exist and must not enter this sequence.
 
-Lock competing navigation selections once `committing` begins. Do not trap browser-level controls. Define restoration and cancellation behavior during implementation review.
+The final touch behavior, cancellation policy, and lock recovery are unresolved.
 
-**Final timing:** TBD after motion review.
+## Coordination requirements
 
-## Animation sequence
-
-| Order | Event | Completion signal | Duration / easing |
+| Order | Event | Required signal | Timing |
 | --- | --- | --- | --- |
-| 1 | Target becomes focused and spear acknowledges it | Shared state enters `aiming` | TBD after motion review |
-| 2 | Selection locks and anticipation begins | Shared state enters `committing` | TBD after motion review |
-| 3 | Interface and spear reach the transition cue | Explicit animation event or callback | TBD after motion review |
-| 4 | Current view exits while spear follows through | Shared state enters `transitioning` | TBD after motion review |
-| 5 | Destination enters and input is restored | Shared state enters `complete` | TBD after motion review |
+| 1 | Target becomes focused | Home state enters `focused` with stable target ID | TBD after motion review |
+| 2 | Activation locks target | Home state enters `committing` | TBD after motion review |
+| 3 | Spear reaches disruption cue | Shared event enters `impact` | TBD after motion review |
+| 4 | Impact completes and Home exits | Completion event enters `transitioning` | TBD after motion review |
+| 5 | Route/destination settles | Destination-ready signal enters `settled` and moves focus | TBD after route/motion review |
 
-## Route-change timing
-
-Navigate at an explicitly reviewed visual event, not from an unrelated duplicate timeout. The exact event and timing are **TBD after motion review**.
+Do not copy the Projects timeout sequence into Home. Navigate at a reviewed event or completion callback rather than from unrelated duplicated delays.
 
 ## Reduced-motion behavior
 
-- Keep focus, selection, and destination feedback clear.
-- Preserve navigation and logical focus transfer.
-- Shorten or omit cinematic spear motion and large interface displacement.
-- Avoid introducing an artificial delay solely to mimic the full-motion sequence.
+- Preserve focused, selected, locked, destination, and route state.
+- Keep navigation prompt and avoid an artificial cinematic delay.
+- Shorten or omit large spear travel, camera movement, interface displacement, distortion, and overshoot.
+- Move focus logically after navigation.
 
-## Failure or fallback behavior
+## Failure behavior
 
-If WebGL, the 3D scene, or an animation fails, keep the DOM navigation operational. Release the input lock, navigate without waiting indefinitely, and preserve a clear selected state. The existing non-WebGL spear fallback may communicate the visual motif without becoming a route dependency.
+Home's semantic links and CSS spear silhouette already remain independent of successful canvas rendering. The future transition must preserve that property: if WebGL or motion fails, release any in-page lock and complete navigation without waiting indefinitely.
 
 ## Unresolved decisions
 
-- Exact durations, easing, and impact event
-- Per-destination spear acknowledgement and follow-through
-- Route-change cue and destination entry overlap
-- Input-lock cancellation and recovery details
-- Mobile navigation gesture and focus behavior
+- Final spear asset and authored motion reference
+- Per-destination aim and follow-through
+- Exact durations, easing, impact event, and route-change cue
+- Destination entry and focus target
+- Cancellation and recovery policy
+- Intentional mobile/touch commitment behavior

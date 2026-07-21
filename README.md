@@ -1,127 +1,145 @@
 # Longinus
 
-Longinus is Jaylan Wu's personal portfolio: an interactive, cinematic interface built around the visual motif of the Spear of Longinus. The project combines editorial typography, responsive interface design, restrained motion, and real-time 3D.
+Longinus is Jaylan Wu's interactive personal portfolio. Its structured DOM interface and recurring 3D Spear of Longinus connect software engineering, game-development interests, and technical education through deliberate typography, motion, and real-time graphics.
 
-The current implementation includes a strong working version of the homepage's static 2D navigation composition, the Projects archive and detail flow, a temporary procedural spear placeholder, a no-WebGL fallback, and an About page.
+The repository is an active work in progress. Current code provides a homepage, a staged Projects archive and metadata-only detail flow, and a five-chapter About experience. Music, Playground, the boot sequence, the final spear asset, and final authored motion are planned but unavailable.
 
-The homepage remains a work in progress. Its final authored 3D Spear model has not been implemented, and the complete 2D/3D composition, motion, and boot transition still require review.
+## Current status
 
-## Stack
+| Experience | Route | Status |
+| --- | --- | --- |
+| Home | empty hash, `#home`, or any unrecognized hash | **Partially implemented.** The desktop-first DOM composition and a procedural React Three Fiber spear are present. Available navigation uses direct hash links; the coordinated homepage focus, commitment, impact, and route-transition model is not implemented. |
+| Projects archive | `#projects` | **Staged.** Three provisional records, pointer/keyboard focus, two-tap touch selection, a procedural spear response, reduced-motion timing, and a timed archive-to-detail transition are implemented. No approved Projects Figma frame or final motion reference is stored in the repository. |
+| Project detail | `#projects/<slug>` | **Staged.** Valid records show summary metadata and technologies; unknown slugs show an in-app not-found state. Narrative sections and demonstration regions are not implemented. |
+| About | `#about` | **Partially implemented.** Five scrollable chapters, active-chapter navigation, local record selection, seven photographs, two interactive-influence records, and a sticky page-owned spear scene are present. The composition and motion are not Figma- or Blender-verified, and some official wording remains unverified. |
+| Music | none | **Planned.** The homepage control is disabled and no Music feature exists. |
+| Playground | none | **Planned.** The homepage control is disabled and no Playground feature exists. |
+| Boot experience | n/a | **Planned.** There is no critical-asset readiness or boot transition implementation. |
 
-- **React 19** for the interface and component architecture
-- **TypeScript** with strict type checking
-- **Vite 8** for local development and production builds
-- **Three.js** for real-time 3D rendering
-- **React Three Fiber** for composing the Three.js scene in React
-- **Drei** for React Three Fiber utilities
-- **GSAP** for planned interaction and transition work
-- **CSS** for the design system, responsive layouts, and interface motion
-- **ESLint** with React Hooks and TypeScript rules
-- **Yarn Classic** for dependency management
+The only stored visual reference is the `1440 × 900` homepage desktop-idle export. Its implementation status remains in progress; the repository does not contain evidence of a completed browser comparison.
 
-The repository also includes React Three Postprocessing and Rapier for later visual and interaction work. They are not required by every current page.
+## Technology
 
-## Requirements
+Current runtime code uses:
 
-- A current Node.js release compatible with Vite 8; Node.js 22 LTS is recommended
-- Yarn 1.x
+- React 19 and React DOM;
+- TypeScript with strict, no-emit checking;
+- Vite 8;
+- Three.js and React Three Fiber;
+- CSS for tokens, feature-owned composition, responsive rules, and DOM motion; and
+- local React state and feature hooks rather than a router or global state library.
+
+`@react-three/drei`, `@react-three/postprocessing`, `@react-three/rapier`, and `gsap` are installed but are not imported by current source code. Framer Motion / Motion is not installed. Do not describe these packages as implemented capabilities until code uses them.
+
+## Requirements and package manager
+
+- Node.js `^20.19.0` or `>=22.12.0`, matching Vite 8's engine requirement
+- Corepack with Yarn `4.17.1`, pinned by `packageManager` in `package.json`
 - A browser with JavaScript enabled
 
-WebGL improves the homepage presentation but is not required. A CSS spear silhouette remains visible when the 3D scene cannot initialize.
+The repository uses Yarn `4.17.1`, a modern Yarn lockfile, `.yarnrc.yml`, and the `node-modules` linker. Do not run Yarn Classic 1.x against this lockfile. Use `corepack yarn` so Corepack resolves the repository-pinned release even when an older global `yarn` binary appears earlier on the shell path.
 
-## Getting started
-
-Install dependencies:
+Enable Corepack and install without rewriting the lockfile:
 
 ```bash
-yarn install
+corepack enable
+corepack yarn install --immutable
 ```
 
-Start the local development server:
+Then start the development server:
 
 ```bash
-yarn dev
+corepack yarn dev
 ```
 
-Vite will print the local URL in the terminal, typically `http://localhost:5173`.
+Vite prints the local URL, normally `http://localhost:5173`.
 
-## CLI commands
+## Available commands
 
-### Development
+All commands below are defined in `package.json`.
+
+| Command | Purpose |
+| --- | --- |
+| `corepack yarn dev` | Start the Vite development server with hot-module replacement. |
+| `corepack yarn typecheck` | Run `tsc --noEmit`. |
+| `corepack yarn lint` | Run ESLint over the repository; `dist` is ignored by the ESLint configuration. |
+| `corepack yarn build` | Create the production bundle in the ignored `dist/` directory. |
+| `corepack yarn preview` | Serve an existing production bundle locally; run the build first. |
+
+There is no test, Markdown-lint, formatter, or deployment script/configuration in the repository. Do not document or invoke a test command as though one exists.
+
+For current source changes, the available automated validation sequence is:
 
 ```bash
-yarn dev
+corepack yarn typecheck
+corepack yarn lint
+corepack yarn build
 ```
 
-Starts the Vite development server with hot module replacement.
+The first Corepack invocation may need network access to download Yarn `4.17.1`. Subsequent commands use Corepack's cached copy. The globally available Yarn 1.x binary is not compatible with this repository's lockfile format for dependency installation.
 
-### Type checking
+## Routes and loading
 
-```bash
-yarn typecheck
-```
+`src/App.tsx` implements a small hash router without React Router:
 
-Runs TypeScript without emitting files and reports type errors.
+- the empty hash, `#home`, and unknown hashes resolve to Home;
+- `#projects` resolves to the archive;
+- `#projects/<encoded-slug>` resolves to a project detail or its not-found state; and
+- `#about` resolves to About.
 
-### Linting
+About, Projects, and project-detail modules are lazy-loaded with `React.lazy`. Home and its React Three Fiber dependencies are part of the initial application path. Route changes update the document title and scroll to the top; explicit focus transfer after navigation is not implemented.
 
-```bash
-yarn lint
-```
-
-Checks the repository with ESLint, including TypeScript and React Hooks rules.
-
-### Production build
-
-```bash
-yarn build
-```
-
-Creates an optimized production build in `dist/`. The build also validates that Vite can compile the application successfully.
-
-### Preview the production build
-
-```bash
-yarn preview
-```
-
-Serves the contents of `dist/` locally. Run `yarn build` first.
-
-### Recommended validation sequence
-
-Before committing a change, run:
-
-```bash
-yarn typecheck
-yarn lint
-yarn build
-```
-
-## Project structure
+## Repository structure
 
 ```text
-src/
-├── components/
-│   ├── spear/       # Temporary shared spear geometry and restrained DOM fallback
-│   └── three/       # Shared Three.js infrastructure
-├── features/
-│   ├── about/       # About page and editable About content
-│   ├── home/        # Homepage interface, navigation, and page-owned spear scene
-│   └── projects/    # Project data, archive/detail views, and project-owned spear behavior
-├── hooks/           # Shared React hooks
-├── styles/          # Cross-system design values used outside CSS
-├── types/           # Shared TypeScript types
-├── App.tsx          # Lightweight page selection
-├── index.css        # Global tokens, reset, and application-wide behavior
-└── main.tsx         # React application entry point
+.
+├── content/
+│   └── ABOUT_CONTENT.md        # Editorial source, draft notes, and verification flags
+├── design/figma/
+│   ├── README.md               # Figma handoff and approved-frame tracker
+│   ├── foundations.md          # Current design foundations and unresolved decisions
+│   ├── motion/                 # Planned navigation and project-transition specifications
+│   └── references/             # Design-review exports; never runtime page images
+├── public/                     # Favicon and SVG icon sprite
+├── src/
+│   ├── components/
+│   │   ├── spear/              # Shared procedural SpearModel and Home/Projects CSS silhouette
+│   │   └── three/              # SceneErrorBoundary
+│   ├── features/
+│   │   ├── about/              # About chapters, data, assets, active chapter, scene, and CSS
+│   │   ├── home/               # Homepage DOM composition, navigation data, scene, and CSS
+│   │   └── projects/           # Project data, archive/detail UI, transition state, scene, and CSS
+│   ├── hooks/                  # Shared reduced-motion media-query hook
+│   ├── styles/                 # Color values used by Three.js scenes
+│   ├── types/                  # Shared navigation type
+│   ├── App.tsx                 # Hash-route parsing and route-level lazy imports
+│   ├── index.css               # Global tokens, reset, shared page index, reduced-motion baseline
+│   └── main.tsx                # React entry point
+├── AGENTS.md                   # Product direction plus current engineering constraints
+├── TASKS.md                    # Verified implementation status and recommended work order
+├── package.json
+└── yarn.lock
 ```
 
-Navigation currently uses URL hashes. `#home` displays the homepage, `#projects` opens the project archive, `#projects/:slug` opens a project record, and `#about` displays the About page. Music and Playground remain planned destinations and are presented as unavailable until their designs are implemented.
+Feature-specific layout, interaction CSS, data, and scene behavior stay inside the owning feature. The shared spear code is only the procedural base geometry and Home/Projects DOM silhouette; camera, lighting, staging, and animation remain page-owned.
 
-## Design and accessibility
+## Assets and current limitations
 
-The interface uses the palette defined in `AGENTS.md` and keeps DOM content separate from the React Three Fiber scene. Navigation is keyboard accessible, focus styles are visible, and motion is reduced when the browser reports `prefers-reduced-motion: reduce`.
+- There are no GLTF or GLB files. `SpearModel.tsx` builds temporary primitive geometry in code.
+- No font files are bundled. The CSS tokens use provisional system font stacks.
+- Home and Projects render an always-present CSS spear silhouette beneath their canvases. `SceneErrorBoundary` removes a failed canvas while preserving the DOM interface. About preserves its DOM narrative on scene failure but has no equivalent CSS spear silhouette.
+- About owns seven high-resolution JPEG photographs and three organization marks under `src/features/about/assets/`. Responsive image variants, explicit lazy-image loading, and production image optimization are not implemented.
+- `src/assets/hero.png`, `src/assets/react.svg`, and `src/assets/vite.svg` are tracked but unused by current source code.
+- No current behavior tracks WebGL readiness, font readiness, or model readiness.
+- The audited production build emits an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and Vite's chunk-size warning. Loading and mid-range-device performance have not been profiled.
+- Responsive CSS exists for Home, Projects, project detail, and About, but browser, device, keyboard, touch, reduced-motion, and WebGL-failure behavior remain manually unverified unless recorded otherwise in `TASKS.md`.
 
-Approved Figma exports, design-foundation notes, and motion specifications are documented in [`design/figma/README.md`](design/figma/README.md).
+## Design and documentation sources
 
-The final authored 3D Spear model is not implemented. Current scenes use temporary procedural Three.js geometry, backed by a styled CSS fallback, to preserve layout and interaction-development seams until the approved asset is ready.
+- [`AGENTS.md`](AGENTS.md) defines durable product direction, interaction principles, and repository-specific engineering guidance.
+- [`TASKS.md`](TASKS.md) distinguishes implemented, staged, planned, deferred, and unverified work.
+- [`design/figma/README.md`](design/figma/README.md) tracks stored Figma references and handoff rules.
+- [`design/figma/foundations.md`](design/figma/foundations.md) records current foundations and unresolved design decisions.
+- [`content/ABOUT_CONTENT.md`](content/ABOUT_CONTENT.md) is the editorial source for About and marks content that must not be published without verification.
+
+Figma is authoritative for supplied static 2D composition. Blender files and supplied motion references are authoritative for authored 3D motion. The codebase is authoritative for what is currently implemented.

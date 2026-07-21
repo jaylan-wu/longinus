@@ -2,85 +2,101 @@
 
 ## Current implementation status
 
-The Projects archive currently contains an initial code-level focus, commitment, impact, and route-transition sequence using the temporary procedural spear. It has not been approved against a final motion reference or final 3D model. Its present timing and post-transition behavior are provisional; the reviewed values below therefore remain unresolved.
+**Staged.** The Projects archive has a feature-owned phase/selection hook, matching DOM and procedural-spear responses, an input lock, a two-tap touch path, reduced-motion timing, and hash navigation. It has not been compared with a Projects Figma frame, final spear model, or authored motion reference.
+
+Current code in `src/features/projects/projectTransition.ts` uses:
+
+- `idle`, `focused`, `committing`, `impact`, and `transitioning` phases;
+- a `settled` type value that is never reached because hash navigation unmounts the archive;
+- `420ms` before impact;
+- another `280ms` before transitioning;
+- navigation at `920ms` from commitment; and
+- a reduced-motion navigation delay of `120ms`.
+
+These are named provisional timeouts, not approved motion. Navigation currently happens during `transitioning`, not from an animation completion event. Project detail has no spear or explicit entry-focus handling, and the recorded current spear destination is `inactive-offstage`.
 
 ## Purpose
 
-Define the coordinated transition from a focused project record in the archive to its project-detail view while keeping selection feedback, route timing, and spear placement independently reviewable.
+Define the intended coordinated transition from a focused archive record to its project-detail view while keeping selection response, route timing, destination entry, and spear outcome independently reviewable.
 
-## Participating UI and 3D elements
+## Current participants
 
-| Element | Responsibility | Motion reference / notes |
+| System | Current implementation | Remaining work |
 | --- | --- | --- |
-| Project card / record | Show hover, keyboard focus, selection, and locked state | TBD after motion review |
-| Project metadata | Reflect the actual focused or committed project | TBD after motion review |
-| Archive interface | React to impact and leave coherently | TBD after motion review |
-| Spear scene | Acknowledge, commit, impact, and follow through | TBD after motion review |
-| Project-detail view | Enter with correct content and focus | TBD after motion review |
+| Project record | Pointer/keyboard focus, selected/disabled state, orange focus, red impact treatment | Figma and manual accessibility review |
+| Archive metadata | Footer phase and scene label update from current state | Final metadata behavior and copy review |
+| Archive interface | Selected row and interface translate during provisional phases | Approved exit composition/motion |
+| R3F spear | Procedural geometry damped toward phase/focus-index targets | Final model and authored motion |
+| CSS spear silhouette | Responds to the same phase classes beneath the canvas | Fallback/manual review |
+| Project detail | Correct staged record data or not-found DOM state | Narrative, demonstration, entry motion, focus, and spear outcome |
 
-## Conceptual sequence
+## Current code sequence
 
-1. A project card receives hover or keyboard focus.
-2. The spear acknowledges the focused project.
-3. The user selects the project.
-4. Further selections are temporarily locked.
-5. The spear begins the commitment animation.
-6. Route navigation occurs at the intended visual impact point.
-7. The project detail page enters.
-8. The spear reaches its post-transition placement.
+1. Pointer hover or keyboard focus calls `focusProject`.
+2. A touch pointer's first tap primes/focuses a record; the second tap selects it.
+3. Selection records `focusedId` and `selectedId`, locks other records, and enters `committing` (or directly `transitioning` for reduced motion).
+4. Normal motion advances by timeout to `impact`, then `transitioning`.
+5. Another timeout writes `#projects/<encoded-slug>`.
+6. The hash router unmounts the archive and renders metadata-only project detail.
 
-## Interaction state mapping
+Pending timers are cleared on hook cleanup. There is no cancellation UI, completion callback, explicit lock release before navigation, or detail-page focus transfer.
 
-| Phase | Project UI | Spear | Completion signal |
+## Intended phase mapping
+
+Use the canonical Longinus terms:
+
+```text
+idle → focused → committing → impact → transitioning → settled
+```
+
+| Phase | Project UI | Spear | Intended completion signal |
 | --- | --- | --- | --- |
-| Focus | Hover or keyboard focus remains visible | Acknowledges the focused record | Focus changes or selection occurs |
-| Commitment | Selected project is locked and identified | Begins anticipation / commitment | Reviewed impact cue |
-| Route transition | Archive exits or reacts to impact | Performs impact and follow-through | Route and destination are ready |
-| Detail entry | Correct project content enters; focus transfers logically | Moves toward post-transition outcome | Destination settles |
-
-Final durations and easing are **TBD after motion review**.
+| `idle` | Stable archive; no active record | Restrained idle | Record focus |
+| `focused` | Active record and real metadata are clear | Orients toward record | Focus change or activation |
+| `committing` | Lock and identify selection | Anticipation | Reviewed impact cue |
+| `impact` | Brief local red disruption | Thrust/impact | Motion completion event |
+| `transitioning` | Archive exits | Follow-through | Route and destination readiness |
+| `settled` | Detail is active and focused | Approved detail-page outcome | Next interaction |
 
 ## Separation of concerns
 
-Treat these as separate implementation concerns joined by explicit shared state or animation events:
+Keep these concerns separate but coordinated through explicit state/events:
 
-- **Project-selection animation:** how the record and archive acknowledge focus, lock, and impact.
-- **Route-change timing:** the reviewed visual event at which navigation occurs.
-- **Post-transition spear placement:** the destination scene outcome after navigation.
+- archive focus/selection response;
+- spear anticipation, impact, and follow-through;
+- route-change cue;
+- project-detail entry and focus; and
+- post-transition spear placement.
 
-Changing one concern should not require embedding its timing or target-specific behavior inside the others.
+Changing one concern should not require embedding target-specific animation logic in record buttons or duplicating timing across DOM and scene code.
 
 ## Post-transition spear placement
 
-The final post-transition spear placement is unresolved. Record the approved outcome before implementation:
+Current staged code records `inactive-offstage`, and project detail renders no spear. That is an implementation placeholder, not an approved destination.
 
-| Outcome | Meaning | Status / notes |
+| Candidate | Meaning | Status |
 | --- | --- | --- |
-| `primary-scene` | Spear remains a dominant element in the detail composition | Under consideration |
+| `primary-scene` | Spear remains dominant in the detail composition | Under consideration |
 | `exiting` | Spear follows through and leaves the viewport | Under consideration |
-| `docked` | Spear settles into a restrained navigation or layout role | Under consideration |
+| `docked` | Spear settles into a restrained layout/navigation role | Under consideration |
 | `hidden` | Spear is absent from the settled detail view | Under consideration |
+| `inactive-offstage` | Current code-level placeholder | Staged only |
 
-## Route-change timing
+Record the approved outcome after the project-detail composition is designed.
 
-The route should change at the approved visual impact point using an animation event or completion callback where practical. Exact timing is **TBD after motion review**. Do not navigate immediately on selection or coordinate independent systems with duplicated arbitrary timeouts.
+## Input lock, recovery, and fallback
 
-## Input lock and recovery
-
-Lock further project selections after commitment. Release the lock when the destination settles or when a defined fallback completes. If animation or WebGL fails, navigate through the accessible DOM path without waiting indefinitely.
-
-## Reduced-motion expectations
-
-- Selection feedback must remain clear.
-- Navigation must still occur.
-- Cinematic spear motion may be shortened or skipped.
-- Keyboard focus must remain visible and logical.
-- Do not add an artificial delay when the cinematic sequence is omitted.
+- Keep competing records locked after commitment.
+- Define cancellation or fallback recovery before replacing the current guaranteed navigation timeout.
+- Preserve the shortened reduced-motion route path without an artificial full-motion delay.
+- If WebGL fails, the CSS silhouette and DOM archive must remain usable and navigation must not wait indefinitely.
+- Move focus to a meaningful project-detail target after navigation.
 
 ## Unresolved decisions
 
+- Projects and project-detail Figma frames
+- Final spear asset and authored focus/commit/impact motion
+- Approved durations, easing, route-change event, and fallback deadline
+- Detail entry composition and focus destination
 - Final post-transition spear placement
-- Exact acknowledgement, commitment, and impact motion
-- Route-change impact cue and timing
-- Detail-page entry behavior and focus destination
-- Mobile and touch selection behavior
+- Browser-verified keyboard, two-tap touch, reduced-motion, and WebGL-failure behavior

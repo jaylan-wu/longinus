@@ -16,9 +16,9 @@ The current primary desktop design viewport is:
 
 This is a visual comparison reference, not a fixed browser requirement. The implementation must still adapt responsively and treat mobile as an intentional reinterpretation.
 
-## Figma organization
+## Recommended Figma organization
 
-Use these sections in the Figma file:
+Use these sections in the Figma file when maintaining the external design source. The repository cannot verify the Figma file's current section structure from the stored export alone:
 
 ```text
 00 — Foundations
@@ -83,7 +83,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 
 | Page | Frame | Viewport | State | Reference File | Figma Link | Implementation Status | Notes |
 |---|---|---|---|---|---|---|---|
-| Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | The static 2D composition is in a good working state. The final 3D model, complete 2D/3D review, motion, and boot transition remain open. |
+| Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -94,7 +94,7 @@ Do not add a Figma link or mark a frame approved until that link or approval exi
 - React components implement accessible HTML behavior.
 - React Three Fiber and Three.js implement the interactive spear.
 - A spear shown in Figma may be a static positioning reference, but the production experience must reuse the existing 3D scene.
-- `src/assets/` contains runtime application assets.
+- Runtime application assets live in `src/assets/`, feature-owned `src/features/*/assets/` directories, or `public/` according to ownership and loading needs.
 - `design/figma/references/` contains design-review references only.
 
 ## Open design decisions
@@ -125,20 +125,21 @@ Reference:
 
 ### Current implementation progress
 
-- Implemented the desktop left-interface and right-spear composition at the `1440 × 900` reference viewport.
-- Matched the identity, numbered navigation, system labels, outer frame, divider, circle, `LONGINUS` watermark, and `00` scene index.
+- Implemented a desktop-first left-interface/right-scene composition with the same major regions as the `1440 × 900` export.
+- Implemented Jaylan's identity, numbered navigation, system labels, outer frame, divider, circle, `LONGINUS` watermark, and `00` scene index, but no recorded browser comparison proves an exact match.
 - Staged a temporary procedural React Three Fiber spear placeholder with homepage-specific camera, scale, rotation, position, and lighting.
 - Kept Projects and About available while presenting Music and Playground as planned destinations.
 - Restored orange hover and keyboard-focus feedback for available navigation targets.
 - Added intermediate desktop-height handling to prevent the navigation and footer from crowding or clipping below the canonical viewport height.
 - Added a title-card phrase that is selected once per page load.
-- Documented the current provisional typography stacks in `foundations.md`.
+- Documented the current provisional typography stacks in [`foundations.md`](foundations.md).
 
 ### Work still open
 
 - The homepage remains a work in progress and is not approved.
 - Replace the temporary procedural spear placeholder with the final authored 3D model; that model has not been implemented yet.
 - Complete a browser-based comparison at the canonical viewport and representative shorter desktop viewports.
+- Resolve current copy and type-metric differences between source and export before claiming a match.
 - Finalize and bundle legally usable display, system, content, and identifier fonts.
 - Continue refining type metrics, lower-page spacing, ambient typography, and the 2D/3D relationship.
 - Revisit camera, lighting, scale, silhouette, and cropping after the final 3D model is integrated.
