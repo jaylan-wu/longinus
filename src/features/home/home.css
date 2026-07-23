@@ -3,6 +3,8 @@
   --home-identity-statement-offset: clamp(0.5rem, min(4cqi, 3vh), 1.5rem);
   --home-identity-statement-font-size: 2.875rem;
   --home-navigation-row-height: 4.35rem;
+  --home-grid-cell-size: 90px;
+  --home-grid-offset-y: 0px;
 
   position: relative;
   display: grid;
@@ -17,7 +19,16 @@
     radial-gradient(circle at 77% 36%, rgba(var(--color-primary-rgb), 0.105), transparent 28rem),
     radial-gradient(circle at 88% 18%, rgba(var(--color-primary-rgb), 0.035), transparent 34rem),
     var(--color-background);
-  background-size: 90px 90px, 90px 90px, auto, auto, auto;
+  background-position:
+    0 var(--home-grid-offset-y),
+    0 var(--home-grid-offset-y),
+    0 0,
+    0 0;
+  background-size:
+    var(--home-grid-cell-size) var(--home-grid-cell-size),
+    var(--home-grid-cell-size) var(--home-grid-cell-size),
+    auto,
+    auto;
 }
 
 .home::before,
