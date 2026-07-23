@@ -1,14 +1,15 @@
+import type { AboutChapterDefinition } from '../types/about'
+
 type ChapterHeadingProps = {
-  index: string
-  label: string
+  chapter: AboutChapterDefinition
   title: string
 }
 
-export function ChapterHeading({ index, label, title }: ChapterHeadingProps) {
+export function ChapterHeading({ chapter, title }: ChapterHeadingProps) {
   return (
     <header className="about-chapter__heading">
-      <p className="about-chapter__kicker"><span>{index}</span> {label}</p>
-      <h2>{title}</h2>
+      <p className="about-chapter__kicker"><span>{chapter.index}</span> {chapter.label}</p>
+      <h2 id={chapter.headingId}>{title}</h2>
     </header>
   )
 }

@@ -8,12 +8,12 @@ Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, m
 
 Audited against the implementation on **2026-07-21**.
 
-- Published runtime data is maintained in [`src/features/about/aboutData.ts`](../src/features/about/aboutData.ts).
+- Published runtime data is maintained in focused modules under [`src/features/about/data/`](../src/features/about/data/).
 - Current UI renders all five chapters, `EDU-001`, `EXP-001` through `EXP-004`, seven photographs, two interactive-influence records, and three final actions.
 - `EXP-005` is future, incomplete, and intentionally unpublished.
 - The two influence records are published in the current staged About page, but curation remains incomplete because the approved direction calls for approximately three to six records.
 - Degree, school/program, role, course, date, public contact, photograph metadata, and selected wording still require the specific verification flags recorded below. Repository presence is not proof of official wording.
-- Content edits do not update `aboutData.ts` automatically. Keep the editorial source and runtime data synchronized deliberately when wording is approved.
+- Content edits do not update the runtime data modules automatically. Keep the editorial source and runtime data synchronized deliberately when wording is approved.
 - No About Figma reference is stored in the repository. Design notes below remain task direction or working guidance unless a later reference explicitly approves them.
 
 ---

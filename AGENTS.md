@@ -84,7 +84,7 @@ Home is imported eagerly. About, Projects, and project detail are lazy-loaded wi
 - Local React state and focused feature hooks own current interaction state. There are no Context providers, reducers, or global state-library stores.
 - `src/index.css` owns global tokens, resets, the shared page-index treatment, and the application-wide reduced-motion baseline. Each implemented feature owns its distinctive stylesheet.
 - Project data lives in `src/features/projects/projectData.ts`. Its three records and detail copy are provisional portfolio content, not a verified final project archive.
-- About data lives in `src/features/about/aboutData.ts`; editorial source material and verification flags live in `content/ABOUT_CONTENT.md`. The published data intentionally excludes the incomplete future Adjunct Professor record.
+- About data lives in focused modules under `src/features/about/data/`; editorial source material and verification flags live in `content/ABOUT_CONTENT.md`. The published data intentionally excludes the incomplete future Adjunct Professor record.
 - The Projects transition uses explicit phases in `src/features/projects/projectTransition.ts`, but its current coordination is a provisional timeout sequence. Do not treat those values as authored or approved motion.
 
 ## Current Tooling and Validation
@@ -841,7 +841,7 @@ It should focus on:
 4. Software Engineering work at Major League Baseball
 5. Instructional Facilities Management at New York University
 
-The planned New York University Adjunct Professor record must remain unpublished until the role begins and its official title, course wording, and dates are verified. As of the repository audit on 2026-07-21, `EXP-005` appears only as incomplete future source material in `content/ABOUT_CONTENT.md` and is intentionally absent from `aboutData.ts`.
+The planned New York University Adjunct Professor record must remain unpublished until the role begins and its official title, course wording, and dates are verified. As of the repository audit on 2026-07-21, `EXP-005` appears only as incomplete future source material in `content/ABOUT_CONTENT.md` and is intentionally absent from the published runtime data.
 
 These experiences should form a narrative progression rather than a complete chronological résumé.
 

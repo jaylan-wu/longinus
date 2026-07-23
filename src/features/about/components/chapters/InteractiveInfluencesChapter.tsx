@@ -1,12 +1,17 @@
 import { useState } from 'react'
-import { interactiveInfluences, type InfluenceRecord } from '../../aboutData'
+import { interactiveInfluences } from '../../data/influences'
+import type { InteractiveInfluenceRecord } from '../../types/about'
+import {
+  AboutChapter,
+  type AboutChapterComponentProps,
+} from '../AboutChapter'
 import { ChapterHeading } from '../ChapterHeading'
 
-function InfluenceDetail({ influence }: { influence: InfluenceRecord }) {
+function InfluenceDetail({ influence }: { influence: InteractiveInfluenceRecord }) {
   return (
     <article className="influence-detail" aria-live="polite">
       <p>{influence.id} / Selected influence</p>
-      <h3>{influence.title}</h3>
+      <h3>{influence.gameTitle}</h3>
       <p>{influence.releaseYear}</p>
       <ul>{influence.categories.map((category) => <li key={category}>{category}</li>)}</ul>
       <blockquote>{influence.reflection}</blockquote>
@@ -14,13 +19,17 @@ function InfluenceDetail({ influence }: { influence: InfluenceRecord }) {
   )
 }
 
-export function InteractiveInfluencesChapter() {
-  const [selectedId, setSelectedId] = useState(interactiveInfluences.records[0].id)
-  const selected = interactiveInfluences.records.find((influence) => influence.id === selectedId) ?? interactiveInfluences.records[0]
+export function InteractiveInfluencesChapter({ chapter }: AboutChapterComponentProps) {
+  const [focusedId, setFocusedId] = useState<InteractiveInfluenceRecord['id']>(
+    interactiveInfluences.records[0].id,
+  )
+  const focusedInfluence = interactiveInfluences.records.find((influence) => (
+    influence.id === focusedId
+  )) ?? interactiveInfluences.records[0]
 
   return (
-    <section className="about-chapter about-chapter--influences" id="interactive-influences" aria-labelledby="influences-title">
-      <ChapterHeading index="04" label="Interactive Influences" title="Interactive Influences" />
+    <AboutChapter chapter={chapter} modifier="influences">
+      <ChapterHeading chapter={chapter} title="Interactive Influences" />
       <p className="about-chapter__lead">{interactiveInfluences.lead}</p>
       <div className="influence-records">
         <ul aria-label="Interactive influence records">
@@ -28,19 +37,19 @@ export function InteractiveInfluencesChapter() {
             <li key={influence.id}>
               <button
                 type="button"
-                className={influence.id === selected.id ? 'is-active' : undefined}
-                aria-pressed={influence.id === selected.id}
-                onClick={() => setSelectedId(influence.id)}
+                className={influence.id === focusedInfluence.id ? 'is-active' : undefined}
+                aria-pressed={influence.id === focusedInfluence.id}
+                onClick={() => setFocusedId(influence.id)}
               >
                 <span>{influence.id}</span>
-                <strong>{influence.title}</strong>
+                <strong>{influence.gameTitle}</strong>
                 <span>{influence.categories.join(' / ')}</span>
               </button>
             </li>
           ))}
         </ul>
-        <InfluenceDetail influence={selected} />
+        <InfluenceDetail influence={focusedInfluence} />
       </div>
-    </section>
+    </AboutChapter>
   )
 }

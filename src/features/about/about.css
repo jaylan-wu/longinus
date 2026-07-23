@@ -118,6 +118,7 @@
 .about__chapter-nav button.is-active {
   border-bottom-color: var(--color-primary);
   color: var(--color-primary);
+  font-weight: 700;
 }
 
 .about__chapter-nav button.is-active span:first-child {

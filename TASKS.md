@@ -204,17 +204,17 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 
 ## Implemented narrative and architecture
 
-- [x] Implement the five chapter identifiers and order:
+- [x] Define one canonical typed source for the five chapter identifiers and order:
   1. Identity
   2. Trajectory
   3. Outside the System
   4. Interactive Influences
   5. Current Direction
 - [x] Split chapters and repeated record UI into feature-owned components.
-- [x] Keep published content in `src/features/about/aboutData.ts` and editorial/draft source in `content/ABOUT_CONTENT.md`.
+- [x] Keep published content in focused modules under `src/features/about/data/` and editorial/draft source in `content/ABOUT_CONTENT.md`.
 - [x] Keep active chapter state cross-cutting and record/photo/influence selection local to each chapter.
 - [x] Use standard vertical browser scrolling without full-screen scroll snapping.
-- [x] Implement scroll/resize-driven active-chapter detection with animation-frame cleanup.
+- [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
 - [ ] Create and approve About Figma frames; none are stored today.
 - [ ] Record desktop and narrow-layout visual comparisons.
@@ -229,7 +229,7 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 ## Trajectory
 
 - [x] Implement published records `EDU-001` and `EXP-001` through `EXP-004`.
-- [x] Exclude future incomplete `EXP-005` Adjunct Professor content from `src/features/about/aboutData.ts`.
+- [x] Exclude future incomplete `EXP-005` Adjunct Professor content from `src/features/about/data/experiences.ts`.
 - [x] Implement local selected-record state, reflective sections, axes/themes, and decorative organization marks.
 - [x] Reuse one NYU mark and apply named mark-position variants.
 - [x] Apply non-destructive grayscale/opacity treatment and reduced-motion-aware mark transitions.

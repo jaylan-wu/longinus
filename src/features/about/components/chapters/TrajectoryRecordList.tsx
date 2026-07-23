@@ -1,9 +1,9 @@
-import type { TrajectoryRecord } from '../../aboutData'
+import type { ExperienceRecord } from '../../types/about'
 
 type TrajectoryRecordListProps = {
-  records: readonly TrajectoryRecord[]
-  selectedId: TrajectoryRecord['id']
-  onSelect: (id: TrajectoryRecord['id']) => void
+  records: readonly ExperienceRecord[]
+  selectedId: ExperienceRecord['id']
+  onSelect: (id: ExperienceRecord['id']) => void
 }
 
 export function TrajectoryRecordList({ records, selectedId, onSelect }: TrajectoryRecordListProps) {
@@ -18,7 +18,7 @@ export function TrajectoryRecordList({ records, selectedId, onSelect }: Trajecto
             onClick={() => onSelect(experience.id)}
           >
             <span>{String(index + 1).padStart(2, '0')}</span>
-            <span><strong>{experience.title}</strong>{experience.organization}</span>
+            <span><strong>{experience.roleOrDegree}</strong>{experience.organization}</span>
             <span aria-hidden="true">{experience.id === selectedId ? 'Selected' : 'View'}</span>
           </button>
         </li>

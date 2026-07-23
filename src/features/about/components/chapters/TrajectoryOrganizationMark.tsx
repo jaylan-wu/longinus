@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from '../../../../hooks/useReducedMotion'
 import {
-  trajectoryOrganizationMarks,
-  type TrajectoryOrganizationMarkId,
-} from '../../aboutData'
+  experienceOrganizationMarks,
+} from '../../data/experiences'
+import type { ExperienceOrganizationMarkId } from '../../types/about'
 
 const ORGANIZATION_MARK_FADE_MS = 260
 
 type TrajectoryOrganizationMarkProps = {
-  markId: TrajectoryOrganizationMarkId
+  markId: ExperienceOrganizationMarkId
 }
 
 export function TrajectoryOrganizationMark({ markId }: TrajectoryOrganizationMarkProps) {
   const reducedMotion = useReducedMotion()
   const previousMarkId = useRef(markId)
   const [visibleMarkId, setVisibleMarkId] = useState(markId)
-  const [outgoingMarkId, setOutgoingMarkId] = useState<TrajectoryOrganizationMarkId | null>(null)
+  const [outgoingMarkId, setOutgoingMarkId] = useState<ExperienceOrganizationMarkId | null>(null)
 
   useEffect(() => {
     if (reducedMotion) {
@@ -45,8 +45,8 @@ export function TrajectoryOrganizationMark({ markId }: TrajectoryOrganizationMar
     }
   }, [markId, reducedMotion])
 
-  const visibleMark = trajectoryOrganizationMarks[visibleMarkId]
-  const outgoingMark = outgoingMarkId ? trajectoryOrganizationMarks[outgoingMarkId] : null
+  const visibleMark = experienceOrganizationMarks[visibleMarkId]
+  const outgoingMark = outgoingMarkId ? experienceOrganizationMarks[outgoingMarkId] : null
 
   return (
     <div className="experience-detail__organization-mark" aria-hidden="true">

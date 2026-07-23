@@ -5,18 +5,18 @@ import { SpearModel } from '../../components/spear/SpearModel'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { longinusColors } from '../../styles/colors'
-import type { AboutChapterId } from './aboutData'
+import {
+  ABOUT_CHAPTER_IDS,
+  type AboutChapterId,
+  type AboutSceneState,
+} from './types/about'
 
-type SpearPose = {
-  axialRotation: number
-}
-
-const spearPoses: Record<AboutChapterId, SpearPose> = {
-  identity: { axialRotation: 0 },
-  trajectory: { axialRotation: Math.PI * 0.3 },
-  'outside-system': { axialRotation: Math.PI * 0.6 },
-  'interactive-influences': { axialRotation: Math.PI * 0.9 },
-  'current-direction': { axialRotation: Math.PI * 1.2 },
+const STAGED_REDUCED_MOTION_AXIAL_ROTATIONS: Record<AboutChapterId, number> = {
+  [ABOUT_CHAPTER_IDS.identity]: 0,
+  [ABOUT_CHAPTER_IDS.trajectory]: Math.PI * 0.3,
+  [ABOUT_CHAPTER_IDS.outsideSystem]: Math.PI * 0.6,
+  [ABOUT_CHAPTER_IDS.interactiveInfluences]: Math.PI * 0.9,
+  [ABOUT_CHAPTER_IDS.currentDirection]: Math.PI * 1.2,
 }
 
 const SPEAR_IDLE_ROTATION_SPEED = 0.2
@@ -26,7 +26,7 @@ const SPEAR_SCROLL_DAMPING = 6.5
 const SPEAR_PANEL_HORIZONTAL_POSITION = 0.55
 const COMPACT_SCENE_MAX_WIDTH = 320
 
-function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
+function AboutSpear({ activeChapter }: AboutSceneState) {
   const spear = useRef<Group>(null)
   const axialRotation = useRef(0)
   const angularVelocity = useRef(SPEAR_IDLE_ROTATION_SPEED)
@@ -35,7 +35,7 @@ function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   const reducedMotion = useReducedMotion()
   const sceneWidth = useThree((state) => state.size.width)
   const viewportWidth = useThree((state) => state.viewport.width)
-  const target = spearPoses[activeChapter]
+  const targetAxialRotation = STAGED_REDUCED_MOTION_AXIAL_ROTATIONS[activeChapter]
   const usesWideScene = sceneWidth >= 576
   const horizontalPosition = sceneWidth > COMPACT_SCENE_MAX_WIDTH
     ? (SPEAR_PANEL_HORIZONTAL_POSITION - 0.5) * viewportWidth
@@ -47,7 +47,7 @@ function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
     if (!spear.current) return
 
     if (reducedMotion) {
-      spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, target.axialRotation, 18, delta)
+      spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, targetAxialRotation, 18, delta)
       previousScrollY.current = window.scrollY
       return
     }
@@ -83,7 +83,7 @@ function AboutSpear({ activeChapter }: { activeChapter: AboutChapterId }) {
   )
 }
 
-export function AboutSpearScene({ activeChapter }: { activeChapter: AboutChapterId }) {
+export function AboutSpearScene({ activeChapter }: AboutSceneState) {
   return (
     <SceneErrorBoundary>
       <Canvas

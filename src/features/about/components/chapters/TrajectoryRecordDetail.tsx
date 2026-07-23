@@ -1,11 +1,17 @@
-import type { TrajectoryRecord } from '../../aboutData'
+import type { ExperienceRecord } from '../../types/about'
 import { TrajectoryOrganizationMark } from './TrajectoryOrganizationMark'
 
 type TrajectoryRecordDetailProps = {
-  experience: TrajectoryRecord
+  experience: ExperienceRecord
 }
 
 export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailProps) {
+  const narrativeSections = [
+    experience.context,
+    experience.definingContribution,
+    experience.reflection,
+  ]
+
   return (
     <article className="experience-detail" aria-live="polite">
       <TrajectoryOrganizationMark markId={experience.organizationMark} />
@@ -24,16 +30,16 @@ export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailPro
           </ul>
         ) : null}
         <dl>
-          {experience.sections.map((section) => (
-            <div className={section.reflection ? 'experience-detail__reflection' : undefined} key={section.label}>
+          {narrativeSections.map((section, index) => (
+            <div className={index === narrativeSections.length - 1 ? 'experience-detail__reflection' : undefined} key={section.label}>
               <dt>{section.label}</dt>
               <dd>{section.body}</dd>
             </div>
           ))}
         </dl>
         <div className="experience-detail__metadata">
-          <p><span>Connected axes</span>{experience.axes.join(' / ')}</p>
-          <p><span>Supporting themes</span>{experience.themes.join(' / ')}</p>
+          <p><span>Connected axes</span>{experience.personalAxes.join(' / ')}</p>
+          <p><span>Supporting themes</span>{experience.supportingThemes.join(' / ')}</p>
         </div>
       </div>
     </article>

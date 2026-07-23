@@ -1,16 +1,20 @@
-import { identity } from '../../aboutData'
+import { identity } from '../../data/identity'
+import {
+  AboutChapter,
+  type AboutChapterComponentProps,
+} from '../AboutChapter'
 
-export function IdentityChapter() {
+export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
   return (
-    <section className="about-chapter about-chapter--identity" id="identity" aria-labelledby="identity-title">
+    <AboutChapter chapter={chapter} modifier="identity">
       <div className="about-identity__content">
         <div className="about-chapter__heading about-chapter__heading--identity">
-          <p className="about-chapter__kicker"><span>01 /</span> Identity</p>
+          <p className="about-chapter__kicker"><span>{chapter.index} /</span> {chapter.label}</p>
           <dl className="about-identity__subject" aria-label="Primary identity">
             <div><dt>Name</dt><dd>{identity.name}</dd></div>
             <div><dt>Location</dt><dd>{identity.location}</dd></div>
           </dl>
-          <h1 id="identity-title" aria-label={identity.displayStatement.join(' ')}>
+          <h1 id={chapter.headingId} aria-label={identity.displayStatement.join(' ')}>
             {identity.displayStatement.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
           </h1>
         </div>
@@ -30,6 +34,6 @@ export function IdentityChapter() {
         </ul>
         <p className="about-identity__signature"><span>Creative signature</span>{identity.creativeSignature}</p>
       </div>
-    </section>
+    </AboutChapter>
   )
 }

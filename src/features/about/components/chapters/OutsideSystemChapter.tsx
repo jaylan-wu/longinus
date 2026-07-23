@@ -1,14 +1,21 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useReducedMotion } from '../../../../hooks/useReducedMotion'
-import { outsideSystem, type PhotoRecord } from '../../aboutData'
+import { outsideSystem } from '../../data/photographs'
+import type { PhotographyRecord } from '../../types/about'
+import {
+  AboutChapter,
+  type AboutChapterComponentProps,
+} from '../AboutChapter'
 import { ChapterHeading } from '../ChapterHeading'
 
-function PhotoImage({ photo }: { photo: PhotoRecord }) {
+function PhotoImage({ photo }: { photo: PhotographyRecord }) {
+  const imprint = [photo.camera, photo.year].filter(Boolean).join(' / ')
+
   return (
     <div className="photo-image">
       <img src={photo.imageSrc} alt={photo.alt} />
       <span className="photo-image__record" aria-hidden="true">{photo.id}</span>
-      <span className="photo-image__imprint" aria-hidden="true">{photo.camera} / {photo.year}</span>
+      <span className="photo-image__imprint" aria-hidden="true">{imprint}</span>
     </div>
   )
 }
@@ -24,7 +31,7 @@ function centerCarouselItem(
   carousel.scrollTo({ left: Math.max(0, centeredPosition), behavior })
 }
 
-export function OutsideSystemChapter() {
+export function OutsideSystemChapter({ chapter }: AboutChapterComponentProps) {
   const photoCount = outsideSystem.photos.length
   const [carouselIndex, setCarouselIndex] = useState(photoCount)
   const carouselRef = useRef<HTMLUListElement>(null)
@@ -119,8 +126,8 @@ export function OutsideSystemChapter() {
   }
 
   return (
-    <section className="about-chapter about-chapter--outside" id="outside-system" aria-labelledby="outside-title">
-      <ChapterHeading index="03" label="Outside the System" title="Outside the System" />
+    <AboutChapter chapter={chapter} modifier="outside">
+      <ChapterHeading chapter={chapter} title="Outside the System" />
       <p className="about-chapter__lead">{outsideSystem.travelStatement}</p>
       <p className="about-chapter__lead">{outsideSystem.photographyStatement}</p>
       <div className="photo-selected" aria-live="polite">
@@ -129,9 +136,11 @@ export function OutsideSystemChapter() {
         </div>
         <div className="photo-selected__caption" key={`caption-${selected.id}`}>
           <p><span>Selected image</span>{selected.id}</p>
-          <h3>{selected.location}, {selected.country} / {selected.year}</h3>
-          <p>{selected.caption}</p>
-          <p>{selected.reflection}</p>
+          <h3>
+            {selected.location}{selected.country ? `, ${selected.country}` : ''} / {selected.year}
+          </h3>
+          {selected.caption ? <p>{selected.caption}</p> : null}
+          {selected.reflection ? <p>{selected.reflection}</p> : null}
         </div>
       </div>
       <div className="photo-carousel" role="region" aria-label="Photography archive carousel">
@@ -176,6 +185,6 @@ export function OutsideSystemChapter() {
           <span aria-hidden="true">→</span>
         </button>
       </div>
-    </section>
+    </AboutChapter>
   )
 }

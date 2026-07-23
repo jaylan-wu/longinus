@@ -1,19 +1,14 @@
 import { PageIndex } from '../../components/PageIndex'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { AboutChapterNavigation } from './components/AboutChapterNavigation'
 import { AboutChapters } from './components/AboutChapters'
-import { chapters } from './aboutData'
+import { getAboutChapter } from './data/chapters'
 import { AboutSpearScene } from './AboutSpearScene'
-import { useActiveChapter } from './useActiveChapter'
+import { useActiveAboutChapter } from './hooks/useActiveAboutChapter'
 import './about.css'
 
 export function AboutPage() {
-  const activeChapter = useActiveChapter()
-  const reducedMotion = useReducedMotion()
-  const currentChapter = chapters.find((chapter) => chapter.id === activeChapter) ?? chapters[0]
-
-  const scrollToChapter = (chapterId: string) => {
-    document.getElementById(chapterId)?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' })
-  }
+  const activeChapter = useActiveAboutChapter()
+  const currentChapter = getAboutChapter(activeChapter)
 
   return (
     <main className="about" data-active-chapter={activeChapter}>
@@ -32,23 +27,7 @@ export function AboutPage() {
 
       <div className="about__composition">
         <aside className="about__scene" aria-label={`Spear posture: ${currentChapter.label}`}>
-          <nav className="about__chapter-nav" aria-label="About chapters">
-            <ol>
-              {chapters.map((chapter) => (
-                <li key={chapter.id}>
-                  <button
-                    type="button"
-                    className={activeChapter === chapter.id ? 'is-active' : undefined}
-                    aria-current={activeChapter === chapter.id ? 'location' : undefined}
-                    onClick={() => scrollToChapter(chapter.id)}
-                  >
-                    <span>{chapter.index}</span>
-                    <span>{chapter.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <AboutChapterNavigation activeChapter={activeChapter} />
           <AboutSpearScene activeChapter={activeChapter} />
         </aside>
 

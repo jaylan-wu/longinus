@@ -1,10 +1,14 @@
-import { currentDirection } from '../../aboutData'
+import { currentDirection } from '../../data/currentDirection'
+import {
+  AboutChapter,
+  type AboutChapterComponentProps,
+} from '../AboutChapter'
 import { ChapterHeading } from '../ChapterHeading'
 
-export function CurrentDirectionChapter() {
+export function CurrentDirectionChapter({ chapter }: AboutChapterComponentProps) {
   return (
-    <section className="about-chapter about-chapter--direction" id="current-direction" aria-labelledby="direction-title">
-      <ChapterHeading index="05" label="Current Direction" title="Current Direction" />
+    <AboutChapter chapter={chapter} modifier="direction">
+      <ChapterHeading chapter={chapter} title="Current Direction" />
       <p className="about-direction__statement">
         {currentDirection.statement}
       </p>
@@ -18,6 +22,6 @@ export function CurrentDirectionChapter() {
           <a key={action.label} href={action.href}>{action.label} <span aria-hidden="true">↗</span></a>
         ))}
       </nav>
-    </section>
+    </AboutChapter>
   )
 }
