@@ -72,8 +72,7 @@ Home is imported eagerly. About, Projects, and project detail are lazy-loaded wi
 - Home, Projects, and About own separate React Three Fiber canvases and staging. The shared base geometry does not imply a shared camera or scene controller.
 - Home and Projects also render the shared CSS `SpearFallback` silhouette beneath their canvases. About has no CSS spear silhouette, but its semantic DOM narrative remains when `SceneErrorBoundary` removes a failed canvas.
 - No font assets are bundled. The display, sans-serif, and monospace CSS stacks are provisional system stacks.
-- About runtime assets live under `src/features/about/assets/`; general static assets live under `src/assets/` or `public/`.
-- `src/assets/hero.png`, `src/assets/react.svg`, and `src/assets/vite.svg` are tracked but unused.
+- About runtime assets live under `src/features/about/assets/`; the site favicon lives at `public/favicon.png`, and no general runtime assets currently live under `src/assets/`.
 - The seven About photographs are high-resolution source-sized JPEGs. Responsive variants, explicit lazy-image loading, and production image optimization are not implemented.
 - The only stored Figma export is `design/figma/references/homepage/homepage-desktop-idle-v1.png` at `1440 × 900`. Its tracker status is in progress, not approved.
 

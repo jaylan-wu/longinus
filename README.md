@@ -100,7 +100,7 @@ About, Projects, and project-detail modules are lazy-loaded with `React.lazy`. H
 │   ├── foundations.md          # Current design foundations and unresolved decisions
 │   ├── motion/                 # Planned navigation and project-transition specifications
 │   └── references/             # Design-review exports; never runtime page images
-├── public/                     # Favicon and SVG icon sprite
+├── public/                     # Site favicon
 ├── src/
 │   ├── components/
 │   │   ├── spear/              # Shared procedural SpearModel and Home/Projects CSS silhouette
@@ -129,7 +129,6 @@ Feature-specific layout, interaction CSS, data, and scene behavior stay inside t
 - No font files are bundled. The CSS tokens use provisional system font stacks.
 - Home and Projects render an always-present CSS spear silhouette beneath their canvases. `SceneErrorBoundary` removes a failed canvas while preserving the DOM interface. About preserves its DOM narrative on scene failure but has no equivalent CSS spear silhouette.
 - About owns seven high-resolution JPEG photographs and three organization marks under `src/features/about/assets/`. Responsive image variants, explicit lazy-image loading, and production image optimization are not implemented.
-- `src/assets/hero.png`, `src/assets/react.svg`, and `src/assets/vite.svg` are tracked but unused by current source code.
 - No current behavior tracks WebGL readiness, font readiness, or model readiness.
 - The audited production build emits an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and Vite's chunk-size warning. Loading and mid-range-device performance have not been profiled.
 - Responsive CSS exists for Home, Projects, project detail, and About, but browser, device, keyboard, touch, reduced-motion, and WebGL-failure behavior remain manually unverified unless recorded otherwise in `TASKS.md`.

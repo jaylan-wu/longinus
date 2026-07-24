@@ -77,7 +77,6 @@ The canonical homepage desktop comparison viewport is `1440 × 900`. It is a com
 ## Iconography and imagery
 
 - Home does not currently use runtime iconography.
-- `public/icons.svg` is tracked but not imported by current source.
 - The stored homepage export is a review reference only and must never be imported as full-page application UI.
 - The spear pictured in Figma defines intended silhouette and staging, but production currently renders temporary Three.js primitive geometry plus a CSS silhouette beneath the canvas.
 
