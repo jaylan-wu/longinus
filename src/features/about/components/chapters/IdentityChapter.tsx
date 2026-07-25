@@ -12,22 +12,24 @@ export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
           <p className="about-chapter__kicker"><span>{chapter.index} /</span> {chapter.label}</p>
           <dl className="about-identity__subject" aria-label="Primary identity">
             <div><dt>Name</dt><dd>{identity.name}</dd></div>
-            <div><dt>Location</dt><dd>{identity.location}</dd></div>
           </dl>
           <h1 id={chapter.headingId} aria-label={identity.displayStatement.join(' ')}>
             {identity.displayStatement.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
           </h1>
         </div>
         <div className="about-identity__statement">
-          {identity.openingStatement.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <p>{identity.openingStatement.context}</p>
+          <p className="about-identity__pivot">
+            <strong>{identity.openingStatement.pivot}</strong>{' '}
+            {identity.openingStatement.realization}
+          </p>
+          <p>{identity.openingStatement.connection}</p>
         </div>
         <ul className="about-identity__axes" aria-label="Primary areas of interest">
           {identity.axes.map((axis) => (
             <li key={axis.id}>
               <p className="about-identity__axis-heading"><span>{axis.id}</span>{axis.label}</p>
-              <p className="about-identity__axis-statement" aria-label={axis.shortStatement.join(' ')}>
-                {axis.shortStatement.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
-              </p>
+              <p className="about-identity__axis-statement">{axis.shortStatement}</p>
               <p className="about-identity__axis-supporting">{axis.supportingStatement}</p>
             </li>
           ))}

@@ -72,7 +72,7 @@
 }
 
 .about__header-location strong {
-  color: var(--color-primary);
+  color: var(--color-highlight);
   font-size: clamp(0.875rem, 0.64vw, 1rem);
   font-weight: 400;
 }
@@ -116,13 +116,13 @@
 }
 
 .about__chapter-nav button.is-active {
-  border-bottom-color: var(--color-primary);
-  color: var(--color-primary);
+  border-bottom-color: var(--color-highlight);
+  color: var(--color-highlight);
   font-weight: 700;
 }
 
 .about__chapter-nav button.is-active span:first-child {
-  color: var(--color-primary);
+  color: var(--color-highlight);
 }
 
 .about__composition {
@@ -178,6 +178,8 @@
 
 .about-identity__content {
   width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
 }
 
 .about-chapter__kicker,
@@ -228,6 +230,7 @@
 
 .about-chapter__heading--identity h1 span {
   display: block;
+  white-space: nowrap;
 }
 
 .about-identity__subject {
@@ -278,7 +281,15 @@
 }
 
 .about-identity__statement p + p {
-  margin-top: 1.15rem;
+  margin-top: clamp(0.8rem, 1.4svh, 1.05rem);
+}
+
+.about-identity__pivot strong {
+  color: color-mix(in srgb, var(--color-secondary) 58%, var(--color-foreground));
+  font-family: var(--font-display);
+  font-size: 1.08em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .about-identity__axes {
@@ -323,12 +334,10 @@
   font-size: clamp(1.3rem, min(1.35vw, 2.7svh), 1.65rem);
   line-height: 1;
   text-transform: uppercase;
-}
-.about-identity__axis-statement span {
-  display: block;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 .about-identity__axis-supporting {
+  max-width: 32ch;
   margin: 0;
   color: var(--color-muted);
   font-size: clamp(0.95rem, 0.68vw, 1.05rem);
@@ -598,7 +607,7 @@
 .about a:hover { color: var(--color-highlight); }
 
 .about__chapter-nav button:not(:disabled):hover {
-  color: var(--color-primary);
+  color: var(--color-highlight);
 }
 
 @media (min-width: 1440px) {
@@ -625,7 +634,7 @@
   .about-chapter--identity {
     display: block;
     min-height: 100svh;
-    padding-top: 0;
+    padding-top: 4.5rem;
     padding-bottom: 0;
   }
 
@@ -633,14 +642,14 @@
     display: grid;
     min-height: calc(100svh - 4.5rem);
     align-content: center;
-    margin-top: 4.5rem;
-    column-gap: clamp(2.5rem, 4vw, 6rem);
-    row-gap: clamp(1.5rem, 2.6svh, 2.5rem);
+    margin-top: 0;
+    column-gap: clamp(3.5rem, 5vw, 4.5rem);
+    row-gap: clamp(1.1rem, 2.2svh, 2rem);
     grid-template-areas:
       "heading statement"
       "axes axes"
       "signature signature";
-    grid-template-columns: minmax(0, 1.12fr) minmax(22rem, 0.88fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 1.05fr);
   }
 
   .about-chapter__heading--identity {
@@ -649,15 +658,16 @@
   }
 
   .about-chapter__heading--identity h1 {
-    font-size: clamp(4rem, min(4.6vw, 7.3svh), 5.5rem);
+    font-size: clamp(3.45rem, min(3.85vw, 6svh), 5.1rem);
   }
 
   .about-identity__statement {
     width: 100%;
-    max-width: 35rem;
+    max-width: 34rem;
     align-self: end;
     margin: 0;
     font-size: clamp(1.05rem, min(0.72vw, 1.5svh), 1.2rem);
+    line-height: 1.48;
     grid-area: statement;
   }
 
@@ -674,13 +684,13 @@
 
 @media (min-width: 1600px) {
   .about__header {
-    right: calc(40% - 2.6rem);
+    right: calc(32.5% + 0.7rem);
     left: 2rem;
     font-size: 0.875rem;
   }
 
   .about__composition {
-    grid-template-columns: minmax(0, calc(60% + 3rem)) minmax(36rem, calc(40% - 3rem));
+    grid-template-columns: minmax(0, 67.5%) minmax(30rem, 32.5%);
     width: calc(100% - 4rem);
   }
 
@@ -697,6 +707,33 @@
     grid-template-columns: 2.5rem 1fr;
     padding: 1.15rem 0;
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 1090px) and (max-height: 760px) {
+  .about-identity__content {
+    row-gap: 1rem;
+  }
+
+  .about-chapter--identity .about-chapter__kicker,
+  .about-identity__subject {
+    margin-bottom: 0.75rem;
+  }
+
+  .about-chapter__heading--identity h1 {
+    font-size: clamp(3.2rem, 7.3svh, 4rem);
+  }
+
+  .about-identity__statement p + p {
+    margin-top: 0.65rem;
+  }
+
+  .about-identity__axes li {
+    padding-block: 0.75rem;
+  }
+
+  .about-identity__axis-statement {
+    margin-block: 0.65rem 0.55rem;
   }
 }
 

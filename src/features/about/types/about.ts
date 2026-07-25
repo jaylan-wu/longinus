@@ -20,20 +20,25 @@ export type AboutSceneState = {
 }
 
 export type PersonalAxis = 'Engineering' | 'Game development' | 'Education'
+export type IdentityAxisLabel = 'Engineering' | 'Game Development' | 'Education'
 
 export type IdentityAxis = {
   id: `AX-${string}`
-  label: PersonalAxis
-  shortStatement: readonly [string, string, string]
+  label: IdentityAxisLabel
+  shortStatement: string
   supportingStatement: string
 }
 
 export type IdentityContent = {
   name: string
   creativeSignature: string
-  location: string
   displayStatement: readonly string[]
-  openingStatement: readonly string[]
+  openingStatement: {
+    context: string
+    pivot: string
+    realization: string
+    connection: string
+  }
   axes: readonly IdentityAxis[]
 }
 

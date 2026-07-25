@@ -46,8 +46,16 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
   useFrame((_, delta) => {
     if (!spear.current) return
 
-    if (reducedMotion) {
-      spear.current.rotation.y = MathUtils.damp(spear.current.rotation.y, targetAxialRotation, 18, delta)
+    if (reducedMotion || activeChapter === ABOUT_CHAPTER_IDS.identity) {
+      const postureDamping = reducedMotion ? 18 : 5
+      spear.current.rotation.y = MathUtils.damp(
+        spear.current.rotation.y,
+        targetAxialRotation,
+        postureDamping,
+        delta,
+      )
+      axialRotation.current = spear.current.rotation.y
+      angularVelocity.current = 0
       previousScrollY.current = window.scrollY
       return
     }

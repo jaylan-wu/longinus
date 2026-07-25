@@ -26,26 +26,26 @@ Name: Jaylan Wu
 
 Creative signature: alter-egoist
 
-Location: New York City
-
 ## Personal Axes
 
 * Engineering
-* Game development
+* Game Design
 * Education
 
 ## Display Statement
 
-Bringing creativity into my technical work.
+Creativity was always part of the system.
 
 ## Opening Statement
 
-Media, places, and people shape the way I connect engineering, game
-development, and education. I care about how systems work, how interactions
-feel, and how clearly ideas are shared.
+For a long time, the arts and engineering felt like separate parts of my
+life.
 
-Creativity belongs in technical work. Through teaching, I want others to feel
-that their perspective belongs in technical spaces too.
+They were never separate. I just had not learned how to connect them yet.
+
+Engineering taught me how to build a system. Games taught me to ask what that
+system could make someone feel. Teaching taught me how to help someone else
+understand it.
 
 ## Identity Axes
 
@@ -53,52 +53,80 @@ that their perspective belongs in technical spaces too.
 
 Short statement:
 
-Prototype, test, and refine.
+Build, test, and refine.
 
 Supporting statement:
 
-I approach engineering through iteration—building early, learning from each
-version, and improving ideas through testing.
+I learn by making something real, then letting each version reveal what the
+system needs.
 
 ### AX-02 — Game Development
 
 Short statement:
 
-Create interactions that evoke feeling.
+Create interactions people can feel.
 
 Supporting statement:
 
-I use systems, atmosphere, and player choice to shape how an experience
-feels.
+I bring systems, story, sound, and choice together to turn an idea into an
+experience.
 
 ### AX-03 — Education
 
 Short statement:
 
-Introduce the unknown to those who seek it.
+Make the unfamiliar approachable.
 
 Supporting statement:
 
-Teaching gives people the tools and confidence to approach unfamiliar ideas
-for themselves.
+I give people the tools and confidence to continue learning on their own.
 
 ## Identity Design Notes
 
-Status: **unverified working direction**. The `2500 × 1350` target is documented here but is not represented by an approved export under `design/figma/references/about/`.
+Primary desktop comparison viewport:
 
-Target desktop comparison viewport:
+- Width: 1440px
+- Height: 900px
+
+Large desktop comparison viewport:
 
 - Width: 2500px
 - Height: 1350px
 
 The complete Identity chapter should be visible within the initial desktop
-viewport at the target size and remain overflow-safe on shorter desktop
+viewport at both comparison sizes and remain overflow-safe on shorter desktop
 viewports.
+
+Use the 1440 × 900 viewport as the primary composition reference.
+
+At 2500 × 1350, preserve the same visual relationships established at the
+primary viewport, including:
+
+- The relative width of the left content and right spear regions
+- The hierarchy between the display statement, opening statement, and axes
+- The relative typography scale
+- The vertical position of each content region
+- The spacing between the Identity-axis records
+- The spear's scale and relationship to the chapter navigation
+- The overall balance of positive and negative space
+
+Do not stretch the 1440 × 900 composition uniformly to fill the wider
+2500 × 1350 viewport.
+
+Scale the composition primarily in relation to viewport height, then use the
+additional horizontal space to increase margins, breathing room, and the
+distance between major regions without changing their intended hierarchy.
+
+Avoid allowing text columns to become excessively wide at the larger viewport.
+Use controlled maximum widths so paragraph line lengths remain readable.
+
+The large-desktop composition should feel like a more spacious version of the
+same design, not a separately rearranged layout.
 
 Visible content must include:
 
 - Chapter label
-- Name and location metadata
+- Name
 - Display statement
 - Full opening statement
 - All three Identity-axis records
@@ -109,27 +137,66 @@ Do not hide axis supporting content behind hover or focus.
 
 Preserve the existing right-side chapter-navigation and spear composition.
 
-Audit the opening statement and axis records together. Minimize repeated ideas
-while preserving the personal relationship between engineering, game
-development, education, creativity, systems, interaction, communication, and
-teaching.
+Use a compact three-zone composition for:
+
+1. Identity metadata
+2. Display and opening statements
+3. Identity-axis records
+
+On the left side:
+
+- Keep `CREATIVITY WAS ALWAYS PART OF THE SYSTEM.` as the primary display
+  statement.
+- Consider displaying the statement across four lines:
+
+  `CREATIVITY`
+
+  `WAS ALWAYS`
+
+  `PART OF`
+
+  `THE SYSTEM.`
+
+- Position the opening statement beside or immediately below the display
+  statement.
+- Treat `They were never separate.` as the emotional pivot of the opening
+  statement.
+- The pivot may receive additional typographic emphasis, but it must remain
+  readable and should not compete with the primary display statement.
+- Begin the three-axis region high enough for all three records to remain
+  visible.
+- Keep each supporting statement concise enough to render comfortably within
+  its axis column.
+- Reduce unnecessary vertical gaps before reducing readable text sizes.
+- Keep all meaningful system and metadata text readable.
+- Vertically balance the complete left-side composition while accounting for
+  the persistent header.
+- Preserve clear separation between the display statement, opening statement,
+  and identity-axis records.
+- Do not add oversized decorative background words.
+- Do not introduce an internal chapter scrollbar.
 
 Use the current page-header and chapter-navigation typography as the minimum
 readable reference for system, identifier, and metadata text.
 
-On the left side:
+The right-side composition should preserve:
 
-- Keep `BRINGING CREATIVITY INTO MY TECHNICAL WORK.` as the primary display statement.
-- Use a compact three-zone composition for metadata, primary content, and axes.
-- Move the opening statement upward beside the display statement.
-- Begin the three-axis region higher in the viewport.
-- Reduce unnecessary vertical gaps before reducing readable text sizes.
-- Keep all meaningful system text readable.
-- Vertically balance the complete left-side composition with approximately
-  equal visual space above and below it, accounting for the persistent header.
-- Do not add oversized decorative background words.
-- Do not introduce an internal chapter scrollbar.
+- The persistent chapter navigation
+- The Identity chapter’s quiet spear posture
+- Substantial negative space around the spear
+- `alter-egoist` as a restrained creative signature rather than a second
+  identity
 
+The spear should function as a quiet anchor during Identity.
+
+Avoid:
+
+- Thrusting
+- Target locking
+- Pointer-following behavior
+- Impact effects
+- Red interface disruption
+- Constant decorative movement
 ---
 
 # 2. Trajectory
