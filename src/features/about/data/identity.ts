@@ -13,19 +13,19 @@ export const identity = {
   axes: [
     {
       id: 'AX-01',
-      label: 'Engineering',
+      axis: 'engineering',
       shortStatement: 'Build, test, and refine.',
       supportingStatement: 'I learn by making something real, then letting each version reveal what the system needs.',
     },
     {
       id: 'AX-02',
-      label: 'Game Development',
+      axis: 'game-design',
       shortStatement: 'Create interactions people can feel.',
       supportingStatement: 'I bring systems, story, sound, and choice together to turn an idea into an experience.',
     },
     {
       id: 'AX-03',
-      label: 'Education',
+      axis: 'education',
       shortStatement: 'Make the unfamiliar approachable.',
       supportingStatement: 'I give people the tools and confidence to continue learning on their own.',
     },

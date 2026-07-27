@@ -1,4 +1,5 @@
 import type { ExperienceRecord } from '../../types/about'
+import { PERSONAL_AXIS_LABELS } from '../../../../types/personalAxis'
 import { TrajectoryOrganizationMark } from './TrajectoryOrganizationMark'
 
 type TrajectoryRecordDetailProps = {
@@ -38,7 +39,7 @@ export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailPro
           ))}
         </dl>
         <div className="experience-detail__metadata">
-          <p><span>Connected axes</span>{experience.personalAxes.join(' / ')}</p>
+          <p><span>Connected axes</span>{experience.personalAxes.map((axis) => PERSONAL_AXIS_LABELS[axis]).join(' / ')}</p>
           <p><span>Supporting themes</span>{experience.supportingThemes.join(' / ')}</p>
         </div>
       </div>

@@ -13,7 +13,7 @@ export function HomeIdentity() {
   return (
     <header
       className="home-identity"
-      aria-label="Jaylan Wu — a portfolio spanning engineering, game development, and education"
+      aria-label="Jaylan Wu — a portfolio spanning engineering, game design, and education"
     >
       <div className="home-identity__eyebrow">
         <span>alter-egoist</span>

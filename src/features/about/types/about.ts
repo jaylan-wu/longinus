@@ -1,3 +1,5 @@
+import type { PersonalAxis } from '../../../types/personalAxis'
+
 export const ABOUT_CHAPTER_IDS = {
   identity: 'identity',
   trajectory: 'trajectory',
@@ -19,12 +21,9 @@ export type AboutSceneState = {
   activeChapter: AboutChapterId
 }
 
-export type PersonalAxis = 'Engineering' | 'Game development' | 'Education'
-export type IdentityAxisLabel = 'Engineering' | 'Game Development' | 'Education'
-
 export type IdentityAxis = {
   id: `AX-${string}`
-  label: IdentityAxisLabel
+  axis: PersonalAxis
   shortStatement: string
   supportingStatement: string
 }

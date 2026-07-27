@@ -1,4 +1,5 @@
 import { identity } from '../../data/identity'
+import { PERSONAL_AXIS_LABELS } from '../../../../types/personalAxis'
 import {
   AboutChapter,
   type AboutChapterComponentProps,
@@ -28,7 +29,7 @@ export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
         <ul className="about-identity__axes" aria-label="Primary areas of interest">
           {identity.axes.map((axis) => (
             <li key={axis.id}>
-              <p className="about-identity__axis-heading"><span>{axis.id}</span>{axis.label}</p>
+              <p className="about-identity__axis-heading"><span>{axis.id}</span>{PERSONAL_AXIS_LABELS[axis.axis]}</p>
               <p className="about-identity__axis-statement">{axis.shortStatement}</p>
               <p className="about-identity__axis-supporting">{axis.supportingStatement}</p>
             </li>

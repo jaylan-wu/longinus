@@ -29,7 +29,7 @@ Creative signature: alter-egoist
 ## Personal Axes
 
 * Engineering
-* Game Design
+* Game design
 * Education
 
 ## Display Statement
@@ -60,7 +60,7 @@ Supporting statement:
 I learn by making something real, then letting each version reveal what the
 system needs.
 
-### AX-02 — Game Development
+### AX-02 — Game Design
 
 Short statement:
 
@@ -284,26 +284,27 @@ Graduation year:
 
 Context:
 
-Studying computer science and computer engineering allowed me to move between
-algorithms, software design, computer architecture, embedded systems, and the
-boundary where hardware and software meet.
+I entered college following the technical path that seemed expected of me.
+Studying computer science and computer engineering gave me room to move
+between algorithms, software design, computer architecture, embedded systems,
+and the boundary where hardware and software meet.
 
 Foundation:
 
-The two degrees taught me to think about systems in layers: how user-facing
-software depends on architecture, how physical constraints influence
-implementation, and how decisions at one layer affect everything built above
-it.
+Computer science taught me to think through abstraction and software.
+Computer engineering made those systems physical. Together, they showed me
+how decisions made at one layer affect everything built above it.
 
 Reflection:
 
-Game Engineering gave that technical foundation a creative outlet. Building
-games made abstract concepts tangible and showed me that rigorous technical
-work could still carry personality, atmosphere, and play.
+Game Engineering was where the parts of my education that had felt separate
+began to connect. Building games let me use technical ideas in service of
+story, atmosphere, and play. For the first time, engineering felt like a place
+where my creative interests belonged and I genuinely thought that I was having fun.
 
 Personal axes:
 
-Engineering, Game development, Education
+Engineering, Game design, 
 
 Source note for later Outside the System review:
 
@@ -344,12 +345,7 @@ Learning through teaching.
 
 Date range:
 
-August 2022 - 2025
-
-Verification note:
-
-Confirm the final month of the Teaching Assistant appointment before final
-publication.
+August 2022 - August 2025
 
 Course or program:
 
@@ -357,10 +353,8 @@ General Engineering, EG1004
 
 Environment or context:
 
-As a Teaching Assistant for NYU's first-year General Engineering course, I
-co-instructed weekly labs and supported students as they learned Figma, C++,
-Arduino, Autodesk Fusion 360, and Python while developing semester-long design
-projects.
+As a Teaching Assistant, I helped first-year students work through unfamiliar tools and turn their ideas into semester-long engineering projects. Working with faculty on the course also showed me how much the structure around a classroom shapes the experience of both students and the people teaching them.
+
 
 Defining responsibility or contribution:
 

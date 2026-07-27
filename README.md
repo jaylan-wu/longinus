@@ -111,7 +111,7 @@ About, Projects, and project-detail modules are lazy-loaded with `React.lazy`. H
 │   │   └── projects/           # Project data, archive/detail UI, transition state, scene, and CSS
 │   ├── hooks/                  # Shared reduced-motion media-query hook
 │   ├── styles/                 # Color values used by Three.js scenes
-│   ├── types/                  # Shared navigation type
+│   ├── types/                  # Shared navigation and personal-axis types
 │   ├── App.tsx                 # Hash-route parsing and route-level lazy imports
 │   ├── index.css               # Global tokens, reset, shared page index, reduced-motion baseline
 │   └── main.tsx                # React entry point

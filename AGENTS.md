@@ -79,7 +79,7 @@ Home is imported eagerly. About, Projects, and project detail are lazy-loaded wi
 ## Current State, Styling, and Data Patterns
 
 - Feature-specific components, data, scene behavior, and CSS live under `src/features/home/`, `src/features/projects/`, and `src/features/about/`.
-- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, shared color values, and the navigation type.
+- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, shared color values, personal-axis identifiers and labels, and the navigation type.
 - Local React state and focused feature hooks own current interaction state. There are no Context providers, reducers, or global state-library stores.
 - `src/index.css` owns global tokens, resets, the shared page-index treatment, and the application-wide reduced-motion baseline. Each implemented feature owns its distinctive stylesheet.
 - Project data lives in `src/features/projects/projectData.ts`. Its three records and detail copy are provisional portfolio content, not a verified final project archive.
@@ -178,7 +178,7 @@ Use this contrast as a primary visual rule.
 The portfolio represents three connected areas of interest:
 
 - Engineering
-- Game development
+- Game design
 - Education
 
 Projects and experiences may exist across multiple axes.
@@ -500,7 +500,7 @@ The layout may use asymmetry, cropping, overlap, and controlled negative space.
 
 Do not simplify the homepage into a conventional hero section and navigation bar.
 
-The homepage should communicate that the portfolio belongs to Jaylan Wu and represents work across engineering, game development, and education.
+The homepage should communicate that the portfolio belongs to Jaylan Wu and represents work across engineering, game design, and education.
 
 Jaylan Wu should remain unmistakable as the primary human identity.
 
@@ -679,7 +679,7 @@ Projects may use different presentation modes based on their content.
 
 Consistency should come from typography, color roles, interface language, interaction state, and compositional principles rather than identical page templates.
 
-Projects may relate to one or more personal axes: Engineering, Game development, and Education.
+Projects may relate to one or more personal axes: Engineering, Game design, and Education.
 
 Do not force each project into a single category or display arbitrary percentage scores for each axis.
 
@@ -803,7 +803,7 @@ The opening composition should make Jaylan's name, perspective, and areas of int
 The three primary personal axes are:
 
 * Engineering
-* Game development
+* Game design
 * Education
 
 These axes establish the conceptual framework of the page without reducing Jaylan's identity to categories, percentages, or skill ratings.
@@ -961,7 +961,7 @@ Each experience should communicate:
 The primary personal axes remain:
 
 * Engineering
-* Game development
+* Game design
 * Education
 
 Supporting labels such as operations, infrastructure, mentorship, reliability, and human-centered technology may appear as metadata.
@@ -1102,7 +1102,7 @@ The chapter should move the narrative from observation and personal influence to
 
 The Current Direction chapter brings the About narrative from Jaylan's past experiences and personal influences into the kind of work he wants to pursue next.
 
-It should explain how engineering, game development, education, travel, photography, and interactive influences contribute to one connected direction.
+It should explain how engineering, game design, education, travel, photography, and interactive influences contribute to one connected direction.
 
 The chapter should not function as a rigid career plan or list of aspirational job titles.
 

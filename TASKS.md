@@ -33,7 +33,8 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 
 - [x] Audit every tracked Markdown file against the repository.
 - [x] Preserve Jaylan Wu as the primary identity and `alter-egoist` as a secondary creative identity.
-- [x] Preserve Engineering, Game development, and Education as the three personal axes.
+- [x] Preserve Engineering, Game design, and Education as the three personal axes.
+- [x] Define shared `engineering`, `game-design`, and `education` axis identifiers with canonical interface labels.
 - [x] Preserve Figma as the source for supplied static 2D composition.
 - [x] Preserve Blender and supplied motion references as the source for authored 3D motion.
 - [x] Distinguish implemented, partial, staged, planned, deferred, and unverified work.
