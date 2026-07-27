@@ -964,67 +964,132 @@ Repeat this section for each game.
 
 ## Game Influence
 
-Identifier: INF-001
+Identifier:
+
+INF-001
 
 Game title:
 
 Metaphor: ReFantazio
 
+Medium:
+
+Video Game
+
 Release year:
 
 2024
 
+Featured quote:
+
+“It is okay to dream of a fantasy.”
+
+Quote verification note:
+
+Confirm the exact wording, capitalization, and punctuation from the game before
+final publication.
+
 Influence categories:
 
-Story, world building, character development, interface design
+Interface design, Visual direction, Systems design, Worldbuilding, Social
+themes
 
 Specific element that influenced me:
 
-I was really influenced by the story element that it's okay to dream of a fantasy.
+The skills menu immediately stood out to me. The artwork of Will lying across
+the screen makes the interface feel connected to his perspective rather than
+like a separate layer placed over the game. Instead of replacing the experience
+with text and statistics, the menu uses illustration and composition to make
+navigating the character’s abilities enjoyable in its own right.
 
-What it taught me about interactive experiences:
+Display reflection:
 
-Having a particularly creative menu interface was an important part of the gameplay. Since the turn-based combat is heavily reliant on the user choosing specific choices, having something aesthetic and easy to use was a positive plus for me.
+*Metaphor: ReFantazio* showed me how every part of a game can contribute to one
+cohesive experience. Its interface, strategic combat, music, and worldbuilding
+all feel connected to the same creative direction, while its fantasy setting
+still makes room for direct conversations about racism, class, and the kind of
+future people are allowed to imagine.
 
-How it connects to the work I want to create:
+That balance stayed with me personally. As I learn to follow a creative
+direction that feels meaningful to me, the game reminds me that fantasy does
+not have to be an escape from the world. It can also be a way of questioning
+what surrounds us and imagining something different.
 
-As I continue to work towards making games and designing the interfaces behind them, i take inspiration from these moments and think about how the player experience really does matter a lot when they are looking at their stats and builds.
+Design takeaway:
 
-Personal reflection:
+Treat menus and supporting systems as part of the experience rather than as
+spaces the player must pass through to return to it.
 
-This was a game that I didn't know I would enjoy. There isn't much hype around the game itself and I still think it is very underrated in comparison to the other games that Atlus has released.
+## Influence Record
 
-## Game Influence
+Identifier:
 
-Identifier: INF-002
+INF-002
 
-Game title:
+Work title:
 
 Persona 4 Golden
+
+Medium:
+
+Video game
 
 Release year:
 
 2012
 
+Featured quote:
+
+“Next year and the year after that... No matter what happens, I’m sure we’ll
+be okay.”
+
+Quote attribution:
+
+Yukiko Amagi
+
+Quote verification note:
+
+Confirm the exact wording, capitalization, punctuation, speaker, and scene
+before final publication.
+
 Influence categories:
 
-Social links, character cast, story telling.
+Character relationships, Everyday life, Storytelling, Atmosphere, Visual
+identity
 
 Specific element that influenced me:
 
-I've completed Persona 3 Reload and Persona 5 Royal in addition to this one but I thought that the cast in Persona 4 Golden really drew me into the game in comparison to the others. The cast seemed to have better dynamics with each other since they were all one friend group. It made it seem that they had interactions outside of the relationship they had with the protagonist.
+The moments that stayed with me most were the times when the characters chose
+to include one another in their daily lives. Group activities rarely felt
+isolated to Yu, and the way the cast welcomed Nanako made them feel like a real
+friend group rather than characters waiting for the protagonist.
 
-What it taught me about interactive experiences:
+Yu’s quieter moments with Nanako and Dojima also made returning home feel as
+meaningful as progressing through the larger story. As Yu became familiar with
+Inaba, I felt myself settling into the town alongside him. Even the older
+polygonal models added to that sense of charm and identity rather than taking
+away from it.
 
-By having a captivating cast, I was able to overlook the early 2010s graphics even though it was able to give the game a certain type of charm that other games didn't have. The low poly gameplay somehow added to the experience of the game and it proves that other parts of gameplay could really elevate the experience as a whole.
+Display reflection:
 
-How it connects to the work I want to create:
+*Persona 4 Golden* showed me that relationships feel strongest when characters
+have lives beyond the protagonist. The invitations, group activities, and
+quiet family scenes made the cast feel like people who would continue caring
+for one another even when the player was not present.
 
-This game really inspires me to think about the stories that I want to create in the future about my personal experiences and how I see the world. I've really come to cherish all the relationships that I have made over the past couple years and I want to let the people I care about know that.
+As I have gotten older, I have become more deliberate about making time for my
+friends and family rather than assuming those relationships will maintain
+themselves. The game made me want to create characters whose connections are
+built through ordinary, intentional moments—not only through the dramatic
+events of the story.
 
-Personal reflection:
+Design takeaway:
 
-I was super excited to start this game since I had high expectations from the other games that I played made by ATLUS. It's also my most recent ATLUS game that I played. I really think about the daily life that I have now with my friends and I try to think about how my responses affect different people depending on my relationship with them or how they are as a person.
+Build relationships across the entire cast, not only between each character
+and the protagonist. Give every character a meaningful place within the group,
+the story, and the gameplay.
+
+
 
 ---
 
