@@ -1089,7 +1089,153 @@ Build relationships across the entire cast, not only between each character
 and the protagonist. Give every character a meaningful place within the group,
 the story, and the gameplay.
 
+## Influence Record
 
+Identifier:
+
+INF-003
+
+Work title:
+
+Kafka on the Shore
+
+Medium:
+
+Novel
+
+Author:
+
+Haruki Murakami
+
+Original publication year:
+
+2002
+
+Featured quote:
+
+“Silence, I discover, is something you can actually hear.”
+
+Quote verification note:
+
+Confirm the exact wording and punctuation against the edition used before
+final publication.
+
+Influence categories:
+
+Atmosphere, Alternating narratives, Surrealism, Symbolism, Ambiguity,
+Environmental storytelling
+
+Specific element that influenced me:
+
+The forest and the dreamlike town within it stayed with me most. The setting
+felt suspended between reality, memory, and something more symbolic. Even when
+I could not fully explain what was happening, the atmosphere made the emotions
+of the scene feel understandable.
+
+The alternating narratives created a similar sense of uncertainty. Each
+storyline revealed only part of the larger picture, which kept me searching
+for connections while leaving room for my interpretation to change.
+
+Display reflection:
+
+I finished *Kafka on the Shore* shortly after spending six weeks traveling
+alone through Japan. That trip taught me to value solitude as a space where I
+could think about who I was and what I wanted without constantly measuring
+myself against the expectations surrounding me.
+
+The novel helped me see uncertainty in a similar way. A story does not always
+need to resolve every mystery for it to feel meaningful, just as I do not need
+to know exactly where my path will lead before choosing a direction. That
+uncertainty has gradually become less of a source of anxiety and more of
+something that pushes me to imagine what my life and creative work could
+become.
+
+Design takeaway:
+
+Use atmosphere, symbolism, and ambiguity to create spaces that audiences can
+interpret for themselves. An environment can communicate a feeling before its
+meaning is fully understood.
+
+## Influence Record
+
+Identifier:
+
+INF-004
+
+Work title:
+
+Neon Genesis Evangelion
+
+Included works:
+
+* Neon Genesis Evangelion, Episodes 1–26
+* The End of Evangelion
+
+Medium:
+
+Anime television series and film
+
+Release years:
+
+1995–1997
+
+Featured quote:
+
+“You are the only person who can take care of yourself.”
+
+Quote verification note:
+
+Confirm the exact wording, punctuation, translation, speaker, and source scene
+before final publication.
+
+Influence categories:
+
+Visual direction, Composition, Identity, Emotional storytelling, Interface
+design, Ambiguity
+
+Specific element that influenced me:
+
+The ending of *The End of Evangelion* stayed with me because of how directly it
+places the audience inside Shinji’s mental state. Its shifts in imagery,
+composition, sound, and perspective make his fear and vulnerability feel like
+part of the form of the film rather than emotions explained only through
+dialogue.
+
+The ending does not present facing yourself as a clean or simple decision.
+Shinji is forced to confront the ways he avoids other people, the pain that
+comes with connection, and whether he is willing to return to an uncertain
+world.
+
+Display reflection:
+
+I first watched *Evangelion* during the summer between high school and college,
+when I was thinking more seriously about how I communicated with others and
+the relationships I carried into the next part of my life. I connected with
+Shinji’s timidness and his difficulty expressing what he needed, even when he
+wanted to be understood.
+
+The series also made me think about how identity changes depending on who is
+looking at us. The person my family knows is not exactly the same person my
+friends or colleagues see, yet each version still belongs to me. When I
+returned to the series years later, its ending felt less hopeless than I had
+remembered. Beneath its painful emotions, I found an insistence that
+understanding and caring for yourself is what makes connection with others
+possible.
+
+Connection to Longinus:
+
+*Evangelion* helped shape the visual language behind Longinus, but its
+influence goes beyond the spear, typography, or interface references. It
+showed me that technical systems, composition, stillness, and visual
+disruption can carry emotional meaning. Longinus draws from those principles
+without attempting to reproduce the series’ identifiable artwork or
+interfaces. :contentReference[oaicite:0]{index=0}
+
+Design takeaway:
+
+Use visual and technical systems to communicate emotions that dialogue alone
+cannot fully express. Difficult feelings can be presented honestly without
+removing the possibility of hope.
 
 ---
 

@@ -142,3 +142,11 @@ Feature-specific layout, interaction CSS, data, and scene behavior stay inside t
 - [`content/ABOUT_CONTENT.md`](content/ABOUT_CONTENT.md) is the editorial source for About and marks content that must not be published without verification.
 
 Figma is authoritative for supplied static 2D composition. Blender files and supplied motion references are authoritative for authored 3D motion. The codebase is authoritative for what is currently implemented.
+
+## Fan Work and Intellectual Property Notice
+
+Longinus is an independent fan-made portfolio project inspired by the visual direction, typography, atmosphere, and themes of *Neon Genesis Evangelion*. It is not an official Evangelion project and is not affiliated with, endorsed by, or sponsored by the series' creators, studios, publishers, or other rights holders.
+
+*Neon Genesis Evangelion*, the Spear of Longinus, and all related names, characters, designs, trademarks, and intellectual property belong to their respective rights holders. Any references within this project are included as creative influences and expressions of appreciation. No ownership of the original series or its intellectual property is claimed, and no infringement is intended.
+
+Longinus aims to develop an original visual and interactive identity rather than reproduce official artwork, characters, logos, footage, interface layouts, or other protected materials.
