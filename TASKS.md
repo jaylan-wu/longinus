@@ -209,7 +209,7 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
   1. Identity
   2. Trajectory
   3. Outside the System
-  4. Interactive Influences
+  4. Creative Influences
   5. Current Direction
 - [x] Split chapters and repeated record UI into feature-owned components.
 - [x] Keep published content in focused modules under `src/features/about/data/` and editorial/draft source in `content/ABOUT_CONTENT.md`.
@@ -250,12 +250,13 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 - [ ] Add explicit lazy-loading/decoding behavior where useful.
 - [ ] Create and compare against an approved photography composition.
 
-## Interactive Influences
+## Creative Influences
 
-- [x] Implement two locally selectable influence records with original reflections.
+- [x] Implement four locally selectable influence records with authored quotes, reflections, design takeaways, and optional work-specific metadata.
+- [x] Include video games, a novel, and an anime television series and film within one medium-agnostic influence-record model.
+- [x] Keep the stable `interactive-influences` section identifier while using Creative Influences as the visible chapter name.
 - [x] Avoid ratings, rankings, and copied screenshots or promotional artwork.
-- [ ] Curate at least one additional record to reach the approved three-to-six range.
-- [ ] Verify game titles, release years, categories, and final wording.
+- [ ] Verify the featured-quote wording, punctuation, translations, speakers, and source scenes or editions identified in `content/ABOUT_CONTENT.md`.
 - [ ] Create and compare against an approved chapter composition.
 
 ## Current Direction

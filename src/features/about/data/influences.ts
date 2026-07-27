@@ -1,21 +1,110 @@
-import type { InteractiveInfluenceRecord } from '../types/about'
+import type { InfluenceRecord } from '../types/about'
 
-export const interactiveInfluences = {
-  lead: 'These records focus on what specific games taught me about the experiences I want to create.',
-  records: [
-    {
-      id: 'INF-001',
-      gameTitle: 'Metaphor: ReFantazio',
-      releaseYear: 2024,
-      categories: ['Story', 'Worldbuilding', 'Character development', 'Interface design'],
-      reflection: 'Metaphor showed me that a menu can be visually expressive and easy to use, especially when turn-based combat depends on frequent, deliberate choices. As I learn to design game interfaces, it reminds me that checking stats and shaping a build are part of the player experience rather than interruptions to it.',
-    },
-    {
-      id: 'INF-002',
-      gameTitle: 'Persona 4 Golden',
-      releaseYear: 2012,
-      categories: ['Social links', 'Character cast', 'Storytelling'],
-      reflection: 'Persona 4 Golden showed me how a cast with relationships beyond the protagonist can make a world feel inhabited. Its characters and everyday structure made me think about the stories I want to tell from my own experiences, and about how small responses can carry different meaning within different relationships.',
-    },
-  ] satisfies InteractiveInfluenceRecord[],
-}
+export const creativeInfluences = [
+  {
+    id: 'INF-001',
+    title: 'Metaphor: ReFantazio',
+    medium: 'Video Game',
+    releaseYear: '2024',
+    featuredQuote: '“It is okay to dream of a fantasy.”',
+    quoteVerificationNote: 'Confirm the exact wording, capitalization, and punctuation from the game before final publication.',
+    categories: [
+      'Interface design',
+      'Visual direction',
+      'Systems design',
+      'Worldbuilding',
+      'Social themes',
+    ],
+    specificElement: [
+      'The skills menu immediately stood out to me. The artwork of Will lying across the screen makes the interface feel connected to his perspective rather than like a separate layer placed over the game. Instead of replacing the experience with text and statistics, the menu uses illustration and composition to make navigating the character’s abilities enjoyable in its own right.',
+    ],
+    displayReflection: [
+      '*Metaphor: ReFantazio* showed me how every part of a game can contribute to one cohesive experience. Its interface, strategic combat, music, and worldbuilding all feel connected to the same creative direction, while its fantasy setting still makes room for direct conversations about racism, class, and the kind of future people are allowed to imagine.',
+      'That balance stayed with me personally. As I learn to follow a creative direction that feels meaningful to me, the game reminds me that fantasy does not have to be an escape from the world. It can also be a way of questioning what surrounds us and imagining something different.',
+    ],
+    designTakeaway: 'Treat menus and supporting systems as part of the experience rather than as spaces the player must pass through to return to it.',
+  },
+  {
+    id: 'INF-002',
+    title: 'Persona 4 Golden',
+    medium: 'Video game',
+    releaseYear: '2012',
+    featuredQuote: '“Next year and the year after that... No matter what happens, I’m sure we’ll be okay.”',
+    quoteAttribution: 'Yukiko Amagi',
+    quoteVerificationNote: 'Confirm the exact wording, capitalization, punctuation, speaker, and scene before final publication.',
+    categories: [
+      'Character relationships',
+      'Everyday life',
+      'Storytelling',
+      'Atmosphere',
+      'Visual identity',
+    ],
+    specificElement: [
+      'The moments that stayed with me most were the times when the characters chose to include one another in their daily lives. Group activities rarely felt isolated to Yu, and the way the cast welcomed Nanako made them feel like a real friend group rather than characters waiting for the protagonist.',
+      'Yu’s quieter moments with Nanako and Dojima also made returning home feel as meaningful as progressing through the larger story. As Yu became familiar with Inaba, I felt myself settling into the town alongside him. Even the older polygonal models added to that sense of charm and identity rather than taking away from it.',
+    ],
+    displayReflection: [
+      '*Persona 4 Golden* showed me that relationships feel strongest when characters have lives beyond the protagonist. The invitations, group activities, and quiet family scenes made the cast feel like people who would continue caring for one another even when the player was not present.',
+      'As I have gotten older, I have become more deliberate about making time for my friends and family rather than assuming those relationships will maintain themselves. The game made me want to create characters whose connections are built through ordinary, intentional moments—not only through the dramatic events of the story.',
+    ],
+    designTakeaway: 'Build relationships across the entire cast, not only between each character and the protagonist. Give every character a meaningful place within the group, the story, and the gameplay.',
+  },
+  {
+    id: 'INF-003',
+    title: 'Kafka on the Shore',
+    medium: 'Novel',
+    creator: 'Haruki Murakami',
+    releaseYear: '2002',
+    featuredQuote: '“Silence, I discover, is something you can actually hear.”',
+    quoteVerificationNote: 'Confirm the exact wording and punctuation against the edition used before final publication.',
+    categories: [
+      'Atmosphere',
+      'Alternating narratives',
+      'Surrealism',
+      'Symbolism',
+      'Ambiguity',
+      'Environmental storytelling',
+    ],
+    specificElement: [
+      'The forest and the dreamlike town within it stayed with me most. The setting felt suspended between reality, memory, and something more symbolic. Even when I could not fully explain what was happening, the atmosphere made the emotions of the scene feel understandable.',
+      'The alternating narratives created a similar sense of uncertainty. Each storyline revealed only part of the larger picture, which kept me searching for connections while leaving room for my interpretation to change.',
+    ],
+    displayReflection: [
+      'I finished *Kafka on the Shore* shortly after spending six weeks traveling alone through Japan. That trip taught me to value solitude as a space where I could think about who I was and what I wanted without constantly measuring myself against the expectations surrounding me.',
+      'The novel helped me see uncertainty in a similar way. A story does not always need to resolve every mystery for it to feel meaningful, just as I do not need to know exactly where my path will lead before choosing a direction. That uncertainty has gradually become less of a source of anxiety and more of something that pushes me to imagine what my life and creative work could become.',
+    ],
+    designTakeaway: 'Use atmosphere, symbolism, and ambiguity to create spaces that audiences can interpret for themselves. An environment can communicate a feeling before its meaning is fully understood.',
+  },
+  {
+    id: 'INF-004',
+    title: 'Neon Genesis Evangelion',
+    medium: 'Anime television series and film',
+    releaseYear: '1995–1997',
+    includedWorks: [
+      'Neon Genesis Evangelion, Episodes 1–26',
+      'The End of Evangelion',
+    ],
+    featuredQuote: '“You are the only person who can take care of yourself.”',
+    quoteVerificationNote: 'Confirm the exact wording, punctuation, translation, speaker, and source scene before final publication.',
+    categories: [
+      'Visual direction',
+      'Composition',
+      'Identity',
+      'Emotional storytelling',
+      'Interface design',
+      'Ambiguity',
+    ],
+    specificElement: [
+      'The ending of *The End of Evangelion* stayed with me because of how directly it places the audience inside Shinji’s mental state. Its shifts in imagery, composition, sound, and perspective make his fear and vulnerability feel like part of the form of the film rather than emotions explained only through dialogue.',
+      'The ending does not present facing yourself as a clean or simple decision. Shinji is forced to confront the ways he avoids other people, the pain that comes with connection, and whether he is willing to return to an uncertain world.',
+    ],
+    displayReflection: [
+      'I first watched *Evangelion* during the summer between high school and college, when I was thinking more seriously about how I communicated with others and the relationships I carried into the next part of my life. I connected with Shinji’s timidness and his difficulty expressing what he needed, even when he wanted to be understood.',
+      'The series also made me think about how identity changes depending on who is looking at us. The person my family knows is not exactly the same person my friends or colleagues see, yet each version still belongs to me. When I returned to the series years later, its ending felt less hopeless than I had remembered. Beneath its painful emotions, I found an insistence that understanding and caring for yourself is what makes connection with others possible.',
+    ],
+    connectionToLonginus: [
+      '*Evangelion* helped shape the visual language behind Longinus, but its influence goes beyond the spear, typography, or interface references. It showed me that technical systems, composition, stillness, and visual disruption can carry emotional meaning. Longinus draws from those principles without attempting to reproduce the series’ identifiable artwork or interfaces.',
+    ],
+    designTakeaway: 'Use visual and technical systems to communicate emotions that dialogue alone cannot fully express. Difficult feelings can be presented honestly without removing the possibility of hope.',
+  },
+] satisfies InfluenceRecord[]

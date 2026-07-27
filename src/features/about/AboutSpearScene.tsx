@@ -15,7 +15,7 @@ const STAGED_REDUCED_MOTION_AXIAL_ROTATIONS: Record<AboutChapterId, number> = {
   [ABOUT_CHAPTER_IDS.identity]: 0,
   [ABOUT_CHAPTER_IDS.trajectory]: Math.PI * 0.3,
   [ABOUT_CHAPTER_IDS.outsideSystem]: Math.PI * 0.6,
-  [ABOUT_CHAPTER_IDS.interactiveInfluences]: Math.PI * 0.9,
+  [ABOUT_CHAPTER_IDS.creativeInfluences]: Math.PI * 0.9,
   [ABOUT_CHAPTER_IDS.currentDirection]: Math.PI * 1.2,
 }
 

@@ -5,9 +5,9 @@ import {
   type AboutChapterId,
 } from '../types/about'
 import type { AboutChapterComponentProps } from './AboutChapter'
+import { CreativeInfluencesChapter } from './chapters/CreativeInfluencesChapter'
 import { CurrentDirectionChapter } from './chapters/CurrentDirectionChapter'
 import { IdentityChapter } from './chapters/IdentityChapter'
-import { InteractiveInfluencesChapter } from './chapters/InteractiveInfluencesChapter'
 import { OutsideSystemChapter } from './chapters/OutsideSystemChapter'
 import { TrajectoryChapter } from './chapters/TrajectoryChapter'
 
@@ -15,7 +15,7 @@ const chapterComponents = {
   [ABOUT_CHAPTER_IDS.identity]: IdentityChapter,
   [ABOUT_CHAPTER_IDS.trajectory]: TrajectoryChapter,
   [ABOUT_CHAPTER_IDS.outsideSystem]: OutsideSystemChapter,
-  [ABOUT_CHAPTER_IDS.interactiveInfluences]: InteractiveInfluencesChapter,
+  [ABOUT_CHAPTER_IDS.creativeInfluences]: CreativeInfluencesChapter,
   [ABOUT_CHAPTER_IDS.currentDirection]: CurrentDirectionChapter,
 } satisfies Record<AboutChapterId, ComponentType<AboutChapterComponentProps>>
 

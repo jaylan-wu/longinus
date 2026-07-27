@@ -751,7 +751,7 @@ The Playground is the region of Longinus where experimental interaction may be l
 
 ## About
 
-**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The spear remains temporary procedural geometry with provisional continuous scroll-responsive rotation. No About Figma reference or authored motion reference is stored, the experience has not received recorded manual accessibility/device validation, and official organization, role, and degree wording remains partly unverified.
+**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four creative-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The spear remains temporary procedural geometry with provisional continuous scroll-responsive rotation. No About Figma reference or authored motion reference is stored, the experience has not received recorded manual accessibility/device validation, and official organization, role, and degree wording remains partly unverified.
 
 The About page is the human center of Longinus.
 
@@ -765,7 +765,7 @@ It must not become:
 * A conventional employment timeline
 * A travel blog
 * A standalone photography portfolio
-* A ranked list of favorite games
+* A ranked list of favorite creative works
 * A collection of disconnected hobbies
 
 Every chapter should contribute to understanding how Jaylan observes, teaches, designs, and builds.
@@ -785,7 +785,7 @@ The About page should function as one continuous vertical narrative organized in
 1. Identity
 2. Trajectory
 3. Outside the System
-4. Interactive Influences
+4. Creative Influences
 5. Current Direction
 
 Use standard browser scrolling as the foundation.
@@ -1069,11 +1069,11 @@ Lavender may support personal captions and reflection.
 
 Primary red should not be used as a generic photograph-selection color.
 
-### Interactive Influences
+### Creative Influences
 
-Interactive Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
+Creative Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
 
-Present approximately three to six selected games.
+Present a curated collection of selected creative works across multiple media. The current collection contains four records spanning video games, a novel, and an anime television series and film.
 
 The purpose is not to rank favorites or provide reviews.
 
@@ -1087,14 +1087,14 @@ Each selection should explain a specific influence, such as:
 * Character writing
 * Mechanical expression
 * Music and sound
-* Player agency
+* Player or audience perspective
 * Technical or creative ambition
 
-Focus on what Jaylan learned from each experience and how it shaped his interest in game development and interactive technology.
+Focus on what Jaylan learned from each work and how it shaped his interest in creative engineering, game development, and interactive technology.
 
 Prefer concise original commentary over large collections of copyrighted screenshots, logos, character artwork, or promotional assets.
 
-Do not reproduce a game's identifiable interface composition within Longinus.
+Do not reproduce a work's identifiable interface composition or other protected visual material within Longinus.
 
 The chapter should move the narrative from observation and personal influence toward creation and future direction.
 
@@ -1102,7 +1102,7 @@ The chapter should move the narrative from observation and personal influence to
 
 The Current Direction chapter brings the About narrative from Jaylan's past experiences and personal influences into the kind of work he wants to pursue next.
 
-It should explain how engineering, game design, education, travel, photography, and interactive influences contribute to one connected direction.
+It should explain how engineering, game design, education, travel, photography, and creative influences contribute to one connected direction.
 
 The chapter should not function as a rigid career plan or list of aspirational job titles.
 
@@ -1124,7 +1124,7 @@ Teaching should remain part of Jaylan's future direction rather than appearing o
 
 The chapter may express a long-term interest in continuing to teach, mentor, and connect professional engineering practice with higher education.
 
-Travel, photography, and selected games may be referenced as influences on Jaylan's attention to space, atmosphere, composition, interaction, and detail.
+Travel, photography, and selected creative works may be referenced as influences on Jaylan's attention to space, atmosphere, composition, interaction, and detail.
 
 Do not force every personal interest into a direct professional justification.
 
@@ -1191,7 +1191,7 @@ On About, the spear acts as:
 * A connective thread
 * A representation of narrative progression
 
-It should respond primarily to chapter progression rather than individual hover states, experience records, photographs, or game selections.
+It should respond primarily to chapter progression rather than individual hover states, experience records, photographs, or influence selections.
 
 Its motion should be:
 
@@ -1217,7 +1217,7 @@ Each chapter should define an intentional spear role:
 * Identity: quiet anchor
 * Trajectory: directional spine
 * Outside the System: environmental frame
-* Interactive Influences: emerging direction
+* Creative Influences: emerging direction
 * Current Direction: forward vector
 
 During Identity, the spear may remain partially cropped, stable, or quietly suspended.
@@ -1226,7 +1226,7 @@ During Trajectory, it may evolve through position, depth, and rotation as a repr
 
 During Outside the System, it may recede into depth, frame negative space, sit behind photographs, or remain still.
 
-During Interactive Influences, it may begin moving toward a more directional posture without targeting individual games.
+During Creative Influences, it may begin moving toward a more directional posture without targeting individual influence records.
 
 During Current Direction, it should settle into a resolved diagonal or align with a distant vanishing point.
 
@@ -1280,7 +1280,7 @@ Do not map every scroll pixel directly to dramatic spear movement.
 
 #### Local Interaction Ownership
 
-Individual experience records, photographs, and game-influence records should use local 2D interaction state.
+Individual experience records, photographs, and influence records should use local 2D interaction state.
 
 Experience records may reveal:
 
@@ -1291,7 +1291,7 @@ Experience records may reveal:
 
 Photographs may transition between archive and selected states.
 
-Interactive-influence records may reveal concise personal commentary.
+Influence records may reveal authored quotes, personal reflections, design takeaways, and related metadata.
 
 These local interactions should not trigger homepage-style spear targeting or impact behavior.
 
@@ -1302,7 +1302,7 @@ The page may include restrained chapter navigation displaying:
 * Identity
 * Trajectory
 * Outside the System
-* Interactive Influences
+* Creative Influences
 * Current Direction
 
 Chapter navigation should:
@@ -1355,14 +1355,14 @@ The About narrative must remain coherent without large spatial animation.
 
 Keep About content, presentation, interaction state, and Three.js behavior clearly separated.
 
-Do not encode all five chapters, experiences, photographs, and game influences directly inside one large page component.
+Do not encode all five chapters, experiences, photographs, and influence records directly inside one large page component.
 
 The About feature should own its:
 
 * Chapter components
 * Experience-record components
 * Photography components
-* Interactive-influence components
+* Creative-influence components
 * Page-specific data
 * Local interaction state
 * Active-chapter logic
@@ -1414,15 +1414,22 @@ Only display optional metadata when it improves the experience.
 
 Preserve original edited photographs and apply archive treatment non-destructively.
 
-#### Interactive-Influence Data
+#### Influence-Record Data
 
-Each selected game influence may define:
+Each selected creative influence may define:
 
 * Stable identifier
-* Game title
-* Release year
+* Work title
+* Medium
+* Creator or author when relevant
+* Release year or year range
+* Included works when the record covers a defined group
+* Featured quote and attribution when supplied
 * Relevant influence categories
-* Jaylan's original reflection
+* Specific influenced element
+* Jaylan's authored reflection
+* Design takeaway
+* Connection to Longinus when supplied
 
 Do not build a rating, ranking, or review system.
 
@@ -1436,7 +1443,7 @@ Examples include:
 
 * Focused experience
 * Selected photograph
-* Focused game influence
+* Selected influence
 
 Do not create one large global About state object solely because the page contains multiple chapters.
 

@@ -4,7 +4,7 @@ export const ABOUT_CHAPTER_IDS = {
   identity: 'identity',
   trajectory: 'trajectory',
   outsideSystem: 'outside-system',
-  interactiveInfluences: 'interactive-influences',
+  creativeInfluences: 'interactive-influences',
   currentDirection: 'current-direction',
 } as const
 
@@ -87,12 +87,21 @@ export type PhotographyRecord = {
   reflection?: string
 }
 
-export type InteractiveInfluenceRecord = {
+export type InfluenceRecord = {
   id: `INF-${string}`
-  gameTitle: string
-  releaseYear: number
+  title: string
+  medium: string
+  creator?: string
+  releaseYear: string
+  includedWorks?: readonly string[]
+  featuredQuote: string
+  quoteAttribution?: string
+  quoteVerificationNote?: string
   categories: readonly string[]
-  reflection: string
+  specificElement: readonly string[]
+  displayReflection: readonly string[]
+  designTakeaway: string
+  connectionToLonginus?: readonly string[]
 }
 
 export type AboutAction = {

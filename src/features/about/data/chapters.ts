@@ -21,7 +21,7 @@ export const aboutChapters = [
   defineChapter(ABOUT_CHAPTER_IDS.identity, '01', 'Identity'),
   defineChapter(ABOUT_CHAPTER_IDS.trajectory, '02', 'Trajectory'),
   defineChapter(ABOUT_CHAPTER_IDS.outsideSystem, '03', 'Outside the System'),
-  defineChapter(ABOUT_CHAPTER_IDS.interactiveInfluences, '04', 'Interactive Influences'),
+  defineChapter(ABOUT_CHAPTER_IDS.creativeInfluences, '04', 'Creative Influences'),
   defineChapter(ABOUT_CHAPTER_IDS.currentDirection, '05', 'Current Direction'),
 ] as const
 
