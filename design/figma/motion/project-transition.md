@@ -4,6 +4,10 @@
 
 **Staged.** The Projects archive has a feature-owned phase/selection hook, matching DOM and procedural-spear responses, an input lock, a two-tap touch path, reduced-motion timing, and hash navigation. It has not been compared with a Projects Figma frame, final spear model, or authored motion reference.
 
+[`TASKS.md`](../../../TASKS.md) Milestone 5 owns the live implementation
+checklist. This file owns the transition-specific current sequence, provisional
+timings, intended signals, fallback behavior, and unresolved motion decisions.
+
 Current code in `src/features/projects/projectTransition.ts` uses:
 
 - `idle`, `focused`, `committing`, `impact`, and `transitioning` phases;
@@ -43,7 +47,8 @@ Pending timers are cleared on hook cleanup. There is no cancellation UI, complet
 
 ## Intended phase mapping
 
-Use the canonical Longinus terms:
+Use the canonical Longinus terms defined in
+[`AGENTS.md`](../../../AGENTS.md):
 
 ```text
 idle → focused → committing → impact → transitioning → settled

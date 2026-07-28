@@ -2,7 +2,10 @@
 
 Longinus is Jaylan Wu's interactive personal portfolio. Its structured DOM interface and recurring 3D Spear of Longinus connect software engineering, game-development interests, and technical education through deliberate typography, motion, and real-time graphics.
 
-The repository is an active work in progress. Current code provides a homepage, a staged Projects archive and metadata-only detail flow, and a five-chapter About experience. Music, Playground, the boot sequence, the final spear asset, and final authored motion are planned but unavailable.
+The repository is an active work in progress. Current code provides a homepage,
+a staged Projects archive and metadata-only detail flow, and a five-chapter
+About experience. Music, Playground, the boot sequence, the final spear asset,
+and supplied references for authored motion are planned but unavailable.
 
 ## Current status
 
@@ -11,12 +14,15 @@ The repository is an active work in progress. Current code provides a homepage, 
 | Home | empty hash, `#home`, or any unrecognized hash | **Partially implemented.** The desktop-first DOM composition and a procedural React Three Fiber spear are present. Available navigation uses direct hash links; the coordinated homepage focus, commitment, impact, and route-transition model is not implemented. |
 | Projects archive | `#projects` | **Staged.** Three provisional records, pointer/keyboard focus, two-tap touch selection, a procedural spear response, reduced-motion timing, and a timed archive-to-detail transition are implemented. No approved Projects Figma frame or final motion reference is stored in the repository. |
 | Project detail | `#projects/<slug>` | **Staged.** Valid records show summary metadata and technologies; unknown slugs show an in-app not-found state. Narrative sections and demonstration regions are not implemented. |
-| About | `#about` | **Partially implemented.** Five scrollable chapters, active-chapter navigation, local record selection, seven photographs, two interactive-influence records, and a sticky page-owned spear scene are present. The composition and motion are not Figma- or Blender-verified, and some official wording remains unverified. |
+| About | `#about` | **Partially implemented.** Five scrollable chapters, local record selection, seven photographs, four mixed-media influence records, and a sticky page-owned spear scene are present. The approved Identity desktop-idle composition is implemented and browser-compared. Its procedural continuous rotation was inspected, but no authored Blender motion reference exists; the other chapter compositions and some official wording remain unresolved. |
 | Music | none | **Planned.** The homepage control is disabled and no Music feature exists. |
 | Playground | none | **Planned.** The homepage control is disabled and no Playground feature exists. |
 | Boot experience | n/a | **Planned.** There is no critical-asset readiness or boot transition implementation. |
 
-The only stored visual reference is the `1440 × 900` homepage desktop-idle export. Its implementation status remains in progress; the repository does not contain evidence of a completed browser comparison.
+Two `1440 × 900` desktop-idle references are stored. The Homepage frame remains
+in progress without a recorded browser comparison; the About Identity frame is
+implemented and browser-compared. See [`TASKS.md`](TASKS.md) for detailed live
+status and validation history.
 
 ## Technology
 
@@ -123,25 +129,30 @@ About, Projects, and project-detail modules are lazy-loaded with `React.lazy`. H
 
 Feature-specific layout, interaction CSS, data, and scene behavior stay inside the owning feature. The shared spear code is only the procedural base geometry and Home/Projects DOM silhouette; camera, lighting, staging, and animation remain page-owned.
 
-## Assets and current limitations
+## Current implementation notes
 
-- There are no GLTF or GLB files. `SpearModel.tsx` builds temporary primitive geometry in code.
-- No font files are bundled. The CSS tokens use provisional system font stacks.
-- Home and Projects render an always-present CSS spear silhouette beneath their canvases. `SceneErrorBoundary` removes a failed canvas while preserving the DOM interface. About preserves its DOM narrative on scene failure but has no equivalent CSS spear silhouette.
-- About owns seven high-resolution JPEG photographs and three organization marks under `src/features/about/assets/`. Responsive image variants, explicit lazy-image loading, and production image optimization are not implemented.
-- No current behavior tracks WebGL readiness, font readiness, or model readiness.
-- The audited production build emits an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and Vite's chunk-size warning. Loading and mid-range-device performance have not been profiled.
-- Responsive CSS exists for Home, Projects, project detail, and About, but browser, device, keyboard, touch, reduced-motion, and WebGL-failure behavior remain manually unverified unless recorded otherwise in `TASKS.md`.
+- There are no GLTF or GLB files. `SpearModel.tsx` builds temporary primitive
+  geometry in code.
+- No font files are bundled by design. The system-font tokens in `src/index.css`
+  are the runtime font-family source of truth.
+- Responsive and fallback behavior exists in source, but detailed validation,
+  asset limitations, performance findings, and remaining work are tracked in
+  [`TASKS.md`](TASKS.md).
 
 ## Design and documentation sources
 
-- [`AGENTS.md`](AGENTS.md) defines durable product direction, interaction principles, and repository-specific engineering guidance.
-- [`TASKS.md`](TASKS.md) distinguishes implemented, staged, planned, deferred, and unverified work.
-- [`design/figma/README.md`](design/figma/README.md) tracks stored Figma references and handoff rules.
-- [`design/figma/foundations.md`](design/figma/foundations.md) records current foundations and unresolved design decisions.
-- [`content/ABOUT_CONTENT.md`](content/ABOUT_CONTENT.md) is the editorial source for About and marks content that must not be published without verification.
-
-Figma is authoritative for supplied static 2D composition. Blender files and supplied motion references are authoritative for authored 3D motion. The codebase is authoritative for what is currently implemented.
+- [`AGENTS.md`](AGENTS.md) defines durable product direction, source-of-truth
+  boundaries, interaction principles, and engineering constraints.
+- [`content/ABOUT_CONTENT.md`](content/ABOUT_CONTENT.md) owns About editorial
+  copy, record details, and verification flags.
+- [`TASKS.md`](TASKS.md) is the detailed implementation-status and validation
+  authority.
+- [`design/figma/README.md`](design/figma/README.md) owns the Figma handoff and
+  approved-frame tracker.
+- [`design/figma/foundations.md`](design/figma/foundations.md) records audited
+  visual values and open design decisions.
+- [`design/figma/motion/`](design/figma/motion/) contains transition-specific
+  sequences, provisional timings, and unresolved motion decisions.
 
 ## Fan Work and Intellectual Property Notice
 

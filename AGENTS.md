@@ -41,64 +41,40 @@ Do not turn the website into a traditional academic portfolio or game studio por
 
 The goal is to show that engineering, interactive design, and teaching are connected parts of my work and interests.
 
-# Documentation Status and Current Repository Snapshot
+# Documentation Ownership
 
-This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-28.
+This file is authoritative for durable product direction, the Longinus visual
+and interaction systems, and repository-wide engineering constraints. Keep it
+focused on rules that should remain true as implementation status changes.
 
-Use these status terms consistently:
+Use the repository documentation according to these ownership boundaries:
 
-- **Implemented** means the behavior or structure is present and verifiable in source.
-- **Partially implemented** means a meaningful subset exists but the intended experience is incomplete.
-- **Staged** means provisional UI, data, procedural geometry, or timing exists to support later work.
-- **Planned** means approved direction exists without a current implementation.
-- **Deferred** means work is intentionally waiting for a design, asset, motion reference, content, or decision.
-- **Unverified** means code exists but required visual or hands-on validation is not recorded.
+- `AGENTS.md` owns product intent, global design and interaction rules,
+  feature-level direction, engineering constraints, and conflict resolution.
+- `content/ABOUT_CONTENT.md` owns exact About copy, editorial records,
+  publication intent, and verification flags.
+- `TASKS.md` owns implementation status, validation history, unresolved work,
+  and recommended work order.
+- `design/figma/README.md` owns Figma handoff procedure, reference inventory,
+  and frame implementation or approval status.
+- `design/figma/foundations.md` owns audited visual measurements, current token
+  mappings, and unresolved foundation decisions.
+- `design/figma/motion/*.md` owns transition-specific sequences, provisional
+  timing, completion conditions, and unresolved motion decisions.
+- The source code and package manifest own executable behavior, dependencies,
+  routes, scripts, and runtime values.
+- `README.md` is a concise GitHub-facing introduction and onboarding guide. It
+  may summarize the other sources but must not override them.
 
-## Current Routes and Experiences
+Do not duplicate exact editorial copy, volatile implementation inventories,
+dated validation results, or transition timings in this file. Link to the
+owning document instead.
 
-`src/App.tsx` contains a lightweight hash router; React Router is not installed.
-
-- Home is available at the empty hash, `#home`, and any unrecognized hash. Its static DOM composition is partially implemented. Its spear is staged procedural geometry, and the coordinated homepage interaction and boot experience are planned.
-- Projects is available at `#projects`. Its archive, local interaction state, temporary spear response, and timed transition are staged and have not been approved against a Projects Figma or motion reference.
-- Project detail is available at `#projects/<slug>`. It currently renders summary metadata and technologies, or an in-app not-found state. Narrative and demonstration regions are planned.
-- About is available at `#about`. Its five chapters, active-chapter navigation, local record selection, photography carousel, content data, and sticky spear scene are partially implemented. The approved About / Identity / Desktop / Idle composition is implemented and browser-compared; the other chapter compositions and authored motion remain planned.
-- Music and Playground are planned. Their homepage controls are disabled, and neither feature folder nor route exists.
-
-Home is imported eagerly. About, Projects, and project detail are lazy-loaded with `React.lazy`. Hash changes update the document title and scroll to the top; route-level focus transfer is not implemented.
-
-## Current Assets and Rendering
-
-- `src/components/spear/SpearModel.tsx` constructs a temporary spear from Three.js primitives. No GLTF or GLB asset is present.
-- Home, Projects, and About own separate React Three Fiber canvases and staging. The shared base geometry does not imply a shared camera or scene controller.
-- Home and Projects also render the shared CSS `SpearFallback` silhouette beneath their canvases. About has no CSS spear silhouette, but its semantic DOM narrative and controls remain available when WebGL cannot render.
-- No font assets are bundled. The display, sans-serif, and monospace CSS stacks are provisional system stacks.
-- About runtime assets live under `src/features/about/assets/`; the site favicon lives at `public/favicon.png`, and no general runtime assets currently live under `src/assets/`.
-- The seven About photographs are high-resolution source-sized JPEGs. Responsive variants, explicit lazy-image loading, and production image optimization are not implemented.
-- Stored Figma exports include `design/figma/references/homepage/homepage-desktop-idle-v1.png` and `design/figma/references/about/about-identity-desktop-idle-v1.png`, both at `1440 × 900`. Home remains in progress; the scoped About Identity static composition is implemented.
-
-## Current State, Styling, and Data Patterns
-
-- Feature-specific components, data, scene behavior, and CSS live under `src/features/home/`, `src/features/projects/`, and `src/features/about/`.
-- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, the Home/About available-navigation action style, shared color values, personal-axis identifiers and labels, and the navigation type.
-- Local React state and focused feature hooks own current interaction state. There are no Context providers, reducers, or global state-library stores.
-- `src/index.css` owns global tokens, resets, the shared page-index treatment, and the application-wide reduced-motion baseline. Each implemented feature owns its distinctive stylesheet.
-- Project data lives in `src/features/projects/projectData.ts`. Its three records and detail copy are provisional portfolio content, not a verified final project archive.
-- About data lives in focused modules under `src/features/about/data/`; editorial source material and verification flags live in `content/ABOUT_CONTENT.md`. The published data intentionally excludes the incomplete future Adjunct Professor record.
-- The Projects transition uses explicit phases in `src/features/projects/projectTransition.ts`, but its current coordination is a provisional timeout sequence. Do not treat those values as authored or approved motion.
-
-## Current Tooling and Validation
-
-The checked-in lockfile and `.yarnrc.yml` use Yarn `4.17.1` with the `node-modules` linker. `package.json` pins that release through its `packageManager` field. Do not run Yarn Classic 1.x against this lockfile; use `corepack yarn` so the repository-pinned release owns installs and scripts.
-
-`package.json` defines only these scripts:
-
-- `dev`
-- `typecheck`
-- `lint`
-- `build`
-- `preview`
-
-There is no automated test script, test configuration, Markdown linter, formatter, or deployment configuration. Do not report tests or deployment validation as completed. The available automated source validation is `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`.
+When documents drift, repair the owning source first and then update dependent
+summaries. Product intent in this file and exact About editorial intent in
+`content/ABOUT_CONTENT.md` take priority over a conflicting README summary.
+Implementation claims must still be verified against source and recorded in
+`TASKS.md`; product direction does not make a feature implemented.
 
 # Design Philosophy
 
@@ -165,13 +141,8 @@ Longinus should develop its own visual language from these principles.
 
 # Visual System
 
-Longinus is built around a visual conflict between system and disruption.
-
-The 2D interface represents structure, classification, and control.
-
-The Spear of Longinus represents physical disruption. It is dimensional, curved, reactive, and capable of interrupting the interface.
-
-Use this contrast as a primary visual rule.
+Apply the structure-versus-disruption relationship defined above as the
+primary visual rule throughout the system.
 
 ## Personal Axes
 
@@ -228,17 +199,9 @@ Do not add interface lines only for visual decoration.
 
 ## Color Roles
 
-Use the established Longinus color palette:
-
-- Background: `#09090b`
-- Surface: `#141317`
-- Foreground: `#e8e4dc`
-- Muted: `#8d8882`
-- Primary red: `#d92332`
-- Secondary lavender: `#7a5aa6`
-- Highlight orange: `#f28c28`
-
-The palette is semantic.
+Use the established Longinus color tokens from `src/index.css`.
+`design/figma/foundations.md` owns their audited values and current mappings;
+the semantic roles below remain authoritative.
 
 - Background represents the primary system environment.
 - Surface defines secondary interface regions and structural depth.
@@ -278,7 +241,15 @@ Avoid generic hacker terminology, meaningless technical phrases, and excessive f
 
 Longinus uses multiple sources of truth for different parts of the experience.
 
-Figma is the primary visual reference for page layout, typography, spacing, hierarchy, color application, and static 2D UI composition.
+Figma is the primary visual reference for page layout, spacing, hierarchy, color application, static 2D UI composition, and measurable typographic treatment such as font size, weight, line height, letter spacing, casing, wrapping, alignment, and cropping.
+
+Figma is not the source of truth for font families. The runtime font tokens in `src/index.css` define the font families used throughout the website:
+
+- Display: `var(--font-display)` — `"Times New Roman Condensed"`, `"Times New Roman"`, `Times`, `serif`
+- Sans/content: `var(--font-sans)` — `Arial`, `Helvetica`, `sans-serif`
+- Mono/system/identifier: `var(--font-mono)` — `"SFMono-Regular"`, `Consolas`, `"Liberation Mono"`, `monospace`
+
+These are system-font stacks rather than bundled assets, so the first installed face in each stack is used on a given device. Preserve the stacks themselves as the cross-site source of truth.
 
 Blender animations, viewport recordings, renders, and supplied motion references define the intended visual character of authored 3D motion.
 
@@ -290,7 +261,8 @@ When a Figma design, exported frame, screenshot, or design specification is prov
 
 - Inspect the reference before writing UI code.
 - Treat the design as the intended visual target, not loose inspiration.
-- Match layout, scale, spacing, alignment, typography hierarchy, color roles, and visual weight as closely as practical.
+- Use the established runtime font tokens for every typographic role. Do not import, bundle, imitate, or substitute a font solely because it appears in a Figma reference.
+- Match layout, scale, spacing, alignment, typographic hierarchy, font size, weight, line height, letter spacing, casing, wrapping, cropping, color roles, and visual weight as closely as practical using the established runtime stacks.
 - Reuse existing design tokens and components when they can reproduce the design accurately.
 - Do not invent additional cards, sections, buttons, labels, gradients, decorations, or content that are not present in the reference.
 - Do not simplify a distinctive composition into a generic portfolio layout.
@@ -298,17 +270,9 @@ When a Figma design, exported frame, screenshot, or design specification is prov
 - Preserve the Longinus visual system when interpreting details not explicitly defined by the reference.
 - If the design conflicts with an existing implementation, identify the conflict before making a broad architectural change.
 
-Figma defines static 2D composition.
-
-Blender and supplied motion references define authored 3D motion.
-
-The interaction specification defines triggers and state transitions.
-
-The visual system defines the rules that connect these elements into a consistent interface.
-
-The codebase determines the most maintainable implementation.
-
-When these sources appear to conflict, do not silently guess. Explain the conflict and choose the smallest reversible implementation unless the task explicitly resolves it.
+Combine these sources according to **Documentation Ownership**. Use the
+conflict procedure in **When Unsure → Resolve Conflicts** rather than silently
+choosing whichever reference is most convenient.
 
 ## Motion Source of Truth
 
@@ -324,7 +288,9 @@ Choose the implementation based on interaction requirements:
 
 - Use procedural React Three Fiber animation when motion must react continuously to pointer, keyboard, navigation, or application state.
 - Use exported GLTF animation clips when motion is authored, fixed, cinematic, or difficult to reproduce accurately through procedural animation.
-- Use CSS or browser-native animation for current DOM-based 2D interface elements. Consider Motion / Framer Motion only if a scoped task adds it for a reviewed need; it is not installed today.
+- Use CSS or browser-native animation for DOM-based 2D interface elements
+  unless a reviewed interaction establishes a concrete need for another
+  approach.
 - Coordinate 2D and 3D animation through shared interaction state rather than isolated timers and unrelated animation triggers.
 
 When reproducing a supplied Blender motion procedurally, preserve the motion's visual intent and physical character as closely as practical.
@@ -338,16 +304,17 @@ When implementing a page from Figma:
 1. Inspect the full frame before editing code.
 2. Identify the primary, system, navigation, and ambient interface regions.
 3. Identify the dominant compositional relationships between typography, negative space, and 3D elements.
-4. Identify reusable components and visual-system roles.
-5. Determine which elements belong to the DOM interface and which belong to the Three.js scene.
-6. Implement the static 2D composition.
-7. Stage required 3D elements so their position, scale, and camera relationship match the intended composition.
-8. Define shared interaction states between the 2D interface and 3D scene.
-9. Implement responsive behavior.
-10. Implement system, content, and spear motion according to their defined motion characteristics.
-11. Compare the result against the reference at the intended viewport size.
-12. Fix the largest visual and compositional differences first.
-13. Profile and polish the final interaction.
+4. Map Figma typographic roles to the established runtime font tokens; do not carry Figma font-family names into the implementation.
+5. Identify reusable components and visual-system roles.
+6. Determine which elements belong to the DOM interface and which belong to the Three.js scene.
+7. Implement the static 2D composition.
+8. Stage required 3D elements so their position, scale, and camera relationship match the intended composition.
+9. Define shared interaction states between the 2D interface and 3D scene.
+10. Implement responsive behavior.
+11. Implement system, content, and spear motion according to their defined motion characteristics.
+12. Compare the result against the reference at the intended viewport size.
+13. Fix the largest visual and compositional differences first.
+14. Profile and polish the final interaction.
 
 Do not treat the Three.js scene as a decorative layer added after the interface is complete.
 
@@ -355,7 +322,7 @@ When a 3D element is visually dominant, its scale, silhouette, camera framing, a
 
 Prefer implementing one complete visual and interaction state before building every page state.
 
-When reproducing a design, prioritize composition and dominant 2D/3D relationships, major spacing and proportions, typography scale and line breaks, 3D staging and silhouette, color-role accuracy, interaction-state clarity, then fine decorative details.
+When reproducing a design, prioritize composition and dominant 2D/3D relationships, major spacing and proportions, typography scale, font size, line height, letter spacing, line breaks, alignment and cropping, 3D staging and silhouette, color-role accuracy, interaction-state clarity, then fine decorative details. Do not prioritize matching the reference's font family.
 
 # Responsive Interpretation
 
@@ -472,7 +439,7 @@ Loading indicators should represent meaningful application or asset readiness wh
 
 Do not display arbitrary simulated loading percentages solely for visual effect.
 
-Critical readiness may include the primary Spear of Longinus model, critical model textures and materials, required display fonts, the initial Three.js scene, and other assets required for the first interactive view.
+Critical readiness may include the primary Spear of Longinus model, critical model textures and materials, the initial Three.js scene, and other assets required for the first interactive view. The established system-font stacks do not require bundled font-asset readiness.
 
 The loading indicator should visually relate to the Spear of Longinus.
 
@@ -553,23 +520,18 @@ The primary navigation structure is:
 
 The homepage is the navigation scene and does not need to appear as one of its own primary navigation targets.
 
-The status notes below describe current availability. The remaining text in each section describes approved direction, including work that is not implemented.
+These sections describe approved product direction, not implementation status.
+Consult `TASKS.md` for what is implemented, staged, planned, deferred, or
+unverified.
 
 ## Home
 
-**Current status: partially implemented and staged.** The route, desktop-first DOM composition, direct hash navigation, system labels, temporary procedural spear, Home-owned canvas, and narrow-layout CSS exist. Boot, shared target/phase state, target-oriented spear motion, impact, and coordinated route transitions are not implemented. The stored desktop-idle Figma frame remains in progress and browser comparison is unverified.
-
-The homepage is the primary introduction to Jaylan, the Longinus visual system, and the spear interaction model.
-
-The desktop composition should prioritize primary navigation, Jaylan's identity, the Spear of Longinus, current system and navigation state, strong title-card-inspired typography, and controlled negative space.
-
-Identity information may use labels, identifiers, or structured metadata, but the user's name and the purpose of the portfolio must remain understandable.
-
-Avoid long biography text, detailed experience history, project summaries, or large content sections.
+Follow **Core Experience → Homepage** and **Homepage Interaction**. Keep the
+page focused on identity, atmosphere, interaction, and navigation rather than
+long biography, experience history, project summaries, or large content
+sections.
 
 ## Music
-
-**Current status: planned and unavailable.** No route, feature folder, content data, record-player scene, or Music interaction exists. The disabled homepage control exposes the destination without implying availability.
 
 The Music page presents a curated collection of records selected by Jaylan.
 
@@ -589,7 +551,8 @@ The spear does not function as the turntable spindle.
 
 The spear's motion should feel closer to a ballerina or suspended sculptural performance than a mechanical attachment.
 
-The Music page does not currently provide audio playback.
+Music is a curated display experience rather than an audio player unless a
+future scoped request explicitly adds playback.
 
 Do not implement audio controls, streaming integrations, playback APIs, or simulated playback state unless explicitly requested.
 
@@ -602,8 +565,6 @@ Structure music data and components so audio playback may be introduced later wi
 The Music page may use secondary lavender more prominently to reinforce its personal and atmospheric role.
 
 ## Projects
-
-**Current status: staged.** The archive route, three provisional project records, focus and selection state, two-tap touch selection, temporary spear response, timeout-driven transition, and metadata-only detail routes exist. No Projects or project-detail Figma export, final project curation, authored motion reference, narrative case-study data, or demonstration region exists.
 
 The Projects page presents a curated archive of selected software engineering, interactive, embedded, and game development work.
 
@@ -685,8 +646,6 @@ Do not force each project into a single category or display arbitrary percentage
 
 ## Playground
 
-**Current status: planned and unavailable.** No route, feature folder, experiment contract, observation interface, or chamber exists. The disabled homepage control exposes the destination without implying availability.
-
 The Playground presents small technical, visual, game, and interaction experiments that do not require the scope or completion level of a full project.
 
 Projects demonstrate completed work.
@@ -751,36 +710,35 @@ The Playground is the region of Longinus where experimental interaction may be l
 
 ## About
 
-**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four interactive-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The approved About / Identity / Desktop / Idle reference is stored and its static composition, shared chapter-header anchor, and site-level navigation treatment are implemented and browser-compared. In normal-motion mode, the temporary procedural spear rotates counterclockwise continuously from the initial Identity view across every chapter. Scrolling upward reverses it clockwise; scrolling downward returns it counterclockwise; scroll speed adds momentum in the active direction. Reduced-motion mode retains static chapter-specific poses. Initial and later Identity frames were browser-inspected at `1440 × 900` in normal and forced reduced-motion modes; full scroll-direction, chapter, and device validation and an authored motion reference remain open. Complete manual accessibility/device validation remains open, and official organization, role, and degree wording remains partly unverified.
+The About page is the human center of Longinus. It connects Jaylan's
+engineering background, game-development interests, teaching, professional
+experience, travel, photography, and personal influences into one coherent
+narrative.
 
-The About page is the human center of Longinus.
+`content/ABOUT_CONTENT.md` is authoritative for exact About copy, editorial
+records, publication intent, and verification flags. Runtime data remains in
+focused modules under `src/features/about/data/`; synchronize approved
+editorial changes deliberately because Markdown edits do not update runtime
+data automatically. Use `TASKS.md` for implementation and validation status,
+and the Figma documents for approved compositions and measurements.
 
-It explains the person behind the projects, experiments, visual system, and Spear of Longinus.
+The About page must not become:
 
-The page should connect Jaylan's engineering background, game-development interests, teaching, professional experience, travel, photography, and personal influences into one coherent narrative.
+- A duplicate résumé
+- A conventional employment timeline
+- A travel blog
+- A standalone photography portfolio
+- A ranked list of favorite works
+- A collection of disconnected hobbies
 
-It must not become:
-
-* A duplicate résumé
-* A conventional employment timeline
-* A travel blog
-* A standalone photography portfolio
-* A ranked list of favorite creative works
-* A collection of disconnected hobbies
-
-Every chapter should contribute to understanding how Jaylan observes, teaches, designs, and builds.
-
-The page should move conceptually from classification toward understanding.
-
-It may begin with structured system information, records, and labels, but should gradually become more personal, visual, and reflective.
-
-The intended progression is:
+Every chapter should help explain how Jaylan observes, teaches, designs, and
+builds. The narrative should move from classification toward understanding:
 
 `classification → context → person → influence → direction`
 
 ### Chapter Structure
 
-The About page should function as one continuous vertical narrative organized into five chapters:
+Use one continuous, naturally scrollable narrative with five chapters:
 
 1. Identity
 2. Trajectory
@@ -788,688 +746,227 @@ The About page should function as one continuous vertical narrative organized in
 4. Interactive Influences
 5. Current Direction
 
-Use standard browser scrolling as the foundation.
+Use stable identifiers:
 
-Do not require hard full-screen scroll snapping.
+- `identity`
+- `trajectory`
+- `outside-system`
+- `interactive-influences`
+- `current-direction`
 
-Subtle chapter alignment and chapter-aware transitions are allowed, but users must remain able to scroll naturally, revisit nearby content, and read at their own pace.
+The persistent chapter header must reserve a stable region while its number and
+label change. The compact navigator may shorten only `Interactive Influences`
+to `Influences`.
+
+Use standard browser scrolling. Do not require hard full-screen scroll
+snapping. Chapter alignment and transitions may be subtle, but readers must be
+able to move naturally, revisit content, and read at their own pace.
 
 ### Identity
 
-Jaylan Wu is the primary identity presented by the About page.
+Jaylan Wu is the primary identity. The opening composition should make his
+perspective and the three connected personal axes immediately understandable:
 
-The opening composition should make Jaylan's name, perspective, and areas of interest immediately understandable.
+- Engineering
+- Game design
+- Education
 
-The three primary personal axes are:
+The axes are a conceptual framework, not categories, percentages, or skill
+ratings. The opening should connect building systems, asking what systems can
+make people feel, and helping other people understand them. Travel and
+photography belong primarily in Outside the System.
 
-* Engineering
-* Game design
-* Education
+Use `alter-egoist` as a restrained creative signature associated with Jaylan,
+not as a fictional persona or replacement identity. Avoid résumé summaries,
+job-search language, long credential lists, or identity language the viewer
+must decode.
 
-These axes establish the conceptual framework of the page without reducing Jaylan's identity to categories, percentages, or skill ratings.
-
-The opening personal statement should communicate how Jaylan's interests in engineering, interactive systems, games, education, travel, and photography relate to one another.
-
-Avoid beginning with a résumé summary, job-search statement, or long list of credentials.
-
-Use `alter-egoist` sparingly.
-
-`alter-egoist` is a subtle creative signature associated with Jaylan, not a second character, fictional persona, or replacement for his name.
-
-It may appear in limited contexts such as:
-
-* A small signature in the opening composition
-* A personal note
-* A photography-series credit
-* A restrained metadata field
-* A closing mark
-
-Do not repeat `alter-egoist` throughout every chapter, record, photograph, or interface label.
-
-The viewer should not need to decode fictional identity language to understand who the portfolio belongs to.
+Keep all three axis statements available without hover. Preserve the deliberate
+desktop composition, hierarchy, authored wrapping, negative space, stable
+chapter anchor, right navigation, spear relationship, and shared page-index
+treatment. Exact copy belongs to `content/ABOUT_CONTENT.md`; measured
+composition belongs to the approved Figma reference and
+`design/figma/foundations.md`.
 
 ### Trajectory
 
-The Trajectory chapter explains how Jaylan's education and selected professional experiences shaped his technical, creative, and educational direction.
+Trajectory should explain how selected education and professional experiences
+shaped Jaylan's technical, creative, and educational direction. It should read
+as a reflective progression rather than a complete chronology.
 
-It should focus on:
+Each published record should communicate:
 
-1. Computer Science and Computer Engineering degrees at New York University, including Game Engineering study
-2. Early teaching and mentorship as a New York University Teaching Assistant
-3. Technology Solutions work with the New York Mets
-4. Software Engineering work at Major League Baseball
-5. Instructional Facilities Management at New York University
+- Its environment and Jaylan's role
+- A defining responsibility or contribution
+- What the experience taught him
+- How it influenced his current direction
+- Its relevant personal axes
 
-The planned New York University Adjunct Professor record must remain unpublished until the role begins and its official title, course wording, and dates are verified. As of the repository audit on 2026-07-21, `EXP-005` appears only as incomplete future source material in `content/ABOUT_CONTENT.md` and is intentionally absent from the published runtime data.
+Use concise reflective writing rather than dense résumé bullets. About should
+explain how an experience shaped Jaylan; a project case study should explain
+what was built and how it worked.
 
-These experiences should form a narrative progression rather than a complete chronological résumé.
+Publish only records identified as publishable in
+`content/ABOUT_CONTENT.md`. Do not infer that a draft or future record is
+approved merely because it exists in the repository. Preserve every recorded
+verification flag for official organizations, titles, programs, courses, and
+dates.
 
-The current published progression is:
-
-`technical foundation → early teaching and mentorship → applied technology → software engineering → educational infrastructure and leadership`
-
-#### College Education
-
-Jaylan's education should establish the technical foundation of the chapter.
-
-Present Computer Science and Computer Engineering as complementary areas of study that allowed him to work across:
-
-* Software
-* Hardware
-* Computer architecture
-* Embedded systems
-* Graphics
-* Interactive technology
-
-Game Engineering should introduce the connection between technical systems, creativity, interaction, and play.
-
-Do not present the degrees only as credentials.
-
-Explain how the combination shaped Jaylan's approach to engineering and interactive work.
-
-#### Teaching Assistant
-
-The New York University Teaching Assistant record should establish teaching and mentorship as an early part of Jaylan's technical practice.
-
-Focus on first-year engineering labs, multidisciplinary prototyping, adapting explanations to different experience levels, mentoring student teams, and developing technical and inclusive instructional practice.
-
-Keep course, tool, and date wording aligned with verified source material rather than expanding the record into a complete teaching résumé.
-
-#### New York Mets
-
-The New York Mets experience should emphasize technology within physical, operational, employee-facing, and fan-facing environments.
-
-Focus on the intersection of:
-
-* Software
-* Hardware
-* People
-* Physical spaces
-* Venue operations
-* Technology adoption
-
-The experience may reference relevant systems, but the About page should prioritize what Jaylan learned about usability, trust, operational context, and real-world implementation.
-
-Detailed technical work should remain within Projects when appropriate.
-
-#### Major League Baseball
-
-The Major League Baseball experience should communicate Jaylan's development as a software engineer working on internal organizational systems.
-
-Relevant themes include:
-
-* Modernizing legacy systems
-* Full-stack development
-* Internal tooling
-* Automation
-* Operational reliability
-* Cloud infrastructure
-* Supporting time-sensitive workflows
-* Collaboration with stakeholders
-
-The About page should focus on the engineering perspective developed through this work.
-
-Do not reproduce detailed technical case studies or every résumé bullet.
-
-Related project details may be linked when those case studies exist.
-
-#### Instructional Facilities Manager
-
-The Instructional Facilities Manager experience should connect technical operations with education.
-
-Focus on the systems, spaces, equipment, documentation, and support required to create reliable instructional environments.
-
-Relevant themes include:
-
-* Technical operations
-* Instructional infrastructure
-* Reliability
-* Resource coordination
-* Leadership
-* Supporting students and instructors
-
-This role should communicate that effective education depends on infrastructure that may become invisible when it functions well.
-
-#### Adjunct Professor
-
-**Deferred content direction:** once the role has begun and the record is verified, the Adjunct Professor experience should represent formal teaching as a meaningful part of Jaylan's professional identity.
-
-Focus on:
-
-* Teaching technical and engineering material
-* Explaining complicated systems clearly
-* Mentoring students
-* Supporting confidence and independence
-* Connecting concepts to practical implementation
-* Learning through the act of teaching
-
-The chapter should communicate that education is not separate from Jaylan's engineering practice.
-
-Teaching influences how he understands, designs, documents, and evaluates technical systems.
-
-#### Experience Presentation
-
-Each experience should communicate:
-
-* The environment or context
-* Jaylan's role
-* A defining responsibility or contribution
-* What the experience taught him
-* How it influenced his current direction
-* The personal axes connected to it
-
-The primary personal axes remain:
-
-* Engineering
-* Game design
-* Education
-
-Supporting labels such as operations, infrastructure, mentorship, reliability, and human-centered technology may appear as metadata.
-
-Do not introduce additional primary axes or arbitrary percentage scores.
-
-Work-experience writing should be concise and reflective.
-
-Avoid dense résumé bullets and exhaustive responsibility lists.
-
-The same experience may appear on About and Projects only when each page answers a different question:
-
-* About explains how the experience shaped Jaylan.
-* Projects explains what was built and how the system worked.
+The selected record may display one associated organization mark as an
+oversized, faint background identifier. Preserve the official asset's
+proportions, apply grayscale and low opacity non-destructively, allow
+intentional cropping, and keep it decorative when semantic organization text
+is already present. Do not tint marks with Longinus accents, create a logo
+wall, or invent a replacement. Exact record-to-mark mappings belong to the
+editorial and runtime data.
 
 ### Outside the System
 
-The Outside the System chapter presents travel and photography as meaningful parts of Jaylan's personal and creative perspective.
+Outside the System presents travel and photography as meaningful parts of
+Jaylan's personal and creative perspective. It should communicate curiosity,
+independence, cultural observation, attention to place, and the way Jaylan
+notices people and composition.
 
-It should explain how travel encourages:
+Do not reduce the chapter to a travel checklist, vacation log, generic hobby
+collection, or camera-specification display.
 
-* Observation
-* Curiosity
-* Independence
-* Attention to unfamiliar environments
-* Awareness of architecture, transit, public spaces, signage, and atmosphere
+Photography is authored portfolio content rather than decoration. Preserve
+original edited images and apply archive treatments non-destructively. The
+interface may move between archive and selected states, but images should have
+room to breathe and remain legible.
 
-Photography should show how Jaylan notices and documents:
-
-* Spaces
-* Architecture
-* Landscapes
-* Transit
-* Typography
-* Environmental details
-* People within larger environments
-* Quiet or transitional moments
-
-Do not treat this chapter as a list of vacations or a generic collection of hobbies.
-
-Travel and photography should contribute to understanding how Jaylan observes the world and how that perspective relates to his technical and creative work.
-
-Music, games, and other interests may appear as supporting personal context, but should not compete with the primary travel and photography narrative.
-
-Music already has a dedicated page and does not require another full presentation within About.
-
-#### Photography Collection
-
-Begin with a small curated collection of approximately six to twelve photographs.
-
-Prefer a deliberate sequence of strong images over a large gallery.
-
-The collection may contain:
-
-* A small number of featured photographs
-* Supporting photographic records
-* Real location and year metadata
-* Optional camera or lens information
-* Short personal captions
-
-Only display metadata that is accurate and meaningful.
-
-Do not generate fictional coordinates, EXIF data, or technical readings for atmosphere.
-
-Do not expose dense capture metadata unless it contributes to the viewing experience.
-
-#### Archive and Selected States
-
-The photography experience may initially present images as structured capture records.
-
-Archive-state presentation may use:
-
-* Controlled cropping
-* Slightly reduced saturation
-* Restrained brightness or contrast adjustments
-* Structured metadata
-* Consistent framing
-* Subtle overlays required for readability
-
-When a photograph is focused or expanded, the interface should allow it to become more personal and visually open.
-
-Selected-state presentation may:
-
-* Restore the photograph's natural or intentionally edited color
-* Increase its visual scale
-* Reduce system-interface prominence
-* Reveal a personal caption
-* Preserve more of the original composition and aspect ratio
-
-The conceptual transition is:
-
-`capture record → selected image → personal memory`
-
-Apply visual treatment non-destructively through CSS, overlays, framing, and motion.
-
-Do not permanently alter source photographs solely to make them match the Longinus palette.
-
-Do not apply one aggressive red, orange, or lavender tint to every image.
-
-Standardize presentation behavior while preserving the individual character of each photograph.
-
-Use highlight orange for active system selection where appropriate.
-
-Lavender may support personal captions and reflection.
-
-Primary red should not be used as a generic photograph-selection color.
+Every published photograph needs a stable identifier, image source, meaningful
+alternative text, location, and year. Optional metadata should appear only
+when it improves the experience. Exact records, captions, reflections, and
+verification flags belong to `content/ABOUT_CONTENT.md`.
 
 ### Interactive Influences
 
-Interactive Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
+Interactive Influences connects Jaylan's personal interests to the work he
+wants to create. It is a curated, medium-agnostic collection and may include
+games, books, film, television, music, or other meaningful work.
 
-Present a curated collection of selected creative works across multiple media. The current collection contains four records spanning video games, a novel, and an anime television series and film.
+Do not rank selections or turn the chapter into conventional reviews. Each
+record should identify a specific influence, Jaylan's reflection, and a useful
+design or creative takeaway. Prefer concise original commentary over copied
+screenshots, promotional artwork, or long quotations, and never reproduce an
+identifiable copyrighted interface composition.
 
-The purpose is not to rank favorites or provide reviews.
-
-Each selection should explain a specific influence, such as:
-
-* Interface and visual direction
-* Systems design
-* Worldbuilding
-* Atmosphere
-* Environmental storytelling
-* Character writing
-* Mechanical expression
-* Music and sound
-* Player or audience perspective
-* Technical or creative ambition
-
-Focus on what Jaylan learned from each work and how it shaped his interest in creative engineering, game development, and interactive technology.
-
-Prefer concise original commentary over large collections of copyrighted screenshots, logos, character artwork, or promotional assets.
-
-Do not reproduce a work's identifiable interface composition or other protected visual material within Longinus.
-
-The chapter should move the narrative from observation and personal influence toward creation and future direction.
+Exact selections, quotations, attribution, editions, translations, speakers,
+source scenes, and their verification flags belong to
+`content/ABOUT_CONTENT.md`.
 
 ### Current Direction
 
-The Current Direction chapter brings the About narrative from Jaylan's past experiences and personal influences into the kind of work he wants to pursue next.
+Current Direction should connect the preceding chapters to Jaylan's present
+work and future interests. It should communicate that Longinus combines
+software engineering, interactive systems, game development, 3D technology,
+visual experimentation, and technical education without becoming a generic
+job-search statement.
 
-It should explain how engineering, game development, education, travel, photography, and creative influences contribute to one connected direction.
-
-The chapter should not function as a rigid career plan or list of aspirational job titles.
-
-It should communicate qualities Jaylan wants his future work to combine:
-
-* Strong software engineering
-* Interactive and game-oriented systems
-* Expressive visual and motion design
-* Real-time or spatial technology
-* Maintainability and performance
-* Clear technical communication
-* Teaching and mentorship
-
-Jaylan's interest in creative and interactive work should not replace his identity as a software engineer.
-
-Reliable engineering and expressive design should be presented as mutually reinforcing.
-
-Teaching should remain part of Jaylan's future direction rather than appearing only as a previous role.
-
-The chapter may express a long-term interest in continuing to teach, mentor, and connect professional engineering practice with higher education.
-
-Travel, photography, and selected creative works may be referenced as influences on Jaylan's attention to space, atmosphere, composition, interaction, and detail.
-
-Do not force every personal interest into a direct professional justification.
-
-The relationship should remain credible and personal.
-
-#### Longinus
-
-Current Direction may briefly frame Longinus itself as an expression of Jaylan's developing interests.
-
-Longinus brings together:
-
-* Software engineering
-* React and TypeScript
-* Real-time 3D
-* Authored motion
-* Game-inspired interaction
-* Visual-system design
-* Personal storytelling
-* Technical experimentation
-
-Do not turn this into a second Longinus project case study.
-
-Use it to explain why the portfolio takes the form of an interactive system rather than a conventional personal website.
-
-#### Current Areas of Exploration
-
-The chapter may identify a restrained set of real areas Jaylan is currently exploring, such as:
-
-* Interactive software
-* Game systems
-* Real-time graphics
-* Three-dimensional web experiences
-* Creative development
-* Technical education
-
-Do not include technologies or fields solely because they are fashionable.
-
-#### Closing
-
-The final writing should be concise, reflective, and forward-looking.
-
-It should leave the viewer with an understanding of:
-
-* What Jaylan values
-* What kind of work he wants to create
-* How his interests connect
-* Why education remains important
-* What Longinus represents within that direction
-
-Practical actions such as viewing Projects, opening a résumé, making contact, or returning Home may appear after the closing statement.
-
-These controls should remain part of the 2D interface.
+Keep its statement, exploration areas, Longinus reflection, closing, and
+actions in focused About editorial and runtime data. Render only actions with
+approved destinations; do not synthesize a résumé or contact action from an
+unfinished placeholder.
 
 ### Spear Role
 
-The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: in normal-motion mode, every chapter uses continuous counterclockwise axial rotation from the first Identity frame. Scrolling upward reverses the rotation clockwise, scrolling downward returns it counterclockwise, and scroll speed adds momentum in the active direction without introducing an endpoint. Reduced-motion mode damps toward chapter-specific axial values. Preserve this continuous axial behavior when authored chapter postures and transitions are added.
+On About, the spear is a quiet witness, spatial anchor, connective thread, and
+representation of narrative progression. It must not behave like the
+homepage's targeting and impact actor.
 
-The Spear of Longinus should remain present throughout the About experience, but its role should differ from Home, Projects, Music, and Playground.
+In normal-motion mode, the spear must never be idle:
 
-On About, the spear acts as:
+- Begin rotating counterclockwise on the first About frame.
+- Continue rotating without an endpoint across every chapter.
+- Reverse clockwise while the user scrolls upward.
+- Return to counterclockwise rotation while the user scrolls downward.
+- Let scroll speed add restrained momentum in the active direction.
 
-* A quiet witness
-* A spatial anchor
-* A connective thread
-* A representation of narrative progression
+The rotation is continuous axial behavior, not a finite animation with a final
+angle. Future approved chapter postures may layer position, depth, camera, or
+orientation changes over that seam, but they must not introduce an idle
+endpoint or silently replace the scroll-direction response.
 
-It should respond primarily to chapter progression rather than individual hover states, experience records, photographs, or influence selections.
+Keep the motion slow, reflective, smooth, spatial, and restrained. Avoid
+thrusting, target locking, impact, pointer following, reactions to every local
+selection, and red interface rupture. Individual records, photographs, and
+influences do not directly control the spear.
 
-Its motion should be:
+### Interaction and Navigation
 
-* Slow
-* Reflective
-* Smooth
-* Spatial
-* Restrained
-* Continuously rotating around its axis in normal-motion mode
-* Counterclockwise by default, with scroll-direction reversal
+On desktop, the narrative may scroll beside a persistent sticky Three.js
+region. The balance between content and 3D space may change by chapter; do not
+require one fixed split-screen ratio throughout the page.
 
-Avoid:
+The active chapter may coordinate chapter-interface state, spear staging,
+camera relationship, lighting, ambient treatment, and chapter navigation.
+Prefer explicit active-chapter state over tightly coupling every scene value to
+raw scroll coordinates. Keep continuous high-frequency values inside React
+Three Fiber rendering patterns rather than React state.
 
-* Thrusting
-* Target locking
-* Impact
-* Pointer following
-* Reactions to every local interaction
-* Red interface rupture
+Experience, photograph, and influence selection should remain local 2D state
+and must not trigger homepage-style targeting or impact behavior.
 
-Each chapter should define an intentional spear role:
+Chapter navigation must:
 
-* Identity: quiet rotating anchor
-* Trajectory: directional spine
-* Outside the System: environmental frame
-* Interactive Influences: emerging direction
-* Current Direction: forward vector
+- Identify the active chapter
+- Provide keyboard-accessible movement to every section
+- Remain visually secondary to the narrative
+- Avoid imitating homepage navigation
 
-During Identity, the spear should remain partially cropped and quietly framed while its axial rotation continues.
-
-During Trajectory, it may evolve through position, depth, and rotation as a representation of development.
-
-During Outside the System, it may recede into depth, frame negative space, or sit behind photographs while its axial rotation continues.
-
-During Interactive Influences, it may begin moving toward a more directional posture without targeting individual influence records.
-
-During Current Direction, its chapter posture may settle into a resolved diagonal or align with a distant vanishing point, but its axial rotation should continue.
-
-The final state should suggest continuation and intention without automatically initiating navigation.
-
-The spear should remain recognizable as the Longinus motif without overpowering personal writing, work experiences, photography, or game commentary.
-
-### Interaction and Scroll Model
-
-The About page should use standard vertical browser scrolling.
-
-On desktop, it may use a persistent or sticky Three.js region while narrative content scrolls.
-
-The spear may remain technically present throughout the page while becoming:
-
-* Partially cropped
-* Repositioned
-* Moved into depth
-* Obscured by composition
-* Visually secondary
-* Still for extended periods
-
-The balance between content and 3D space may change by chapter.
-
-Do not require one fixed split-screen ratio for the entire page.
-
-#### Chapter State
-
-Use stable identifiers for the five chapters:
-
-* `identity`
-* `trajectory`
-* `outside-system`
-* `interactive-influences`
-* `current-direction`
-
-The active chapter may coordinate:
-
-* Chapter-interface state
-* Spear posture
-* Camera relationship
-* Lighting mood
-* Ambient treatment
-* Chapter navigation
-
-Prefer explicit active-chapter state over tightly coupling the scene to raw scroll coordinates.
-
-Continuous chapter progress may influence restrained interpolation, depth, lighting, or parallax when useful.
-
-Do not map every scroll pixel directly to dramatic spear movement.
-
-#### Local Interaction Ownership
-
-Individual experience records, photographs, and influence records should use local 2D interaction state.
-
-Experience records may reveal:
-
-* Reflection
-* Personal axes
-* Contributions
-* Related projects
-
-Photographs may transition between archive and selected states.
-
-Influence records may reveal authored quotes, personal reflections, design takeaways, and related metadata.
-
-These local interactions should not trigger homepage-style spear targeting or impact behavior.
-
-#### Chapter Navigation
-
-The page may include restrained chapter navigation displaying:
-
-* Identity
-* Trajectory
-* Outside the System
-* Interactive Influences
-* Current Direction
-
-Chapter navigation should:
-
-* Indicate the active chapter
-* Allow keyboard-accessible movement to each section
-* Remain visually secondary to the main content
-* Avoid imitating homepage navigation
-
-Use highlight orange for active system state where appropriate.
-
-Do not use primary red as a generic chapter-selection color.
+About scopes primary red to the current chapter and the compact right-side
+navigation hover and keyboard-focus state. Both the number and label change to
+red together. This is an About-specific state connected to the spear; do not
+generalize it to unrelated controls.
 
 ### Responsive Interpretation
 
-On narrow layouts, the spear does not need to remain permanently fixed beside the content.
+On narrow layouts, the spear does not need to remain permanently fixed beside
+the content. Mobile may use a smaller sticky region, alternate content with
+intentional spear moments, reposition the scene at chapter transitions, reduce
+ambient information, or give photography additional width.
 
-Mobile may:
-
-* Alternate between chapter content and intentional spear moments
-* Use a smaller sticky scene region
-* Present the spear at chapter transitions
-* Reduce ambient system information
-* Give photography additional width
-
-Preserve:
-
-* Spear narrative presence
-* Chapter identity
-* Clear content order
-* Photography scale
-* Accessible controls
-* Readable personal writing
-
-Do not sacrifice essential reading space merely to keep the full spear visible at all times.
+Preserve chapter identity, clear content order, spear narrative presence,
+photography scale, accessible controls, and readable personal writing. Do not
+sacrifice essential reading space merely to keep the full spear visible.
 
 ### Reduced Motion
 
-For reduced-motion preferences:
+For `prefers-reduced-motion`, stop continuous and scroll-linked spear
+rotation, reduce parallax and camera travel, shorten transitions, and preserve
+an understandable static chapter pose. The narrative, chapter state,
+navigation feedback, and content hierarchy must remain coherent without large
+spatial motion.
 
-* Remove continuous scroll-linked movement where possible
-* Reduce parallax and camera travel
-* Use shorter transitions between chapter postures
-* Preserve understandable chapter and spear state
-* Allow the spear to remain still in authored poses
+### Content and State Architecture
 
-The About narrative must remain coherent without large spatial animation.
+Keep About editorial data, presentation, local interaction state, active
+chapter coordination, and Three.js behavior clearly separated. The feature
+should own its chapter components, record components, assets, data modules,
+active-chapter logic, page-specific styles, and persistent scene.
 
-### Content and Data Architecture
+Use shared About state only when separate systems coordinate around the same
+concept, such as the active chapter. Keep record, photograph, and influence
+selection local to the owning chapter. Do not create a global About state
+object or speculative data abstraction simply because the page contains
+multiple record types.
 
-Keep About content, presentation, interaction state, and Three.js behavior clearly separated.
+Stable identifiers and semantic metadata should make content editable without
+requiring changes to scene logic. About content must remain accessible in the
+DOM when WebGL is unavailable.
 
-Do not encode all five chapters, experiences, photographs, and influence records directly inside one large page component.
+# Technical Constraints
 
-The About feature should own its:
+Prefer the existing React, TypeScript, Vite, Three.js, React Three Fiber, and
+feature-owned CSS architecture. `package.json` and the checked-in package
+manager files are authoritative for exact versions, installed dependencies,
+and scripts; `README.md` owns setup and command documentation.
 
-* Chapter components
-* Experience-record components
-* Photography components
-* Creative-influence components
-* Page-specific data
-* Local interaction state
-* Active-chapter logic
-* Persistent Three.js scene
-* About-specific spear configurations
-
-Prefer the smallest structure that remains clear.
-
-Do not create every possible component or data abstraction before real content requires it.
-
-#### Experience Data
-
-Experience records may define:
-
-* Stable identifier
-* Organization
-* Role or degree
-* Period
-* Context
-* Defining responsibility or contribution
-* Personal reflection
-* Personal axes
-* Supporting themes
-* Related project identifiers
-
-Do not fill About records with every résumé bullet.
-
-#### Photography Data
-
-Each photograph should include:
-
-* Stable identifier
-* Image source
-* Useful alternative text
-* Location
-* Year
-
-Optional fields may include:
-
-* Country
-* Personal caption
-* Camera
-* Lens
-* Focal length
-* Orientation
-* Featured status
-
-Only display optional metadata when it improves the experience.
-
-Preserve original edited photographs and apply archive treatment non-destructively.
-
-#### Influence-Record Data
-
-Each selected creative influence may define:
-
-* Stable identifier
-* Work title
-* Medium
-* Creator or author when relevant
-* Release year or year range
-* Included works when the record covers a defined group
-* Featured quote and attribution when supplied
-* Relevant influence categories
-* Specific influenced element
-* Jaylan's authored reflection
-* Design takeaway
-* Connection to Longinus when supplied
-
-Do not build a rating, ranking, or review system.
-
-#### State Ownership
-
-Use shared About state only for information that coordinates separate systems, such as the active chapter.
-
-Keep local state within the chapter that owns it.
-
-Examples include:
-
-* Focused experience
-* Selected photograph
-* Selected influence
-
-Do not create one large global About state object solely because the page contains multiple chapters.
-
-Continuous Three.js values such as spear interpolation, camera movement, depth, and lighting transitions should remain within React Three Fiber rendering patterns rather than frame-by-frame React state.
-
-About content should remain editable without requiring changes to spear animation or scene logic.
-
-
-# Technical Stack
-
-Prefer the existing stack and established project patterns.
-
-The current implemented stack is:
-
-- React 19 and React DOM
-- TypeScript 5 with strict no-emit configuration
-- Vite 8
-- Three.js
-- React Three Fiber
-- Feature-owned CSS plus global CSS tokens and foundations
-- ESLint with TypeScript, React Hooks, and React Refresh rules
-- Yarn 4.17.1 with the `node-modules` linker
-
-The dependency manifest also contains Drei, React Three Postprocessing, React Three Rapier, and GSAP, but current source does not import them. Treat them as installed but unused, not as established implementation patterns. Motion / Framer Motion is not installed. No Blender-authored GLTF or GLB asset is present.
-
-Use an already installed dependency only when it directly supports approved work. Do not add Motion, a router, a state library, a test framework, or another package without a concrete need and an in-scope request.
+Use an installed dependency only when it directly supports approved work. Do
+not add a router, animation library, state library, test framework, or other
+package without a concrete need and an in-scope request. An installed but
+unused package is not automatically an established project pattern.
 
 ## Technology Responsibilities
 
@@ -1479,9 +976,11 @@ Use TypeScript to define application data, interaction state, content models, an
 
 Use React Three Fiber for visually meaningful 3D scenes, models, cameras, lighting, and interactive spatial behavior.
 
-Use Drei when its installed utilities simplify standard React Three Fiber behavior without obscuring important project-specific logic; current scenes use React Three Fiber and Three.js directly.
+Use an installed Three.js helper only when it simplifies standard behavior
+without obscuring important project-specific logic.
 
-Use CSS or browser-native animation for current DOM behavior. Motion / Framer Motion may be evaluated later when a reviewed interaction clearly benefits from it; it is not a current dependency.
+Use CSS or browser-native animation for DOM behavior unless a reviewed
+interaction establishes a concrete need for another approach.
 
 Use Blender for future 3D asset creation and authored motion references or exported animation clips when supplied.
 
@@ -1561,29 +1060,16 @@ Once explanatory content is presented, allow the viewer to read and understand i
 
 ## Authored Motion
 
-When Blender animations, viewport recordings, renders, or other supplied motion references are provided, preserve their intended timing, anticipation, weight, and physical character.
-
-Do not automatically replace authored motion with generic spring animation or procedural interpolation.
-
-Exported animation clips may be used directly when they reproduce the intended result effectively.
-
-Procedural motion may be used when behavior must respond dynamically to interaction.
-
-Hybrid approaches are allowed.
-
-For example, a spear may procedurally orient toward a focused target and then transition into an authored impact animation when the user commits.
+Follow **Design Source of Truth → Motion Source of Truth** and the relevant
+transition document. Preserve authored timing and physical character while
+choosing exported, procedural, or hybrid motion according to interaction needs.
 
 ## Coordination
 
-The 2D interface and Three.js scene may respond to the same interaction state, but they do not need to move identically.
-
-Coordinate timing and intent rather than applying the same easing curve to every element.
-
-Use animation completion events, shared interaction phases, or explicit callbacks when systems must coordinate.
-
-Avoid duplicated arbitrary timeout values as the primary synchronization mechanism.
-
-`src/features/projects/projectTransition.ts` is a known staged exception: named timeouts currently advance the archive through commitment, impact, transition, and hash navigation. Keep its provisional status visible. Replace or retune it only when a reviewed motion reference or focused transition task supplies a better completion signal.
+Follow the shared phases and event-driven coordination rules in
+**Interaction Model**. Coordinate timing and intent rather than applying the
+same easing curve to every element. Transition-specific exceptions and
+provisional timings belong in `design/figma/motion/` and `TASKS.md`.
 
 ## Reduced Motion
 
@@ -1687,11 +1173,16 @@ Follow the palette and semantic rules in **Visual System → Color Roles**. Do n
 
 Typography is part of the page composition.
 
-Longinus may use an Evangelion title-card-inspired display typeface when a legally usable font asset has been selected and added to the project.
+Use the authoritative runtime stacks and Figma boundary defined once in
+**Design Source of Truth**. Map display typography to `var(--font-display)`,
+content to `var(--font-sans)`, and system or identifier typography to
+`var(--font-mono)` rather than hardcoding feature-specific families.
 
-When an approved display font exists in the repository, treat it as the primary typeface for title-card-inspired display typography unless the supplied Figma reference specifies otherwise.
+Preserve typographic composition through font size, weight, line height, letter
+spacing, casing, line breaks, wrapping width, alignment, cropping, and
+surrounding negative space.
 
-Do not substitute the approved display font with a generic condensed or system font solely for convenience.
+Because the stacks use system fonts, the resolved face and exact metrics may vary by operating system. Validate that the hierarchy, line cadence, wrapping, spacing, and overall composition remain intentional across representative environments instead of changing the font family to force a pixel-identical Figma result.
 
 Typography should follow the established visual roles:
 
@@ -1711,8 +1202,6 @@ Content typography must prioritize readability.
 Identifiers may function as graphic compositional elements.
 
 Semantic HTML requirements still apply regardless of visual role.
-
-If an exact approved font is unavailable, identify the limitation before introducing an unrelated replacement.
 
 ## Layout and Composition
 
@@ -1752,32 +1241,8 @@ Organize code by feature and responsibility.
 
 Prefer page or feature ownership over large global folders containing unrelated components.
 
-The established structure is:
-
-```text
-.
-├── content/
-│   └── ABOUT_CONTENT.md
-├── design/figma/
-│   ├── README.md
-│   ├── foundations.md
-│   ├── motion/
-│   └── references/
-├── public/
-└── src/
-    ├── components/
-    │   ├── spear/
-    │   └── three/
-    ├── features/
-    │   ├── about/
-    │   │   ├── assets/
-    │   │   └── components/chapters/
-    │   ├── home/
-    │   └── projects/
-    ├── hooks/
-    ├── styles/
-    └── types/
-```
+`README.md` owns the current repository tree. Preserve the feature-oriented
+ownership rules here even as individual files and directories change.
 
 Feature folders may contain their own components, hooks, scene elements, animation logic, types, utilities, and styles.
 
@@ -1805,8 +1270,6 @@ Do not create one universal scene configuration for every page.
 
 Project content should be data-driven where practical.
 
-The current `Project` type and three records live in `src/features/projects/projectData.ts`. The model currently contains `id`, `slug`, `title`, `shortDescription`, `description`, `technologies`, `role`, `year`, and `status`. The records are provisional and must not be presented as a verified final archive.
-
 Separate project content from presentation logic.
 
 Project data may define identifier, name, type, year, role, technologies, personal axes, narrative sections, demonstration type, and relevant assets.
@@ -1818,20 +1281,6 @@ Allow distinctive projects to provide specialized demonstration behavior when re
 ## Playground Experiments
 
 Playground experiments should remain independently owned.
-
-This section is planned architecture. No Playground directory or experiment implementation currently exists.
-
-A conceptual structure may resemble:
-
-```text
-src/
-└── features/
-    └── playground/
-        └── experiments/
-            ├── spear-motion/
-            ├── shader-study/
-            └── interaction-study/
-```
 
 Each experiment may own its scene, state, parameters, controls, observation data, and supporting assets.
 
@@ -1881,7 +1330,10 @@ Follow the repository's existing linting, formatting, and TypeScript configurati
 
 Do not weaken TypeScript, ESLint, or build rules solely to make a new implementation pass.
 
-Before considering a source task complete, run the relevant commands that actually exist: `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`. There is no automated test command. Do not claim automated test coverage.
+Before considering a source task complete, run the relevant scripts that
+actually exist in `package.json` and are documented in `README.md`. Record
+validation status in `TASKS.md` when it changes, and never claim checks that
+were not run.
 
 # Workflow
 
@@ -1900,52 +1352,21 @@ Do not begin by creating new abstractions or dependencies.
 
 ## Visual Implementation Workflow
 
-When implementing a visually directed feature:
-
-1. Understand the full composition.
-2. Implement the primary static 2D structure.
-3. Stage dominant 3D elements within the intended composition.
-4. Compare scale, spacing, typography, silhouette, and visual hierarchy against the reference.
-5. Correct the largest visual differences.
-6. Define and implement the required interaction states.
-7. Add system motion.
-8. Add spear or authored 3D motion.
-9. Coordinate impact and transition behavior.
-10. Implement responsive reinterpretation.
-11. Add accessibility and reduced-motion behavior.
-12. Profile and polish the final interaction.
-
-Do not begin with detailed animation before the static composition and 3D staging are credible.
-
-Do not polish minor decorative details while major compositional differences remain.
+Follow **Design Source of Truth → Implementing From Figma** and the handoff
+procedure in `design/figma/README.md`. Implement and compare one complete state
+at the intended viewport before expanding to additional states. Correct the
+largest compositional differences before minor decoration or detailed motion.
 
 ## Motion Reference Workflow
 
-When a Blender or motion reference is provided:
+Follow **Design Source of Truth → Motion Source of Truth** and the relevant
+document under `design/figma/motion/`. Identify the motion's states, physical
+character, interaction requirements, and completion signals before choosing an
+exported, procedural, or hybrid implementation. Compare the smallest
+representative interaction before adding secondary effects.
 
-1. Identify the intended starting and ending states.
-2. Identify anticipation, acceleration, impact, follow-through, and recovery where present.
-3. Determine whether the motion must react continuously to user input.
-4. Determine whether an exported GLTF animation clip, procedural animation, or hybrid implementation best preserves the reference.
-5. Implement the smallest representative interaction.
-6. Compare the result against the supplied motion reference.
-7. Adjust timing and physical character before adding secondary effects.
-
-Do not translate Blender keyframes mechanically into application code without understanding the visual intent of the motion.
-
-Do not replace distinctive authored timing with default easing values without a reason.
-
-## Figma and Blender Responsibilities
-
-Use Figma to define and evaluate static 2D composition, typography, hierarchy, spacing, color application, interface regions, and major responsive intentions when supplied.
-
-Use Blender and motion references to define and evaluate 3D asset appearance, silhouette, authored motion, physical character, camera relationships shown in the reference, and timing and pacing of intentional 3D sequences.
-
-Use the codebase to implement responsive application behavior, interaction state, accessibility, asset lifecycle, DOM and Three.js coordination, dynamic and procedural behavior, and performance constraints.
-
-Do not expect Figma to define every interaction microstate.
-
-Do not expect Blender to define application state or navigation behavior.
+Do not translate keyframes mechanically or replace distinctive authored timing
+with default easing without understanding the visual intent.
 
 ## Focused Changes
 
@@ -1984,13 +1405,8 @@ Do not describe unverified behavior as complete.
 
 When implementation details are not explicitly defined, preserve the established Longinus concept, visual system, interaction model, and feature responsibilities.
 
-Use the available sources of truth according to their roles:
-
-- Figma defines static 2D composition.
-- Blender and supplied motion references define authored 3D motion and physical character.
-- The interaction specification defines user intent, phases, and state transitions.
-- The Longinus visual system defines typography, color roles, interface language, and compositional principles.
-- The existing codebase defines current engineering constraints and established implementation patterns.
+Apply **Documentation Ownership** and **Design Source of Truth** rather than
+redefining source priorities inside an individual task.
 
 Do not invent major product behavior solely to complete an ambiguous task.
 
@@ -2017,6 +1433,7 @@ Do not independently decide to:
 - Introduce a backend
 - Add a global state-management framework
 - Replace an approved Figma composition with a generic layout
+- Replace the established runtime font stacks solely to match a Figma reference
 - Replace distinctive authored Blender motion with unrelated animation
 
 These decisions affect product direction or architecture and should be explicitly resolved.
@@ -2041,7 +1458,7 @@ Use the established Longinus visual system to interpret missing details.
 
 ## Communicate Limitations
 
-If an intended result cannot be reproduced accurately because of missing assets, missing font files, incomplete motion references, browser limitations, performance constraints, accessibility conflicts, or library limitations, state the limitation clearly.
+If an intended result cannot be reproduced accurately because of missing assets, incomplete motion references, browser limitations, performance constraints, accessibility conflicts, or library limitations, state the limitation clearly. A font-family difference from a Figma reference is expected and should be resolved with the established runtime font stacks, not treated as a missing implementation asset.
 
 Implement the closest maintainable result only when the divergence is understood.
 

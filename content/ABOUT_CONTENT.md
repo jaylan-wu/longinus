@@ -1,23 +1,40 @@
 # About Content Source
 
-This document is the editorial source for the Longinus About page. It contains a mixture of published source material, working drafts, design notes, and explicitly incomplete records; the entire file is not uniformly verified.
+This document is the canonical editorial source for the Longinus About page.
+It owns the exact About copy, ordered content-record inventory, publication
+state, and fact or source-verification flags. It contains a mixture of
+published source material, working drafts, editorial handoff notes, and
+explicitly incomplete records; the entire file is not uniformly verified.
 
 Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, metrics, locations, captions, or personal reflections.
 
-## Repository status
+## Ownership and synchronization
 
-Audited against the implementation on **2026-07-27**.
+Editorial inventory reviewed on **2026-07-28**.
+
+- [`AGENTS.md`](../AGENTS.md) owns durable product direction, visual-system
+  rules, interaction intent, and engineering constraints.
+- [`TASKS.md`](../TASKS.md) owns current implementation status, validation
+  history, unresolved work, and work order.
+- [`design/figma/README.md`](../design/figma/README.md) and
+  [`design/figma/foundations.md`](../design/figma/foundations.md) own approved
+  reference status, measured layout, and implementation comparison notes.
+- Layout, motion, or implementation notes retained here provide editorial
+  context only. Defer to those owning documents when they conflict.
 
 - Published runtime data is maintained in focused modules under [`src/features/about/data/`](../src/features/about/data/).
-- Current UI renders all five chapters, `EDU-001`, `EXP-001` through `EXP-004`, seven photographs, four interactive-influence records, and three final actions.
+- The canonical published inventory contains all five chapters, `EDU-001`,
+  `EXP-001` through `EXP-004`, `PHOTO-001` through `PHOTO-007`, `INF-001`
+  through `INF-004`, and the Projects, Contact, and Home final actions.
 - `EXP-005` is future, incomplete, and intentionally unpublished.
-- The four influence records are published in the current staged About page; quote, translation, speaker, and source-scene verification remains open where flagged below.
-- Degree, school/program, role, course, date, public contact, photograph metadata, and selected wording still require the specific verification flags recorded below. Repository presence is not proof of official wording.
+- Degree, school/program, role, course, date, public contact, photograph
+  metadata, and selected wording remain unverified as called out by this
+  document. A record-level verification note takes precedence over general
+  inventory language. Repository presence is not proof of official wording.
+- Quote wording, punctuation, attribution, translation, speaker, edition, and
+  source-scene verification remains open only where flagged on the applicable
+  influence record below.
 - Content edits do not update the runtime data modules automatically. Keep the editorial source and runtime data synchronized deliberately when wording is approved.
-- The approved About / Identity / Desktop / Idle reference is stored at
-  [`design/figma/references/about/about-identity-desktop-idle-v1.png`](../design/figma/references/about/about-identity-desktop-idle-v1.png).
-  It defines only the Identity desktop idle composition; the remaining four
-  chapter compositions are not approved.
 
 ---
 
@@ -87,147 +104,32 @@ Supporting statement:
 I teach the next set of curious individuals the skills and confidence to
 continue building on their own.
 
-## Identity Design Notes
+## Identity Editorial Presentation Notes
 
-The approved primary comparison viewport is `1440 × 900` (`16:10`). The
-stored export is:
+The approved Identity desktop-idle reference is:
 
 `design/figma/references/about/about-identity-desktop-idle-v1.png`
 
-At desktop sizes, keep every axis short statement on two authored lines and
-align the axis headings, short statements, and supporting statements across
-all three columns. AX-01 breaks after `Design, build,`, with
-`Test, and refine.` on its second line.
+Figma handoff, measured layout, responsive comparison, navigation behavior, and
+spear motion belong to the design documentation, `TASKS.md`, and
+`AGENTS.md`. The notes here preserve only editorial presentation intent.
 
-The complete Identity chapter should be visible within the initial desktop
-viewport and remain overflow-safe on shorter desktop heights such as
-`1440 × 800`.
+The display statement uses four authored desktop lines:
 
-Larger similar-aspect-ratio desktop checks should include `1680 × 1050`,
-`1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The older
-`2500 × 1350` target may remain a secondary, wider validation size, but it does
-not replace the approved `1440 × 900` baseline.
+1. `CREATIVITY`
+2. `WAS ALWAYS`
+3. `PART OF`
+4. `THE SYSTEM.`
 
-At larger desktop sizes, preserve:
+The `AX-01` short statement breaks after `Design, build,` so
+`Test, and refine.` occupies the second line. All three axis short statements
+and supporting statements remain visible content; do not make them available
+only through hover or focus.
 
-- The relative width of the left content and right spear regions
-- The hierarchy between the display statement, opening statement, and axes
-- The relative typography scale
-- The vertical position of each content region
-- The spacing between the Identity-axis records
-- The spear's scale and relationship to the chapter navigation
-- The overall balance of positive and negative space
+Preserve Jaylan Wu as the primary identity, New York City as the location, and
+`alter-egoist` as a restrained creative signature rather than a second
+identity. Do not add editorial copy solely to fill visual space.
 
-Do not apply one uniform transform to stretch the baseline composition. Use
-relative structural tracks, viewport-aware gaps, and bounded typography and
-spacing. Allow intentional negative space to grow while preventing the
-narrative from remaining inside a small `1440px` island. Keep paragraph line
-lengths controlled.
-
-The About shell owns one persistent left-side chapter-header anchor. Its
-top-left position and reserved bounding region are shared by:
-
-- `01 / IDENTITY`
-- `02 / TRAJECTORY`
-- `03 / OUTSIDE THE SYSTEM`
-- `04 / INTERACTIVE INFLUENCES`
-- `05 / CURRENT DIRECTION`
-
-Pointer selection, keyboard activation, and active-section detection replace
-the text in this region without moving the anchor. Individual sections retain
-semantic headings without duplicating the persistent visual title for
-assistive technology.
-
-Visible content must include:
-
-- Chapter label
-- Name
-- Location
-- Creative signature
-- Display statement
-- Full opening statement
-- All three Identity-axis records
-- Each axis short statement
-- Each axis supporting statement
-
-Do not hide axis supporting content behind hover or focus.
-
-Preserve the existing right-side chapter-navigation and spear composition.
-
-Use a compact three-zone composition for:
-
-1. Display and opening statements
-2. Identity-axis records
-3. Identity metadata
-
-On the left side:
-
-- Keep `CREATIVITY WAS ALWAYS PART OF THE SYSTEM.` as the primary display
-  statement.
-- The approved Identity desktop idle composition displays the statement across
-  four lines:
-
-  `CREATIVITY`
-
-  `WAS ALWAYS`
-
-  `PART OF`
-
-  `THE SYSTEM.`
-
-- Position the opening statement beside or immediately below the display
-  statement.
-- Keep the opening statement readable and secondary to the primary display
-  statement.
-- Begin the three-axis region high enough for all three records to remain
-  visible.
-- Keep each supporting statement concise enough to render comfortably within
-  its axis column.
-- Reduce unnecessary vertical gaps before reducing readable text sizes.
-- Keep all meaningful system and metadata text readable.
-- Vertically balance the complete left-side composition while accounting for
-  the persistent header.
-- Preserve clear separation between the display statement, opening statement,
-  and identity-axis records.
-- Do not add oversized decorative background words.
-- Do not introduce an internal chapter scrollbar.
-
-Use the current page-header and chapter-navigation typography as the minimum
-readable reference for system, identifier, and metadata text.
-
-The right-side composition should preserve:
-
-- The persistent chapter navigation
-- The Identity chapter’s quietly framed, continuously rotating spear
-- Substantial negative space around the spear
-- The shared Home-aligned `04` scene index
-
-The bottom Identity metadata should preserve Jaylan Wu as the primary identity,
-New York City as location, and `alter-egoist` as a restrained creative
-signature rather than a second identity.
-
-About's site-level `Index` action and compact chapter controls reuse Home's
-available-navigation hover and keyboard-focus behavior. Chapter controls remain
-visually distinct through their compact layout and scoped red accent.
-
-The Identity axis wording above is synchronized with the supplied export and
-runtime data. Red identifies the current About chapter and the right-navigation
-hover/focus state; orange remains the default active-system accent elsewhere,
-lavender represents personal context, and red continues to belong to the spear.
-
-The spear should function as a quiet anchor during Identity while rotating
-counterclockwise continuously in normal-motion mode. Its rotation should begin
-with the first rendered visit and should not resolve to an endpoint. Scrolling
-upward should reverse it clockwise; scrolling downward should return it
-counterclockwise.
-
-Avoid:
-
-- Thrusting
-- Target locking
-- Pointer-following behavior
-- Impact effects
-- Red interface disruption
 ---
 
 # 2. Trajectory
@@ -425,6 +327,10 @@ Student confidence
 
 Identifier: EXP-002
 
+Publication status:
+
+Published
+
 Organization:
 
 New York Mets
@@ -469,6 +375,10 @@ Physical technology, technology solutions
 
 Identifier: EXP-003
 
+Publication status:
+
+Published
+
 Organization:
 
 Major League Baseball
@@ -512,6 +422,10 @@ Modernization, automation, reliability, cloud infrastructure, full stack
 ## NYU Instructional Facilities Manager
 
 Identifier: EXP-004
+
+Publication status:
+
+Published
 
 Organization:
 
@@ -602,41 +516,13 @@ Supporting themes:
 
 Teachining.
 
-## Trajectory Organization Marks
+## Organization-Mark Metadata
 
-The selected Trajectory record may display the associated organization's
-official mark as an oversized, faint background identifier.
-
-Associations:
-
-- `EDU-001` → New York University
-- `EXP-001` → New York University
-- `EXP-002` → New York Mets
-- `EXP-003` → Major League Baseball
-- `EXP-004` → New York University
-- `EXP-005` → New York University, but the record remains unpublished
-
-Requirements:
-
-- Show only the mark associated with the currently selected record.
-- Apply grayscale treatment non-destructively through CSS.
-- Preserve the original logo proportions.
-- Use very low opacity so the mark does not compete with the record title
-  or body content.
-- Allow the mark to be partially cropped by the selected-record region.
-- Use a neutral foreground or muted treatment.
-- Do not tint organization marks red, orange, or lavender.
-- Do not display logos as badges, cards, or a wall of employers.
-- Treat the images as decorative because the organization is already
-  represented through semantic text.
-- Use a restrained opacity transition when the selected record changes.
-- Remove or shorten that transition for reduced-motion users.
-- Reuse one New York University asset for all NYU records.
-- Store organization marks within the About feature.
-- Use named position or scale variants such as `center`, `lower-right`, or
-  `upper-right` rather than arbitrary record-specific pixel coordinates.
-- Do not modify the source organization assets.
-- Do not create a replacement mark when a suitable official asset is missing.
+Each record's `Organization mark` field is the canonical editorial mapping.
+Runtime data may resolve that value to a feature-owned official asset.
+`EXP-005` and its mark remain unpublished while the record is incomplete.
+Presentation and reduced-motion rules for marks belong to `AGENTS.md` and the
+design documentation.
 
 ---
 
@@ -669,7 +555,8 @@ When I take my camera out, I usually look for the symmetry in nature. Many of my
 
 ## Photography Records
 
-Repeat this section for approximately 6–12 photographs.
+The canonical published sequence contains seven photographs, `PHOTO-001`
+through `PHOTO-007`, in the order below.
 
 ### Photograph
 
@@ -983,29 +870,35 @@ I like the composition of this photo and really shows the intimacy and relations
 
 # 4. Interactive Influences
 
-Choose approximately 3–6 games.
+The canonical published sequence contains four mixed-media influence records:
 
-Status: INCOMPLETE — two completed influence records are supplied below; at least one additional selection remains to be curated.
+1. `INF-001` — *Metaphor: ReFantazio* — video game
+2. `INF-002` — *Persona 4 Golden* — video game
+3. `INF-003` — *Kafka on the Shore* — novel
+4. `INF-004` — *Neon Genesis Evangelion* and *The End of Evangelion* — anime
+   television series and film
 
 Do not rank them.
 
 Do not write conventional reviews.
 
-Repeat this section for each game.
-
-## Game Influence
+## Influence Record
 
 Identifier:
 
 INF-001
 
-Game title:
+Publication status:
+
+Published
+
+Work title:
 
 Metaphor: ReFantazio
 
 Medium:
 
-Video Game
+Video game
 
 Release year:
 
@@ -1056,6 +949,10 @@ spaces the player must pass through to return to it.
 Identifier:
 
 INF-002
+
+Publication status:
+
+Published
 
 Work title:
 
@@ -1126,6 +1023,10 @@ Identifier:
 
 INF-003
 
+Publication status:
+
+Published
+
 Work title:
 
 Kafka on the Shore
@@ -1192,6 +1093,10 @@ meaning is fully understood.
 Identifier:
 
 INF-004
+
+Publication status:
+
+Published
 
 Work title:
 
@@ -1260,7 +1165,7 @@ influence goes beyond the spear, typography, or interface references. It
 showed me that technical systems, composition, stillness, and visual
 disruption can carry emotional meaning. Longinus draws from those principles
 without attempting to reproduce the series’ identifiable artwork or
-interfaces. :contentReference[oaicite:0]{index=0}
+interfaces.
 
 Design takeaway:
 

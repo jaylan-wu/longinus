@@ -2,7 +2,10 @@
 
 ## Current implementation status
 
-**Planned.** Home currently renders direct hash links for Projects and About plus disabled controls for Music and Playground. CSS provides pointer-hover and keyboard-focus feedback, but there is no Home interaction phase/target state, spear aiming, commitment lock, impact, follow-through, delayed route change, destination entry, or focus transfer. The final spear model and authored motion reference are also absent.
+**Specification status: planned and awaiting an authored motion reference.**
+[`TASKS.md`](../../../TASKS.md) Milestone 3 owns the live implementation
+checklist. This file owns the intended transition sequence, coordination
+signals, fallback behavior, and motion decisions.
 
 The sequence below is approved interaction direction, not current or motion-approved behavior.
 
@@ -22,7 +25,8 @@ Define how an available main-navigation choice coordinates the structured DOM in
 
 ## Canonical phases
 
-Use the shared Longinus terms rather than a second naming system:
+Use the shared Longinus terms defined in [`AGENTS.md`](../../../AGENTS.md)
+rather than a second naming system:
 
 ```text
 idle → focused → committing → impact → transitioning → settled

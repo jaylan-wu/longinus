@@ -1,6 +1,12 @@
 # Longinus Tasks
 
-This file is the implementation plan and status tracker. `AGENTS.md` defines durable product direction and engineering constraints; this file records what the repository has actually established and what remains.
+This file is the detailed implementation plan, status authority, and validation
+log. [`AGENTS.md`](AGENTS.md) defines durable product direction and engineering
+constraints; [`content/ABOUT_CONTENT.md`](content/ABOUT_CONTENT.md) owns exact
+About editorial material; and
+[`design/figma/README.md`](design/figma/README.md) owns the approved-frame
+tracker. This file records what the repository has actually established and
+what remains.
 
 Status reviewed against source on **2026-07-28**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
@@ -36,11 +42,13 @@ chapter and device validation remains open.
 
 ## Task rules
 
-- Prefer one complete interaction or visual state over several partial features.
+- Follow the durable implementation and source-of-truth rules in
+  [`AGENTS.md`](AGENTS.md).
+- Treat a checkmark as a repository-evidence claim, not as editorial, visual, or
+  authored-motion approval unless the item explicitly records that approval.
 - Do not claim a Figma match without a recorded comparison against an approved frame.
 - Do not claim authored motion without a supplied Blender or motion reference and comparison.
 - Do not describe staged project data, procedural geometry, or provisional timing as final.
-- Keep feature behavior, data, assets, scenes, and CSS within the owning feature unless reuse is proven.
 - Run only commands that exist. The current automated checks are `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`; no test command exists.
 - Keep manual browser, keyboard, touch, responsive, reduced-motion, and WebGL-failure checks open until they are actually performed.
 
@@ -80,14 +88,8 @@ chapter and device validation remains open.
 
 ## Color and styling
 
-- [x] Define the semantic palette in `src/index.css`:
-  - Background `#09090b`
-  - Surface `#141317`
-  - Foreground `#e8e4dc`
-  - Muted `#8d8882`
-  - Spear/disruption red `#d92332`
-  - Identity lavender `#7a5aa6`
-  - Active-system orange `#f28c28`
+- [x] Define the semantic palette in `src/index.css` and record its audited
+  values in `design/figma/foundations.md`.
 - [x] Mirror scene-required color values in `src/styles/colors.ts`.
 - [x] Use orange for implemented focus/active-system states and red for spear/disruption states where applicable.
 - [x] Keep feature composition out of `src/index.css`.
@@ -96,12 +98,12 @@ chapter and device validation remains open.
 
 ## Typography
 
-- [x] Provide provisional display, sans-serif, and monospace CSS tokens.
+- [x] Establish the display, sans-serif, and monospace CSS tokens as the site-wide font-family source of truth.
 - [x] Record that all current stacks are system fallbacks and can vary by device.
-- [ ] Approve the Display, System, Content, and Identifier roles as a complete typography system.
-- [ ] Select and license the final display face.
-- [ ] Select or confirm final system, content, and identifier faces.
-- [ ] Bundle approved font assets and update CSS tokens plus Figma foundations together.
+- [x] Map Display to `var(--font-display)`, Content to `var(--font-sans)`, and System/Identifier to `var(--font-mono)`.
+- [x] Record that Figma font families are not implementation requirements.
+- [ ] Replace the Home `ARCHIVE:` label's one-off Archivo/Arial Narrow stack with an established runtime token unless an explicit new token is approved.
+- [ ] Verify the established system stacks preserve intentional hierarchy, wrapping, line cadence, and spacing across representative operating systems.
 - [ ] Verify long-form About and project content does not inherit display typography.
 
 ---
@@ -112,7 +114,7 @@ chapter and device validation remains open.
 
 - [ ] Create and approve the boot composition in Figma.
 - [ ] Identify genuinely critical homepage assets.
-- [ ] Track real readiness for the final spear, critical textures/materials, fonts, and initial scene.
+- [ ] Track real readiness for the final spear, critical textures/materials, and initial scene.
 - [ ] Define the linear indicator and its relationship to the spear.
 - [ ] Implement `loading → linear indicator → spear reveal → homepage`.
 - [ ] Avoid simulated percentages and excessive minimum delays.
@@ -307,8 +309,12 @@ chapter and device validation remains open.
 - [ ] Supply authored chapter postures and transitions.
 - [ ] Layer authored quiet chapter progression over the continuous scroll-direction-responsive axial rotation.
 - [ ] Verify the spear never obscures essential content at representative viewport sizes.
-- [ ] Manually verify normal and reduced-motion behavior.
-- [ ] Manually verify reading order and all About controls with WebGL unavailable.
+- [ ] Manually verify normal and reduced-motion behavior across every chapter
+  and representative viewport/device sizes; the recorded Identity checks do not
+  cover that full matrix.
+- [ ] Manually verify reading order and every chapter interaction with WebGL
+  unavailable; the recorded Identity semantic check does not cover the full
+  About experience.
 
 ---
 
@@ -396,14 +402,17 @@ chapter and device validation remains open.
 
 1. Verify official About degree, school/program, role, course, date, contact, photo-metadata, and future Adjunct Professor wording; keep unverified future content unpublished.
 2. Curate and verify the real Projects archive before finalizing layouts around provisional records.
-3. Approve and bundle the Longinus typography system.
+3. Complete the cross-platform typography audit and migrate the Home `ARCHIVE:` font exception to an established token.
 4. Integrate the final authored spear asset and re-stage the homepage.
 5. Compare and approve the complete homepage desktop-idle composition at `1440 × 900` and representative shorter heights.
 6. Supply the homepage spear motion reference, then prove one complete accessible Home interaction.
-7. Implement boot around real readiness for the final spear and fonts.
+7. Implement boot around real readiness for the final spear and its critical scene assets.
 8. Create Projects Figma and motion references, replace provisional timing/content, and polish the archive transition.
 9. Build the project-detail narrative and demonstration framework from real case-study material.
-10. Create About Figma/motion references, optimize photography delivery, and layer authored chapter progression over the continuous scroll-direction-responsive spear rotation.
+10. Create approved frames for the four About chapters after Identity, supply
+    authored chapter-motion references, optimize photography delivery, and
+    layer that authored progression over the continuous
+    scroll-direction-responsive spear rotation.
 11. Design and implement Playground, then Music, when their content and references are ready.
 12. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
 

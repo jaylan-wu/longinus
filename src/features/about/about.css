@@ -165,6 +165,7 @@
 
 .about__chapter-nav button span:first-child {
   color: var(--color-muted);
+  transition: color 220ms ease;
 }
 
 .about__chapter-nav button.is-active {
@@ -183,6 +184,11 @@
     var(--about-chapter-nav-inline-padding) +
     var(--about-chapter-nav-hover-shift)
   );
+}
+
+.about__chapter-nav button.navigation-action:hover span:first-child,
+.about__chapter-nav button.navigation-action:focus-visible span:first-child {
+  color: var(--color-primary);
 }
 
 .about__composition {
