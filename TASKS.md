@@ -31,6 +31,15 @@ installed Node `22.14.0`; the build retained the known approximately `1.08 MB`
 initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. Full
 chapter and device validation remains open.
 
+Scoped About chapter-indicator validation on 2026-07-28: all five
+right-navigation targets were activated at `1440 × 900` and `390 × 844`.
+Every chapter-owned indicator landed at the shared top-left anchor within
+sub-pixel tolerance. A subsequent `120px` manual scroll moved the active
+indicator by `120px`, and selecting the chapter again restored the shared
+anchor. Forced reduced-motion navigation was also verified at `1440 × 900`.
+`corepack yarn typecheck` and `corepack yarn lint` passed. The production build
+passed with Node `22.14.0` and retained the known initial chunk-size warning.
+
 ## Status language
 
 - **Implemented** — present and verifiable in source.
@@ -239,8 +248,10 @@ chapter and device validation remains open.
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
 - [x] Store the approved About / Identity / Desktop / Idle export at `design/figma/references/about/about-identity-desktop-idle-v1.png`.
-- [x] Implement a shell-owned persistent chapter header whose anchor is shared by all five chapters.
-- [x] Verify pointer, keyboard, and scroll-driven chapter changes replace the persistent header text without moving its bounding region.
+- [x] Implement chapter-owned visible indicators that move with their sections.
+- [x] Verify every right-navigation selection lands its chapter indicator at
+  the same shared viewport anchor while natural scrolling continues to move
+  indicators through the page.
 - [ ] Create and approve About Figma frames for Trajectory, Outside the System, Interactive Influences, and Current Direction.
 - [ ] Record visual comparisons for the four remaining chapter frames and the finished narrow-layout reinterpretation.
 
@@ -249,7 +260,7 @@ chapter and device validation remains open.
 - [x] Present Jaylan Wu, New York City, the opening statement, three axes, and `alter-egoist` as a restrained signature.
 - [x] Keep all axis statements visible rather than hover-gated.
 - [x] Implement the static About / Identity / Desktop / Idle composition from the approved `1440 × 900` reference.
-- [x] Complete a direct browser comparison at `1440 × 900`, including region proportions, persistent chapter anchor, type hierarchy, navigation placement, spear framing, spacing, and shared Home page-index alignment.
+- [x] Complete a direct browser comparison at `1440 × 900`, including region proportions, initial Identity indicator placement, type hierarchy, navigation placement, spear framing, spacing, and shared Home page-index alignment.
 - [x] Verify responsive expansion at `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600` without a fixed-width island or horizontal overflow.
 - [x] Verify the shorter `1440 × 800` desktop layout remains usable without an internal chapter scrollbar.
 - [x] Reuse and browser-verify the Home available-navigation hover/focus treatment for About's site-level `Index` action and right chapter controls; keep the controls compact and use the About-scoped red accent.

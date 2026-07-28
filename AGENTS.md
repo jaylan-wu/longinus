@@ -754,9 +754,10 @@ Use stable identifiers:
 - `interactive-influences`
 - `current-direction`
 
-The persistent chapter header must reserve a stable region while its number and
-label change. The compact navigator may shorten only `Interactive Influences`
-to `Influences`.
+Each chapter owns a visible number-and-label indicator that moves naturally
+with its section. Right-side navigation must land the selected indicator at the
+same shared viewport anchor for every chapter. The compact navigator may
+shorten only `Interactive Influences` to `Influences`.
 
 Use standard browser scrolling. Do not require hard full-screen scroll
 snapping. Chapter alignment and transitions may be subtle, but readers must be
@@ -782,8 +783,8 @@ job-search language, long credential lists, or identity language the viewer
 must decode.
 
 Keep all three axis statements available without hover. Preserve the deliberate
-desktop composition, hierarchy, authored wrapping, negative space, stable
-chapter anchor, right navigation, spear relationship, and shared page-index
+desktop composition, hierarchy, authored wrapping, negative space, shared
+chapter landing anchor, right navigation, spear relationship, and page-index
 treatment. Exact copy belongs to `content/ABOUT_CONTENT.md`; measured
 composition belongs to the approved Figma reference and
 `design/figma/foundations.md`.

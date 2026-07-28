@@ -6,8 +6,9 @@ type ChapterHeadingProps = {
 
 export function ChapterHeading({ chapter }: ChapterHeadingProps) {
   return (
-    <h2 className="about-chapter__semantic-heading" id={chapter.headingId}>
-      {chapter.label}
+    <h2 className="about-chapter__heading" id={chapter.headingId}>
+      <span>{chapter.index} /</span>
+      <span>{chapter.label}</span>
     </h2>
   )
 }

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { PageIndex } from '../../components/PageIndex'
 import '../../components/navigation/navigationAction.css'
-import { AboutActiveChapterHeader } from './components/AboutActiveChapterHeader'
 import { AboutChapterNavigation } from './components/AboutChapterNavigation'
 import { AboutChapters } from './components/AboutChapters'
 import { getAboutChapter } from './data/chapters'
@@ -87,7 +86,6 @@ export function AboutPage() {
         </p>
       </header>
 
-      <AboutActiveChapterHeader chapter={currentChapter} />
       <AboutChapterNavigation
         activeChapter={activeChapter}
         onSelectChapter={selectChapter}

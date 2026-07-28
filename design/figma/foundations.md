@@ -66,7 +66,7 @@ without changing the established font families.
 | --- | --- | --- |
 | Four-line display statement | Existing `var(--font-display)` family, weight `700`, `clamp(4.5rem, 5.14vw, 8rem)`, `0.946` line height, controlled horizontal staging | Renders at approximately `74px` on a `70px` cadence at the baseline while preserving the established runtime font family |
 | Opening statement | Existing `var(--font-sans)` family, `clamp(0.8125rem, 0.9vw, 1.125rem)`, `1.52` line height | Renders at `13px / 19.76px` at the baseline with reference-matched line breaks |
-| Chapter/system labels | `var(--font-mono)`, `12px` at baseline | The persistent visual chapter label is shell-owned; semantic section headings remain in the document |
+| Chapter/system labels | `var(--font-mono)`, `12px` at baseline | Each chapter owns one visible semantic indicator; right-navigation selection aligns it to the shared viewport anchor |
 | Axis identifiers | `var(--font-mono)`, responsive from the baseline within bounded sizes | System identifiers remain visually distinct from narrative copy |
 | Axis support | Existing `var(--font-sans)` family, `clamp(0.75rem, 0.9vw, 1rem)`, `1.4` line height, bounded to `26ch` | Baseline copy follows the reference's four-line cadence and remains visible at `1440 × 800` |
 | Axis short statements | Existing `var(--font-display)` family with bounded `20–20.8px` baseline sizing and controlled two-line wrapping | Reference wording and vertical placement are synchronized with the editorial and runtime sources |
@@ -88,7 +88,7 @@ fixed browser requirement.
 | Home ambient grid | `90px × 90px` background lines | Implemented visual treatment; not an approved component grid |
 | Home outer frame | Fixed insets defined in `src/features/home/home.css` | Implemented; comparison unverified |
 | About Identity desktop split | `67.64% / 32.36%`, shared by header, narrative, and sticky scene | Compared at the canonical viewport |
-| About persistent chapter anchor | Shell-owned fixed area beginning at the same baseline top-left position for every chapter, with width reserved for the longest label | Pointer, keyboard, and observer-driven text changes verified without anchor movement |
+| About chapter landing anchor | Chapter-owned indicators move with their sections; right-navigation selection aligns each indicator to the same baseline top-left viewport position | All five targets browser-verified at `1440 × 900` and `390 × 844`; natural scrolling and anchor restoration also verified |
 | About larger desktop | Relative tracks plus height-aware custom properties and bounded `clamp()` sizing; no full-page transform | Reviewed at four larger `16:10` viewports without horizontal overflow or a fixed `1440px` island |
 | About short desktop | Height-aware Identity spacing at `1440 × 800`; no internal chapter scroller | Browser-reviewed |
 | Narrow layout | Existing feature-owned single-column fallbacks remain below their breakpoints | Implemented CSS; final mobile/device review unverified |
@@ -96,7 +96,7 @@ fixed browser requirement.
 ### About Identity spacing audit
 
 The canonical comparison covered the page header-to-content and
-header-to-chapter-anchor gaps; chapter identifier/title spacing; the
+header-to-Identity-indicator gaps; chapter identifier/title spacing; the
 display/opening/axes sequence; internal and inter-record axis spacing; the
 name/location/signature metadata row; content-to-negative-space-to-scene
 relationships; spear-to-navigation and navigation-to-edge spacing; and the

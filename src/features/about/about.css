@@ -33,7 +33,6 @@
 }
 
 .about__page-title,
-.about-chapter__semantic-heading,
 .about__visually-hidden {
   position: absolute;
   width: 1px;
@@ -100,24 +99,26 @@
   font-weight: 400;
 }
 
-.about__active-chapter {
-  position: fixed;
-  z-index: 16;
+.about-chapter__heading {
+  position: absolute;
+  z-index: 5;
   top: var(--about-chapter-anchor-top);
   left: var(--about-content-left);
   display: flex;
   gap: clamp(1.25rem, 1.46vw, 2.33rem);
   width: clamp(20rem, 31vw, 34rem);
   min-height: clamp(2.5rem, 3vw, 4.5rem);
+  margin: 0;
   color: var(--color-foreground);
   font-family: var(--font-mono);
   font-size: var(--about-text-system);
+  font-weight: 400;
   line-height: 1.25;
   text-transform: uppercase;
   pointer-events: none;
 }
 
-.about__active-chapter span:first-child {
+.about-chapter__heading span:first-child {
   color: var(--color-highlight);
 }
 
@@ -1118,7 +1119,7 @@
   .about__header { right: 1rem; left: 1rem; }
   .about__header-location span { display: none; }
   .about__header-location { margin-right: 0.5rem; }
-  .about__active-chapter {
+  .about-chapter__heading {
     width: calc(100% - 2.4rem);
     min-height: 2rem;
     font-size: 0.75rem;
@@ -1162,7 +1163,7 @@
   .influence-detail__eyebrow span:last-child { text-align: left; }
   .influence-detail h3 { margin-top: 3rem; font-size: clamp(2.5rem, 13vw, 4.2rem); }
   .influence-detail__work-metadata div { grid-template-columns: 1fr; gap: 0.35rem; }
-  .about-chapter--direction { min-height: auto; padding-bottom: 9rem; }
+  .about-chapter--direction { min-height: 100svh; padding-bottom: 9rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
