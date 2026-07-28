@@ -43,7 +43,7 @@ The goal is to show that engineering, interactive design, and teaching are conne
 
 # Documentation Status and Current Repository Snapshot
 
-This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-27.
+This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-28.
 
 Use these status terms consistently:
 
@@ -751,7 +751,7 @@ The Playground is the region of Longinus where experimental interaction may be l
 
 ## About
 
-**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four interactive-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The approved About / Identity / Desktop / Idle reference is stored and its static composition, shared chapter-header anchor, quiet Identity spear pose, and site-level navigation treatment are implemented and browser-compared. The spear remains temporary procedural geometry; later chapters retain provisional continuous scroll-responsive rotation and have no approved static or authored motion references. Complete manual accessibility/device validation remains open, and official organization, role, and degree wording remains partly unverified.
+**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four interactive-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The approved About / Identity / Desktop / Idle reference is stored and its static composition, shared chapter-header anchor, and site-level navigation treatment are implemented and browser-compared. In normal-motion mode, the temporary procedural spear rotates counterclockwise continuously from the initial Identity view across every chapter. Scrolling upward reverses it clockwise; scrolling downward returns it counterclockwise; scroll speed adds momentum in the active direction. Reduced-motion mode retains static chapter-specific poses. Initial and later Identity frames were browser-inspected at `1440 × 900` in normal and forced reduced-motion modes; full scroll-direction, chapter, and device validation and an authored motion reference remain open. Complete manual accessibility/device validation remains open, and official organization, role, and degree wording remains partly unverified.
 
 The About page is the human center of Longinus.
 
@@ -1180,7 +1180,7 @@ These controls should remain part of the 2D interface.
 
 ### Spear Role
 
-The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: Identity uses a stable, quiet axial pose, while later chapters apply continuous axial rotation whose velocity responds to scroll direction and speed. Reduced-motion mode damps toward chapter-specific axial values. This does not yet satisfy the authored chapter-posture direction below. Preserve the implementation seam, but do not treat the later constant rotation or provisional pose values as approved motion.
+The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: in normal-motion mode, every chapter uses continuous counterclockwise axial rotation from the first Identity frame. Scrolling upward reverses the rotation clockwise, scrolling downward returns it counterclockwise, and scroll speed adds momentum in the active direction without introducing an endpoint. Reduced-motion mode damps toward chapter-specific axial values. Preserve this continuous axial behavior when authored chapter postures and transitions are added.
 
 The Spear of Longinus should remain present throughout the About experience, but its role should differ from Home, Projects, Music, and Playground.
 
@@ -1200,7 +1200,8 @@ Its motion should be:
 * Smooth
 * Spatial
 * Restrained
-* Occasionally still for extended periods
+* Continuously rotating around its axis in normal-motion mode
+* Counterclockwise by default, with scroll-direction reversal
 
 Avoid:
 
@@ -1209,26 +1210,25 @@ Avoid:
 * Impact
 * Pointer following
 * Reactions to every local interaction
-* Constant decorative spinning
 * Red interface rupture
 
 Each chapter should define an intentional spear role:
 
-* Identity: quiet anchor
+* Identity: quiet rotating anchor
 * Trajectory: directional spine
 * Outside the System: environmental frame
 * Interactive Influences: emerging direction
 * Current Direction: forward vector
 
-During Identity, the spear may remain partially cropped, stable, or quietly suspended.
+During Identity, the spear should remain partially cropped and quietly framed while its axial rotation continues.
 
 During Trajectory, it may evolve through position, depth, and rotation as a representation of development.
 
-During Outside the System, it may recede into depth, frame negative space, sit behind photographs, or remain still.
+During Outside the System, it may recede into depth, frame negative space, or sit behind photographs while its axial rotation continues.
 
 During Interactive Influences, it may begin moving toward a more directional posture without targeting individual influence records.
 
-During Current Direction, it should settle into a resolved diagonal or align with a distant vanishing point.
+During Current Direction, its chapter posture may settle into a resolved diagonal or align with a distant vanishing point, but its axial rotation should continue.
 
 The final state should suggest continuation and intention without automatically initiating navigation.
 

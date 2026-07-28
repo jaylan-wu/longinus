@@ -216,9 +216,12 @@ Reference:
 - Responsive desktop tracks, viewport-aware spacing, and bounded type sizes
   preserve the composition across the reviewed `16:10` sizes without
   horizontal overflow or a fixed-width content island.
-- The Identity spear pose is stable and does not target, follow the pointer,
-  thrust, create impact, or spin continuously. Its staging is a best-fit use of
-  the shared procedural placeholder.
+- The Identity spear remains quietly framed and does not target, follow the
+  pointer, thrust, or create impact. Normal-motion mode now rotates it
+  counterclockwise continuously from the first Identity frame, reverses it
+  clockwise while scrolling upward, and restores counterclockwise rotation
+  while scrolling downward. Reduced-motion mode retains the static chapter
+  pose. Its staging is a best-fit use of the shared procedural placeholder.
 - Pointer, keyboard, scroll-driven chapter changes, reduced motion, route
   teardown, and semantic content with a forced unavailable WebGL context were
   exercised in a browser.
@@ -233,5 +236,9 @@ Reference:
   silhouette therefore cannot be reproduced.
 - Authored spear postures and transitions for chapters after Identity remain
   pending.
+- The revised continuous Identity rotation was browser-inspected at
+  `1440 × 900` using initial and later frames in normal and forced
+  reduced-motion modes. Full chapter/device motion validation remains open;
+  the recorded static composition comparison remains valid.
 - The existing narrow-layout fallback remains available, but a finished mobile
   reinterpretation and physical touch-device review remain open.

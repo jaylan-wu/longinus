@@ -19,7 +19,7 @@ const STAGED_REDUCED_MOTION_AXIAL_ROTATIONS: Record<AboutChapterId, number> = {
   [ABOUT_CHAPTER_IDS.currentDirection]: Math.PI * 1.7,
 }
 
-const SPEAR_IDLE_ROTATION_SPEED = 0.2
+const SPEAR_BASE_ROTATION_SPEED = 0.2
 const SPEAR_SCROLL_SPEED_FACTOR = 0.0015
 const SPEAR_MAX_SCROLL_BOOST = 2.8
 const SPEAR_SCROLL_DAMPING = 6.5
@@ -47,8 +47,8 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
   const targetAxialRotation = STAGED_REDUCED_MOTION_AXIAL_ROTATIONS[activeChapter]
   const spear = useRef<Group>(null)
   const axialRotation = useRef(targetAxialRotation)
-  const angularVelocity = useRef(SPEAR_IDLE_ROTATION_SPEED)
-  const scrollDirection = useRef<1 | -1>(1)
+  const angularVelocity = useRef(-SPEAR_BASE_ROTATION_SPEED)
+  const rotationDirection = useRef<-1 | 1>(-1)
   const previousScrollY = useRef(window.scrollY)
   const reducedMotion = useReducedMotion()
   const sceneWidth = useThree((state) => state.size.width)
@@ -62,12 +62,11 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
   useFrame((_, delta) => {
     if (!spear.current) return
 
-    if (reducedMotion || activeChapter === ABOUT_CHAPTER_IDS.identity) {
-      const postureDamping = reducedMotion ? 18 : 5
+    if (reducedMotion) {
       spear.current.rotation.y = MathUtils.damp(
         spear.current.rotation.y,
         targetAxialRotation,
-        postureDamping,
+        18,
         delta,
       )
       axialRotation.current = spear.current.rotation.y
@@ -77,14 +76,17 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
     }
 
     const scrollDistance = window.scrollY - previousScrollY.current
-    if (scrollDistance !== 0) scrollDirection.current = scrollDistance > 0 ? 1 : -1
+    if (scrollDistance !== 0) {
+      rotationDirection.current = scrollDistance < 0 ? 1 : -1
+    }
 
     const scrollVelocity = Math.abs(scrollDistance) / Math.max(delta, 0.001)
     const scrollBoost = Math.min(
       scrollVelocity * SPEAR_SCROLL_SPEED_FACTOR,
       SPEAR_MAX_SCROLL_BOOST,
     )
-    const targetAngularVelocity = scrollDirection.current * (SPEAR_IDLE_ROTATION_SPEED + scrollBoost)
+    const targetAngularVelocity = rotationDirection.current
+      * (SPEAR_BASE_ROTATION_SPEED + scrollBoost)
 
     angularVelocity.current = MathUtils.damp(
       angularVelocity.current,
@@ -95,8 +97,9 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
     axialRotation.current += angularVelocity.current * delta
     previousScrollY.current = window.scrollY
 
-    // Positive axial rotation is the established clockwise direction. Signed
-    // scroll velocity reverses it smoothly when the user scrolls upward.
+    // Positive axial rotation is the established clockwise direction. The
+    // spear starts counterclockwise, reverses clockwise while scrolling up,
+    // and returns counterclockwise while scrolling down.
     spear.current.rotation.y = axialRotation.current
   })
 
@@ -123,7 +126,7 @@ export function AboutSpearScene({ activeChapter }: AboutSceneState) {
         className="about__spear-canvas"
         camera={{ position: [0, 0, 12], fov: 34 }}
         dpr={[1, 1.5]}
-        frameloop={activeChapter === ABOUT_CHAPTER_IDS.identity ? 'demand' : 'always'}
+        frameloop="always"
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <ambientLight intensity={0.42} color={longinusColors.foreground} />

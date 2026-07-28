@@ -2,7 +2,7 @@
 
 This file is the implementation plan and status tracker. `AGENTS.md` defines durable product direction and engineering constraints; this file records what the repository has actually established and what remains.
 
-Status reviewed against source on **2026-07-27**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-07-28**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 
@@ -15,6 +15,15 @@ context were inspected. `corepack yarn typecheck`, `corepack yarn lint`, and
 `corepack yarn build` passed. No test script exists. The build retained the
 known approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its
 chunk-size warning.
+
+Scoped About rotation validation on 2026-07-28: initial and later Identity
+frames were inspected at `1440 × 900` in normal-motion mode and with reduced
+motion forced. The normal frames showed continued axial orientation change;
+the reduced-motion frames retained the chapter pose. `corepack yarn typecheck`,
+`corepack yarn lint`, and `corepack yarn build` passed using the locally
+installed Node `22.14.0`; the build retained the known approximately `1.08 MB`
+initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. Full
+chapter and device validation remains open.
 
 ## Status language
 
@@ -289,12 +298,14 @@ chunk-size warning.
 
 - [x] Reuse the shared procedural spear within an About-owned canvas.
 - [x] Keep the desktop scene sticky and derive its layout from the canvas size.
-- [x] Implement scroll-direction/speed-responsive axial rotation for the four staged chapters after Identity in normal-motion mode.
+- [x] Rotate the spear counterclockwise continuously from the initial Identity view across every chapter in normal-motion mode.
+- [x] Reverse the spear clockwise while scrolling upward and return it counterclockwise while scrolling downward.
+- [x] Let scroll speed add axial momentum in the active direction without introducing a rotation endpoint.
 - [x] Stop continuous scroll-linked rotation and damp toward chapter values in reduced-motion mode.
-- [x] Keep the Identity idle spear stable, quietly framed, and free of pointer targeting, thrust, impact, or continuous decorative rotation.
+- [x] Keep the Identity spear quietly framed and free of pointer targeting, thrust, or impact while its axial rotation continues.
 - [x] Provide narrow-layout CSS that repositions the scene and compresses chapter navigation.
 - [ ] Supply authored chapter postures and transitions.
-- [ ] Replace continuous decorative rotation with the intended quiet chapter progression.
+- [ ] Layer authored quiet chapter progression over the continuous scroll-direction-responsive axial rotation.
 - [ ] Verify the spear never obscures essential content at representative viewport sizes.
 - [ ] Manually verify normal and reduced-motion behavior.
 - [ ] Manually verify reading order and all About controls with WebGL unavailable.
@@ -392,7 +403,7 @@ chunk-size warning.
 7. Implement boot around real readiness for the final spear and fonts.
 8. Create Projects Figma and motion references, replace provisional timing/content, and polish the archive transition.
 9. Build the project-detail narrative and demonstration framework from real case-study material.
-10. Create About Figma/motion references, optimize photography delivery, and replace continuous staged spear rotation with authored chapter progression.
+10. Create About Figma/motion references, optimize photography delivery, and layer authored chapter progression over the continuous scroll-direction-responsive spear rotation.
 11. Design and implement Playground, then Music, when their content and references are ready.
 12. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
 

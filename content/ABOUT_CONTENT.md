@@ -198,7 +198,7 @@ readable reference for system, identifier, and metadata text.
 The right-side composition should preserve:
 
 - The persistent chapter navigation
-- The Identity chapter’s quiet spear posture
+- The Identity chapter’s quietly framed, continuously rotating spear
 - Substantial negative space around the spear
 - The shared Home-aligned `04` scene index
 
@@ -215,7 +215,11 @@ runtime data. Red identifies the current About chapter and the right-navigation
 hover/focus state; orange remains the default active-system accent elsewhere,
 lavender represents personal context, and red continues to belong to the spear.
 
-The spear should function as a quiet anchor during Identity.
+The spear should function as a quiet anchor during Identity while rotating
+counterclockwise continuously in normal-motion mode. Its rotation should begin
+with the first rendered visit and should not resolve to an endpoint. Scrolling
+upward should reverse it clockwise; scrolling downward should return it
+counterclockwise.
 
 Avoid:
 
@@ -224,7 +228,6 @@ Avoid:
 - Pointer-following behavior
 - Impact effects
 - Red interface disruption
-- Constant decorative movement
 ---
 
 # 2. Trajectory
