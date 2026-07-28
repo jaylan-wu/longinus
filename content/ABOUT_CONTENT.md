@@ -134,7 +134,9 @@ identity. Do not add editorial copy solely to fill visual space.
 
 # 2. Trajectory
 
-Use official organization, degree, and role wording.
+Use official organization, degree, and role wording as the canonical record
+language. Constrained display surfaces may use a shorter role title only when
+that variant is explicitly approved within the record below.
 
 For every record, include only verified facts.
 
@@ -156,7 +158,7 @@ Published record order:
 2. `EXP-001` — Teaching Assistant — New York University
 3. `EXP-002` — Technology Solutions Intern — New York Mets
 4. `EXP-003` — Software Engineering Intern — Major League Baseball
-5. `EXP-004` — Instructional Facilities Manager — New York University
+5. `EXP-004` — Lab Facilities Manager — New York University
 
 `EXP-005` — New York University Adjunct Professor remains incomplete and
 unpublished.
@@ -217,27 +219,29 @@ Graduation year:
 
 Context:
 
-I entered college following the technical path that seemed expected of me.
-Studying computer science and computer engineering gave me room to move
-between algorithms, software design, computer architecture, embedded systems,
-and the boundary where hardware and software meet.
+Computer science and computer engineering taught me to move between
+algorithms, software design, computer architecture, embedded systems, and the
+boundary between hardware and software.
 
 Foundation:
 
-Computer science taught me to think through abstraction and software.
-Computer engineering made those systems physical. Together, they showed me
-how decisions made at one layer affect everything built above it.
+The dual degree taught me to think in layers: software depends on architecture,
+physical constraints shape implementation, and decisions at one layer affect
+everything built above it.
 
 Reflection:
 
-Game Engineering was where the parts of my education that had felt separate
-began to connect. Building games let me use technical ideas in service of
-story, atmosphere, and play. For the first time, engineering felt like a place
-where my creative interests belonged and I genuinely thought that I was having fun.
+Game Engineering gave that foundation a creative outlet. Building games made
+abstract ideas tangible and showed me that rigorous technical work can still
+carry personality, atmosphere, and play.
 
 Personal axes:
 
 Engineering, Game design
+
+Supporting themes:
+
+Software Engineering, Embedded Design
 
 Source note for later Outside the System review:
 
@@ -284,34 +288,23 @@ Course or program:
 
 General Engineering, EG1004
 
-Environment or context:
+Context:
 
-As a Teaching Assistant, I helped first-year students work through unfamiliar tools and turn their ideas into semester-long engineering projects. Working with faculty on the course also showed me how much the structure around a classroom shapes the experience of both students and the people teaching them.
+As a Teaching Assistant for NYU’s first-year General Engineering course, I
+supported weekly labs and helped students use Figma, C++, Arduino, Autodesk
+Fusion 360, and Python to develop semester-long design projects.
 
+Mentorship:
 
-Defining responsibility or contribution:
+I mentored teams from defining a problem through building, testing, and
+presenting a working prototype. I also contributed to technical and
+inclusive-leadership training for the larger Teaching Assistant community.
 
-I mentored teams of four as they moved from identifying a problem to building,
-testing, and presenting a working prototype. My role was not only to help
-students resolve technical problems, but to ask questions that helped them
-understand their decisions and continue independently.
+Reflection:
 
-I also contributed to technical and inclusive-leadership training for the
-larger Teaching Assistant community.
-
-What I learned:
-
-Teaching showed me that understanding a technical concept and explaining it
-clearly are different skills. I learned to adapt my explanations to different
-levels of experience, make unfamiliar ideas feel approachable, and treat
-iteration as part of both engineering and learning.
-
-How the experience changed my direction:
-
-This was where education became a meaningful part of my engineering practice.
-Helping students gain confidence in unfamiliar technical work made me
-interested not only in building systems, but in creating the conditions that
-help others understand and build them too.
+Teaching showed me that understanding a technical idea and explaining it
+clearly are different skills. Learning to make unfamiliar ideas approachable
+made education a meaningful part of my engineering practice.
 
 Personal axes:
 
@@ -319,8 +312,7 @@ Engineering, Education
 
 Supporting themes:
 
-Mentorship, Technical communication, Prototyping, Inclusive instruction,
-Student confidence
+Mentorship, Prototyping, Inclusive Instruction
 
 
 ## New York Mets
@@ -347,29 +339,40 @@ Display title:
 
 Technology Solutions Intern
 
+Selected-record display title:
+
+TECHNOLOGY
+SOLUTIONS INTERN.
+
 Date range:
 
 May 2023 - October 2023
 
-Environment or context:
+Context:
 
-I worked at Citifield over the summer for the Technology Solutions department on the Business Operations side of the company as an intern. Throughout this time, I learned a lot about how a sports company operates and how they target their paying audience to come to baseball games.
+I worked with the Technology Solutions department on the business-operations
+side at Citi Field, learning how technology supports a sports organization and
+its audience.
 
-Defining responsibility or contribution:
+Application:
 
-I was primarily in charge of being the ambassador of a Facial Recognition Ticketing system that is essentially a fast pass for the user base that opted in for the platform. This meant that I was constantly interacting with fans and trying to pitch the benefits of the program. When I was not doing this work, I was analyzing data from patrons and creating presentations on how we should market our technology to our customers.
+I supported adoption of an opt-in facial-recognition ticketing system by
+speaking directly with fans, explaining its benefits, analyzing patron data,
+and creating presentations about how to market the technology.
 
-What I learned about technology in physical or operational environments:
+Reflection:
 
-There are a lot of individuals who are not familiar with the technology that I use on a daily basis. Explaining these concepts and how to best use these devices to these individuals was a difficult learning experience for me but as the summer passed, I felt as if I was able to explain what I learned in school and at the internship about.
+Explaining unfamiliar technology to a broad audience taught me to make
+technical ideas approachable in a physical, public setting. It also helped me
+see entertainment technology as a meaningful professional direction.
 
-How the experience changed my direction:
+Personal axes:
 
-I thought about how technology could enhance our entertainment experiences and that working in entertainment was a real option for me. Before this experience, I only really thought about the big name companies and how they are what I should be reaching for since that was all that was being talked about around me. After this experience, I really thought about what I enjoy and what I would want to pursue for myself.
+Engineering
 
 Supporting themes:
 
-Physical technology, technology solutions
+Physical Technology, Technology Solutions
 
 ## Major League Baseball
 
@@ -395,29 +398,41 @@ Display title:
 
 Software Engineering Intern
 
+Selected-record display title:
+
+SOFTWARE
+ENGINEERING INTERN.
+
 Date range:
 
 June 2024 - August 2024
 
-Environment or context:
+Context:
 
-I was on the Baseball Enterprise as a Full Stack engineering developing webapps that support various teams throughout MLB. 
+As a full-stack software engineering intern on Baseball Enterprise, I
+developed web applications that supported internal teams across Major League
+Baseball.
 
-Defining responsibility or contribution:
+Systems:
 
-My main project during the internship was to create an admin dashboard on an existing application to allow engineers, managers, and other stakeholders be able to turn off certain CRON jobs during specific times of the year. This meant that I had to implement a page on the website that has a table that provides all the necessary information for these users and an option that turns of the specified CRON job. I also worked on creating Slack bots that would notify users about the start time of MLB, MiLB, and external games that were occuring throughout the country. The bot would notify the users when the games were starting, who was involved, where the game was happening, and what type of game was being played. Lastly, I was tasked with the migration of a legacy application that needed to be updated to modern systems. This application was an marketing email application that allowed users to select the type of audience they would like to reach out to and when to send those specified emails. This application was created by the Data Engineering team and was originally built on ruby on rails and Next.js and the new stack involved react and springboot.
+I built administrative controls for scheduled jobs, created Slack
+notifications for game-start information, and helped modernize a legacy
+marketing-email application.
 
-What I learned about software engineering and organizational systems:
+Reflection:
 
-This is where my knowledge and opinion of full stack engineering concepts were really grounded, throughout this experience I really learned about how a full stack environment works and was able to gain the knowledge I needed about hosting, workflows, and engineering stacks.
+The work grounded my understanding of hosting, workflows, engineering stacks,
+and organizational systems. Taking ownership of open-ended problems—and
+asking questions as I chose an approach—helped me develop confidence in how
+engineering teams work in practice.
 
-How the experience changed my direction:
+Personal axes:
 
-I was given a lot of freedom in choosing how I wanted to approach certain problems. Even though this took a lot of questions for my managers, I really was able to learn a lot since I was thrown into the deep end of the engineering workflow.
+Engineering
 
 Supporting themes:
 
-Modernization, automation, reliability, cloud infrastructure, full stack
+Modernization, Automation, Full-stack Systems
 
 ## NYU Instructional Facilities Manager
 
@@ -441,33 +456,78 @@ Instructional Facilities Manager
 
 Display title:
 
-Instructional Facilities Manager
+Lab Facilities Manager
+
+Approved shorter title variants:
+
+- Lab Facilities Manager
+- Lab Manager
+
+Selected-record display title:
+
+INSTRUCTIONAL FACILITIES
+MANAGER.
 
 Date range:
 
 September 2025 - Present
 
-Environment or context:
+Context:
 
-In this role, I manage over 100 Teaching Assistants and oversee the operations of lab related activity for a first year general engineering introduction course. In this course, all first year matriculated engineering students learn the basics of engineering concepts and use those skills to create a semester long design project. I help with the course development of the course and the creation of tools that help support the facilitation of these student projects.
+I manage more than 100 Teaching Assistants and oversee lab operations and
+safety for a first-year General Engineering course centered on semester-long
+design projects.
 
-Defining responsibility or contribution:
+Infrastructure:
 
-* ensure that all safety procedures are being conducted in the space at all times of operations. we have lab classrooms as well as a general working space that is open for TAs and students to work on their projects. there are many electrical and mechanical components that i give guidance to using
-* act as a project manager and QA engineer for the course website that helps professors, staff, TAs, and students track the progress of their projects. tools such as scheduling, attendance, and project management are added to this website. This website is made on an Express, React, Node, and MySQL stack
-* develop and conduct technical trainings for teaching assistants to help develop teaching and hard skills that are needed to aid student throughout their projects
+I coordinate the engineering infrastructure behind student prototyping: lab
+spaces and safety, course tooling and website quality assurance, and technical
+training for Teaching Assistants.
 
-What I learned about instructional infrastructure:
+Reflection:
 
-Even with education, there's a cyclical trial and error life style where we keep redeveloping the course to see how the stduents react to different coursework. over the course of my time here, I was able to see how different students react to different forms of the class. There was once a time where the course was heavily reliant on the workshops of the class. This meant that there were weekly lab reports and a very heavy workload with a course project on top of it. Now, there is a heavy emphasis on creating a good project for the course. I oversee the whole prototyping process where students create circuits and 3D printed project that achieve a certain solution to a problem that they identify early on in the semester.
+The role has shown me that teaching systems improve through iteration.
+Connecting technical leadership with education has deepened my commitment to
+helping students learn how to approach engineering problems and build ideas of
+their own.
 
-How the experience connects engineering and education:
+Personal axes:
 
-Through this experience, I really developed my passion for teaching students and guiding students to create and learn things that they are excited about. Helping these students really develop the skills to learn about engineering and how to study/think about engineering as a whole is exciting for me and I love to see what they come up with to solve different problems.
+Engineering, Education
 
 Supporting themes:
 
-Operations, project management, managerial roles, problem solving.
+Operations, Technical Leadership, Student Prototyping
+
+## Trajectory Editorial Fitting Record
+
+The selected-record frame publishes the concise three-section narratives
+above. The following source-record details were deliberately kept
+subordinate or omitted from the rendered copy for fit and may be reconsidered
+during a later editorial or project-case-study review:
+
+- `EDU-001`: the earlier expected-path framing; the separate Paris study-abroad
+  note remains recorded above for Outside the System review.
+- `EXP-001`: the standalone "Learning through teaching." interpretive line;
+  teams of four; faculty collaboration; classroom-structure reflection; the
+  more detailed emphasis on helping students continue independently; and the
+  secondary Student confidence theme.
+- `EXP-002`: detailed sports-business audience context and the longer
+  reflection about moving beyond expectations centered on large technology
+  companies.
+- `EXP-003`: stakeholder and table details for scheduled-job controls; the
+  complete game-notification fields; Data Engineering ownership; and the Ruby
+  on Rails plus Next.js to React plus Spring Boot migration detail. Reliability
+  and Cloud infrastructure remain secondary themes rather than rendered
+  metadata.
+- `EXP-004`: individual course-site features and its Express, React, Node, and
+  MySQL stack; electrical and mechanical guidance; circuit and 3D-printing
+  examples; the historical comparison between workshop-heavy and
+  project-focused course structures; and the secondary Project management and
+  Problem solving themes.
+
+These notes are not additional selected-record sections and do not authorize
+new factual claims beyond the source material reviewed for this edit.
 
 ## NYU Adjunct Professor
 

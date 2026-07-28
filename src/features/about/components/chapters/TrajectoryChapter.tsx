@@ -18,7 +18,12 @@ export function TrajectoryChapter({ chapter }: AboutChapterComponentProps) {
   return (
     <AboutChapter chapter={chapter} modifier="trajectory">
       <ChapterHeading chapter={chapter} />
-      <p className="about-chapter__lead">{trajectory.lead}</p>
+      <div className="trajectory-introduction">
+        <p className="trajectory-introduction__title" aria-hidden="true">
+          Trajectory
+        </p>
+        <p className="about-chapter__lead">{trajectory.lead}</p>
+      </div>
       <div className="trajectory-records">
         <TrajectoryRecordList
           records={trajectory.records}

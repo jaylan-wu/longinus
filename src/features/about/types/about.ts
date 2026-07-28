@@ -45,12 +45,19 @@ export type IdentityContent = {
 }
 
 export type ExperienceOrganizationMarkId = 'nyu' | 'new-york-mets' | 'major-league-baseball'
-export type ExperienceOrganizationMarkPosition = 'center' | 'lower-right' | 'upper-right'
+export type ExperienceOrganizationMarkPosition =
+  | 'center'
+  | 'lower-content-center'
+  | 'lower-right'
+  | 'upper-right'
+export type ExperienceOrganizationMarkScale = 'portrait' | 'large-square' | 'compact-wide'
+export type ExperienceTitleVariant = 'standard' | 'long' | 'extra-long'
 
 export type ExperienceOrganizationMark = {
   id: ExperienceOrganizationMarkId
   imageSrc: string
   position: ExperienceOrganizationMarkPosition
+  scale: ExperienceOrganizationMarkScale
 }
 
 export type ExperienceNarrative = {
@@ -64,7 +71,8 @@ export type ExperienceRecord = {
   roleOrDegree: string
   officialRole?: string
   displayTitle: readonly string[]
-  interpretiveStatement?: string
+  titleVariant: ExperienceTitleVariant
+  selectorTitleVariant?: ExperienceTitleVariant
   period: string
   detailMetadata: readonly string[]
   context: ExperienceNarrative

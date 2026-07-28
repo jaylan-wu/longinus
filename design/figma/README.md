@@ -106,6 +106,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 |---|---|---|---|---|---|---|---|
 | Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
 | About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. |
+| About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | Figma node `110:147` defines the left-side EDU-001 composition. The shared frame is applied to EDU-001 and EXP-001 through EXP-004. Header, right chapter navigation, and spear/scene were unchanged and remain outside this scoped implementation. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -178,5 +179,93 @@ for the compared layout and type values,
 [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) for exact editorial
 material, and [`TASKS.md`](../../TASKS.md) Milestone 6 for implemented
 behavior, validation evidence, and remaining chapter work. The Identity
-comparison does not approve the four later chapter compositions, and no
+comparison does not approve Trajectory or the three later chapter
+compositions; Trajectory's separately scoped status is recorded below. No
 authored Blender motion reference is stored.
+
+## About Trajectory desktop idle
+
+Reference:
+
+`references/about/about-trajectory-edu-001-desktop-idle-v1.png`
+
+Live selection:
+
+[About / Trajectory / EDU-001 / Desktop / Idle — node 110:147](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4)
+
+### Implementation boundaries
+
+- This checkpoint implements only the left-side Trajectory composition.
+- The persistent header, its typography and behavior, the right-side chapter
+  navigation, the page index, the spear, the About Three.js scene, and camera
+  staging remain unchanged.
+- EDU-001 is the base anatomy for the chapter heading, display title, lead,
+  five-record selector, current-record panel, narrative regions, supporting
+  metadata, structural rules, and decorative organization mark.
+- The same selected-record frame is used by EDU-001 and EXP-001 through
+  EXP-004. `EXP-005` remains incomplete, unpublished, and absent from the
+  selector.
+- At `1440 × 900`, the selector is `460 × 426`, the runtime selected-record
+  panel is `360 × 607`, the column gap is `40px`, and both regions bottom-align.
+  The approved Figma frame remains the `325 × 607` visual baseline; the
+  additional `35px` of runtime width is an intentional, user-approved
+  post-reference refinement. The panel keeps fixed title, record-metadata,
+  narrative, and footer regions so record selection cannot move or resize its
+  outer border.
+- Selected-record titles use named `standard`, `long`, and `extra-long`
+  variants. Authored two-line breaks remain data-owned. The selector uses the
+  approved `Lab Facilities Manager` short title so the role and visible state
+  label do not collide; the selected record retains the official
+  `Instructional Facilities Manager` title.
+- NYU, New York Mets, and Major League Baseball marks use feature-owned assets
+  with named position and scale variants. The MLB mark uses the supplied
+  transparent `3840 × 2160` PNG. All three remain grayscale, faint, decorative,
+  proportion-preserving, and reduced-motion aware. The Mets and MLB marks share
+  a lower-content-center position at the midpoint between the second divider
+  and the card bottom.
+
+### Responsive interpretation
+
+- Larger desktops retain the controlled `460px` selector and `360px` panel
+  maxima, keep the composition grouped at the left, and let negative space
+  absorb additional viewport area.
+- The `1440 × 800` short-desktop branch tightens the vertical relationship
+  between the chapter heading, introduction, selector, and panel while keeping
+  the `360 × 607` frame and all text visible.
+- Below `1240px`, the selector and stable selected-record frame stack within
+  the left narrative region. At `390 × 844`, the full text remains available
+  through natural page scrolling with no horizontal overflow, clipping,
+  clamping, ellipsis, or internal panel scrollbar. Because the mark is below
+  the selector in this stacked flow, it swaps immediately instead of animating
+  while offscreen.
+
+### Editorial and visual notes
+
+- [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) and the runtime
+  Trajectory data contain the revised EDU-001 copy and concise three-section
+  narratives for EXP-001 through EXP-004.
+- The repository implementation intentionally differs from the live node and
+  stored export through user-approved post-reference refinements: the
+  selected-record width (`360px` runtime versus `325px` reference), revised
+  EXP-002 and EXP-003 title breaks, the EXP-004 constrained directory title,
+  `11px` non-heading Current Record text, the increased EDU-001 metadata
+  clearance, and lower-region centering for the sports marks. Other measured
+  differences are limited to minor raster and low-opacity mark compositing.
+- The stored visual still contains the older EDU-001 narrative. Its
+  `LAB FACILITIES MANAGER` selector wording is now an approved constrained
+  display title, while the selected-record heading preserves the official
+  `INSTRUCTIONAL FACILITIES MANAGER` wording.
+- Runtime typography continues to use the established font tokens. Dominant
+  reference text that is pure white maps to the warm foreground token, and the
+  reference surface `#141318` maps to the established surface token `#141317`.
+- The supplied transparent `mlb.png` is used directly with a compact-wide,
+  proportion-preserving treatment; the superseded checker-backed `mlb.webp`
+  has been removed.
+- Official degree, school/program, role, course, organization, and date wording
+  retains the verification flags in
+  [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) and
+  [`TASKS.md`](../../TASKS.md).
+
+This scoped implementation does not approve the complete Trajectory chapter,
+its right-side scene, other interaction states, or the three later About
+chapter compositions.

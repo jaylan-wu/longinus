@@ -40,6 +40,38 @@ anchor. Forced reduced-motion navigation was also verified at `1440 × 900`.
 `corepack yarn typecheck` and `corepack yarn lint` passed. The production build
 passed with Node `22.14.0` and retained the known initial chunk-size warning.
 
+Scoped About Trajectory validation on 2026-07-28: live Figma node `110:147`
+and the stored `1440 × 900` export were compared with the implemented
+left-side EDU-001 composition. A user-approved post-reference spacing
+refinement widened the runtime selected panel from the reference's `325px` to
+`360px` while preserving its `607px` height and bottom anchor. At
+`1440 × 900`, all five published records retained that same `360 × 607` frame.
+At `390 × 844`, the panel adapted to the approximately `352px` available track
+width and retained its `607px` height across every record. Every narrative and
+title fit, Connected Axes and Supporting Themes remained pinned to the footer,
+each associated organization mark loaded at its source aspect ratio, and no
+panel or page-level horizontal overflow was present. The supplied transparent
+`mlb.png` replaced the previous checker-backed WebP.
+A follow-up typography pass kept all selected-record role-heading sizes
+unchanged, increased every other Current Record text role to `11px`, reflowed
+EXP-002 as `TECHNOLOGY / SOLUTIONS INTERN.`, reflowed EXP-003 as
+`SOFTWARE / ENGINEERING INTERN.`, and adopted the approved
+`LAB FACILITIES MANAGER` directory label for EXP-004. All five records retained
+their fixed frame and bottom-pinned footer at the audited desktop and narrow
+viewports. The header divider was subsequently balanced to `12px` clearance
+above and below while preserving at least `15px` between narrative sections in
+the densest record. EDU-001 now also keeps a `12px` boundary distance between
+`Game Engineering` and the second divider. The Mets and MLB watermarks are
+centered on the exact midpoint of the region from that divider to the card
+bottom; their rendered box-center delta is `0px`, and their intrinsic
+transparent-edge offsets remain below one rendered pixel.
+`1440 × 800` and `1680 × 1050` interpretations were also inspected. Pointer,
+Enter, Space, visible focus, focus retention, non-color selection state,
+reduced motion, and a forced unavailable WebGL context passed. The
+`typecheck`, `lint`, and `build` scripts passed through Corepack; no test script
+exists. The build retained the known approximately `1.08 MB` initial JavaScript
+chunk (`298 kB` gzip) and its chunk-size warning.
+
 ## Status language
 
 - **Implemented** — present and verifiable in source.
@@ -252,8 +284,13 @@ passed with Node `22.14.0` and retained the known initial chunk-size warning.
 - [x] Verify every right-navigation selection lands its chapter indicator at
   the same shared viewport anchor while natural scrolling continues to move
   indicators through the page.
-- [ ] Create and approve About Figma frames for Trajectory, Outside the System, Interactive Influences, and Current Direction.
-- [ ] Record visual comparisons for the four remaining chapter frames and the finished narrow-layout reinterpretation.
+- [x] Store the approved About / Trajectory / EDU-001 / Desktop / Idle export
+  and implement its left-side composition from Figma node `110:147`.
+- [ ] Create and approve complete static frames for Outside the System,
+  Interactive Influences, and Current Direction, plus any Trajectory
+  right-side or scene checkpoint beyond the implemented left-side scope.
+- [ ] Record full visual comparisons for the three later chapter frames and
+  the finished narrow-layout reinterpretation.
 
 ## Identity
 
@@ -274,6 +311,30 @@ passed with Node `22.14.0` and retained the known initial chunk-size warning.
 - [x] Implement local selected-record state, reflective sections, axes/themes, and decorative organization marks.
 - [x] Reuse one NYU mark and apply named mark-position variants.
 - [x] Apply non-destructive grayscale/opacity treatment and reduced-motion-aware mark transitions.
+- [x] Use EDU-001 as the shared Trajectory anatomy and keep a stable
+  `360 × 607` desktop selected-record frame across EDU-001 and EXP-001 through
+  EXP-004.
+- [x] Reserve fixed title, record-metadata, narrative, and supporting-metadata
+  regions; distribute the narrative sections through the available space, pin
+  Connected Axes and Supporting Themes to the footer, and use named standard,
+  long, and extra-long title variants.
+- [x] Replace the checker-backed MLB WebP with the supplied transparent PNG and
+  remove the superseded WebP.
+- [x] Give EDU-001 additional clearance below `Game Engineering`, and center
+  the Mets and MLB watermarks between the second divider and the card bottom.
+- [x] Apply the approved EXP-002 and EXP-003 selected-record line breaks, use
+  `Lab Facilities Manager` in the EXP-004 directory while retaining the
+  official selected-record title, and increase all non-title Current Record
+  text to `11px` without moving the footer or overflowing the frame.
+- [x] Synchronize the revised EDU-001 copy and concise three-section experience
+  narratives between `content/ABOUT_CONTENT.md` and runtime data.
+- [x] Browser-compare the left-side EDU-001 state with the live Figma node and
+  stored `1440 × 900` export; verify all five selected states, short desktop,
+  larger desktop, and the current narrow layout without panel movement,
+  meaningful-content clipping, or internal scrolling.
+- [x] Verify Trajectory pointer selection, Enter and Space activation, visible
+  focus, focus retention, non-color selected state, reduced-motion mark swaps,
+  and textual access with WebGL unavailable.
 - [ ] Verify official organization, role, degree, school/program, course, and date wording.
 - [ ] Publish an Adjunct Professor record only after the role begins and official wording is verified.
 - [ ] Add related-project links only when corresponding case studies exist.

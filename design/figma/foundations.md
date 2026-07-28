@@ -10,9 +10,10 @@ and validation history.
 Audited against source and the recorded browser comparisons on **2026-07-28**.
 
 The values below cover the current Home implementation and the browser-compared
-About Identity composition. Home values are not comparison-approved. The four
-About chapters after Identity have no approved static frames, so this file does
-not infer chapter-specific measurements for them.
+About Identity composition plus the left-side About Trajectory EDU-001
+checkpoint. Home values are not comparison-approved. Outside the System,
+Interactive Influences, and Current Direction have no approved static frames,
+so this file does not infer chapter-specific measurements for them.
 
 ## Color palette
 
@@ -31,6 +32,11 @@ scene code mirrors required values in `src/styles/colors.ts`.
 | Active system state | `#f28c28` | `var(--color-highlight)` | Implemented |
 
 The procedural spear also uses the implementation-only deep/shadow reds `#86131f` and `#510b14`. Re-evaluate those material colors with the final asset.
+
+The Trajectory reference uses pure white for some dominant typography and
+`#141318` for its panel. Runtime preserves the established semantic mappings:
+dominant text uses `var(--color-foreground)` (`#e8e4dc`) and the panel uses
+`var(--color-surface)` (`#141317`).
 
 ## Typography
 
@@ -72,15 +78,26 @@ without changing the established font families.
 | Axis short statements | Existing `var(--font-display)` family with bounded `20–20.8px` baseline sizing and controlled two-line wrapping | Reference wording and vertical placement are synchronized with the editorial and runtime sources |
 | `04` scene index | Unmodified shared `PageIndex` used by Home | Uses the same fixed right/bottom viewport alignment, type metrics, opacity, and responsive rule as Home |
 
+### Current About Trajectory mapping
+
+| Element | Current implementation | Verification note |
+| --- | --- | --- |
+| `TRAJECTORY` display title | `var(--font-display)`, `72px / 70px` at the baseline, weight `700`, `-0.05em` tracking | Browser bounds align to the reference title region at the canonical viewport |
+| Introductory statement | `var(--font-sans)`, `16px / 20px`, `-0.05em` tracking, `460px` baseline width | Preserves the reference's four-line wrapping at `1440 × 900` |
+| Record-selector titles | `var(--font-display)`, standard `20px / 20px` and long `19px / 20px` at desktop; narrow layouts use the shared wrapping treatment | EXP-004 uses the approved `Lab Facilities Manager` constrained display title so it does not collide with `SELECTED` or `VIEW`; the selected record retains the official title |
+| Selector system metadata | `var(--font-mono)`, `12px / 20px` | Applies to index, organization, and visible record state |
+| Selected-record title | `var(--font-display)` with `standard` `30px / 32px`, `long` `26px / 28px`, and `extra-long` `24px / 26px` desktop variants; long narrow titles reduce to `24px / 26px` and `22px / 24px` | Every record keeps an authored two-line break inside the same `64px` title region without horizontal spill |
+| Selected-record system and narrative copy | `var(--font-mono)`, `11px` throughout; `12px` label/system cadence and `13px` narrative/footer body cadence | The role heading remains at its existing display sizes; all five records were measured without clipping, clamping, ellipsis, or internal scrolling |
+
 Do not add or bundle fonts solely to match a Figma reference. Any future change
 to the established runtime stacks requires explicit product direction and a
 coordinated update to `src/index.css`, `AGENTS.md`, and this document.
 
 ## Layout and canonical viewport
 
-The canonical desktop comparison viewport for the supplied Home and About
-Identity frames is `1440 × 900` (`16:10`). It is a comparison frame, not a
-fixed browser requirement.
+The canonical desktop comparison viewport for the supplied Home, About
+Identity, and About Trajectory frames is `1440 × 900` (`16:10`). It is a
+comparison frame, not a fixed browser requirement.
 
 | Region | Current implementation | Status |
 | --- | --- | --- |
@@ -88,6 +105,8 @@ fixed browser requirement.
 | Home ambient grid | `90px × 90px` background lines | Implemented visual treatment; not an approved component grid |
 | Home outer frame | Fixed insets defined in `src/features/home/home.css` | Implemented; comparison unverified |
 | About Identity desktop split | `67.64% / 32.36%`, shared by header, narrative, and sticky scene | Compared at the canonical viewport |
+| About Trajectory desktop composition | `75px` left inset; `460px` selector; `40px` gap; `360px` runtime selected-record panel; controlled `860px` total width | The Figma node and stored export retain the `325px` panel baseline; the additional runtime width is an approved post-reference refinement |
+| About Trajectory stable frame | `360 × 607` at the canonical and short-desktop viewports; fixed internal title, record-metadata, narrative, and footer rows | Outer bounds and content containment verified for EDU-001 and EXP-001 through EXP-004 |
 | About chapter landing anchor | Chapter-owned indicators move with their sections; right-navigation selection aligns each indicator to the same baseline top-left viewport position | All five targets browser-verified at `1440 × 900` and `390 × 844`; natural scrolling and anchor restoration also verified |
 | About larger desktop | Relative tracks plus height-aware custom properties and bounded `clamp()` sizing; no full-page transform | Reviewed at four larger `16:10` viewports without horizontal overflow or a fixed `1440px` island |
 | About short desktop | Height-aware Identity spacing at `1440 × 800`; no internal chapter scroller | Browser-reviewed |
@@ -105,6 +124,37 @@ Home's shared treatment rather than the About export. Future About frames must
 repeat this audit for their chapter-specific content rather than inheriting
 Identity measurements without comparison.
 
+### About Trajectory spacing and frame audit
+
+At `1440 × 900`, the selector measures `460 × 426` at approximately
+`x=75, y=398`; the runtime selected-record panel measures `360 × 607` at
+approximately `x=575, y=217`. Their `40px` gap and shared `y=824` bottom edge
+remain stable within sub-pixel browser rounding. The Figma reference panel is
+`325px` wide; the runtime right edge now reaches approximately `x=935` as an
+intentional post-reference refinement. The display title begins at
+approximately `x=75, y=211`; the introductory statement begins at
+approximately `y=295`.
+
+The panel uses `16px` content insets and rules extending `5px` beyond the
+content track. Its internal grid reserves `125px` for the title/header, `72px`
+for record metadata, `306px` for three content-sized narrative sections
+distributed through the available space, and a `72px` bottom-anchored
+supporting-metadata footer. The company/date row and the first metadata line
+each sit `12px` from their shared divider. EDU-001 also keeps a `12px`
+boundary distance below `Game Engineering` before the second divider. The NYU
+portrait mark measures approximately `255 × 367`, the Mets mark `267 × 267`,
+and the MLB mark `259 × 146` at the desktop baseline while each preserves its
+source ratio. The Mets and MLB marks share the exact horizontal and vertical
+center of the region between the second divider and the card bottom.
+
+The same panel bounds were browser-measured for all five records at
+`1440 × 900`; at `390 × 844`, the panel adapts to approximately `352 × 607`.
+The short-desktop branch keeps the frame at `360 × 607` and moves its top to
+approximately `y=164` at `1440 × 800`.
+At `1680 × 1050`, controlled maximum widths keep the left composition grouped
+instead of spreading it through the larger content track. Below `1240px`, the
+selector and panel stack and use natural page scrolling.
+
 ## Borders, dividers, and focus
 
 - The Home outer frame, navigation separators, main divider, and scene circle are current structural treatments.
@@ -117,6 +167,9 @@ Identity measurements without comparison.
   the scoped edge, wipe, text, and outline feedback.
 - The About chapter navigator retains its compact layout while reusing the Home
   navigation animation with a scoped red accent.
+- Trajectory selection uses orange top/bottom rules plus the visible
+  `SELECTED` label and `aria-pressed`; keyboard focus retains the shared `2px`
+  orange outline, so state is not communicated by color alone.
 - Planned destinations are disabled buttons and do not show available-link focus/hover behavior.
 
 ## Iconography and imagery
@@ -129,6 +182,14 @@ Identity measurements without comparison.
   CSS spear silhouette. Its Identity framing was compared against the
   reference, but the placeholder cannot reproduce the authored forked and
   twisting silhouette.
+- About Trajectory reuses one feature-owned NYU mark for EDU-001, EXP-001, and
+  EXP-004, plus the feature-owned Mets and MLB marks for their associated
+  records. Named portrait, large-square, and compact-wide rules preserve
+  proportions. The Mets and MLB use one semantic lower-content-center position
+  so their visible artwork is centered between the second divider and the card
+  bottom; their intrinsic transparent-edge offsets remain below one rendered
+  pixel. MLB uses the supplied transparent `3840 × 2160` PNG; the superseded
+  checker-backed WebP has been removed.
 
 ## Verification boundary
 
@@ -147,7 +208,8 @@ remaining verification work.
 - Resolution of stored-export versus implementation copy/type differences
 - Projects and project-detail static compositions, including the settled
   project-detail spear placement
-- Approved static compositions and spear staging for the four About chapters
-  after Identity
+- Approved static compositions for Outside the System, Interactive Influences,
+  and Current Direction, plus any future Trajectory right-side or scene review
+  beyond the implemented left-side checkpoint
 - Final narrow-layout compositions and mobile-navigation treatment
 - Approved visible-focus treatment and color contrast

@@ -14,23 +14,34 @@ export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailPro
   ]
 
   return (
-    <article className="experience-detail" aria-live="polite">
+    <article
+      className={`experience-detail experience-detail--title-${experience.titleVariant}`}
+      id="trajectory-current-record"
+      aria-live="polite"
+    >
       <TrajectoryOrganizationMark markId={experience.organizationMark} />
       <div className="experience-detail__content">
-        <div className="experience-detail__identifier"><span>Current record</span><strong>{experience.id}</strong></div>
-        <h3 aria-label={experience.displayTitle.join(' ')}>
-          {experience.displayTitle.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
-        </h3>
-        {experience.interpretiveStatement ? (
-          <p className="experience-detail__interpretive">{experience.interpretiveStatement}</p>
-        ) : null}
-        <p className="experience-detail__organization">{experience.organization} / {experience.period}</p>
-        {experience.detailMetadata.length > 0 ? (
+        <header className="experience-detail__header">
+          <div className="experience-detail__identifier">
+            <span>Current record</span>
+            <strong>{experience.id}</strong>
+          </div>
+          <h3 aria-label={experience.displayTitle.join(' ')}>
+            {experience.displayTitle.map((line) => (
+              <span key={line} aria-hidden="true">{line}</span>
+            ))}
+          </h3>
+          <p className="experience-detail__organization">
+            <span>{experience.organization}</span>
+            <span>{experience.period}</span>
+          </p>
+        </header>
+        <div className="experience-detail__record-metadata-region">
           <ul className="experience-detail__record-metadata" aria-label="Record details">
             {experience.detailMetadata.map((item) => <li key={item}>{item}</li>)}
           </ul>
-        ) : null}
-        <dl>
+        </div>
+        <dl className="experience-detail__narrative">
           {narrativeSections.map((section, index) => (
             <div className={index === narrativeSections.length - 1 ? 'experience-detail__reflection' : undefined} key={section.label}>
               <dt>{section.label}</dt>
@@ -38,10 +49,10 @@ export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailPro
             </div>
           ))}
         </dl>
-        <div className="experience-detail__metadata">
+        <footer className="experience-detail__metadata">
           <p><span>Connected axes</span>{experience.personalAxes.map((axis) => PERSONAL_AXIS_LABELS[axis]).join(' / ')}</p>
           <p><span>Supporting themes</span>{experience.supportingThemes.join(' / ')}</p>
-        </div>
+        </footer>
       </div>
     </article>
   )
