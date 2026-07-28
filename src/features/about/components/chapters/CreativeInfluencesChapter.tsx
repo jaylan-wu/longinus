@@ -171,7 +171,7 @@ export function CreativeInfluencesChapter({ chapter }: AboutChapterComponentProp
 
   return (
     <AboutChapter chapter={chapter} modifier="influences">
-      <ChapterHeading chapter={chapter} title="Creative Influences" />
+      <ChapterHeading chapter={chapter} />
       <div className="influence-records">
         <InfluenceList
           records={creativeInfluences}

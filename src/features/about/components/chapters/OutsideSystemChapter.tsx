@@ -127,7 +127,7 @@ export function OutsideSystemChapter({ chapter }: AboutChapterComponentProps) {
 
   return (
     <AboutChapter chapter={chapter} modifier="outside">
-      <ChapterHeading chapter={chapter} title="Outside the System" />
+      <ChapterHeading chapter={chapter} />
       <p className="about-chapter__lead">{outsideSystem.travelStatement}</p>
       <p className="about-chapter__lead">{outsideSystem.photographyStatement}</p>
       <div className="photo-selected" aria-live="polite">

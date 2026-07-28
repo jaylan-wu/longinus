@@ -1,0 +1,85 @@
+.navigation-action {
+  --navigation-action-accent: var(--color-highlight);
+  --navigation-action-accent-rgb: var(--color-highlight-rgb);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--color-foreground);
+  cursor: crosshair;
+  transition:
+    color 220ms ease,
+    padding-left 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation-action::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--navigation-action-accent-rgb), 0.14),
+    transparent 76%
+  );
+  content: "";
+  transform: translateX(-102%);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation-action::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.18rem;
+  background: var(--navigation-action-accent);
+  content: "";
+  transform: scaleY(0);
+  transition: transform 240ms ease;
+}
+
+.navigation-action__label {
+  transform-origin: left center;
+  transition:
+    color 220ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation-action:hover,
+.navigation-action:focus-visible {
+  padding-left: 0.85rem;
+}
+
+.navigation-action:hover::before,
+.navigation-action:focus-visible::before {
+  transform: translateX(0);
+}
+
+.navigation-action:hover::after,
+.navigation-action:focus-visible::after {
+  transform: scaleY(1);
+}
+
+.navigation-action:hover .navigation-action__label,
+.navigation-action:focus-visible .navigation-action__label {
+  color: var(--navigation-action-accent);
+  transform: skewX(-3deg) scaleX(1.025);
+}
+
+.navigation-action:focus-visible {
+  z-index: 2;
+  outline: 2px solid var(--navigation-action-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation-action:hover,
+  .navigation-action:focus-visible {
+    padding-left: 0;
+  }
+
+  .navigation-action:hover .navigation-action__label,
+  .navigation-action:focus-visible .navigation-action__label {
+    transform: none;
+  }
+}

@@ -6,15 +6,18 @@ Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, m
 
 ## Repository status
 
-Audited against the implementation on **2026-07-21**.
+Audited against the implementation on **2026-07-27**.
 
 - Published runtime data is maintained in focused modules under [`src/features/about/data/`](../src/features/about/data/).
-- Current UI renders all five chapters, `EDU-001`, `EXP-001` through `EXP-004`, seven photographs, two interactive-influence records, and three final actions.
+- Current UI renders all five chapters, `EDU-001`, `EXP-001` through `EXP-004`, seven photographs, four interactive-influence records, and three final actions.
 - `EXP-005` is future, incomplete, and intentionally unpublished.
-- The two influence records are published in the current staged About page, but curation remains incomplete because the approved direction calls for approximately three to six records.
+- The four influence records are published in the current staged About page; quote, translation, speaker, and source-scene verification remains open where flagged below.
 - Degree, school/program, role, course, date, public contact, photograph metadata, and selected wording still require the specific verification flags recorded below. Repository presence is not proof of official wording.
 - Content edits do not update the runtime data modules automatically. Keep the editorial source and runtime data synchronized deliberately when wording is approved.
-- No About Figma reference is stored in the repository. Design notes below remain task direction or working guidance unless a later reference explicitly approves them.
+- The approved About / Identity / Desktop / Idle reference is stored at
+  [`design/figma/references/about/about-identity-desktop-idle-v1.png`](../design/figma/references/about/about-identity-desktop-idle-v1.png).
+  It defines only the Identity desktop idle composition; the remaining four
+  chapter compositions are not approved.
 
 ---
 
@@ -23,6 +26,8 @@ Audited against the implementation on **2026-07-21**.
 ## Primary Identity
 
 Name: Jaylan Wu
+
+Location: New York City
 
 Creative signature: alter-egoist
 
@@ -53,12 +58,12 @@ understand it.
 
 Short statement:
 
-Build, test, and refine.
+Design, build, test, and refine.
 
 Supporting statement:
 
 I learn by making something real, then letting each version reveal what the
-system needs.
+next iteration needs.
 
 ### AX-02 — Game Design
 
@@ -68,8 +73,8 @@ Create interactions people can feel.
 
 Supporting statement:
 
-I bring systems, story, sound, and choice together to turn an idea into an
-experience.
+I bring systems, story, sounds and dreams together to create an experience
+that represents what I feel.
 
 ### AX-03 — Education
 
@@ -79,28 +84,31 @@ Make the unfamiliar approachable.
 
 Supporting statement:
 
-I give people the tools and confidence to continue learning on their own.
+I teach the next set of curious individuals the skills and confidence to
+continue building on their own.
 
 ## Identity Design Notes
 
-Primary desktop comparison viewport:
+The approved primary comparison viewport is `1440 × 900` (`16:10`). The
+stored export is:
 
-- Width: 1440px
-- Height: 900px
+`design/figma/references/about/about-identity-desktop-idle-v1.png`
 
-Large desktop comparison viewport:
-
-- Width: 2500px
-- Height: 1350px
+At desktop sizes, keep every axis short statement on two authored lines and
+align the axis headings, short statements, and supporting statements across
+all three columns. AX-01 breaks after `Design, build,`, with
+`Test, and refine.` on its second line.
 
 The complete Identity chapter should be visible within the initial desktop
-viewport at both comparison sizes and remain overflow-safe on shorter desktop
-viewports.
+viewport and remain overflow-safe on shorter desktop heights such as
+`1440 × 800`.
 
-Use the 1440 × 900 viewport as the primary composition reference.
+Larger similar-aspect-ratio desktop checks should include `1680 × 1050`,
+`1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The older
+`2500 × 1350` target may remain a secondary, wider validation size, but it does
+not replace the approved `1440 × 900` baseline.
 
-At 2500 × 1350, preserve the same visual relationships established at the
-primary viewport, including:
+At larger desktop sizes, preserve:
 
 - The relative width of the left content and right spear regions
 - The hierarchy between the display statement, opening statement, and axes
@@ -110,23 +118,32 @@ primary viewport, including:
 - The spear's scale and relationship to the chapter navigation
 - The overall balance of positive and negative space
 
-Do not stretch the 1440 × 900 composition uniformly to fill the wider
-2500 × 1350 viewport.
+Do not apply one uniform transform to stretch the baseline composition. Use
+relative structural tracks, viewport-aware gaps, and bounded typography and
+spacing. Allow intentional negative space to grow while preventing the
+narrative from remaining inside a small `1440px` island. Keep paragraph line
+lengths controlled.
 
-Scale the composition primarily in relation to viewport height, then use the
-additional horizontal space to increase margins, breathing room, and the
-distance between major regions without changing their intended hierarchy.
+The About shell owns one persistent left-side chapter-header anchor. Its
+top-left position and reserved bounding region are shared by:
 
-Avoid allowing text columns to become excessively wide at the larger viewport.
-Use controlled maximum widths so paragraph line lengths remain readable.
+- `01 / IDENTITY`
+- `02 / TRAJECTORY`
+- `03 / OUTSIDE THE SYSTEM`
+- `04 / INTERACTIVE INFLUENCES`
+- `05 / CURRENT DIRECTION`
 
-The large-desktop composition should feel like a more spacious version of the
-same design, not a separately rearranged layout.
+Pointer selection, keyboard activation, and active-section detection replace
+the text in this region without moving the anchor. Individual sections retain
+semantic headings without duplicating the persistent visual title for
+assistive technology.
 
 Visible content must include:
 
 - Chapter label
 - Name
+- Location
+- Creative signature
 - Display statement
 - Full opening statement
 - All three Identity-axis records
@@ -139,15 +156,16 @@ Preserve the existing right-side chapter-navigation and spear composition.
 
 Use a compact three-zone composition for:
 
-1. Identity metadata
-2. Display and opening statements
-3. Identity-axis records
+1. Display and opening statements
+2. Identity-axis records
+3. Identity metadata
 
 On the left side:
 
 - Keep `CREATIVITY WAS ALWAYS PART OF THE SYSTEM.` as the primary display
   statement.
-- Consider displaying the statement across four lines:
+- The approved Identity desktop idle composition displays the statement across
+  four lines:
 
   `CREATIVITY`
 
@@ -159,10 +177,8 @@ On the left side:
 
 - Position the opening statement beside or immediately below the display
   statement.
-- Treat `They were never separate.` as the emotional pivot of the opening
+- Keep the opening statement readable and secondary to the primary display
   statement.
-- The pivot may receive additional typographic emphasis, but it must remain
-  readable and should not compete with the primary display statement.
 - Begin the three-axis region high enough for all three records to remain
   visible.
 - Keep each supporting statement concise enough to render comfortably within
@@ -184,8 +200,20 @@ The right-side composition should preserve:
 - The persistent chapter navigation
 - The Identity chapter’s quiet spear posture
 - Substantial negative space around the spear
-- `alter-egoist` as a restrained creative signature rather than a second
-  identity
+- The shared Home-aligned `04` scene index
+
+The bottom Identity metadata should preserve Jaylan Wu as the primary identity,
+New York City as location, and `alter-egoist` as a restrained creative
+signature rather than a second identity.
+
+About's site-level `Index` action and compact chapter controls reuse Home's
+available-navigation hover and keyboard-focus behavior. Chapter controls remain
+visually distinct through their compact layout and scoped red accent.
+
+The Identity axis wording above is synchronized with the supplied export and
+runtime data. Red identifies the current About chapter and the right-navigation
+hover/focus state; orange remains the default active-system accent elsewhere,
+lavender represents personal context, and red continues to belong to the spear.
 
 The spear should function as a quiet anchor during Identity.
 
@@ -304,7 +332,7 @@ where my creative interests belonged and I genuinely thought that I was having f
 
 Personal axes:
 
-Engineering, Game design, 
+Engineering, Game design
 
 Source note for later Outside the System review:
 

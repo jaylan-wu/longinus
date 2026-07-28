@@ -2,9 +2,19 @@
 
 This file is the implementation plan and status tracker. `AGENTS.md` defines durable product direction and engineering constraints; this file records what the repository has actually established and what remains.
 
-Status reviewed against source on **2026-07-21**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-07-27**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
+
+Scoped About Identity validation on 2026-07-27: browser comparisons were
+recorded at `1440 × 900`, `1440 × 800`, `1680 × 1050`, `1920 × 1200`,
+`2240 × 1400`, and `2560 × 1600`. Pointer, keyboard, observer-driven chapter
+changes, reduced motion, route teardown, shared Home/About navigation states,
+direct `#about` entry, and About semantics with a forced unavailable WebGL
+context were inspected. `corepack yarn typecheck`, `corepack yarn lint`, and
+`corepack yarn build` passed. No test script exists. The build retained the
+known approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its
+chunk-size warning.
 
 ## Status language
 
@@ -209,7 +219,7 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
   1. Identity
   2. Trajectory
   3. Outside the System
-  4. Creative Influences
+  4. Interactive Influences
   5. Current Direction
 - [x] Split chapters and repeated record UI into feature-owned components.
 - [x] Keep published content in focused modules under `src/features/about/data/` and editorial/draft source in `content/ABOUT_CONTENT.md`.
@@ -217,14 +227,22 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 - [x] Use standard vertical browser scrolling without full-screen scroll snapping.
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
-- [ ] Create and approve About Figma frames; none are stored today.
-- [ ] Record desktop and narrow-layout visual comparisons.
+- [x] Store the approved About / Identity / Desktop / Idle export at `design/figma/references/about/about-identity-desktop-idle-v1.png`.
+- [x] Implement a shell-owned persistent chapter header whose anchor is shared by all five chapters.
+- [x] Verify pointer, keyboard, and scroll-driven chapter changes replace the persistent header text without moving its bounding region.
+- [ ] Create and approve About Figma frames for Trajectory, Outside the System, Interactive Influences, and Current Direction.
+- [ ] Record visual comparisons for the four remaining chapter frames and the finished narrow-layout reinterpretation.
 
 ## Identity
 
 - [x] Present Jaylan Wu, New York City, the opening statement, three axes, and `alter-egoist` as a restrained signature.
 - [x] Keep all axis statements visible rather than hover-gated.
-- [ ] Verify the content-specific `2500 × 1350` Identity target in a browser; it is not a stored approved Figma frame.
+- [x] Implement the static About / Identity / Desktop / Idle composition from the approved `1440 × 900` reference.
+- [x] Complete a direct browser comparison at `1440 × 900`, including region proportions, persistent chapter anchor, type hierarchy, navigation placement, spear framing, spacing, and shared Home page-index alignment.
+- [x] Verify responsive expansion at `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600` without a fixed-width island or horizontal overflow.
+- [x] Verify the shorter `1440 × 800` desktop layout remains usable without an internal chapter scrollbar.
+- [x] Reuse and browser-verify the Home available-navigation hover/focus treatment for About's site-level `Index` action and right chapter controls; keep the controls compact and use the About-scoped red accent.
+- [x] Verify direct `#about` entry, About Identity keyboard focus, chapter selection, reduced-motion feedback, semantic content with WebGL unavailable, and canvas teardown after route exit.
 - [ ] Perform final copy and typography review.
 
 ## Trajectory
@@ -250,11 +268,11 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 - [ ] Add explicit lazy-loading/decoding behavior where useful.
 - [ ] Create and compare against an approved photography composition.
 
-## Creative Influences
+## Interactive Influences
 
 - [x] Implement four locally selectable influence records with authored quotes, reflections, design takeaways, and optional work-specific metadata.
 - [x] Include video games, a novel, and an anime television series and film within one medium-agnostic influence-record model.
-- [x] Keep the stable `interactive-influences` section identifier while using Creative Influences as the visible chapter name.
+- [x] Keep `interactive-influences` as the stable section identifier and canonical visible chapter name; use the shorter `Influences` label only in the compact chapter navigator.
 - [x] Avoid ratings, rankings, and copied screenshots or promotional artwork.
 - [ ] Verify the featured-quote wording, punctuation, translations, speakers, and source scenes or editions identified in `content/ABOUT_CONTENT.md`.
 - [ ] Create and compare against an approved chapter composition.
@@ -271,8 +289,9 @@ Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable 
 
 - [x] Reuse the shared procedural spear within an About-owned canvas.
 - [x] Keep the desktop scene sticky and derive its layout from the canvas size.
-- [x] Implement scroll-direction/speed-responsive axial rotation in normal-motion mode.
+- [x] Implement scroll-direction/speed-responsive axial rotation for the four staged chapters after Identity in normal-motion mode.
 - [x] Stop continuous scroll-linked rotation and damp toward chapter values in reduced-motion mode.
+- [x] Keep the Identity idle spear stable, quietly framed, and free of pointer targeting, thrust, impact, or continuous decorative rotation.
 - [x] Provide narrow-layout CSS that repositions the scene and compresses chapter navigation.
 - [ ] Supply authored chapter postures and transitions.
 - [ ] Replace continuous decorative rotation with the intended quiet chapter progression.

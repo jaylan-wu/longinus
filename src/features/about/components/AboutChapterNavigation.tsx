@@ -4,12 +4,17 @@ import type { AboutChapterId } from '../types/about'
 
 type AboutChapterNavigationProps = {
   activeChapter: AboutChapterId
+  onSelectChapter: (chapterId: AboutChapterId) => void
 }
 
-export function AboutChapterNavigation({ activeChapter }: AboutChapterNavigationProps) {
+export function AboutChapterNavigation({
+  activeChapter,
+  onSelectChapter,
+}: AboutChapterNavigationProps) {
   const reducedMotion = useReducedMotion()
 
   const scrollToChapter = (chapterId: AboutChapterId) => {
+    onSelectChapter(chapterId)
     document.getElementById(chapterId)?.scrollIntoView({
       behavior: reducedMotion ? 'auto' : 'smooth',
       block: 'start',
@@ -26,13 +31,15 @@ export function AboutChapterNavigation({ activeChapter }: AboutChapterNavigation
             <li key={chapter.id}>
               <button
                 type="button"
-                className={isActive ? 'is-active' : undefined}
+                className={`navigation-action${isActive ? ' is-active' : ''}`}
                 aria-controls={chapter.id}
                 aria-current={isActive ? 'location' : undefined}
                 onClick={() => scrollToChapter(chapter.id)}
               >
                 <span>{chapter.index}</span>
-                <span>{chapter.label}</span>
+                <span className="navigation-action__label">
+                  {chapter.navigationLabel}
+                </span>
               </button>
             </li>
           )

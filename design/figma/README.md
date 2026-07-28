@@ -14,7 +14,12 @@ The current primary desktop design viewport is:
 1440 × 900
 ```
 
-This is a visual comparison reference, not a fixed browser requirement. The implementation must still adapt responsively and treat mobile as an intentional reinterpretation.
+This `16:10` viewport is a visual comparison reference, not a fixed browser
+requirement. Desktop compositions should expand through responsive layout
+rules at similar-aspect-ratio sizes such as `1680 × 1050`, `1920 × 1200`,
+`2240 × 1400`, and `2560 × 1600`; they must not remain inside a fixed
+`1440px` island or use one full-page scale transform. Mobile remains an
+intentional reinterpretation.
 
 ## Recommended Figma organization
 
@@ -37,6 +42,12 @@ Name frames using:
 Page / Viewport / State
 ```
 
+For chapter-based experiences, insert the chapter after the page:
+
+```text
+Page / Chapter / Viewport / State
+```
+
 For example:
 
 ```text
@@ -45,6 +56,7 @@ Projects / Desktop / Idle
 Projects / Desktop / Card Hover
 Projects / Desktop / Selection
 Project Detail / Desktop / Default
+About / Identity / Desktop / Idle
 ```
 
 ## Reference export rules
@@ -63,6 +75,7 @@ Use versioned names such as:
 projects-desktop-idle-v1.png
 projects-desktop-hover-v1.png
 project-detail-desktop-default-v1.png
+about-identity-desktop-idle-v1.png
 ```
 
 Avoid ambiguous names such as `final-final-2.png`.
@@ -84,6 +97,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 | Page | Frame | Viewport | State | Reference File | Figma Link | Implementation Status | Notes |
 |---|---|---|---|---|---|---|---|
 | Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
+| About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. Verified editorial copy, semantic color roles, unbundled fonts, and the procedural spear create documented differences from the export. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -103,6 +117,9 @@ Do not add a Figma link or mark a frame approved until that link or approval exi
 - Whether the spear exits, remains visible, or docks into the top navigation
 - Mobile navigation behavior
 - Final project-selection transition timing
+- Approved desktop compositions for About chapters Trajectory, Outside the
+  System, Interactive Influences, and Current Direction
+- Authored About chapter spear postures and transitions
 
 ## Homepage desktop idle
 
@@ -145,3 +162,76 @@ Reference:
 - Revisit camera, lighting, scale, silhouette, and cropping after the final 3D model is integrated.
 - Design and implement the final mobile composition separately.
 - Keep boot, target-focused spear motion, impact, and route transitions in their later milestones.
+
+## About Identity desktop idle
+
+Reference:
+
+`references/about/about-identity-desktop-idle-v1.png`
+
+### Implementation boundaries
+
+- This reference defines only the About / Identity / Desktop / Idle static
+  composition at the `1440 × 900` baseline.
+- The left narrative and system interface remain semantic DOM content. The
+  spear remains in the About-owned React Three Fiber scene.
+- A shell-owned active chapter header provides one fixed top-left anchor and
+  reserved bounding region for all five canonical chapter labels. Individual
+  sections retain visually hidden semantic headings.
+- The site-level `Index` action and right-side chapter controls reuse the Home
+  available-navigation hover, keyboard-focus, cursor, easing, and
+  reduced-motion treatment through the shared `navigation-action` style. The
+  chapter controls retain their compact layout and use red as their scoped
+  state accent.
+- Identity axis wording is synchronized between the supplied reference,
+  `content/ABOUT_CONTENT.md`, and the runtime data.
+- About retains the established display and sans-serif font families while
+  matching the reference's baseline type scale, line cadence, wrapping, and
+  placement.
+- The `04` page index uses the unmodified shared Home treatment and viewport
+  alignment rather than the reference's About-specific crop.
+- Red identifies the current About chapter and the right-navigation
+  hover/focus state. Orange remains the default active-system accent elsewhere,
+  and the warm foreground token remains the primary text color.
+- The export is a review reference only; it is not a runtime background or
+  spear image.
+
+### Verified implementation
+
+- The canonical comparison establishes a full-width `67.64% / 32.36%`
+  narrative/scene relationship, a stable chapter anchor, four-line display
+  statement, adjacent opening statement, three equal axis regions, compact
+  identity metadata with Location centered in the gap between Name and
+  Creative Signature, and right chapter
+  navigation. The shared Home page-index treatment is an intentional exception
+  to the reference.
+- Major spacing relationships were audited against the export: page header to
+  Identity content and chapter anchor; identifier to chapter title; display
+  statement to opening statement and axes; internal and inter-column axis
+  spacing; name, location, and creative-signature metadata; left content to
+  central negative space and scene; spear to chapter navigation; navigation to
+  viewport edges; and the structural lines and markers that classify those
+  regions. Page-index position was checked against Home instead of the About
+  export.
+- Responsive desktop tracks, viewport-aware spacing, and bounded type sizes
+  preserve the composition across the reviewed `16:10` sizes without
+  horizontal overflow or a fixed-width content island.
+- The Identity spear pose is stable and does not target, follow the pointer,
+  thrust, create impact, or spin continuously. Its staging is a best-fit use of
+  the shared procedural placeholder.
+- Pointer, keyboard, scroll-driven chapter changes, reduced motion, route
+  teardown, and semantic content with a forced unavailable WebGL context were
+  exercised in a browser.
+
+### Work still open
+
+- Trajectory, Outside the System, Interactive Influences, and Current
+  Direction still require their own approved static compositions. This
+  Identity implementation does not approve or redesign their content layouts.
+- The final licensed typography and authored Spear of Longinus asset remain
+  unavailable. Exact type metrics and the export's forked, twisting spear
+  silhouette therefore cannot be reproduced.
+- Authored spear postures and transitions for chapters after Identity remain
+  pending.
+- The existing narrow-layout fallback remains available, but a finished mobile
+  reinterpretation and physical touch-device review remain open.

@@ -43,7 +43,7 @@ The goal is to show that engineering, interactive design, and teaching are conne
 
 # Documentation Status and Current Repository Snapshot
 
-This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-21.
+This file combines durable product direction with repository-specific engineering guidance. Product direction remains authoritative even when it is not implemented. Statements in this section describe the repository as audited on 2026-07-27.
 
 Use these status terms consistently:
 
@@ -61,7 +61,7 @@ Use these status terms consistently:
 - Home is available at the empty hash, `#home`, and any unrecognized hash. Its static DOM composition is partially implemented. Its spear is staged procedural geometry, and the coordinated homepage interaction and boot experience are planned.
 - Projects is available at `#projects`. Its archive, local interaction state, temporary spear response, and timed transition are staged and have not been approved against a Projects Figma or motion reference.
 - Project detail is available at `#projects/<slug>`. It currently renders summary metadata and technologies, or an in-app not-found state. Narrative and demonstration regions are planned.
-- About is available at `#about`. Its five chapters, active-chapter navigation, local record selection, photography carousel, content data, and sticky spear scene are partially implemented. No About Figma export or authored motion reference is stored in the repository.
+- About is available at `#about`. Its five chapters, active-chapter navigation, local record selection, photography carousel, content data, and sticky spear scene are partially implemented. The approved About / Identity / Desktop / Idle composition is implemented and browser-compared; the other chapter compositions and authored motion remain planned.
 - Music and Playground are planned. Their homepage controls are disabled, and neither feature folder nor route exists.
 
 Home is imported eagerly. About, Projects, and project detail are lazy-loaded with `React.lazy`. Hash changes update the document title and scroll to the top; route-level focus transfer is not implemented.
@@ -70,16 +70,16 @@ Home is imported eagerly. About, Projects, and project detail are lazy-loaded wi
 
 - `src/components/spear/SpearModel.tsx` constructs a temporary spear from Three.js primitives. No GLTF or GLB asset is present.
 - Home, Projects, and About own separate React Three Fiber canvases and staging. The shared base geometry does not imply a shared camera or scene controller.
-- Home and Projects also render the shared CSS `SpearFallback` silhouette beneath their canvases. About has no CSS spear silhouette, but its semantic DOM narrative remains when `SceneErrorBoundary` removes a failed canvas.
+- Home and Projects also render the shared CSS `SpearFallback` silhouette beneath their canvases. About has no CSS spear silhouette, but its semantic DOM narrative and controls remain available when WebGL cannot render.
 - No font assets are bundled. The display, sans-serif, and monospace CSS stacks are provisional system stacks.
 - About runtime assets live under `src/features/about/assets/`; the site favicon lives at `public/favicon.png`, and no general runtime assets currently live under `src/assets/`.
 - The seven About photographs are high-resolution source-sized JPEGs. Responsive variants, explicit lazy-image loading, and production image optimization are not implemented.
-- The only stored Figma export is `design/figma/references/homepage/homepage-desktop-idle-v1.png` at `1440 × 900`. Its tracker status is in progress, not approved.
+- Stored Figma exports include `design/figma/references/homepage/homepage-desktop-idle-v1.png` and `design/figma/references/about/about-identity-desktop-idle-v1.png`, both at `1440 × 900`. Home remains in progress; the scoped About Identity static composition is implemented.
 
 ## Current State, Styling, and Data Patterns
 
 - Feature-specific components, data, scene behavior, and CSS live under `src/features/home/`, `src/features/projects/`, and `src/features/about/`.
-- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, shared color values, personal-axis identifiers and labels, and the navigation type.
+- Shared code is limited to proven cross-feature primitives: `PageIndex`, the procedural spear, the Home/Projects CSS spear silhouette, `SceneErrorBoundary`, `useReducedMotion`, the Home/About available-navigation action style, shared color values, personal-axis identifiers and labels, and the navigation type.
 - Local React state and focused feature hooks own current interaction state. There are no Context providers, reducers, or global state-library stores.
 - `src/index.css` owns global tokens, resets, the shared page-index treatment, and the application-wide reduced-motion baseline. Each implemented feature owns its distinctive stylesheet.
 - Project data lives in `src/features/projects/projectData.ts`. Its three records and detail copy are provisional portfolio content, not a verified final project archive.
@@ -751,7 +751,7 @@ The Playground is the region of Longinus where experimental interaction may be l
 
 ## About
 
-**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four creative-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The spear remains temporary procedural geometry with provisional continuous scroll-responsive rotation. No About Figma reference or authored motion reference is stored, the experience has not received recorded manual accessibility/device validation, and official organization, role, and degree wording remains partly unverified.
+**Current status: partially implemented.** The five chapters, active-chapter detection and navigation, local trajectory and influence selection, four interactive-influence records, seven-photo carousel, current-direction actions, feature-owned data/components/assets/CSS, and sticky About canvas exist. The influence collection currently includes video games, a novel, and an anime television series and film. The approved About / Identity / Desktop / Idle reference is stored and its static composition, shared chapter-header anchor, quiet Identity spear pose, and site-level navigation treatment are implemented and browser-compared. The spear remains temporary procedural geometry; later chapters retain provisional continuous scroll-responsive rotation and have no approved static or authored motion references. Complete manual accessibility/device validation remains open, and official organization, role, and degree wording remains partly unverified.
 
 The About page is the human center of Longinus.
 
@@ -785,7 +785,7 @@ The About page should function as one continuous vertical narrative organized in
 1. Identity
 2. Trajectory
 3. Outside the System
-4. Creative Influences
+4. Interactive Influences
 5. Current Direction
 
 Use standard browser scrolling as the foundation.
@@ -1069,9 +1069,9 @@ Lavender may support personal captions and reflection.
 
 Primary red should not be used as a generic photograph-selection color.
 
-### Creative Influences
+### Interactive Influences
 
-Creative Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
+Interactive Influences should function as a distinct chapter connecting Jaylan's personal interests to the kind of work he wants to create.
 
 Present a curated collection of selected creative works across multiple media. The current collection contains four records spanning video games, a novel, and an anime television series and film.
 
@@ -1102,7 +1102,7 @@ The chapter should move the narrative from observation and personal influence to
 
 The Current Direction chapter brings the About narrative from Jaylan's past experiences and personal influences into the kind of work he wants to pursue next.
 
-It should explain how engineering, game design, education, travel, photography, and creative influences contribute to one connected direction.
+It should explain how engineering, game development, education, travel, photography, and creative influences contribute to one connected direction.
 
 The chapter should not function as a rigid career plan or list of aspirational job titles.
 
@@ -1180,7 +1180,7 @@ These controls should remain part of the 2D interface.
 
 ### Spear Role
 
-The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: normal-motion mode applies continuous axial rotation whose velocity responds to scroll direction and speed, while reduced-motion mode damps toward chapter-specific axial values. This does not yet satisfy the authored chapter-posture direction below. Preserve the implementation seam, but do not treat its constant rotation or pose values as approved motion.
+The current About scene proves feature ownership and scroll-aware rendering, but it is staged rather than final: Identity uses a stable, quiet axial pose, while later chapters apply continuous axial rotation whose velocity responds to scroll direction and speed. Reduced-motion mode damps toward chapter-specific axial values. This does not yet satisfy the authored chapter-posture direction below. Preserve the implementation seam, but do not treat the later constant rotation or provisional pose values as approved motion.
 
 The Spear of Longinus should remain present throughout the About experience, but its role should differ from Home, Projects, Music, and Playground.
 
@@ -1217,7 +1217,7 @@ Each chapter should define an intentional spear role:
 * Identity: quiet anchor
 * Trajectory: directional spine
 * Outside the System: environmental frame
-* Creative Influences: emerging direction
+* Interactive Influences: emerging direction
 * Current Direction: forward vector
 
 During Identity, the spear may remain partially cropped, stable, or quietly suspended.
@@ -1226,7 +1226,7 @@ During Trajectory, it may evolve through position, depth, and rotation as a repr
 
 During Outside the System, it may recede into depth, frame negative space, sit behind photographs, or remain still.
 
-During Creative Influences, it may begin moving toward a more directional posture without targeting individual influence records.
+During Interactive Influences, it may begin moving toward a more directional posture without targeting individual influence records.
 
 During Current Direction, it should settle into a resolved diagonal or align with a distant vanishing point.
 
@@ -1302,7 +1302,7 @@ The page may include restrained chapter navigation displaying:
 * Identity
 * Trajectory
 * Outside the System
-* Creative Influences
+* Interactive Influences
 * Current Direction
 
 Chapter navigation should:

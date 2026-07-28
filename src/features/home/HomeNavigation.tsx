@@ -1,4 +1,5 @@
 import type { NavigationItem } from '../../types/navigation'
+import '../../components/navigation/navigationAction.css'
 
 type HomeNavigationProps = {
   items: NavigationItem[]
@@ -12,14 +13,21 @@ export function HomeNavigation({ items }: HomeNavigationProps) {
           const content = (
             <>
               <span className="home-navigation__index">{item.index}</span>
-              <span className="home-navigation__label">{item.label}</span>
+              <span className="home-navigation__label navigation-action__label">
+                {item.label}
+              </span>
             </>
           )
 
           return (
             <li className="home-navigation__item" key={item.id}>
               {item.availability === 'available' ? (
-                <a className="home-navigation__link" href={`#${item.id}`}>{content}</a>
+                <a
+                  className="home-navigation__link navigation-action"
+                  href={`#${item.id}`}
+                >
+                  {content}
+                </a>
               ) : (
                 <button
                   className="home-navigation__link home-navigation__link--planned"

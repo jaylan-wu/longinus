@@ -14,6 +14,7 @@ export type AboutChapterDefinition = {
   id: AboutChapterId
   index: string
   label: string
+  navigationLabel: string
   headingId: `${AboutChapterId}-title`
 }
 
@@ -25,11 +26,13 @@ export type IdentityAxis = {
   id: `AX-${string}`
   axis: PersonalAxis
   shortStatement: string
+  shortStatementLines: readonly [string, string]
   supportingStatement: string
 }
 
 export type IdentityContent = {
   name: string
+  location: string
   creativeSignature: string
   displayStatement: readonly string[]
   openingStatement: {
