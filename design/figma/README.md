@@ -106,7 +106,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 |---|---|---|---|---|---|---|---|
 | Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
 | About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. |
-| About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | Figma node `110:147` defines the left-side EDU-001 composition. The shared frame is applied to EDU-001 and EXP-001 through EXP-004. Header, right chapter navigation, and spear/scene were unchanged and remain outside this scoped implementation. |
+| About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, and the procedural spear remain documented differences from the export. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -164,8 +164,10 @@ Reference:
   spear remains in the About-owned React Three Fiber scene.
 - Use the established runtime font tokens while matching the reference's type
   scale, weight, line height, letter spacing, wrapping, alignment, and cropping.
-- The `04` page index uses the unmodified shared Home treatment and viewport
-  alignment rather than the reference's About-specific crop.
+- The `04` page index keeps the shared Home component, fixed viewport
+  alignment, weight, and opacity. An About-scoped desktop size rule matches
+  the shared treatment at `1440 × 900` and grows with the About block unit on
+  larger viewports.
 - Red identifies the current About chapter and the right-navigation
   hover/focus state. Orange remains the default active-system accent elsewhere,
   and the warm foreground token remains the primary text color.
@@ -195,10 +197,13 @@ Live selection:
 
 ### Implementation boundaries
 
-- This checkpoint implements only the left-side Trajectory composition.
-- The persistent header, its typography and behavior, the right-side chapter
-  navigation, the page index, the spear, the About Three.js scene, and camera
-  staging remain unchanged.
+- This checkpoint implements and compares the full static Trajectory
+  composition at `1440 × 900` plus its bounded large-desktop interpretation.
+- The persistent header, chapter indicator, right-side navigation, page index,
+  and Trajectory content scale through the shared About desktop units. Their
+  wording and interactions remain unchanged.
+- The spear model, materials, chapter behavior, animation, Three.js scene, and
+  camera staging remain unchanged.
 - EDU-001 is the base anatomy for the chapter heading, display title, lead,
   five-record selector, current-record panel, narrative regions, supporting
   metadata, structural rules, and decorative organization mark.
@@ -213,10 +218,11 @@ Live selection:
   narrative, and footer regions so record selection cannot move or resize its
   outer border.
 - Selected-record titles use named `standard`, `long`, and `extra-long`
-  variants. Authored two-line breaks remain data-owned. The selector uses the
-  approved `Lab Facilities Manager` short title so the role and visible state
-  label do not collide; the selected record retains the official
-  `Instructional Facilities Manager` title.
+  variants. Authored two-line breaks remain data-owned. Long selector-title
+  variants keep EDU-001, EXP-002, and EXP-003 clear of the visible state
+  column; EXP-004 uses the approved `Lab Facilities Manager` short title while
+  its selected record retains the official `Instructional Facilities Manager`
+  title.
 - NYU, New York Mets, and Major League Baseball marks use feature-owned assets
   with named position and scale variants. The MLB mark uses the supplied
   transparent `3840 × 2160` PNG. All three remain grayscale, faint, decorative,
@@ -226,9 +232,12 @@ Live selection:
 
 ### Responsive interpretation
 
-- Larger desktops retain the controlled `460px` selector and `360px` panel
-  maxima, keep the composition grouped at the left, and let negative space
-  absorb additional viewport area.
+- Larger desktops use two bounded About units rather than a page transform.
+  The width-sensitive inline unit controls horizontal inset, selector and panel
+  widths, their gap, and panel insets. The height-sensitive block unit controls
+  typography, row and panel heights, and vertical rhythm. Both interpolate
+  continuously from the `1440 × 900` baseline and stop growing beyond the
+  supported large-desktop range.
 - The `1440 × 800` short-desktop branch tightens the vertical relationship
   between the chapter heading, introduction, selector, and panel while keeping
   the `360 × 607` frame and all text visible.
@@ -246,11 +255,13 @@ Live selection:
   narratives for EXP-001 through EXP-004.
 - The repository implementation intentionally differs from the live node and
   stored export through user-approved post-reference refinements: the
-  selected-record width (`360px` runtime versus `325px` reference), revised
-  EXP-002 and EXP-003 title breaks, the EXP-004 constrained directory title,
-  `11px` non-heading Current Record text, the increased EDU-001 metadata
-  clearance, and lower-region centering for the sports marks. Other measured
-  differences are limited to minor raster and low-opacity mark compositing.
+  canonical selected-record width (`360px` runtime versus `325px` reference),
+  revised EXP-002 and EXP-003 title breaks, the EXP-004 constrained directory
+  title, `11px` canonical non-heading Current Record text, the increased
+  EDU-001 metadata clearance, and lower-region centering for the sports marks.
+  Other measured differences are limited to the established runtime fonts,
+  procedural spear silhouette, minor raster treatment, and low-opacity mark
+  compositing.
 - The stored visual still contains the older EDU-001 narrative. Its
   `LAB FACILITIES MANAGER` selector wording is now an approved constrained
   display title, while the selected-record heading preserves the official
@@ -266,6 +277,6 @@ Live selection:
   [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) and
   [`TASKS.md`](../../TASKS.md).
 
-This scoped implementation does not approve the complete Trajectory chapter,
-its right-side scene, other interaction states, or the three later About
+This implemented checkpoint does not approve other Trajectory interaction
+states, authored spear motion, the final spear asset, or the three later About
 chapter compositions.

@@ -37,6 +37,7 @@ export const trajectory = {
       roleOrDegree: 'Dual-Degree Undergraduate',
       displayTitle: ['Dual-Degree', 'Undergraduate.'],
       titleVariant: 'standard',
+      selectorTitleVariant: 'long',
       period: '2020–2025',
       detailMetadata: [
         'Bachelors of Science in Computer Science',

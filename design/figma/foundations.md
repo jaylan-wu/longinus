@@ -7,13 +7,14 @@ and validation history.
 
 ## Audit scope
 
-Audited against source and the recorded browser comparisons on **2026-07-28**.
+Audited against source and the recorded browser comparisons on **2026-07-29**.
 
-The values below cover the current Home implementation and the browser-compared
-About Identity composition plus the left-side About Trajectory EDU-001
-checkpoint. Home values are not comparison-approved. Outside the System,
-Interactive Influences, and Current Direction have no approved static frames,
-so this file does not infer chapter-specific measurements for them.
+The values below cover the current Home implementation, the browser-compared
+About Identity composition, and the full static About Trajectory EDU-001
+composition plus its bounded large-desktop interpretation. Home values are not
+comparison-approved. Outside the System, Interactive Influences, and Current
+Direction have no approved static frames, so this file does not infer
+chapter-specific measurements for them.
 
 ## Color palette
 
@@ -76,18 +77,18 @@ without changing the established font families.
 | Axis identifiers | `var(--font-mono)`, responsive from the baseline within bounded sizes | System identifiers remain visually distinct from narrative copy |
 | Axis support | Existing `var(--font-sans)` family, `clamp(0.75rem, 0.9vw, 1rem)`, `1.4` line height, bounded to `26ch` | Baseline copy follows the reference's four-line cadence and remains visible at `1440 × 800` |
 | Axis short statements | Existing `var(--font-display)` family with bounded `20–20.8px` baseline sizing and controlled two-line wrapping | Reference wording and vertical placement are synchronized with the editorial and runtime sources |
-| `04` scene index | Unmodified shared `PageIndex` used by Home | Uses the same fixed right/bottom viewport alignment, type metrics, opacity, and responsive rule as Home |
+| `04` scene index | Shared `PageIndex` component with an About-scoped desktop size | Keeps Home's fixed right/bottom alignment, type weight, and opacity; matches the shared `31vw` size at `1440 × 900` and follows the About block unit on larger desktops |
 
 ### Current About Trajectory mapping
 
 | Element | Current implementation | Verification note |
 | --- | --- | --- |
-| `TRAJECTORY` display title | `var(--font-display)`, `72px / 70px` at the baseline, weight `700`, `-0.05em` tracking | Browser bounds align to the reference title region at the canonical viewport |
-| Introductory statement | `var(--font-sans)`, `16px / 20px`, `-0.05em` tracking, `460px` baseline width | Preserves the reference's four-line wrapping at `1440 × 900` |
-| Record-selector titles | `var(--font-display)`, standard `20px / 20px` and long `19px / 20px` at desktop; narrow layouts use the shared wrapping treatment | EXP-004 uses the approved `Lab Facilities Manager` constrained display title so it does not collide with `SELECTED` or `VIEW`; the selected record retains the official title |
-| Selector system metadata | `var(--font-mono)`, `12px / 20px` | Applies to index, organization, and visible record state |
-| Selected-record title | `var(--font-display)` with `standard` `30px / 32px`, `long` `26px / 28px`, and `extra-long` `24px / 26px` desktop variants; long narrow titles reduce to `24px / 26px` and `22px / 24px` | Every record keeps an authored two-line break inside the same `64px` title region without horizontal spill |
-| Selected-record system and narrative copy | `var(--font-mono)`, `11px` throughout; `12px` label/system cadence and `13px` narrative/footer body cadence | The role heading remains at its existing display sizes; all five records were measured without clipping, clamping, ellipsis, or internal scrolling |
+| `TRAJECTORY` display title | `var(--font-display)`, `72px / 70px` at the `1440 × 900` baseline, weight `700`, `-0.05em` tracking | Browser bounds align to the reference title region at the canonical viewport; size follows the block unit above the baseline |
+| Introductory statement | `var(--font-sans)`, `16px / 20px` at the baseline, `-0.05em` tracking, `460px` baseline width | Preserves the reference's four-line wrapping throughout the reviewed desktop matrix |
+| Record-selector titles | `var(--font-display)`, standard `20px / 20px` and long `18px / 20px` at the baseline; narrow layouts use the shared wrapping treatment | EDU-001, EXP-002, and EXP-003 use the long selector variant to clear `SELECTED`; EXP-004 uses the approved `Lab Facilities Manager` constrained title while the selected record retains the official title |
+| Selector system metadata | `var(--font-mono)`, `12px / 20px` at the baseline | Applies to index, organization, and visible record state; size and cadence follow the block unit |
+| Selected-record title | `var(--font-display)` with baseline `standard` `30px / 32px`, `long` `26px / 28px`, and `extra-long` `24px / 26px` variants; long narrow titles reduce to `24px / 26px` and `22px / 24px` | Every record keeps an authored two-line break inside a stable title region without horizontal spill |
+| Selected-record system and narrative copy | `var(--font-mono)`, `11px` at the baseline with `12px` label/system cadence and `13px` narrative/footer body cadence | The block unit scales these roles on large desktops; all five records were measured without clipping, clamping, ellipsis, or internal scrolling |
 
 Do not add or bundle fonts solely to match a Figma reference. Any future change
 to the established runtime stacks requires explicit product direction and a
@@ -99,16 +100,35 @@ The canonical desktop comparison viewport for the supplied Home, About
 Identity, and About Trajectory frames is `1440 × 900` (`16:10`). It is a
 comparison frame, not a fixed browser requirement.
 
+### About desktop scaling units
+
+The About feature uses two bounded baseline units:
+
+```css
+--about-desktop-inline-unit: clamp(1rem, 1.1111vw, 1.7778rem);
+--about-desktop-block-unit:
+  clamp(1rem, min(1.7778svh, 1.1111vw), 1.7778rem);
+```
+
+Both resolve to `16px` at `1440 × 900`. The inline unit controls horizontal
+insets, column and panel widths, column gaps, horizontal panel spacing, and
+organization-mark width. The block unit controls header and chapter-anchor
+height, system typography, navigation and record rows, selected-record height,
+and internal vertical rhythm. The width guard prevents a tall narrow viewport
+from inflating desktop typography, and the upper bounds prevent indefinite
+growth. Trajectory aliases these shared units rather than maintaining an
+unrelated large-desktop override set.
+
 | Region | Current implementation | Status |
 | --- | --- | --- |
 | Home desktop split | `45.14% / 54.86%` columns with a divider at `45.14%` | Staged from current CSS |
 | Home ambient grid | `90px × 90px` background lines | Implemented visual treatment; not an approved component grid |
 | Home outer frame | Fixed insets defined in `src/features/home/home.css` | Implemented; comparison unverified |
 | About Identity desktop split | `67.64% / 32.36%`, shared by header, narrative, and sticky scene | Compared at the canonical viewport |
-| About Trajectory desktop composition | `75px` left inset; `460px` selector; `40px` gap; `360px` runtime selected-record panel; controlled `860px` total width | The Figma node and stored export retain the `325px` panel baseline; the additional runtime width is an approved post-reference refinement |
-| About Trajectory stable frame | `360 × 607` at the canonical and short-desktop viewports; fixed internal title, record-metadata, narrative, and footer rows | Outer bounds and content containment verified for EDU-001 and EXP-001 through EXP-004 |
+| About Trajectory desktop composition | Canonical `75px` left inset; `460px` selector; `40px` gap; `360px` runtime selected-record panel; `860px` total width at `1440 × 900` | The Figma node and stored export retain the `325px` panel baseline; the additional runtime width is an approved post-reference refinement and the complete runtime composition scales through the About units |
+| About Trajectory stable frame | `360 × 607` at the canonical and short-desktop viewports; fluid width/height above the baseline; stable internal title, record-metadata, narrative, and footer regions | Outer bounds and content containment verified for EDU-001 and EXP-001 through EXP-004 at every reviewed viewport |
 | About chapter landing anchor | Chapter-owned indicators move with their sections; right-navigation selection aligns each indicator to the same baseline top-left viewport position | All five targets browser-verified at `1440 × 900` and `390 × 844`; natural scrolling and anchor restoration also verified |
-| About larger desktop | Relative tracks plus height-aware custom properties and bounded `clamp()` sizing; no full-page transform | Reviewed at four larger `16:10` viewports without horizontal overflow or a fixed `1440px` island |
+| About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | Trajectory reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`; the shared Identity shell was smoke-checked at `2560 × 1440` |
 | About short desktop | Height-aware Identity spacing at `1440 × 800`; no internal chapter scroller | Browser-reviewed |
 | Narrow layout | Existing feature-owned single-column fallbacks remain below their breakpoints | Implemented CSS; final mobile/device review unverified |
 
@@ -119,10 +139,11 @@ header-to-Identity-indicator gaps; chapter identifier/title spacing; the
 display/opening/axes sequence; internal and inter-record axis spacing; the
 name/location/signature metadata row; content-to-negative-space-to-scene
 relationships; spear-to-navigation and navigation-to-edge spacing; and the
-lines and markers attached to those regions. The page index is aligned against
-Home's shared treatment rather than the About export. Future About frames must
-repeat this audit for their chapter-specific content rather than inheriting
-Identity measurements without comparison.
+lines and markers attached to those regions. The page index keeps Home's
+shared component, fixed edge alignment, opacity, and canonical size, then uses
+the About block unit above the baseline. Future About frames must repeat this
+audit for their chapter-specific content rather than inheriting Identity
+measurements without comparison.
 
 ### About Trajectory spacing and frame audit
 
@@ -151,16 +172,25 @@ The same panel bounds were browser-measured for all five records at
 `1440 × 900`; at `390 × 844`, the panel adapts to approximately `352 × 607`.
 The short-desktop branch keeps the frame at `360 × 607` and moves its top to
 approximately `y=164` at `1440 × 800`.
-At `1680 × 1050`, controlled maximum widths keep the left composition grouped
-instead of spreading it through the larger content track. Below `1240px`, the
-selector and panel stack and use natural page scrolling.
+
+The large-desktop matrix measured:
+
+| Viewport | Selector | Column gap | Selected-record panel |
+| --- | --- | --- | --- |
+| `1440 × 900` | `460 × 426` | `40px` | `360 × 607` |
+| `1920 × 1080` | approximately `613 × 511` | approximately `53px` | approximately `480 × 728` |
+| `2500 × 1350` | approximately `799 × 639` | approximately `69px` | approximately `625 × 911` |
+| `2560 × 1440` | approximately `818 × 681` | approximately `71px` | approximately `640 × 971` |
+
+All five records retained the same panel bounds at each viewport. Below
+`1240px`, the selector and panel stack and use natural page scrolling.
 
 ## Borders, dividers, and focus
 
 - The Home outer frame, navigation separators, main divider, and scene circle are current structural treatments.
 - Available Home links, About's site-level `Index` link, and the right-side
   About chapter controls share the `navigation-action` primitive: a `320ms`
-  displaced label, `400ms` background wipe, `240ms` edge, crosshair cursor,
+  displaced label, `400ms` background wipe, `240ms` edge,
   and a `2px` `:focus-visible` outline. Home and `Index` use orange; the
   chapter controls use red.
 - Reduced motion removes the shared padding/skew displacement while retaining
@@ -209,7 +239,6 @@ remaining verification work.
 - Projects and project-detail static compositions, including the settled
   project-detail spear placement
 - Approved static compositions for Outside the System, Interactive Influences,
-  and Current Direction, plus any future Trajectory right-side or scene review
-  beyond the implemented left-side checkpoint
+  and Current Direction
 - Final narrow-layout compositions and mobile-navigation treatment
 - Approved visible-focus treatment and color contrast

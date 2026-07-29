@@ -6,7 +6,6 @@
   overflow: hidden;
   isolation: isolate;
   color: var(--color-foreground);
-  cursor: crosshair;
   transition:
     color 220ms ease,
     padding-left 320ms cubic-bezier(0.22, 1, 0.36, 1);

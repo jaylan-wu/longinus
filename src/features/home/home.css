@@ -229,7 +229,6 @@
 
 .home-navigation__link--planned {
   color: rgba(var(--color-foreground-rgb), 0.21);
-  cursor: not-allowed;
 }
 
 .home-navigation__link--planned .home-navigation__index {

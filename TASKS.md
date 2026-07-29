@@ -8,7 +8,7 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-07-28**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-07-29**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 
@@ -71,6 +71,31 @@ reduced motion, and a forced unavailable WebGL context passed. The
 `typecheck`, `lint`, and `build` scripts passed through Corepack; no test script
 exists. The build retained the known approximately `1.08 MB` initial JavaScript
 chunk (`298 kB` gzip) and its chunk-size warning.
+
+Scoped About Trajectory responsive validation on 2026-07-29: the full static
+`1440 × 900` runtime frame was compared with the stored approved export, then
+the bounded desktop interpretation was browser-inspected at `1920 × 1080`,
+`2500 × 1350`, and `2560 × 1440`. The selector and selected-record panel
+measured approximately `460 × 426` and `360 × 607`, `613 × 511` and
+`480 × 728`, `799 × 639` and `625 × 911`, and `818 × 681` and `640 × 971`
+respectively. At each viewport, all five published records retained one stable
+outer panel, visible footer metadata, clipped decorative marks, and no internal
+or horizontal scrolling, content clipping, title/state overlap, or
+selection-driven layout shift. The lead retained its four-line cadence.
+Pointer, Enter, and Space selection; focus retention and visible focus;
+non-color selected state; reduced-motion mark behavior; normal-motion canvas
+mounting; and About canvas teardown after route exit passed without browser
+errors. The shared header, chapter indicator, right navigation, page index, and
+current spear staging were included in the visual comparison; the spear
+remained clear of navigation. `1440 × 800` and `390 × 844` Trajectory smoke
+checks and `1440 × 900` / `2560 × 1440` Identity-shell smoke checks also
+passed. `corepack yarn typecheck`, `corepack yarn lint`, and
+`corepack yarn build` passed; no test script exists. The build retained the
+known approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its
+chunk-size warning. An additional explicit
+`tsc -p tsconfig.app.json --noEmit` diagnostic remains blocked by four
+pre-existing uppercase `.JPG` module-declaration errors in the photography
+data; the repository-defined root `typecheck` does not surface those errors.
 
 ## Status language
 
@@ -285,10 +310,10 @@ chunk (`298 kB` gzip) and its chunk-size warning.
   the same shared viewport anchor while natural scrolling continues to move
   indicators through the page.
 - [x] Store the approved About / Trajectory / EDU-001 / Desktop / Idle export
-  and implement its left-side composition from Figma node `110:147`.
+  and implement its full static composition plus bounded large-desktop
+  interpretation from Figma node `110:147`.
 - [ ] Create and approve complete static frames for Outside the System,
-  Interactive Influences, and Current Direction, plus any Trajectory
-  right-side or scene checkpoint beyond the implemented left-side scope.
+  Interactive Influences, and Current Direction.
 - [ ] Record full visual comparisons for the three later chapter frames and
   the finished narrow-layout reinterpretation.
 
@@ -312,8 +337,9 @@ chunk (`298 kB` gzip) and its chunk-size warning.
 - [x] Reuse one NYU mark and apply named mark-position variants.
 - [x] Apply non-destructive grayscale/opacity treatment and reduced-motion-aware mark transitions.
 - [x] Use EDU-001 as the shared Trajectory anatomy and keep a stable
-  `360 × 607` desktop selected-record frame across EDU-001 and EXP-001 through
-  EXP-004.
+  `360 × 607` selected-record frame at the canonical and short-desktop
+  viewports, scale it fluidly on larger desktops, and preserve one stable
+  outer frame across EDU-001 and EXP-001 through EXP-004 at each viewport.
 - [x] Reserve fixed title, record-metadata, narrative, and supporting-metadata
   regions; distribute the narrative sections through the available space, pin
   Connected Axes and Supporting Themes to the footer, and use named standard,
@@ -325,13 +351,15 @@ chunk (`298 kB` gzip) and its chunk-size warning.
 - [x] Apply the approved EXP-002 and EXP-003 selected-record line breaks, use
   `Lab Facilities Manager` in the EXP-004 directory while retaining the
   official selected-record title, and increase all non-title Current Record
-  text to `11px` without moving the footer or overflowing the frame.
+  text to the `11px` canonical baseline without moving the footer or
+  overflowing the frame.
 - [x] Synchronize the revised EDU-001 copy and concise three-section experience
   narratives between `content/ABOUT_CONTENT.md` and runtime data.
-- [x] Browser-compare the left-side EDU-001 state with the live Figma node and
-  stored `1440 × 900` export; verify all five selected states, short desktop,
-  larger desktop, and the current narrow layout without panel movement,
-  meaningful-content clipping, or internal scrolling.
+- [x] Browser-compare the full EDU-001 static frame with the live Figma node
+  and stored `1440 × 900` export; verify all five selected states, short
+  desktop, the `1920 × 1080` through `2560 × 1440` large-desktop
+  interpretation, and the current narrow layout without panel movement,
+  meaningful-content clipping, overlap, or internal scrolling.
 - [x] Verify Trajectory pointer selection, Enter and Space activation, visible
   focus, focus retention, non-color selected state, reduced-motion mark swaps,
   and textual access with WebGL unavailable.
