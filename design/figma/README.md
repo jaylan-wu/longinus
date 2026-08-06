@@ -105,9 +105,9 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 | Page | Frame | Viewport | State | Reference File | Figma Link | Implementation Status | Notes |
 |---|---|---|---|---|---|---|---|
 | Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
-| About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. |
-| About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, and the procedural spear remain documented differences from the export. |
-| About | About / Outside the System / PHOTO-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-outside-photo-001-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the new left-side chapter composition. The established right navigation and spear scene remained protected prior work. Visible `PHOTO-*` carousel labels are an intentional functional divergence from the export. |
+| About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. The later user-directed removal of the visible top-left chapter heading and first-content reflow are intentional post-reference changes. |
+| About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, the procedural spear, the Identity-matched display-title proportions, and the later visible-heading removal with a `360 × 673px` canonical panel are documented post-reference differences. |
+| About | About / Outside the System / PHOTO-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-outside-photo-001-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the left-side chapter composition. The established right navigation and spear scene remain protected prior work. Visible `PHOTO-*` carousel labels, Identity-matched display-title proportions, and the later visible-heading removal with selected-image reflow are intentional runtime refinements. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -177,6 +177,28 @@ Reference:
 - This static reference does not define the continuous procedural rotation or
   future authored chapter motion.
 
+### Current shared chapter-entry treatment
+
+- The stored About exports retain their original orange-numbered top-left
+  chapter headings as historical composition references. The current runtime
+  intentionally removes those five visible headings. Each chapter still owns a
+  visually hidden `h2`, and each section retains its `aria-labelledby`
+  relationship.
+- First content uses one responsive anchor: `151px` at the `1440 × 900`
+  baseline, `120px` on short desktop and tablet layouts, and `100px` on mobile.
+  Identity, Trajectory, Outside the System, Interactive Influences, and Current
+  Direction each reflow or extend their own composition into that reclaimed
+  space rather than sharing one generic stretch rule.
+- At the canonical viewport, Trajectory extends its selected card from
+  `y=151–824`, Outside uses an approximately `480 × 320px` selected image at
+  `y=330–650` and keeps its carousel at approximately `y=675–789`,
+  Interactive Influences extends its index from `y=151–824`, and Current
+  Direction balances approximately `144px` above and `145px` below its centered
+  content group.
+- The persistent top-right Current chapter status and right-side chapter
+  navigation remain visible. Their labels, selection behavior, and relationship
+  to the fixed header are not removed with the chapter-owned heading.
+
 The tracker above owns the frame status. See [`foundations.md`](foundations.md)
 for the compared layout and type values,
 [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) for exact editorial
@@ -200,24 +222,26 @@ Live selection:
 
 - This checkpoint implements and compares the full static Trajectory
   composition at `1440 × 900` plus its bounded large-desktop interpretation.
-- The persistent header, chapter indicator, right-side navigation, page index,
-  and Trajectory content scale through the shared About desktop units. Their
-  wording and interactions remain unchanged.
+- The persistent header, top-right Current chapter status, right-side
+  navigation, page index, and Trajectory content scale through the shared About
+  desktop units. The chapter-owned visible top-left heading is removed, while a
+  visually hidden semantic `h2` remains.
 - The spear model, materials, chapter behavior, animation, Three.js scene, and
   camera staging remain unchanged.
-- EDU-001 is the base anatomy for the chapter heading, display title, lead,
+- EDU-001 is the base anatomy for the semantic section heading, display title, lead,
   five-record selector, current-record panel, narrative regions, supporting
   metadata, structural rules, and decorative organization mark.
 - The same selected-record frame is used by EDU-001 and EXP-001 through
   EXP-004. `EXP-005` remains incomplete, unpublished, and absent from the
   selector.
-- At `1440 × 900`, the selector is `460 × 426`, the runtime selected-record
-  panel is `360 × 607`, the column gap is `40px`, and both regions bottom-align.
-  The approved Figma frame remains the `325 × 607` visual baseline; the
-  additional `35px` of runtime width is an intentional, user-approved
-  post-reference refinement. The panel keeps fixed title, record-metadata,
-  narrative, and footer regions so record selection cannot move or resize its
-  outer border.
+- At `1440 × 900`, the selector remains `460 × 426px` and ends at `y=824`.
+  The runtime selected-record panel now begins at the shared `y=151` content
+  anchor and measures `360 × 673px`, ending at the same `y=824` baseline; the
+  column gap remains `40px`. The approved Figma frame remains the `325 × 607px`
+  visual baseline. The additional `35px` of runtime width and the later `66px`
+  upward extension are intentional user-directed post-reference refinements.
+  The panel keeps fixed title, record-metadata, narrative, and footer regions so
+  record selection cannot move or resize its outer border.
 - Selected-record titles use named `standard`, `long`, and `extra-long`
   variants. Authored two-line breaks remain data-owned. Long selector-title
   variants keep EDU-001, EXP-002, and EXP-003 clear of the visible state
@@ -227,9 +251,10 @@ Live selection:
 - NYU, New York Mets, and Major League Baseball marks use feature-owned assets
   with named position and scale variants. The MLB mark uses the supplied
   transparent `3840 × 2160` PNG. All three remain grayscale, faint, decorative,
-  proportion-preserving, and reduced-motion aware. The Mets and MLB marks share
-  a lower-content-center position at the midpoint between the second divider
-  and the card bottom.
+  proportion-preserving, and reduced-motion aware. All three share a
+  lower-content-center position at the midpoint between the second divider and
+  the card bottom. The NYU portrait scale follows the card's block unit so it
+  preserves divider clearance as wide desktop cards grow.
 
 ### Responsive interpretation
 
@@ -239,9 +264,8 @@ Live selection:
   typography, row and panel heights, and vertical rhythm. Both interpolate
   continuously from the `1440 × 900` baseline and stop growing beyond the
   supported large-desktop range.
-- The `1440 × 800` short-desktop branch tightens the vertical relationship
-  between the chapter heading, introduction, selector, and panel while keeping
-  the `360 × 607` frame and all text visible.
+- The `1440 × 800` short-desktop branch begins first content at `120px` and
+  applies its own selected-panel extension while keeping all text visible.
 - Below `1240px`, the selector and stable selected-record frame stack within
   the left narrative region. At `390 × 844`, the full text remains available
   through natural page scrolling with no horizontal overflow, clipping,
@@ -256,7 +280,8 @@ Live selection:
   narratives for EXP-001 through EXP-004.
 - The repository implementation intentionally differs from the live node and
   stored export through user-approved post-reference refinements: the
-  canonical selected-record width (`360px` runtime versus `325px` reference),
+  canonical selected-record frame (`360 × 673px` runtime versus
+  `325 × 607px` reference), removal of the visible top-left chapter heading,
   revised EXP-002 and EXP-003 title breaks, the EXP-004 constrained directory
   title, `11px` canonical non-heading Current Record text, the increased
   EDU-001 metadata clearance, and lower-region centering for the sports marks.
@@ -300,10 +325,13 @@ Reference:
 - The export was inspected directly from the repository. No Figma connection,
   URL, or node was used, and the reference remains a design-development
   artifact rather than a production import.
-- The composition uses the shared chapter indicator, a horizontally staged
-  display title, the approved travel-and-photography introduction, a
-  approximately `450 × 300` selected image, an adjacent lavender metadata
-  region, and five visible landscape thumbnails at the canonical viewport.
+- The composition uses a visually hidden semantic chapter heading, a
+  horizontally staged display title, the approved travel-and-photography
+  introduction, an approximately `480 × 320px` selected image, an adjacent
+  lavender metadata region, and five visible landscape thumbnails at the
+  canonical viewport. At `1440 × 900`, the title begins at `y=151`, the selected
+  image spans approximately `y=330–650`, and the carousel spans approximately
+  `y=675–789`.
 - `PHOTO-001` is the initial record. The gallery renders all seven available
   feature-owned assets and keeps record selection local to the Outside chapter.
 - Every thumbnail keeps its visible `PHOTO-*` identifier beneath the image.
@@ -317,8 +345,12 @@ Reference:
 
 - The shared About inline and block units scale the display title, selected
   image, metadata, thumbnails, and spacing without changing the fixed
-  left/right shell boundary. The reviewed desktop matrix is `1440 × 800`,
-  `1440 × 900`, `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`.
+  left/right shell boundary. The pre-reflow composition was reviewed at
+  `1440 × 800`, `1440 × 900`, `1920 × 1080`, `2500 × 1350`, and
+  `2560 × 1440`. The reduced preview was subsequently browser-measured at
+  `1440 × 900`, `1920 × 1080`, `1080 × 900`, and `390 × 844` without caption
+  or page-level horizontal overflow; still-larger post-reflow desktops remain
+  open for refreshed comparison.
 - At `390 × 844`, selected image and metadata stack in document order, the
   control-driven thumbnail track keeps its active record centered, labels
   remain visible, and normal page scrolling exposes the complete chapter

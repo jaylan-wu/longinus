@@ -3,12 +3,10 @@ import {
   AboutChapter,
   type AboutChapterComponentProps,
 } from '../AboutChapter'
-import { ChapterHeading } from '../ChapterHeading'
 
 export function CurrentDirectionChapter({ chapter }: AboutChapterComponentProps) {
   return (
     <AboutChapter chapter={chapter} modifier="direction">
-      <ChapterHeading chapter={chapter} />
       <p className="about-direction__statement">
         {currentDirection.statement}
       </p>

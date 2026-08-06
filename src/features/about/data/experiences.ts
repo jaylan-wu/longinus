@@ -11,7 +11,7 @@ export const experienceOrganizationMarks = {
   nyu: {
     id: 'nyu',
     imageSrc: newYorkUniversityMark,
-    position: 'lower-right',
+    position: 'lower-content-center',
     scale: 'portrait',
   },
   'new-york-mets': {

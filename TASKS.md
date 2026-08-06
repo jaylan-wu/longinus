@@ -8,7 +8,7 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-07-29**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-08-06**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 
@@ -96,6 +96,79 @@ chunk-size warning. An additional explicit
 `tsc -p tsconfig.app.json --noEmit` diagnostic remains blocked by four
 pre-existing uppercase `.JPG` module-declaration errors in the photography
 data; the repository-defined root `typecheck` does not surface those errors.
+
+Scoped About Trajectory NYU-mark alignment validation on 2026-08-06: the
+shared NYU portrait for EDU-001, EXP-001, and EXP-004 was moved from its
+percentage-based lower-right anchor to the semantic center of the region
+between the second divider and the card bottom. Its size cap now follows the
+card's block unit so wide desktop growth cannot carry it across the divider.
+All three NYU states were browser-measured at `1440 × 900`, `1440 × 800`,
+`1920 × 1080`, `2500 × 1350`, `2560 × 1440`, and `390 × 844`. Their image-box
+center delta was `0px` at the baseline, short-desktop, and narrow viewports and
+remained within `0.01px` of center on larger desktops. Equal divider and card-
+bottom clearance measured approximately `13.63px`, `16.37px`, `20.45px`, and
+`21.81px` as the card scaled, with no horizontal overflow. Captured frames for
+all three canonical selected states plus narrow and large-desktop states were
+visually inspected. `yarn typecheck`, `yarn lint`, and `yarn build` passed; no
+test script exists. The build retained the known approximately `1.08 MB`
+initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
+
+Scoped About display-title validation on 2026-08-06: all five semantic chapter
+indicators were confirmed to share the same component and computed typography.
+The three implemented large chapter display titles—Identity, Trajectory, and
+Outside the System—were consolidated onto the Identity treatment: the shared
+runtime display stack, weight `700`, `0.946` line-height ratio, `-0.045em`
+tracking, uppercase treatment, and `0.882` desktop horizontal staging.
+Composition-owned sizes, Identity's authored per-line adjustments, and chapter
+wrapping remain local. At the existing `1080px` breakpoint, all three now
+return to natural horizontal width together. Computed styles and captured
+frames were inspected at `1440 × 900`, `1080 × 900`, and `390 × 844`; the
+titles matched at each breakpoint without page-level horizontal overflow.
+`yarn typecheck`, `yarn lint`, and `yarn build` passed; no test script exists.
+The build retained the known approximately `1.08 MB` initial JavaScript chunk
+(`298 kB` gzip) and its chunk-size warning.
+
+Scoped About chapter-header reflow validation on 2026-08-06: a later
+user-directed refinement removed the visible orange-numbered top-left heading
+from all five chapters while preserving one visually hidden `h2` and its
+section `aria-labelledby` relationship for each chapter. The persistent
+top-right Current chapter status and right-side chapter navigation remain
+visible and unchanged. First content now begins at the shared `151px` canonical
+desktop anchor, `120px` short-desktop and tablet anchor, and `100px` mobile
+anchor. Chapter-specific use of the reclaimed space was browser-measured at
+`1440 × 900`: Identity extends its introduction frame while preserving the
+lower axis and metadata alignment; Trajectory extends the selected-record panel
+to `360 × 673px` from `y=151` through `y=824`; Outside the System begins its
+display title at `y=151` and, at this checkpoint, initially expanded the
+selected image to approximately `543 × 362px` from `y=330` through `y=692`,
+and keeps the carousel at
+approximately `y=719–833`; Interactive Influences extends its four-row index
+from `y=151` through `y=824`; and Current Direction centers its content with
+approximately `144px` above and `145px` below. These changes intentionally
+supersede the visible chapter-heading geometry in the stored About exports
+without changing the persistent header, navigation, divider, page index, or
+spear scene. The complete five-chapter flow was captured and visually inspected
+at `1440 × 900` and `390 × 844`; structural measurements also covered
+`1440 × 800`, `1920 × 1080`, and `1080 × 900`. All five Trajectory records and
+all seven Outside photographs retained their fixed content without internal or
+page-level horizontal overflow. The visible-heading count was zero, all five
+hidden heading identifiers were unique, and the fixed header/divider remained
+above the reflowed content. `yarn typecheck`, `yarn lint`, and `yarn build`
+passed; no test script exists. The build retained the known approximately
+`1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
+
+Scoped About Outside preview-size validation on 2026-08-06: the desktop
+selected-photo track was reduced while preserving its `3:2` aspect ratio, the
+full-width carousel, and the single-column tablet/mobile interpretation. At
+`1440 × 900`, the preview now measures approximately `477 × 318px` from
+`y=330–648`, the adjacent caption gains approximately `66px` of width, and the
+carousel spans approximately `y=675–789`. The preview measures approximately
+`633 × 422px` at `1920 × 1080`; the existing full-width `582 × 388px` tablet
+and approximately `352 × 234px` mobile frames remain unchanged. All seven
+selected-photo captions fit at each audited viewport with no page-level
+horizontal overflow. `yarn typecheck`, `yarn lint`, and `yarn build` passed;
+no test script exists. The build retained the known approximately `1.08 MB`
+initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
 
 Scoped About Outside the System validation on 2026-08-05: the approved static
 export at
@@ -339,16 +412,22 @@ passed; no test script exists. The build retained the known approximately
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
 - [x] Store the approved About / Identity / Desktop / Idle export at `design/figma/references/about/about-identity-desktop-idle-v1.png`.
-- [x] Implement chapter-owned visible indicators that move with their sections.
-- [x] Verify every right-navigation selection lands its chapter indicator at
-  the same shared viewport anchor while natural scrolling continues to move
-  indicators through the page.
+- [x] Remove the chapter-owned visible orange-numbered top-left headings while
+  retaining a visually hidden `h2` and valid `aria-labelledby` relationship for
+  every section.
+- [x] Align each chapter's first content region to the shared responsive anchor
+  and reflow or extend chapter-specific content into the reclaimed space while
+  preserving the persistent top-right Current chapter status and right-side
+  chapter navigation.
 - [x] Store the approved About / Trajectory / EDU-001 / Desktop / Idle export
   and implement its full static composition plus bounded large-desktop
   interpretation from Figma node `110:147`.
 - [x] Store the approved About / Outside the System / PHOTO-001 / Desktop /
   Idle export and implement and compare its left-side static composition while
   preserving the established right navigation and spear scene.
+- [x] Normalize the implemented Identity, Trajectory, and Outside the System
+  large display titles to the Identity character-width and typography
+  treatment across desktop and narrow layouts.
 - [ ] Create and approve complete static frames for Interactive Influences and
   Current Direction.
 - [ ] Record full visual comparisons for the two remaining chapter frames and
@@ -359,7 +438,11 @@ passed; no test script exists. The build retained the known approximately
 - [x] Present Jaylan Wu, New York City, the opening statement, three axes, and `alter-egoist` as a restrained signature.
 - [x] Keep all axis statements visible rather than hover-gated.
 - [x] Implement the static About / Identity / Desktop / Idle composition from the approved `1440 × 900` reference.
-- [x] Complete a direct browser comparison at `1440 × 900`, including region proportions, initial Identity indicator placement, type hierarchy, navigation placement, spear framing, spacing, and shared Home page-index alignment.
+- [x] Complete the original direct browser comparison at `1440 × 900`,
+  including region proportions, the reference-era Identity indicator placement,
+  type hierarchy, navigation placement, spear framing, spacing, and shared Home
+  page-index alignment; record the later user-directed header removal and
+  content reflow separately.
 - [x] Verify responsive expansion at `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600` without a fixed-width island or horizontal overflow.
 - [x] Verify the shorter `1440 × 800` desktop layout remains usable without an internal chapter scrollbar.
 - [x] Reuse and browser-verify the Home available-navigation hover/focus treatment for About's site-level `Index` action and right chapter controls; keep the controls compact and use the About-scoped red accent.
@@ -373,10 +456,11 @@ passed; no test script exists. The build retained the known approximately
 - [x] Implement local selected-record state, reflective sections, axes/themes, and decorative organization marks.
 - [x] Reuse one NYU mark and apply named mark-position variants.
 - [x] Apply non-destructive grayscale/opacity treatment and reduced-motion-aware mark transitions.
-- [x] Use EDU-001 as the shared Trajectory anatomy and keep a stable
-  `360 × 607` selected-record frame at the canonical and short-desktop
-  viewports, scale it fluidly on larger desktops, and preserve one stable
-  outer frame across EDU-001 and EXP-001 through EXP-004 at each viewport.
+- [x] Use EDU-001 as the shared Trajectory anatomy, extend the canonical
+  selected-record frame to `360 × 673px` within the reclaimed heading space,
+  scale its chapter-specific height fluidly at other breakpoints, and preserve
+  one stable outer frame across EDU-001 and EXP-001 through EXP-004 at each
+  viewport.
 - [x] Reserve fixed title, record-metadata, narrative, and supporting-metadata
   regions; distribute the narrative sections through the available space, pin
   Connected Axes and Supporting Themes to the footer, and use named standard,
@@ -385,6 +469,9 @@ passed; no test script exists. The build retained the known approximately
   remove the superseded WebP.
 - [x] Give EDU-001 additional clearance below `Game Engineering`, and center
   the Mets and MLB watermarks between the second divider and the card bottom.
+- [x] Center the shared NYU watermark between the second divider and the card
+  bottom for EDU-001, EXP-001, and EXP-004, and size its portrait from the
+  block unit so it remains clear of the divider on wide desktop cards.
 - [x] Apply the approved EXP-002 and EXP-003 selected-record line breaks, use
   `Lab Facilities Manager` in the EXP-004 directory while retaining the
   official selected-record title, and increase all non-title Current Record
@@ -392,11 +479,12 @@ passed; no test script exists. The build retained the known approximately
   overflowing the frame.
 - [x] Synchronize the revised EDU-001 copy and concise three-section experience
   narratives between `content/ABOUT_CONTENT.md` and runtime data.
-- [x] Browser-compare the full EDU-001 static frame with the live Figma node
-  and stored `1440 × 900` export; verify all five selected states, short
+- [x] Browser-compare the original pre-reflow EDU-001 static frame with the live
+  Figma node and stored `1440 × 900` export; verify all five selected states, short
   desktop, the `1920 × 1080` through `2560 × 1440` large-desktop
   interpretation, and the current narrow layout without panel movement,
-  meaningful-content clipping, overlap, or internal scrolling.
+  meaningful-content clipping, overlap, or internal scrolling; record the
+  later header removal and canonical panel extension separately above.
 - [x] Verify Trajectory pointer selection, Enter and Space activation, visible
   focus, focus retention, non-color selected state, reduced-motion mark swaps,
   and textual access with WebGL unavailable.
@@ -422,16 +510,20 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Export web-appropriate image sizes and responsive variants; current JPEGs are high-resolution source-sized files.
 - [x] Prioritize `PHOTO-001`, provide intrinsic dimensions, and use explicit
   lazy-loading and asynchronous decoding for non-selected thumbnail imagery.
-- [x] Compare the completed left-side photography composition against the
-  approved `1440 × 900` export and inspect its bounded desktop and narrow
+- [x] Compare the original pre-reflow left-side photography composition against
+  the approved `1440 × 900` export and inspect its bounded desktop and narrow
   interpretations. The protected right navigation and spear composition were
-  intentionally excluded from correction scope.
+  intentionally excluded from correction scope; the later selected-image
+  reflow and preview-size reduction are recorded separately above.
 
 ## Interactive Influences
 
 - [x] Implement four locally selectable influence records with authored quotes, reflections, design takeaways, and optional work-specific metadata.
 - [x] Include video games, a novel, and an anime television series and film within one medium-agnostic influence-record model.
-- [x] Keep `interactive-influences` as the stable section identifier and canonical visible chapter name; use the shorter `Influences` label only in the compact chapter navigator.
+- [x] Keep `interactive-influences` as the stable section identifier and
+  canonical chapter name exposed by the persistent Current chapter status and
+  visually hidden section heading; use the shorter `Influences` label only in
+  the compact chapter navigator.
 - [x] Avoid ratings, rankings, and copied screenshots or promotional artwork.
 - [ ] Verify the featured-quote wording, punctuation, translations, speakers, and source scenes or editions identified in `content/ABOUT_CONTENT.md`.
 - [ ] Create and compare against an approved chapter composition.

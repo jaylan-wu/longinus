@@ -18,6 +18,9 @@ export function AboutChapter({ chapter, modifier, children }: AboutChapterProps)
       id={chapter.id}
       aria-labelledby={chapter.headingId}
     >
+      <h2 className="about__visually-hidden" id={chapter.headingId}>
+        {chapter.label}
+      </h2>
       {children}
     </section>
   )

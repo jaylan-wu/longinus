@@ -5,7 +5,6 @@ import {
   AboutChapter,
   type AboutChapterComponentProps,
 } from '../AboutChapter'
-import { ChapterHeading } from '../ChapterHeading'
 import { TrajectoryRecordDetail } from './TrajectoryRecordDetail'
 import { TrajectoryRecordList } from './TrajectoryRecordList'
 
@@ -17,9 +16,11 @@ export function TrajectoryChapter({ chapter }: AboutChapterComponentProps) {
 
   return (
     <AboutChapter chapter={chapter} modifier="trajectory">
-      <ChapterHeading chapter={chapter} />
       <div className="trajectory-introduction">
-        <p className="trajectory-introduction__title" aria-hidden="true">
+        <p
+          className="about-chapter__display-title trajectory-introduction__title"
+          aria-hidden="true"
+        >
           Trajectory
         </p>
         <p className="about-chapter__lead">{trajectory.lead}</p>

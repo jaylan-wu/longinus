@@ -4,15 +4,13 @@ import {
   AboutChapter,
   type AboutChapterComponentProps,
 } from '../AboutChapter'
-import { ChapterHeading } from '../ChapterHeading'
 
 export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
   return (
     <AboutChapter chapter={chapter} modifier="identity">
-      <ChapterHeading chapter={chapter} />
       <div className="about-identity__content">
         <div className="about-identity__introduction">
-          <p className="about-identity__display">
+          <p className="about-chapter__display-title about-identity__display">
             {identity.displayStatement.map((line) => (
               <span key={line} aria-hidden="true">{line}</span>
             ))}

@@ -5,7 +5,6 @@ import {
   AboutChapter,
   type AboutChapterComponentProps,
 } from '../AboutChapter'
-import { ChapterHeading } from '../ChapterHeading'
 
 const SELECTED_INFLUENCE_DETAIL_ID = 'selected-influence-detail'
 
@@ -171,7 +170,6 @@ export function CreativeInfluencesChapter({ chapter }: AboutChapterComponentProp
 
   return (
     <AboutChapter chapter={chapter} modifier="influences">
-      <ChapterHeading chapter={chapter} />
       <div className="influence-records">
         <InfluenceList
           records={creativeInfluences}
