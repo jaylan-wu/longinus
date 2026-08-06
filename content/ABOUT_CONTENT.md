@@ -10,7 +10,7 @@ Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, m
 
 ## Ownership and synchronization
 
-Editorial inventory reviewed on **2026-07-28**.
+Editorial inventory reviewed on **2026-08-05**.
 
 - [`AGENTS.md`](../AGENTS.md) owns durable product direction, visual-system
   rules, interaction intent, and engineering constraints.
@@ -588,30 +588,17 @@ design documentation.
 
 # 3. Outside the System
 
-## Travel Statement
+## Travel and Photography Statement
 
-Write 2–4 sentences answering:
+Approved introductory statement:
 
-* Why does travel matter to me?
-* What do I notice in unfamiliar environments?
-* How have independence and observation shaped me?
-* Which details attract my attention?
-
-Draft:
-
-I fell in love with traveling when I was in high school. I went on my first international trip to Taiwan and Japan with my family and really loved exploring my own culture as well as explore one that was different from my own. I really love exploring it through the food of the culture. Since then, I studied abroad in the Paris, France in the Spring of 2023. Since then, I've also had a 6 week solo trip to Japan post graduation. Countries that I have visited include, USA, Canada, France, Belgium, UK, Sweden, Spain, Portugal, Italy, the Netherlands, & Taiwan. In all these places, I like to visit nature, historical monuments, and local restaurants to really embed myself int he cutlure.
-
-## Photography Statement
-
-Write 1–3 sentences answering:
-
-* What do I photograph?
-* What kinds of spaces, moments, or details attract me?
-* Why do I keep photographs?
-
-Draft:
-
-When I take my camera out, I usually look for the symmetry in nature. Many of my photos involve having a centerpiece and the symmetry around it. Most of these are taken on trips that are done solo. When I'm around my friends, I try my best to take candid photos of them where they are most comfortable with themself.
+I fell in love with traveling in high school on my first international trip to
+Taiwan and Japan. On that trip I explored my own culture alongside one that was
+unfamiliar. Studying abroad in Paris and later taking a six-week solo trip
+through Japan strengthened the independence and curiosity that I brought to
+unfamiliar places. When I take my camera out, I usually look for symmetry in
+nature and build my photos around a central subject. The highlighted images
+come from my solo trips, friends, and candid moments.
 
 ## Photography Records
 
@@ -652,7 +639,7 @@ Fisherman in the lake.
 
 Personal caption:
 
-fishing.
+fishing
 
 Camera:
 
@@ -660,7 +647,8 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-This was one of my favorite photos that I was able to capture in Japan. I was lucky to be able to catch Fuji on a sunny day and it was just a surreal experience all around.
+This was one of my favorite photos that I was able to capture in Japan. I was
+lucky to catch Fuji on a clear day, and the experience felt surreal.
 
 ### Photograph
 

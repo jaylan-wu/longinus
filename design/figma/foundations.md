@@ -7,14 +7,15 @@ and validation history.
 
 ## Audit scope
 
-Audited against source and the recorded browser comparisons on **2026-07-29**.
+Audited against source and the recorded browser comparisons on **2026-08-05**.
 
 The values below cover the current Home implementation, the browser-compared
 About Identity composition, and the full static About Trajectory EDU-001
-composition plus its bounded large-desktop interpretation. Home values are not
-comparison-approved. Outside the System, Interactive Influences, and Current
-Direction have no approved static frames, so this file does not infer
-chapter-specific measurements for them.
+composition plus its bounded large-desktop interpretation, and the compared
+left-side About Outside the System PHOTO-001 composition. Home values are not
+comparison-approved. Interactive Influences and Current Direction have no
+approved static frames, so this file does not infer chapter-specific
+measurements for them.
 
 ## Color palette
 
@@ -90,6 +91,16 @@ without changing the established font families.
 | Selected-record title | `var(--font-display)` with baseline `standard` `30px / 32px`, `long` `26px / 28px`, and `extra-long` `24px / 26px` variants; long narrow titles reduce to `24px / 26px` and `22px / 24px` | Every record keeps an authored two-line break inside a stable title region without horizontal spill |
 | Selected-record system and narrative copy | `var(--font-mono)`, `11px` at the baseline with `12px` label/system cadence and `13px` narrative/footer body cadence | The block unit scales these roles on large desktops; all five records were measured without clipping, clamping, ellipsis, or internal scrolling |
 
+### Current About Outside the System mapping
+
+| Element | Current implementation | Verification note |
+| --- | --- | --- |
+| `OUTSIDE THE SYSTEM` display title | `var(--font-display)`, `72px / 70px` at the `1440 × 900` baseline, weight `700`, `-0.05em` tracking, and `0.87` horizontal staging | The runtime fallback face retains the reference title width and one-line treatment without importing the reference font family |
+| Approved introduction | `var(--font-sans)`, `13px / 19.76px` at the baseline with `-0.04em` tracking | Preserves the reference four-line cadence at the canonical viewport and scales through the About block unit |
+| Selected-photo title | `var(--font-display)`, `24px` baseline with restrained horizontal staging; named long-location treatment uses `18px / 19.44px` | `PHOTO-001` stays on one line while every reviewed record remains contained in the selected-photo region |
+| Selected-photo metadata | `var(--font-mono)`, `12px` baseline for system label, identifier, personal caption, and reflection | Lavender identifies personal context; all seven selected states fit without overflow |
+| Thumbnail identifiers | `var(--font-mono)`, `10px` baseline, visible beneath every thumbnail | Labels remain a deliberate divergence from the approved export and use lavender only for the selected record |
+
 Do not add or bundle fonts solely to match a Figma reference. Any future change
 to the established runtime stacks requires explicit product direction and a
 coordinated update to `src/index.css`, `AGENTS.md`, and this document.
@@ -97,8 +108,9 @@ coordinated update to `src/index.css`, `AGENTS.md`, and this document.
 ## Layout and canonical viewport
 
 The canonical desktop comparison viewport for the supplied Home, About
-Identity, and About Trajectory frames is `1440 × 900` (`16:10`). It is a
-comparison frame, not a fixed browser requirement.
+Identity, About Trajectory, and About Outside the System frames is
+`1440 × 900` (`16:10`). It is a comparison frame, not a fixed browser
+requirement.
 
 ### About desktop scaling units
 
@@ -127,10 +139,12 @@ unrelated large-desktop override set.
 | About Identity desktop split | `67.64% / 32.36%`, shared by header, narrative, and sticky scene | Compared at the canonical viewport |
 | About Trajectory desktop composition | Canonical `75px` left inset; `460px` selector; `40px` gap; `360px` runtime selected-record panel; `860px` total width at `1440 × 900` | The Figma node and stored export retain the `325px` panel baseline; the additional runtime width is an approved post-reference refinement and the complete runtime composition scales through the About units |
 | About Trajectory stable frame | `360 × 607` at the canonical and short-desktop viewports; fluid width/height above the baseline; stable internal title, record-metadata, narrative, and footer regions | Outer bounds and content containment verified for EDU-001 and EXP-001 through EXP-004 at every reviewed viewport |
+| About Outside desktop composition | Canonical `75px` left inset; approximately `821px` content width; `449.5 × 299.6px` selected image; approximately `23px` image-to-metadata gap; `348.5px` metadata column | Compared directly with the approved left-side export at `1440 × 900`; the fixed right boundary remains the shared `67.64% / 32.36%` About split |
+| About Outside carousel | Approximately `821px` total width and `142 × 95px` thumbnail images at the baseline, with five records visible plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; its outline and structural corner marker provide a non-color cue, while labels remain an intentional runtime divergence from the export |
 | About chapter landing anchor | Chapter-owned indicators move with their sections; right-navigation selection aligns each indicator to the same baseline top-left viewport position | All five targets browser-verified at `1440 × 900` and `390 × 844`; natural scrolling and anchor restoration also verified |
-| About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | Trajectory reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`; the shared Identity shell was smoke-checked at `2560 × 1440` |
-| About short desktop | Height-aware Identity spacing at `1440 × 800`; no internal chapter scroller | Browser-reviewed |
-| Narrow layout | Existing feature-owned single-column fallbacks remain below their breakpoints | Implemented CSS; final mobile/device review unverified |
+| About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | Trajectory and Outside reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`; the shared Identity shell was smoke-checked at `2560 × 1440` |
+| About short desktop | Height-aware Identity and Outside spacing at `1440 × 800`; no internal chapter scroller | Browser-reviewed |
+| Narrow layout | Existing feature-owned single-column fallbacks remain below their breakpoints | Outside inspected at `390 × 844` without horizontal or internal overflow; final cross-device mobile review remains open |
 
 ### About Identity spacing audit
 
@@ -185,6 +199,26 @@ The large-desktop matrix measured:
 All five records retained the same panel bounds at each viewport. Below
 `1240px`, the selector and panel stack and use natural page scrolling.
 
+### About Outside the System spacing and frame audit
+
+At `1440 × 900`, the chapter indicator begins at approximately
+`x=72, y=151`; the staged display title begins at `x=75, y=217`; and the
+approved introduction begins at `x=75, y=301` on a four-line, approximately
+`821px`-wide track. The selected-photo region begins at approximately
+`x=75, y=398` and measures `821 × 300`. Its image measures approximately
+`449.5 × 299.6`, the lavender metadata rule begins near `x=547.5`, and the
+metadata column measures approximately `348.5px` wide. The carousel begins at
+approximately `x=75, y=725` and measures `821 × 116`, including the runtime
+identifier-label row.
+
+The short-desktop `1440 × 800` branch places the selected-photo region at
+approximately `y=349` and the carousel at `y=667`, keeping the labels inside
+the viewport. At `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`, the selected
+image measures approximately `599 × 400`, `780 × 520`, and `799 × 533`
+respectively. The large-desktop carousel spacing is bounded so its identifier
+row remains visible at the reviewed viewport edges. Below the desktop layout,
+selected image and metadata stack and use natural document scrolling.
+
 ## Borders, dividers, and focus
 
 - The Home outer frame, navigation separators, main divider, and scene circle are current structural treatments.
@@ -196,10 +230,15 @@ All five records retained the same panel bounds at each viewport. Below
 - Reduced motion removes the shared padding/skew displacement while retaining
   the scoped edge, wipe, text, and outline feedback.
 - The About chapter navigator retains its compact layout while reusing the Home
-  navigation animation with a scoped red accent.
+  navigation animation with a scoped red accent. Its active row renders both
+  horizontal rules with paired box shadows using the same primary-red token so
+  their rasterization and color remain consistent.
 - Trajectory selection uses orange top/bottom rules plus the visible
   `SELECTED` label and `aria-pressed`; keyboard focus retains the shared `2px`
   orange outline, so state is not communicated by color alone.
+- Outside selection uses a `2px` lavender outline, a structural corner marker,
+  the selected identifier treatment, `aria-pressed`, and `aria-current`.
+  Keyboard focus uses a `2px` lavender outline and does not rely on color alone.
 - Planned destinations are disabled buttons and do not show available-link focus/hover behavior.
 
 ## Iconography and imagery
@@ -220,6 +259,10 @@ All five records retained the same panel bounds at each viewport. Below
   bottom; their intrinsic transparent-edge offsets remain below one rendered
   pixel. MLB uses the supplied transparent `3840 × 2160` PNG; the superseded
   checker-backed WebP has been removed.
+- About Outside renders seven feature-owned landscape JPEGs. Their intrinsic
+  dimensions preserve the `3:2` selected-photo frame, `PHOTO-001` is
+  prioritized, and thumbnail images use explicit lazy loading and asynchronous
+  decoding. The source-sized files still require responsive delivery variants.
 
 ## Verification boundary
 
@@ -238,7 +281,7 @@ remaining verification work.
 - Resolution of stored-export versus implementation copy/type differences
 - Projects and project-detail static compositions, including the settled
   project-detail spear placement
-- Approved static compositions for Outside the System, Interactive Influences,
-  and Current Direction
+- Approved static compositions for Interactive Influences and Current
+  Direction
 - Final narrow-layout compositions and mobile-navigation treatment
 - Approved visible-focus treatment and color contrast

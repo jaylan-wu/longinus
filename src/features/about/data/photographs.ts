@@ -8,25 +8,28 @@ import photo007 from '../assets/photography/PHOTO-007-chicago-2026.JPG'
 import type { PhotographyRecord } from '../types/about'
 
 export const outsideSystem = {
-  travelStatement: 'I fell in love with traveling in high school on my first international trip to Taiwan and Japan, where I explored my own culture alongside one that was unfamiliar. Studying abroad in Paris and later taking a six-week solo trip through Japan strengthened the independence and curiosity I bring to unfamiliar places. I am drawn to nature, historical monuments, and local restaurants because they offer a closer view of how a place feels and lives.',
-  photographyStatement: 'When I take my camera out, I usually look for symmetry in nature and build the image around a central subject. Many of these photographs come from solo trips; when I travel with friends, I look for candid moments when they seem most comfortable being themselves.',
+  introduction: 'I fell in love with traveling in high school on my first international trip to Taiwan and Japan. On that trip I explored my own culture alongside one that was unfamiliar. Studying abroad in Paris and later taking a six-week solo trip through Japan strengthened the independence and curiosity that I brought to unfamiliar places. When I take my camera out, I usually look for symmetry in nature and build my photos around a central subject. The highlighted images come from my solo trips, friends, and candid moments.',
   photos: [
     {
       id: 'PHOTO-001',
       imageSrc: photo001,
+      width: 6000,
+      height: 4000,
       orientation: 'landscape',
       location: 'Yamanashi',
       country: 'Japan',
       year: 2025,
       featured: true,
       alt: 'Fisherman in the lake.',
-      caption: 'fishing.',
+      caption: 'fishing',
       camera: 'Sony α6000',
       reflection: 'This was one of my favorite photos that I was able to capture in Japan. I was lucky to catch Fuji on a clear day, and the experience felt surreal.',
     },
     {
       id: 'PHOTO-002',
       imageSrc: photo002,
+      width: 5956,
+      height: 3922,
       orientation: 'landscape',
       location: 'Sendai',
       country: 'Japan',
@@ -40,6 +43,8 @@ export const outsideSystem = {
     {
       id: 'PHOTO-003',
       imageSrc: photo003,
+      width: 5794,
+      height: 4000,
       orientation: 'landscape',
       location: 'Mount Otaru',
       country: 'Japan',
@@ -53,6 +58,8 @@ export const outsideSystem = {
     {
       id: 'PHOTO-004',
       imageSrc: photo004,
+      width: 6000,
+      height: 4000,
       orientation: 'landscape',
       location: 'Toyama',
       country: 'Japan',
@@ -66,6 +73,8 @@ export const outsideSystem = {
     {
       id: 'PHOTO-005',
       imageSrc: photo005,
+      width: 6000,
+      height: 4000,
       orientation: 'landscape',
       location: 'Hakodate',
       country: 'Japan',
@@ -79,6 +88,8 @@ export const outsideSystem = {
     {
       id: 'PHOTO-006',
       imageSrc: photo006,
+      width: 6000,
+      height: 4000,
       orientation: 'landscape',
       location: 'Jimbocho',
       country: 'Japan',
@@ -92,6 +103,8 @@ export const outsideSystem = {
     {
       id: 'PHOTO-007',
       imageSrc: photo007,
+      width: 6000,
+      height: 4000,
       orientation: 'landscape',
       location: 'Chicago',
       country: 'United States of America',

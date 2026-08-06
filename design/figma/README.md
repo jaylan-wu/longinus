@@ -107,6 +107,7 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 | Homepage | Homepage / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
 | About | About / Identity / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. |
 | About | About / Trajectory / EDU-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-desktop-idle-v1.png` | [Open frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, and the procedural spear remain documented differences from the export. |
+| About | About / Outside the System / PHOTO-001 / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-outside-photo-001-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the new left-side chapter composition. The established right navigation and spear scene remained protected prior work. Visible `PHOTO-*` carousel labels are an intentional functional divergence from the export. |
 
 Do not add a Figma link or mark a frame approved until that link or approval exists.
 
@@ -181,9 +182,9 @@ for the compared layout and type values,
 [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md) for exact editorial
 material, and [`TASKS.md`](../../TASKS.md) Milestone 6 for implemented
 behavior, validation evidence, and remaining chapter work. The Identity
-comparison does not approve Trajectory or the three later chapter
-compositions; Trajectory's separately scoped status is recorded below. No
-authored Blender motion reference is stored.
+comparison does not approve later chapter compositions; Trajectory and Outside
+the System have separately scoped statuses below. No authored Blender motion
+reference is stored.
 
 ## About Trajectory desktop idle
 
@@ -278,5 +279,61 @@ Live selection:
   [`TASKS.md`](../../TASKS.md).
 
 This implemented checkpoint does not approve other Trajectory interaction
-states, authored spear motion, the final spear asset, or the three later About
-chapter compositions.
+states, authored spear motion, the final spear asset, or later About chapter
+compositions.
+
+## About Outside the System desktop idle
+
+Reference:
+
+`references/about/about-outside-photo-001-desktop-idle-v1.png`
+
+### Implementation boundaries
+
+- This checkpoint implements and compares the left-side Outside the System
+  composition at `1440 × 900`. The persistent header remains shared About
+  work, while the existing right chapter navigation, divider, page index, and
+  spear scene are protected prior work and were not changed to match the
+  export. A later scoped refinement changed only the active navigation row's
+  two horizontal rules to the same primary-red token and rendering primitive;
+  navigation structure, geometry, behavior, and spear work remain unchanged.
+- The export was inspected directly from the repository. No Figma connection,
+  URL, or node was used, and the reference remains a design-development
+  artifact rather than a production import.
+- The composition uses the shared chapter indicator, a horizontally staged
+  display title, the approved travel-and-photography introduction, a
+  approximately `450 × 300` selected image, an adjacent lavender metadata
+  region, and five visible landscape thumbnails at the canonical viewport.
+- `PHOTO-001` is the initial record. The gallery renders all seven available
+  feature-owned assets and keeps record selection local to the Outside chapter.
+- Every thumbnail keeps its visible `PHOTO-*` identifier beneath the image.
+  These labels are an intentional functional divergence from the export and
+  remain present for pointer, keyboard, touch, narrow, and reduced-motion use.
+- Selection uses a lavender outline, a structural corner marker, visible
+  identifier treatment, `aria-pressed`, and `aria-current`; red is not used for
+  gallery state.
+
+### Responsive and interaction interpretation
+
+- The shared About inline and block units scale the display title, selected
+  image, metadata, thumbnails, and spacing without changing the fixed
+  left/right shell boundary. The reviewed desktop matrix is `1440 × 800`,
+  `1440 × 900`, `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`.
+- At `390 × 844`, selected image and metadata stack in document order, the
+  control-driven thumbnail track keeps its active record centered, labels
+  remain visible, and normal page scrolling exposes the complete chapter
+  without horizontal or internal chapter overflow.
+- The carousel intentionally wraps through four accessibility-hidden
+  presentation clones at each edge. The selected record remains in the middle
+  of the five-thumbnail desktop track, including across the final-to-first
+  boundary, before the track normalizes invisibly to the equivalent real item.
+  Seven real semantic thumbnail buttons remain available, while a roving Tab
+  stop follows the selected button. Previous/next, Enter, Space, Left/Right
+  Arrow, Home, End, pointer, and touch activation update the same local
+  selected-photo state.
+- Reduced motion removes the selected-photo reveal and uses immediate
+  programmatic carousel repositioning. When WebGL is unavailable, the complete
+  gallery and its semantic content remain usable without changing geometry.
+
+The original photography files remain source-sized JPEGs. Responsive image
+variants and delivery optimization remain open in [`TASKS.md`](../../TASKS.md).

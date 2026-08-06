@@ -88,6 +88,8 @@ export type PhotographyRecord = {
   id: `PHOTO-${string}`
   imageSrc: string
   alt: string
+  width: number
+  height: number
   location: string
   year: number
   country?: string

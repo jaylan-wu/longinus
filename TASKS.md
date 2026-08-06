@@ -97,6 +97,40 @@ chunk-size warning. An additional explicit
 pre-existing uppercase `.JPG` module-declaration errors in the photography
 data; the repository-defined root `typecheck` does not surface those errors.
 
+Scoped About Outside the System validation on 2026-08-05: the approved static
+export at
+`design/figma/references/about/about-outside-photo-001-desktop-idle-v1.png`
+was compared directly with the implemented left-side `PHOTO-001` composition
+at `1440 × 900`. The persistent header, right chapter navigation, divider,
+page index, and About spear scene remained protected prior work; their source
+components were not changed, and their canonical before/after geometry was
+unchanged. A subsequent scoped refinement changed only the active chapter
+row's horizontal-rule rendering: both rules now use the same primary-red token
+and box-shadow primitive, with no navigation geometry or behavior change. The
+visible `PHOTO-001` through `PHOTO-007` labels beneath the carousel remain an
+intentional functional divergence from the export.
+The left composition was also inspected at `1440 × 800`, `1920 × 1080`,
+`2500 × 1350`, `2560 × 1440`, and `390 × 844`; the reviewed frames had no
+page-level horizontal overflow or internal chapter scrollbar, and the short
+and large desktop frames retained readable carousel labels. All seven selected
+states fit their fixed selected-photo region and updated the expected asset,
+identifier, location, year, caption, reflection, and main-image alternative
+text without changing scroll position, active chapter, or the existing canvas.
+Every selected thumbnail was measured in the center slot, including the
+`PHOTO-007` to `PHOTO-001` loop; ordinary and wrapping movement progressed
+across multiple sampled frames before hidden-clone normalization. Wrapping
+previous/next controls, Enter, Space, Left and Right Arrow, Home, End, the
+selected-thumbnail roving Tab stop, focus retention, visible lavender focus,
+non-color selection markers, pointer activation, and emulated touch activation
+passed. Reduced motion removed the selected-photo reveal and used immediate
+carousel repositioning. With WebGL forced unavailable, the canvas was absent
+while the complete semantic gallery and its geometry remained intact. About
+route teardown and `1440 × 900` Identity and Trajectory smoke checks passed
+without browser exceptions.
+`corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`
+passed; no test script exists. The build retained the known approximately
+`1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
+
 ## Status language
 
 - **Implemented** — present and verifiable in source.
@@ -312,9 +346,12 @@ data; the repository-defined root `typecheck` does not surface those errors.
 - [x] Store the approved About / Trajectory / EDU-001 / Desktop / Idle export
   and implement its full static composition plus bounded large-desktop
   interpretation from Figma node `110:147`.
-- [ ] Create and approve complete static frames for Outside the System,
-  Interactive Influences, and Current Direction.
-- [ ] Record full visual comparisons for the three later chapter frames and
+- [x] Store the approved About / Outside the System / PHOTO-001 / Desktop /
+  Idle export and implement and compare its left-side static composition while
+  preserving the established right navigation and spear scene.
+- [ ] Create and approve complete static frames for Interactive Influences and
+  Current Direction.
+- [ ] Record full visual comparisons for the two remaining chapter frames and
   the finished narrow-layout reinterpretation.
 
 ## Identity
@@ -371,13 +408,24 @@ data; the repository-defined root `typecheck` does not surface those errors.
 
 - [x] Implement travel and photography statements.
 - [x] Store and render seven feature-owned photographs with location, country, year, caption, camera, reflection, and alternative text.
-- [x] Implement selected-photo content and an infinite three-cycle carousel with previous/next controls.
-- [x] Keep duplicate carousel cycles out of the tab order and accessibility tree.
+- [x] Implement selected-photo content and an intentionally wrapping carousel
+  with previous/next controls and buffered hidden presentation clones that keep
+  the active record centered through the loop boundary.
+- [x] Keep carousel clones out of the tab order and accessibility tree.
 - [x] Respect reduced motion for programmatic carousel scrolling.
+- [x] Preserve visible `PHOTO-001` through `PHOTO-007` thumbnail labels, with
+  lavender selected/focus treatment and a non-color structural marker.
+- [x] Support Enter, Space, Left and Right Arrow, Home, End, Tab, pointer, and
+  touch selection while keeping photo state local to the gallery. The selected
+  real thumbnail owns the carousel's roving Tab stop.
 - [ ] Verify all visible alternative text, locations, years, captions, and reflections with Jaylan.
 - [ ] Export web-appropriate image sizes and responsive variants; current JPEGs are high-resolution source-sized files.
-- [ ] Add explicit lazy-loading/decoding behavior where useful.
-- [ ] Create and compare against an approved photography composition.
+- [x] Prioritize `PHOTO-001`, provide intrinsic dimensions, and use explicit
+  lazy-loading and asynchronous decoding for non-selected thumbnail imagery.
+- [x] Compare the completed left-side photography composition against the
+  approved `1440 × 900` export and inspect its bounded desktop and narrow
+  interpretations. The protected right navigation and spear composition were
+  intentionally excluded from correction scope.
 
 ## Interactive Influences
 
@@ -509,9 +557,9 @@ data; the repository-defined root `typecheck` does not surface those errors.
 7. Implement boot around real readiness for the final spear and its critical scene assets.
 8. Create Projects Figma and motion references, replace provisional timing/content, and polish the archive transition.
 9. Build the project-detail narrative and demonstration framework from real case-study material.
-10. Create approved frames for the four About chapters after Identity, supply
-    authored chapter-motion references, optimize photography delivery, and
-    layer that authored progression over the continuous
+10. Create approved frames for Interactive Influences and Current Direction,
+    supply authored About chapter-motion references, optimize photography
+    delivery, and layer that authored progression over the continuous
     scroll-direction-responsive spear rotation.
 11. Design and implement Playground, then Music, when their content and references are ready.
 12. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
