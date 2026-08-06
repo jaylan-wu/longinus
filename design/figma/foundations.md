@@ -149,7 +149,7 @@ unrelated large-desktop override set.
 | About Trajectory desktop composition | Canonical `75px` left inset; `460 × 426px` selector; `40px` gap; `360 × 673px` runtime selected-record panel; `860px` total width at `1440 × 900` | The panel extends upward from `y=151` while retaining the selector's shared `y=824` bottom; the Figma node and stored export retain the earlier `325 × 607px` baseline |
 | About Trajectory stable frame | `360 × 673px` at the canonical viewport with chapter-specific responsive height extensions; stable internal title, record-metadata, narrative, and footer regions | Outer bounds remain identical across EDU-001 and EXP-001 through EXP-004 at a given viewport; the complete post-reflow large-desktop matrix still requires remeasurement |
 | About Outside desktop composition | Canonical `75px` left inset; approximately `821px` content width; approximately `480 × 320px` selected image from `y=330–650` with an adjacent metadata column | The preview uses part of the reclaimed chapter space while giving the caption column more width; the fixed right boundary remains the shared `67.64% / 32.36%` About split |
-| About Outside carousel | Approximately `821px` total width from `y=675–789`, with five visible records plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; its outline and structural corner marker provide a non-color cue, while labels remain an intentional runtime divergence from the export |
+| About Outside carousel | Approximately `821px` total width from `y=675–789`, with five visible records plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; previous/next rings align to the thumbnail-image center after compensating for the label block, while the active outline and corner marker provide a non-color cue |
 | About first-content anchor | `151px` at `1440 × 900`, `120px` on short desktop and tablet, and `100px` on mobile | The visible orange-numbered headings are removed; each section retains a visually hidden `h2`, while the persistent top-right Current chapter status and right navigation remain visible |
 | About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | The shared shell was reviewed previously; the post-reflow Trajectory and Outside size matrix requires refreshed measurement |
 | About short desktop | Shared `120px` first-content anchor with height-aware chapter-specific reflow; no internal chapter scroller | Implemented and browser-measured |
@@ -241,20 +241,21 @@ balanced section space rather than stretching an individual content record.
 ## Borders, dividers, and focus
 
 - The Home outer frame, navigation separators, main divider, and scene circle are current structural treatments.
-- Available Home links, About's site-level `Index` link, and the right-side
-  About chapter controls share the `navigation-action` primitive: a `320ms`
-  displaced label, `400ms` background wipe, `240ms` edge,
-  and a `2px` `:focus-visible` outline. Home and `Index` use orange; the
-  chapter controls use red.
+- Available Home links, About's site-level `Index` link, the right-side About
+  chapter controls, and Trajectory role rows share the `navigation-action`
+  primitive: a `320ms` displaced label, `400ms` background wipe, `240ms` edge,
+  and a `2px` `:focus-visible` outline. Home, `Index`, and Trajectory roles use
+  orange; the chapter controls use red.
 - Reduced motion removes the shared padding/skew displacement while retaining
   the scoped edge, wipe, text, and outline feedback.
 - The About chapter navigator retains its compact layout while reusing the Home
   navigation animation with a scoped red accent. Its active row renders both
   horizontal rules with paired box shadows using the same primary-red token so
   their rasterization and color remain consistent.
-- Trajectory selection uses orange top/bottom rules plus the visible
-  `SELECTED` label and `aria-pressed`; keyboard focus retains the shared `2px`
-  orange outline, so state is not communicated by color alone.
+- Trajectory role hover/focus uses the shared orange sweep, leading rail, and
+  role displacement. Selection retains orange top/bottom rules plus the
+  visible `SELECTED` label and `aria-pressed`; keyboard focus retains the
+  shared `2px` orange outline, so state is not communicated by color alone.
 - Outside selection uses a `2px` lavender outline, a structural corner marker,
   the selected identifier treatment, `aria-pressed`, and `aria-current`.
   Keyboard focus uses a `2px` lavender outline and does not rely on color alone.

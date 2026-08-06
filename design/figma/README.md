@@ -248,6 +248,10 @@ Live selection:
   column; EXP-004 uses the approved `Lab Facilities Manager` short title while
   its selected record retains the official `Instructional Facilities Manager`
   title.
+- Selector rows reuse the right-directory interaction sequence for hover and
+  keyboard focus, but map its sweep, leading rail, and role treatment to
+  highlight orange. The desktop content displacement is removed on narrow and
+  reduced-motion layouts while the visible orange feedback remains.
 - NYU, New York Mets, and Major League Baseball marks use feature-owned assets
   with named position and scale variants. The MLB mark uses the supplied
   transparent `3840 × 2160` PNG. All three remain grayscale, faint, decorative,
@@ -340,6 +344,9 @@ Reference:
 - Selection uses a lavender outline, a structural corner marker, visible
   identifier treatment, `aria-pressed`, and `aria-current`; red is not used for
   gallery state.
+- Previous and next controls compensate for the thumbnail label block so their
+  circular rings stay centered on the image at desktop, tablet, and mobile
+  widths; the typographic arrow receives a small optical lift within the ring.
 
 ### Responsive and interaction interpretation
 

@@ -464,6 +464,7 @@
   --trajectory-reclaimed-block-space:
     calc(4.125 * var(--trajectory-block-unit));
   --trajectory-record-leading-offset: 0rem;
+  --trajectory-record-hover-shift: 0.85rem;
   --trajectory-content-left: calc(4.6875 * var(--trajectory-inline-unit));
   --trajectory-index-width: calc(28.75 * var(--trajectory-inline-unit));
   --trajectory-record-width: calc(22.5 * var(--trajectory-inline-unit));
@@ -539,6 +540,11 @@
 }
 
 .trajectory-records__index button {
+  --navigation-action-accent: var(--color-highlight);
+  --navigation-action-accent-rgb: var(--color-highlight-rgb);
+  --trajectory-record-inline-padding:
+    calc(0.3125 * var(--trajectory-inline-unit));
+
   display: grid;
   grid-template-columns:
     calc(1.375 * var(--trajectory-inline-unit))
@@ -550,13 +556,22 @@
   height: 100%;
   padding:
     calc(1.125 * var(--trajectory-block-unit))
-    calc(0.3125 * var(--trajectory-inline-unit))
+    var(--trajectory-record-inline-padding)
     var(--trajectory-block-unit);
   border: 0;
   border-bottom: 1px solid rgba(var(--color-foreground-rgb), 0.18);
   color: var(--color-muted);
   background: transparent;
   text-align: left;
+}
+
+.trajectory-records__index button.navigation-action:hover,
+.trajectory-records__index button.navigation-action:focus-visible {
+  padding-left:
+    calc(
+      var(--trajectory-record-inline-padding) +
+      var(--trajectory-record-hover-shift)
+    );
 }
 
 .trajectory-records__index button > span:first-child,
@@ -1060,13 +1075,16 @@
 }
 
 .photo-carousel {
+  --photo-carousel-label-block-size:
+    calc(1.125 * var(--outside-block-unit));
+
   display: grid;
   grid-template-columns:
     calc(1.5 * var(--outside-block-unit))
     minmax(0, 1fr)
     calc(1.5 * var(--outside-block-unit));
   gap: calc(0.5625 * var(--outside-inline-unit));
-  align-items: start;
+  align-items: center;
   margin-top: calc(1.6875 * var(--outside-block-unit));
 }
 
@@ -1078,7 +1096,7 @@
   height: 2.75rem;
   place-items: center;
   justify-self: center;
-  margin-top: calc(1.875 * var(--outside-inline-unit));
+  margin: 0 0 var(--photo-carousel-label-block-size);
   padding: 0;
   border: 0;
   color: var(--color-muted);
@@ -1100,6 +1118,7 @@
 .photo-carousel__control span {
   position: relative;
   z-index: 1;
+  transform: translateY(-0.1em);
 }
 
 .photo-carousel__track {
@@ -1809,6 +1828,7 @@
   .about-chapter--trajectory {
     --trajectory-reclaimed-block-space: 2.75rem;
     --trajectory-record-leading-offset: 0rem;
+    --trajectory-record-hover-shift: 0rem;
 
     min-height: auto;
     padding-top: var(--about-chapter-content-top);
@@ -1830,11 +1850,12 @@
   .photo-selected__personal-caption,
   .photo-selected__reflection { font-size: 0.75rem; }
   .photo-carousel {
+    --photo-carousel-label-block-size: 1.2rem;
+
     grid-template-columns: 2rem minmax(0, 1fr) 2rem;
     gap: 0.45rem;
     margin-top: 2rem;
   }
-  .photo-carousel__control { margin-top: 2.5rem; }
   .photo-carousel__track {
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
@@ -1901,6 +1922,11 @@
   .about__chapter-nav button.navigation-action:hover,
   .about__chapter-nav button.navigation-action:focus-visible {
     padding-left: var(--about-chapter-nav-inline-padding);
+  }
+
+  .trajectory-records__index button.navigation-action:hover,
+  .trajectory-records__index button.navigation-action:focus-visible {
+    padding-left: var(--trajectory-record-inline-padding);
   }
 
   .experience-detail__organization-mark-image { animation: none !important; }

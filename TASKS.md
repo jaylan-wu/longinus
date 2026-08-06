@@ -170,6 +170,32 @@ horizontal overflow. `yarn typecheck`, `yarn lint`, and `yarn build` passed;
 no test script exists. The build retained the known approximately `1.08 MB`
 initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
 
+Scoped About Outside carousel-control alignment validation on 2026-08-06:
+the previous/next rings now center against the thumbnail image rather than the
+combined image-and-label record height. The shared alignment compensates for
+the responsive label block, and the Unicode arrow receives a small optical
+lift inside its unchanged ring. Browser measurements at `1440 × 900`,
+`1920 × 1080`, `2500 × 1350`, `1080 × 900`, and `390 × 844` placed both
+control centers within `0.02px` of the thumbnail-image center; desktop and
+mobile captures were visually inspected. `yarn typecheck`, `yarn lint`, and
+`yarn build` passed; no test script exists. The build retained the known
+approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its
+chunk-size warning.
+
+Scoped About Trajectory role-hover validation on 2026-08-06: all five role
+rows now reuse the shared `navigation-action` directory interaction with the
+highlight-orange accent. Hover and `:focus-visible` expose the same `400ms`
+background sweep, `240ms` leading rail, `320ms` role treatment, and `0.85rem`
+desktop content shift while preserving the selected row's orange rules,
+`SELECTED` label, `aria-pressed`, and record-selection behavior. Browser
+inspection at `1440 × 900` confirmed the orange computed color, completed
+pseudo-element transforms, and zero row overflow for every role. Mobile
+retains the orange sweep and role treatment without the horizontal shift;
+reduced motion retains orange state feedback while removing padding and role
+transforms. `yarn typecheck`, `yarn lint`, and `yarn build` passed; no test
+script exists. The build retained the known approximately `1.08 MB` initial
+JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
+
 Scoped About Outside the System validation on 2026-08-05: the approved static
 export at
 `design/figma/references/about/about-outside-photo-001-desktop-idle-v1.png`
@@ -488,6 +514,9 @@ passed; no test script exists. The build retained the known approximately
 - [x] Verify Trajectory pointer selection, Enter and Space activation, visible
   focus, focus retention, non-color selected state, reduced-motion mark swaps,
   and textual access with WebGL unavailable.
+- [x] Reuse the right-directory `navigation-action` hover/focus sequence for
+  Trajectory role rows with the highlight-orange accent, preserving selected,
+  reduced-motion, and narrow-layout behavior.
 - [ ] Verify official organization, role, degree, school/program, course, and date wording.
 - [ ] Publish an Adjunct Professor record only after the role begins and official wording is verified.
 - [ ] Add related-project links only when corresponding case studies exist.
