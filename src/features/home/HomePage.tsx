@@ -45,7 +45,7 @@ export function HomePage() {
 
   return (
     <main className="home" id="home" ref={homeRef}>
-      <div className="home__watermark" aria-hidden="true">LONGINUS</div>
+      <div className="home__watermark" aria-hidden="true">RAMIEL</div>
 
       <section className="home__interface" aria-label="Introduction and site navigation">
         <HomeIdentity />
