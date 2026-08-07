@@ -35,7 +35,8 @@ this branch; visual approval of their application remains open.
 
 | Token | Value | Semantic role |
 | --- | --- | --- |
-| `--rei-bg` / `--rei-light` | `#ffffff` | Page environment, negative space, and Ramiel highlight |
+| `--rei-bg` | `#f8f9fc` | Cool-white page environment and negative space |
+| `--rei-light` | `#ffffff` | Ramiel highlight and crystalline edge contrast |
 | `--rei-surface` | `#f5f7fd` | Derived surface: 10% Rei blue light mixed into white |
 | `--rei-surface-blue` / `--rei-blue-soft` / `--rei-blue` / `--rei-line` | `#9dafe9` | Rei blue light: Ramiel, atmospheric fields, and structural graphics |
 | `--rei-foreground` | `#172127` | Primary blue-black typography |
@@ -156,11 +157,13 @@ the white environment.
   scope; the scenes use bounded DPR, no shadow map, no transmission sampling,
   and no post-processing.
 - Home translates pointer and keyboard focus into restrained target-owned
-  orientations without changing link order or destinations. Projects keeps
-  the existing phase reducer and route timings, but maps focus, commitment,
-  impact, and transition to orientation, compression, stillness, and expansion
-  instead of a thrust. About retains its page-owned scene and assigns stable
-  chapter orientations.
+  orientations without changing link order or destinations. Its later
+  reference-staging pass centers Ramiel and its fallback in the desktop
+  right-side scene; focus changes rotation and scale without translating the
+  object away from that anchor. Projects keeps the existing phase reducer and
+  route timings, but maps focus, commitment, impact, and transition to
+  orientation, compression, stillness, and expansion instead of a thrust.
+  About retains its page-owned scene and assigns stable chapter orientations.
 - Home and Projects retain a geometric CSS fallback when WebGL is unavailable.
   About preserves its existing failure invariant: the scene can disappear
   while all semantic content and navigation remain available.

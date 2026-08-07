@@ -20,29 +20,29 @@ type RamielPose = {
 
 const HOME_IDLE_POSE: RamielPose = {
   rotation: [0.18, -0.48, -0.08],
-  position: [0.58, 0.08, 0],
+  position: [0, 0, 0],
   scale: 2.05,
 }
 
 const HOME_FOCUS_POSES: Record<NavigationItem['id'], RamielPose> = {
   projects: {
     rotation: [0.08, -0.78, 0.12],
-    position: [0.42, 0.3, 0],
+    position: [0, 0, 0],
     scale: 2.12,
   },
   music: {
     rotation: [0.34, -0.2, -0.05],
-    position: [0.5, 0.1, 0],
+    position: [0, 0, 0],
     scale: 2.09,
   },
   playground: {
     rotation: [-0.08, 0.16, -0.14],
-    position: [0.54, -0.08, 0],
+    position: [0, 0, 0],
     scale: 2.09,
   },
   about: {
     rotation: [-0.18, 0.54, -0.2],
-    position: [0.36, -0.28, 0],
+    position: [0, 0, 0],
     scale: 2.14,
   },
 }

@@ -294,16 +294,18 @@
 }
 
 .home .ramiel-fallback {
-  top: 47%;
-  left: 61%;
+  top: 50%;
+  left: 50%;
   width: min(42vw, 38rem);
   opacity: 0.14;
 }
 
 .home .ramiel-shadow {
-  right: 10%;
+  right: auto;
   bottom: 12%;
+  left: 50%;
   opacity: 0.34;
+  translate: -50% 0;
 }
 
 @media (min-width: 1600px) {
@@ -451,6 +453,8 @@
   .home .ramiel-shadow {
     right: -24%;
     bottom: 29%;
+    left: auto;
+    translate: none;
   }
 
   .home__watermark {

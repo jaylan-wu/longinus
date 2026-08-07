@@ -13,17 +13,19 @@ type RamielFallbackProps = {
   motionState?: RamielMotionState
   focusIndex?: number
   energy?: number
+  centered?: boolean
 }
 
 export function RamielFallback({
   motionState = 'idle',
   focusIndex = 0,
   energy = 0,
+  centered = false,
 }: RamielFallbackProps) {
   const normalizedEnergy = Math.min(1, Math.max(0, energy))
   const style = {
     '--ramiel-angle': `${-4 + focusIndex * 7}deg`,
-    '--ramiel-y': `${(focusIndex - 1.5) * 1.4}rem`,
+    '--ramiel-y': centered ? '0rem' : `${(focusIndex - 1.5) * 1.4}rem`,
     '--ramiel-energy': normalizedEnergy,
   } as CSSProperties
 

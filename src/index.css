@@ -33,7 +33,7 @@
 }
 
 :root[data-theme="rei-light"] {
-  --rei-bg: #ffffff;
+  --rei-bg: #f8f9fc;
   --rei-surface: #f5f7fd;
   --rei-surface-blue: #9dafe9;
   --rei-blue-soft: #9dafe9;
@@ -51,7 +51,7 @@
   --rei-light: #ffffff;
   --rei-shadow: #545d93;
 
-  --rei-bg-rgb: 255, 255, 255;
+  --rei-bg-rgb: 248, 249, 252;
   --rei-surface-rgb: 245, 247, 253;
   --rei-surface-blue-rgb: 157, 175, 233;
   --rei-blue-soft-rgb: 157, 175, 233;

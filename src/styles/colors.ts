@@ -8,7 +8,7 @@ export const longinusColors = {
 } as const
 
 export const reiColors = {
-  background: '#ffffff',
+  background: '#f8f9fc',
   surface: '#f5f7fd',
   surfaceBlue: '#9dafe9',
   foreground: '#172127',

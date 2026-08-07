@@ -12,7 +12,7 @@ Status reviewed against source on **2026-08-07**. Checkmarks confirm repository 
 
 Branch-only Rei light-mode validation on 2026-08-07: the
 `rei-light-mode` experiment translated Home, Projects, and the implemented
-About chapters to the user-selected white `#FFFFFF`, Rei blue light `#9DAFE9`,
+About chapters to the selected cool white `#F8F9FC`, Rei blue light `#9DAFE9`,
 Rei blue dark `#545D93`, ribbon red `#E7211F`, and orange `#F28C28` palette;
 and replaced those features' runtime spear scenes with a shared procedural
 octahedral Ramiel study. A supporting blue-black foreground and a pale surface
@@ -30,6 +30,12 @@ stack, authored line breaks, chapter structure, or navigation geometry. At
 of `THE SYSTEM.` aligns with the adjacent introduction copy and vertical rule.
 Responsive title checks at `1440 × 800`, `1024 × 768`, and `390 × 844` retained
 viewport-width root documents without new horizontal page scrolling.
+The subsequent Home reference-staging pass placed Ramiel at the exact center of
+the desktop right-side scene. WebGL idle and focus poses now retain a zero
+position while rotation and scale carry interaction response; the CSS fallback
+and its shadow use the same centered anchor. A `1440 × 900` capture placed the
+fallback silhouette at the right panel's approximately `(1045px, 450px)`
+midpoint without changing the `45.14% / 54.86%` page split.
 
 Stored dark Home/About exports and light runtime captures were compared at
 `1440 × 900`; responsive checks also covered `1440 × 800`, `1920 × 1080`, and

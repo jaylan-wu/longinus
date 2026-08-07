@@ -63,6 +63,7 @@ export function HomePage() {
           motionState={focusedTarget ? 'focused' : 'idle'}
           focusIndex={focusedIndex}
           energy={focusedTarget ? 1 : 0.18}
+          centered
         />
         <HomeRamielScene focusedTarget={focusedTarget} />
         <PageIndex value="00" />
