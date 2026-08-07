@@ -22,8 +22,14 @@ remain intact. Canonical, all-Plex clinical, and Newsreader/Plex editorial type
 systems were browser-compared on Home and About Identity at `1440 × 900`.
 The trial web fonts were removed and the canonical dark-mode font tokens were
 restored because their exact metrics best preserve established text placement,
-line breaks, symmetry, and negative space; no branch-only spacing adjustment
-remains.
+line breaks, symmetry, and negative space; no compensating font-metric spacing
+adjustment remains. A later user-directed refinement enlarged the Identity,
+Trajectory, and Outside the System display titles without changing their font
+stack, authored line breaks, chapter structure, or navigation geometry. At
+`1440 × 900`, the Identity title resolves to `92.88px`, and the visible bottom
+of `THE SYSTEM.` aligns with the adjacent introduction copy and vertical rule.
+Responsive title checks at `1440 × 800`, `1024 × 768`, and `390 × 844` retained
+viewport-width root documents without new horizontal page scrolling.
 
 Stored dark Home/About exports and light runtime captures were compared at
 `1440 × 900`; responsive checks also covered `1440 × 800`, `1920 × 1080`, and

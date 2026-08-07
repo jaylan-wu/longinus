@@ -170,7 +170,9 @@ the white environment.
 - About chapter DOM, content order, selected-record structures, header,
   chapter positions, observer behavior, and right-side navigation structure
   are unchanged. No font-metric spacing repair remains after restoring the
-  canonical stacks.
+  canonical stacks. A later user-directed scale refinement enlarges the three
+  implemented About display titles while preserving their authored line breaks
+  and containers; it does not alter the chapter navigator.
 - About continues to receive the established chapter and scroll state, but its
   visual response deliberately translates the spear's continuous velocity
   reaction into chapter-owned orientations and long still intervals. This is
@@ -194,10 +196,14 @@ Organization marks retained their grayscale filter, every photograph retained
 its identifier label, and photographs received no global color treatment.
 
 Computed styles confirmed the canonical Times New Roman display, Arial
-content, and SFMono identifier stacks. A source comparison found no branch
-changes to typographic size, line height, letter spacing, padding, margins,
-grid tracks, or navigation geometry; the only layout-affecting deltas belong to
-Ramiel's feature-owned staging and fallback footprint.
+content, and SFMono identifier stacks. The later About display-title refinement
+intentionally changes only the responsive font-size rules for Identity,
+Trajectory, and Outside the System. At `1440 × 900`, Identity resolves to
+`92.88px`; the visible bottom of `THE SYSTEM.` aligns within a few pixels of
+the adjacent introduction copy and vertical rule. Checks at `1440 × 900`,
+`1440 × 800`, `1024 × 768`, and `390 × 844` found no new root-level horizontal
+overflow. Line height, letter spacing, padding, margins, grid tracks, chapter
+DOM, and navigation geometry remain unchanged.
 
 Keyboard checks observed visible focus and target response on Home links,
 Project records, and About chapter controls. A Project activation reached the

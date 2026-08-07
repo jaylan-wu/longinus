@@ -268,7 +268,7 @@
 .about-identity__display {
   --about-display-title-offset-y: 0.25rem;
 
-  font-size: clamp(4.5rem, 5.14vw, 8rem);
+  font-size: clamp(4.5rem, min(6.45vw, 10.32svh), 10rem);
 }
 
 .about-identity__display span {
@@ -495,7 +495,7 @@
 }
 
 .trajectory-introduction__title {
-  font-size: calc(4.5 * var(--trajectory-block-unit));
+  font-size: calc(5.625 * var(--trajectory-block-unit));
   white-space: nowrap;
 }
 
@@ -908,9 +908,9 @@
 .about-outside__display-title {
   width: 115%;
   font-size: clamp(
-    3.1rem,
-    5vw,
-    calc(4.5 * var(--outside-block-unit))
+    3.875rem,
+    6.25vw,
+    calc(5.625 * var(--outside-block-unit))
   );
   white-space: nowrap;
 }
@@ -1559,6 +1559,10 @@
     --about-identity-frame-start: 21.5svh;
     --about-identity-introduction-height: 35svh;
   }
+
+  .about-identity__display {
+    font-size: clamp(4.5rem, min(6.45vw, 11.4svh), 10rem);
+  }
 }
 
 @media (max-height: 850px) and (min-width: 1241px) {
@@ -1600,7 +1604,7 @@
   }
 
   .trajectory-introduction__title {
-    font-size: clamp(3.5rem, 6.6vw, 4.5rem);
+    font-size: clamp(3.875rem, 8vw, 5.625rem);
   }
 
   .about-chapter--trajectory .about-chapter__lead {
@@ -1680,7 +1684,7 @@
   }
 
   .about-identity__display {
-    font-size: clamp(3.4rem, 7.4vw, 5rem);
+    font-size: clamp(3.75rem, 8.5vw, 5.75rem);
   }
 
   .about-chapter__display-title { transform: none; }
@@ -1804,7 +1808,7 @@
   .about__scene { position: absolute; top: 7rem; right: -4rem; width: 16rem; height: 22rem; border: 0; background: transparent; pointer-events: none; }
   .about-chapter { min-height: auto; padding: 9rem 1.2rem 7rem; }
   .about-chapter--identity { min-height: 100svh; padding-top: var(--about-chapter-content-top); }
-  .about-identity__display { max-width: 11ch; font-size: clamp(3.2rem, 14.5vw, 5rem); }
+  .about-identity__display { max-width: 11ch; font-size: clamp(3.2rem, 15.25vw, 5.25rem); }
   .about-identity__statement { width: 100%; margin-top: 3rem; }
   .about-identity__axes { grid-template-columns: 1fr; }
   .about-identity__axes li { min-height: 0; padding: 1.25rem; border-right: 0; border-bottom: 1px solid rgba(var(--color-foreground-rgb), 0.14); }
@@ -1815,7 +1819,7 @@
   }
   .about-outside__display-title {
     max-width: 10ch;
-    font-size: clamp(3.1rem, 14vw, 4.25rem);
+    font-size: clamp(3.25rem, 15vw, 4.5rem);
     white-space: normal;
   }
   .about-outside__introduction {
@@ -1834,7 +1838,7 @@
     padding-top: var(--about-chapter-content-top);
   }
   .trajectory-introduction__title {
-    font-size: clamp(2.35rem, 12vw, 3.4rem);
+    font-size: clamp(2.5rem, 13vw, 3.75rem);
     white-space: nowrap;
   }
   .about-chapter--trajectory .about-chapter__lead {
