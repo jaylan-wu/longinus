@@ -40,7 +40,7 @@ this branch; visual approval of their application remains open.
 | `--rei-surface-blue` / `--rei-blue-soft` / `--rei-blue` / `--rei-line` | `#9dafe9` | Rei blue light: Ramiel, atmospheric fields, and structural graphics |
 | `--rei-foreground` | `#172127` | Primary blue-black typography |
 | `--rei-muted` / `--rei-blue-ink` / `--rei-blue-deep` / `--rei-highlight` / `--rei-focus` / `--rei-shadow` | `#545d93` | Rei blue dark: readable metadata, focus, edges, and shadow |
-| `--rei-orange` | `#f28c28` | Scarce non-text system and structural markers |
+| `--rei-orange` | `#f28c28` | Scarce system markers and selected-photo overlay metadata |
 | `--rei-red` / `--rei-red-deep` | `#e7211f` | Ribbon-red interaction, interruption, and impact |
 
 The scoped compatibility mapping keeps existing feature CSS intact:
@@ -52,8 +52,9 @@ The scoped compatibility mapping keeps existing feature CSS intact:
 - highlight maps to Rei blue dark so routine system feedback remains readable
   and does not exhaust the red accent; and
 - orange is separate from `--color-highlight` because orange on white does not
-  have enough contrast for the small text and focus boundaries that consume
-  the established highlight token.
+  have enough contrast for the small interface text and focus boundaries that
+  consume the established highlight token. Its text use is limited to the
+  decorative metadata over selected photographs.
 
 Every color used through `rgba()` has an RGB companion. Pale blue remains a
 surface and graphic color; it is not used automatically as body copy. The

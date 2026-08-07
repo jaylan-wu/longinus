@@ -969,7 +969,7 @@
   position: absolute;
   z-index: 2;
   inset: 0;
-  color: var(--color-highlight);
+  color: var(--rei-orange);
   font-family: var(--font-mono);
   font-size: calc(0.5 * var(--outside-block-unit));
   font-variant-numeric: tabular-nums;
