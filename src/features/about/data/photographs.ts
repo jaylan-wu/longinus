@@ -1,10 +1,17 @@
-import photo001 from '../assets/photography/PHOTO-001-fuji-2025.jpg'
-import photo002 from '../assets/photography/PHOTO-002-sendai-lilies-2025.jpg'
-import photo003 from '../assets/photography/PHOTO-003-otaru-2025.jpg'
-import photo004 from '../assets/photography/PHOTO-004-toyama-ramen-2025.JPG'
-import photo005 from '../assets/photography/PHOTO-005-hakodate-2025.JPG'
-import photo006 from '../assets/photography/PHOTO-006-jimbocho-2025.JPG'
-import photo007 from '../assets/photography/PHOTO-007-chicago-2026.JPG'
+import photo001 from '../assets/photography/PHOTO-001-fuji-2025-display.webp'
+import photo001Thumbnail from '../assets/photography/PHOTO-001-fuji-2025-thumbnail.webp'
+import photo002 from '../assets/photography/PHOTO-002-sendai-lilies-2025-display.webp'
+import photo002Thumbnail from '../assets/photography/PHOTO-002-sendai-lilies-2025-thumbnail.webp'
+import photo003 from '../assets/photography/PHOTO-003-otaru-2025-display.webp'
+import photo003Thumbnail from '../assets/photography/PHOTO-003-otaru-2025-thumbnail.webp'
+import photo004 from '../assets/photography/PHOTO-004-toyama-ramen-2025-display.webp'
+import photo004Thumbnail from '../assets/photography/PHOTO-004-toyama-ramen-2025-thumbnail.webp'
+import photo005 from '../assets/photography/PHOTO-005-hakodate-2025-display.webp'
+import photo005Thumbnail from '../assets/photography/PHOTO-005-hakodate-2025-thumbnail.webp'
+import photo006 from '../assets/photography/PHOTO-006-jimbocho-2025-display.webp'
+import photo006Thumbnail from '../assets/photography/PHOTO-006-jimbocho-2025-thumbnail.webp'
+import photo007 from '../assets/photography/PHOTO-007-chicago-2026-display.webp'
+import photo007Thumbnail from '../assets/photography/PHOTO-007-chicago-2026-thumbnail.webp'
 import type { PhotographyRecord } from '../types/about'
 
 export const outsideSystem = {
@@ -13,8 +20,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-001',
       imageSrc: photo001,
-      width: 6000,
-      height: 4000,
+      thumbnailSrc: photo001Thumbnail,
+      width: 2000,
+      height: 1334,
+      thumbnailWidth: 480,
+      thumbnailHeight: 320,
       orientation: 'landscape',
       location: 'Yamanashi',
       country: 'Japan',
@@ -28,8 +38,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-002',
       imageSrc: photo002,
-      width: 5956,
-      height: 3922,
+      thumbnailSrc: photo002Thumbnail,
+      width: 2000,
+      height: 1317,
+      thumbnailWidth: 480,
+      thumbnailHeight: 317,
       orientation: 'landscape',
       location: 'Sendai',
       country: 'Japan',
@@ -43,8 +56,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-003',
       imageSrc: photo003,
-      width: 5794,
-      height: 4000,
+      thumbnailSrc: photo003Thumbnail,
+      width: 2000,
+      height: 1381,
+      thumbnailWidth: 480,
+      thumbnailHeight: 332,
       orientation: 'landscape',
       location: 'Mount Otaru',
       country: 'Japan',
@@ -58,8 +74,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-004',
       imageSrc: photo004,
-      width: 6000,
-      height: 4000,
+      thumbnailSrc: photo004Thumbnail,
+      width: 2000,
+      height: 1334,
+      thumbnailWidth: 480,
+      thumbnailHeight: 320,
       orientation: 'landscape',
       location: 'Toyama',
       country: 'Japan',
@@ -73,8 +92,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-005',
       imageSrc: photo005,
-      width: 6000,
-      height: 4000,
+      thumbnailSrc: photo005Thumbnail,
+      width: 2000,
+      height: 1334,
+      thumbnailWidth: 480,
+      thumbnailHeight: 320,
       orientation: 'landscape',
       location: 'Hakodate',
       country: 'Japan',
@@ -88,8 +110,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-006',
       imageSrc: photo006,
-      width: 6000,
-      height: 4000,
+      thumbnailSrc: photo006Thumbnail,
+      width: 2000,
+      height: 1334,
+      thumbnailWidth: 480,
+      thumbnailHeight: 320,
       orientation: 'landscape',
       location: 'Jimbocho',
       country: 'Japan',
@@ -103,8 +128,11 @@ export const outsideSystem = {
     {
       id: 'PHOTO-007',
       imageSrc: photo007,
-      width: 6000,
-      height: 4000,
+      thumbnailSrc: photo007Thumbnail,
+      width: 2000,
+      height: 1334,
+      thumbnailWidth: 480,
+      thumbnailHeight: 320,
       orientation: 'landscape',
       location: 'Chicago',
       country: 'United States of America',

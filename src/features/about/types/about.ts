@@ -87,9 +87,12 @@ export type ExperienceRecord = {
 export type PhotographyRecord = {
   id: `PHOTO-${string}`
   imageSrc: string
+  thumbnailSrc: string
   alt: string
   width: number
   height: number
+  thumbnailWidth: number
+  thumbnailHeight: number
   location: string
   year: number
   country?: string

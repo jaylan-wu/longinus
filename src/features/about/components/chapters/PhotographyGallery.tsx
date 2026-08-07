@@ -75,8 +75,8 @@ function SelectedPhotograph({ photo, prioritize }: {
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
-            loading={prioritize ? 'eager' : 'lazy'}
-            decoding={prioritize ? 'sync' : 'async'}
+            loading="eager"
+            decoding="async"
             fetchPriority={prioritize ? 'high' : 'auto'}
           />
           <figcaption aria-hidden="true">
@@ -128,11 +128,11 @@ function PhotographyThumbnail({
     >
       <span className="photo-record__image" aria-hidden="true">
         <img
-          src={photo.imageSrc}
+          src={photo.thumbnailSrc}
           alt=""
-          width={photo.width}
-          height={photo.height}
-          loading="lazy"
+          width={photo.thumbnailWidth}
+          height={photo.thumbnailHeight}
+          loading="eager"
           decoding="async"
         />
       </span>
