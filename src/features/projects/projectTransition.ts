@@ -2,11 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Project } from './projectData'
 
 export type ProjectTransitionPhase = 'idle' | 'focused' | 'committing' | 'impact' | 'transitioning' | 'settled'
-export type SpearPostTransitionDestination = 'inactive-offstage'
+export type RamielPostTransitionDestination = 'inactive-offstage'
 
 // Change this value (and the destination handling in the future detail composition)
-// when the spear's final navbar/detail-page behavior has been designed.
-export const PROJECT_SPEAR_DESTINATION: SpearPostTransitionDestination = 'inactive-offstage'
+// when Ramiel's final navbar/detail-page behavior has been designed.
+export const PROJECT_RAMIEL_DESTINATION: RamielPostTransitionDestination = 'inactive-offstage'
 
 const COMMIT_DURATION_MS = 420
 const IMPACT_DURATION_MS = 280
@@ -69,6 +69,6 @@ export function useProjectTransition({ reducedMotion, onNavigate }: UseProjectTr
     locked,
     focusProject,
     selectProject,
-    spearDestination: PROJECT_SPEAR_DESTINATION,
+    ramielDestination: PROJECT_RAMIEL_DESTINATION,
   }
 }

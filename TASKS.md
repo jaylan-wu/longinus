@@ -8,7 +8,47 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-08-06**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+
+Branch-only Rei light-mode validation on 2026-08-07: the
+`rei-light-mode` experiment translated Home, Projects, and the implemented
+About chapters to the user-selected white `#FFFFFF`, Rei blue light `#9DAFE9`,
+Rei blue dark `#545D93`, ribbon red `#E7211F`, and orange `#F28C28` palette;
+and replaced those features' runtime spear scenes with a shared procedural
+octahedral Ramiel study. A supporting blue-black foreground and a pale surface
+derived from Rei blue light preserve readable type and quiet depth without
+expanding the accent palette. The canonical dark tokens and product direction
+remain intact. Canonical, all-Plex clinical, and Newsreader/Plex editorial type
+systems were browser-compared on Home and About Identity at `1440 × 900`.
+The trial web fonts were removed and the canonical dark-mode font tokens were
+restored because their exact metrics best preserve established text placement,
+line breaks, symmetry, and negative space; no branch-only spacing adjustment
+remains.
+
+Stored dark Home/About exports and light runtime captures were compared at
+`1440 × 900`; responsive checks also covered `1440 × 800`, `1920 × 1080`, and
+`390 × 844`. About's chapter DOM and protected right navigation were unchanged;
+its navigator retained the existing `200 × 301px` desktop and approximately
+`390 × 58.58px` narrow geometry. All five Trajectory records and seven Outside
+photographs fit without page-level horizontal overflow, organization marks
+remained grayscale, and photo labels remained present. Keyboard focus and
+target response, reduced motion, normal WebGL, forced-unavailable WebGL, and
+core token contrast were inspected.
+
+The shared Outside-the-System carousel fix replaces repeated 23–24 megapixel
+source decodes with seven 2000px WebP display assets and seven 480px WebP
+thumbnails. Cold-browser checks completed all 15 cloned thumbnail nodes at
+natural width 480 and every selected `PHOTO-001` through `PHOTO-007` image at
+natural width 2000, with `200 image/webp` responses and no loading or decoding
+errors. The original photography files remain as archival sources. The same
+isolated fix is applied to both `rei-light-mode` and `main`.
+
+`typecheck`, full `lint`, production `build`, and `git diff --check` passed with
+Node `22.14.0`; no automated test script exists. The build retained the known
+approximately `1.086 MB` initial JavaScript chunk (`299.28 kB` gzip) and its
+chunk-size warning. This entry records branch evidence only and is not visual
+approval or a change to canonical Longinus direction; the full experiment
+record is in [`design/experiments/rei-light-mode.md`](design/experiments/rei-light-mode.md).
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 

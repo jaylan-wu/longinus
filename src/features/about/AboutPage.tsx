@@ -4,7 +4,7 @@ import '../../components/navigation/navigationAction.css'
 import { AboutChapterNavigation } from './components/AboutChapterNavigation'
 import { AboutChapters } from './components/AboutChapters'
 import { getAboutChapter } from './data/chapters'
-import { AboutSpearScene } from './AboutSpearScene'
+import { AboutRamielScene } from './AboutRamielScene'
 import { useActiveAboutChapter } from './hooks/useActiveAboutChapter'
 import type { AboutChapterId } from './types/about'
 import './about.css'
@@ -98,9 +98,9 @@ export function AboutPage() {
 
         <aside
           className="about__scene"
-          aria-label={`Spear of Longinus posture for ${currentChapter.label}`}
+          aria-label={`Ramiel-inspired geometric posture for ${currentChapter.label}`}
         >
-          <AboutSpearScene activeChapter={activeChapter} />
+          <AboutRamielScene activeChapter={activeChapter} />
         </aside>
       </div>
     </main>

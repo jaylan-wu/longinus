@@ -1,0 +1,187 @@
+.ramiel-canvas {
+  position: absolute !important;
+  z-index: 2;
+  inset: -8% -10% -8% -12%;
+  width: 122% !important;
+  height: 116% !important;
+}
+
+.ramiel-fallback,
+.ramiel-shadow {
+  --ramiel-blue: var(--rei-blue, #9dafe9);
+  --ramiel-blue-ink: var(--rei-blue-ink, #545d93);
+  --ramiel-blue-deep: var(--rei-blue-deep, #545d93);
+  --ramiel-light: var(--rei-light, #ffffff);
+  --ramiel-shadow-color: var(--rei-shadow, #545d93);
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.ramiel-fallback {
+  z-index: 1;
+  top: 50%;
+  left: 55%;
+  width: min(40vw, 31rem);
+  aspect-ratio: 1;
+  filter: drop-shadow(
+    0 1.25rem 2.75rem
+    color-mix(in srgb, var(--ramiel-shadow-color) 24%, transparent)
+  );
+  opacity: 0.3;
+  transform: translate(-50%, calc(-50% + var(--ramiel-y))) rotate(var(--ramiel-angle));
+  transform-origin: center;
+  transition:
+    opacity 260ms ease,
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: ramiel-fallback-idle 18s ease-in-out infinite;
+}
+
+.ramiel-fallback__body {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--ramiel-blue);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.ramiel-fallback__body::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--ramiel-blue-deep) 68%, transparent);
+  clip-path: inherit;
+  content: "";
+}
+
+.ramiel-fallback__facet,
+.ramiel-fallback__core {
+  position: absolute;
+  inset: 0;
+}
+
+.ramiel-fallback__facet--northwest {
+  background: color-mix(in srgb, var(--ramiel-light) 46%, var(--ramiel-blue));
+  clip-path: polygon(50% 0, 50% 50%, 0 50%);
+}
+
+.ramiel-fallback__facet--northeast {
+  background: color-mix(in srgb, var(--ramiel-blue) 72%, var(--ramiel-blue-ink));
+  clip-path: polygon(50% 0, 100% 50%, 50% 50%);
+}
+
+.ramiel-fallback__facet--southeast {
+  background: color-mix(in srgb, var(--ramiel-blue-deep) 78%, var(--ramiel-blue));
+  clip-path: polygon(50% 50%, 100% 50%, 50% 100%);
+}
+
+.ramiel-fallback__facet--southwest {
+  background: color-mix(in srgb, var(--ramiel-blue-ink) 66%, var(--ramiel-blue));
+  clip-path: polygon(0 50%, 50% 50%, 50% 100%);
+}
+
+.ramiel-fallback__core {
+  inset: 39%;
+  background: var(--ramiel-light);
+  box-shadow: 0 0 2rem color-mix(in srgb, var(--ramiel-blue) 48%, transparent);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  opacity: calc(0.12 + var(--ramiel-energy) * 0.28);
+}
+
+.ramiel-shadow {
+  z-index: 0;
+  right: 8%;
+  bottom: 11%;
+  width: min(34vw, 27rem);
+  height: 3.25rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--ramiel-shadow-color) 34%, transparent),
+    color-mix(in srgb, var(--ramiel-blue) 14%, transparent) 48%,
+    transparent 74%
+  );
+  filter: blur(0.85rem);
+  opacity: 0.42;
+  transform: scaleX(0.92);
+  transform-origin: center;
+  transition:
+    opacity 260ms ease,
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: ramiel-shadow-idle 18s ease-in-out infinite;
+}
+
+.ramiel-fallback--focused {
+  animation: none;
+  opacity: 0.4;
+  transform: translate(-50%, calc(-50% + var(--ramiel-y))) rotate(var(--ramiel-angle)) scale(1.025);
+}
+
+.ramiel-fallback--committing {
+  animation: none;
+  opacity: 0.46;
+  transform: translate(-50%, calc(-50% + var(--ramiel-y))) rotate(calc(var(--ramiel-angle) + 10deg)) scale(0.94);
+}
+
+.ramiel-fallback--impact,
+.ramiel-fallback--transitioning {
+  animation: none;
+  opacity: 0.5;
+  transform: translate(-50%, calc(-50% + var(--ramiel-y))) rotate(calc(var(--ramiel-angle) + 32deg)) scale(1.12);
+}
+
+.ramiel-fallback--settled {
+  animation: none;
+}
+
+.ramiel-shadow--focused {
+  animation: none;
+  opacity: 0.48;
+  transform: scaleX(1);
+}
+
+.ramiel-shadow--committing {
+  animation: none;
+  opacity: 0.34;
+  transform: scaleX(0.76);
+}
+
+.ramiel-shadow--impact,
+.ramiel-shadow--transitioning {
+  animation: none;
+  opacity: 0.54;
+  transform: scaleX(1.18);
+}
+
+.ramiel-shadow--settled {
+  animation: none;
+}
+
+@keyframes ramiel-fallback-idle {
+  0%, 66%, 100% {
+    transform: translate(-50%, calc(-50% + var(--ramiel-y))) rotate(calc(var(--ramiel-angle) - 0.6deg));
+  }
+
+  82% {
+    transform: translate(-50%, calc(-50% + var(--ramiel-y) - 0.4rem)) rotate(calc(var(--ramiel-angle) + 0.6deg));
+  }
+}
+
+@keyframes ramiel-shadow-idle {
+  0%, 66%, 100% {
+    opacity: 0.36;
+    transform: scaleX(0.88);
+  }
+
+  82% {
+    opacity: 0.44;
+    transform: scaleX(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ramiel-fallback,
+  .ramiel-shadow {
+    animation: none;
+    transition: none;
+  }
+}

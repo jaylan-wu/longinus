@@ -3,9 +3,10 @@ import '../../components/navigation/navigationAction.css'
 
 type HomeNavigationProps = {
   items: NavigationItem[]
+  onFocusTarget: (target: NavigationItem['id'] | null) => void
 }
 
-export function HomeNavigation({ items }: HomeNavigationProps) {
+export function HomeNavigation({ items, onFocusTarget }: HomeNavigationProps) {
   return (
     <nav className="home-navigation" aria-label="Primary navigation">
       <ol className="home-navigation__list">
@@ -25,6 +26,10 @@ export function HomeNavigation({ items }: HomeNavigationProps) {
                 <a
                   className="home-navigation__link navigation-action"
                   href={`#${item.id}`}
+                  onMouseEnter={() => onFocusTarget(item.id)}
+                  onMouseLeave={() => onFocusTarget(null)}
+                  onFocus={() => onFocusTarget(item.id)}
+                  onBlur={() => onFocusTarget(null)}
                 >
                   {content}
                 </a>
