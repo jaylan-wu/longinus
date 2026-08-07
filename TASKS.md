@@ -8,7 +8,19 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-08-06**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+
+Outside-the-System carousel reliability validation on 2026-08-07: the seven
+5,794–6,000px source photographs were valid, but the cloned carousel was asking
+the browser to decode the 23–24 megapixel originals for 15 thumbnails as well
+as the selected image. The runtime now uses seven 2000px WebP display assets
+and seven 480px WebP thumbnails while retaining the originals as archival
+sources. Cold-browser checks completed all 15 thumbnail nodes at natural width
+480 and every selected `PHOTO-001` through `PHOTO-007` image at natural width
+2000; every request returned `200 image/webp`, with no loading or decoding
+errors. `typecheck`, full `lint`, production `build`, and `git diff --check`
+passed with Node `22.14.0`. The fix is shared unchanged by `main` and the
+`rei-light-mode` experiment branch.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 
