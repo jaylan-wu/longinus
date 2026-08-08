@@ -37,7 +37,7 @@ export function HomeMotif({ focusedTarget }: HomeMotifProps) {
         : 'Procedural Spear of Longinus illustration'}
     >
       <div className="home__scene-label" aria-hidden="true">
-        {usesRamiel ? 'Ramiel study / suspended form' : 'Spear of Longinus'}
+        {usesRamiel ? 'Ramiel' : 'Spear of Longinus'}
       </div>
       {usesRamiel ? (
         <>

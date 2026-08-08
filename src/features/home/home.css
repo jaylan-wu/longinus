@@ -59,8 +59,8 @@
   --home-watermark-stroke: rgba(var(--color-structural-line-rgb), 0.45);
   --home-status-color: var(--color-disruption);
   --home-status-indicator: var(--color-ambient-indicator);
-  --home-navigation-accent: var(--color-disruption);
-  --home-navigation-accent-rgb: var(--color-disruption-rgb);
+  --home-navigation-accent: var(--color-highlight);
+  --home-navigation-accent-rgb: var(--color-highlight-rgb);
   --home-planned-foreground: rgba(var(--color-foreground-rgb), 0.5);
   --home-planned-index: var(--color-muted);
   --home-scene-outline: rgba(var(--color-structural-line-rgb), 0.28);
