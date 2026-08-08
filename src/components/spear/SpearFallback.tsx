@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react'
+import type { InteractionPhase } from '../../types/interaction'
 import './spear.css'
 
 type SpearFallbackProps = {
-  motionState?: string
+  motionState?: InteractionPhase
   focusIndex?: number
 }
 

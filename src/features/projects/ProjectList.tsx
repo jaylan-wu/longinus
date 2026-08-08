@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import type { Project } from './projectData'
+import '../../components/navigation/navigationAction.css'
 
 type ProjectListProps = {
   projects: Project[]
@@ -30,7 +31,7 @@ export function ProjectList({
         return (
           <li className="project-list__item" key={project.id}>
             <button
-              className="project-card"
+              className="project-card navigation-action"
               type="button"
               disabled={locked && !isSelected}
               data-active={isFocused || isSelected || undefined}
@@ -58,7 +59,7 @@ export function ProjectList({
               <span className="project-card__index">{String(index + 1).padStart(2, '0')}</span>
               <span className="project-card__content">
                 <span className="project-card__meta">{project.role} / {project.year}</span>
-                <span className="project-card__title">{project.title}</span>
+                <span className="project-card__title navigation-action__label">{project.title}</span>
                 <span className="project-card__description">{project.shortDescription}</span>
               </span>
               <span className="project-card__target" aria-hidden="true">＋</span>

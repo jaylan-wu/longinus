@@ -123,7 +123,7 @@ export function AboutRamielScene({ activeChapter }: AboutSceneState) {
   return (
     <SceneErrorBoundary>
       <Canvas
-        className="about__ramiel-canvas"
+        className="scene-canvas about__ramiel-canvas"
         camera={{ position: [0, 0, 12], fov: 34 }}
         dpr={[1, 1.5]}
         frameloop="always"

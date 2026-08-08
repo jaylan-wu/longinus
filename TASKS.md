@@ -8,7 +8,40 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-08-08**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+
+Pre-refactor repository modularity, theme-readiness, documentation, and
+reference-workflow audit on 2026-08-08: the then-seven CSS files, the
+implemented React/TypeScript and Three.js ownership boundaries, all nine
+tracked Markdown files, and all four stored visual references were inspected.
+The four unambiguous `1440 × 900`
+dark exports were renamed with explicit `dark` segments and verified
+byte-identical to their originals; no application source imports them. Every
+relative Markdown link resolves, and no old reference filename remains.
+Safe source cleanup removed only unreachable anchor/button CSS branches, added
+a dark semantic fallback to the light photo-overlay token, and made two local
+state names motif- or selection-neutral. `corepack yarn typecheck`,
+`corepack yarn lint`, `corepack yarn build`, and `git diff --check` passed with
+Node `24.18.0`; no automated test script exists. The build retained the known
+`1,086.12 kB` initial JavaScript chunk (`299.25 kB` gzip) and its chunk-size
+warning. Browser tooling was unavailable for this audit, so it records no new
+visual, keyboard, touch, reduced-motion, or WebGL-fallback approval.
+
+Approved repository refactors implemented on 2026-08-08 establish a typed,
+persisted `longinus-dark` / `rei-light` runtime contract with dark as the
+default and pre-module root/theme-color synchronization. Home, Projects, and
+About now retain feature-owned Spear and Ramiel scenes and lazily dispatch only
+the active theme's scene. The same pass introduced the shared six-value
+interaction-phase type, semantic theme roles, a lightweight Project route
+index, the shared navigation-action base for Project records, About-local
+chapter/photo/influence modules, and chapter-owned About stylesheets.
+`corepack yarn typecheck`, `corepack yarn lint`, and `git diff --check` passed
+after these changes, and the final production build passed. The build reduced
+the eager entry JavaScript to `202.13 kB` (`64.05 kB` gzip) and emitted six
+separate theme-scene chunks. A lazily loaded shared Three.js/WebGL chunk remains
+`881.70 kB` (`234.25 kB` gzip) and still triggers Vite's `500 kB` chunk-size
+warning. No browser comparison or manual interaction approval was performed
+for this refactor.
 
 Branch-only Rei light-mode validation on 2026-08-07: the
 `rei-light-mode` experiment translated Home, Projects, and the implemented
@@ -92,8 +125,8 @@ anchor. Forced reduced-motion navigation was also verified at `1440 × 900`.
 `corepack yarn typecheck` and `corepack yarn lint` passed. The production build
 passed with Node `22.14.0` and retained the known initial chunk-size warning.
 
-Scoped About Trajectory validation on 2026-07-28: live Figma node `110:147`
-and the stored `1440 × 900` export were compared with the implemented
+Scoped About Trajectory validation on 2026-07-28: the stored `1440 × 900`
+export and its optional authoring provenance at that time were compared with the implemented
 left-side EDU-001 composition. A user-approved post-reference spacing
 refinement widened the runtime selected panel from the reference's `325px` to
 `360px` while preserving its `607px` height and bottom anchor. At
@@ -250,7 +283,7 @@ JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
 
 Scoped About Outside the System validation on 2026-08-05: the approved static
 export at
-`design/figma/references/about/about-outside-photo-001-desktop-idle-v1.png`
+`design/figma/references/about/about-outside-photo-001-dark-desktop-idle-v1.png`
 was compared directly with the implemented left-side `PHOTO-001` composition
 at `1440 × 900`. The persistent header, right chapter navigation, divider,
 page index, and About spear scene remained protected prior work; their source
@@ -297,7 +330,8 @@ passed; no test script exists. The build retained the known approximately
   [`AGENTS.md`](AGENTS.md).
 - Treat a checkmark as a repository-evidence claim, not as editorial, visual, or
   authored-motion approval unless the item explicitly records that approval.
-- Do not claim a Figma match without a recorded comparison against an approved frame.
+- Do not claim an exported-reference match without a recorded comparison
+  against an approved repository image.
 - Do not claim authored motion without a supplied Blender or motion reference and comparison.
 - Do not describe staged project data, procedural geometry, or provisional timing as final.
 - Run only commands that exist. The current automated checks are `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build`; no test command exists.
@@ -313,22 +347,29 @@ passed; no test script exists. The build retained the known approximately
 - [x] Preserve Jaylan Wu as the primary identity and `alter-egoist` as a secondary creative identity.
 - [x] Preserve Engineering, Game design, and Education as the three personal axes.
 - [x] Define shared `engineering`, `game-design`, and `education` axis identifiers with canonical interface labels.
-- [x] Preserve Figma as the source for supplied static 2D composition.
+- [x] Preserve Figma as the optional design authoring environment and exported
+  repository images as the static visual implementation source.
 - [x] Preserve Blender and supplied motion references as the source for authored 3D motion.
 - [x] Distinguish implemented, partial, staged, planned, deferred, and unverified work.
 - [x] Document the real hash routes and unavailable destinations.
 - [x] Correct the package-manager, script, dependency-use, asset, and architecture descriptions.
 - [x] Reconcile About implementation status with its editorial source and verification flags.
+- [x] Remove implementation dependence on direct Figma URLs, APIs, MCP
+  integrations, Dev Mode, and paid implementation features.
+- [x] Document the exported-reference workflow and targeted-question boundary.
+- [x] Establish the dark/light reference naming convention.
+- [x] Update every unambiguous stored dark reference name.
+- [x] Verify Markdown paths after reference renaming.
 
 ## Verified repository baseline
 
 - [x] Confirm feature ownership under `src/features/home/`, `src/features/projects/`, and `src/features/about/`.
 - [x] Confirm global styling is limited to tokens, reset/foundations, the shared page index, and reduced-motion baseline.
 - [x] Confirm page-specific CSS remains feature-owned.
-- [x] Confirm local React state and hooks are the established state pattern; no Context, reducer, or global store exists.
-- [x] Confirm Home is eager and About, Projects, and project detail are lazy-loaded.
+- [x] Confirm local React state and feature hooks remain the established state
+  pattern, with one narrow Context for the runtime theme and no general-purpose
+  global store.
 - [x] Confirm each implemented feature owns its React Three Fiber canvas and scene staging.
-- [x] Confirm the shared spear is temporary procedural geometry and that no GLTF/GLB asset exists.
 - [x] Confirm no font files, tests, formatter, Markdown linter, or deployment configuration exist.
 - [x] Confirm the modern Yarn lockfile is not compatible with the previously documented Yarn Classic workflow.
 - [x] Pin Yarn `4.17.1` in `package.json` so Corepack setup is deterministic.
@@ -344,7 +385,6 @@ passed; no test script exists. The build retained the known approximately
 - [x] Mirror scene-required color values in `src/styles/colors.ts`.
 - [x] Use orange for implemented focus/active-system states and red for spear/disruption states where applicable.
 - [x] Keep feature composition out of `src/index.css`.
-- [ ] Align the `index.html` theme-color metadata (`#0D1117`) with the approved Longinus background role (`#09090b`) or document an intentional exception.
 - [ ] Perform and record a color-contrast and visible-focus review.
 
 ## Typography
@@ -352,10 +392,49 @@ passed; no test script exists. The build retained the known approximately
 - [x] Establish the display, sans-serif, and monospace CSS tokens as the site-wide font-family source of truth.
 - [x] Record that all current stacks are system fallbacks and can vary by device.
 - [x] Map Display to `var(--font-display)`, Content to `var(--font-sans)`, and System/Identifier to `var(--font-mono)`.
-- [x] Record that Figma font families are not implementation requirements.
+- [x] Record that authoring-tool font families are not implementation requirements.
 - [ ] Replace the Home `ARCHIVE:` label's one-off Archivo/Arial Narrow stack with an established runtime token unless an explicit new token is approved.
 - [ ] Verify the established system stacks preserve intentional hierarchy, wrapping, line cadence, and spacing across representative operating systems.
 - [ ] Verify long-form About and project content does not inherit display typography.
+
+---
+
+# Milestone 1A — Theme Architecture and Rei Light-Mode Production Readiness
+
+**Status: runtime architecture implemented; visual approval and user-facing
+selection remain incomplete.** The application defaults to `longinus-dark`,
+restores a valid persisted choice before module loading, and supports
+coexisting feature-owned Spear and Ramiel scenes. It does not expose a visible
+theme control or system-preference policy, and no approved light reference is
+stored.
+
+- [x] Audit the current semantic-token, feature CSS, metadata, and Three.js
+  theme boundaries.
+- [x] Record the branch-only Rei palette, typography study, Ramiel prototype,
+  and validation evidence in `design/experiments/rei-light-mode.md`.
+- [ ] Define and approve the production light-mode semantic palette.
+- [ ] Create and approve Rei-inspired exported light-mode visual references.
+- [x] Implement provisional feature-owned Ramiel staging and interaction roles
+  for Home, Projects, and About; final authored roles remain unapproved.
+- [x] Define the typed runtime theme identifier, dark-default initial policy,
+  persisted-choice policy, and no-flash initial-paint contract.
+- [x] Synchronize the root theme attribute and browser metadata through the
+  runtime contract.
+- [ ] Design and implement an accessible visible theme control, then decide
+  whether system preference participates in initial selection.
+- [x] Implement coexisting light-mode DOM styling without duplicating complete
+  feature styles or replacing the established dark styling.
+- [x] Restore and preserve feature-owned dark Spear scenes alongside
+  feature-owned light Ramiel scenes; do not create a universal scene system.
+- [ ] Verify contrast, visible focus, and non-color state cues in light mode.
+- [ ] Verify reduced-motion behavior in light mode.
+- [ ] Verify narrow, tablet, short-desktop, canonical desktop, and large-desktop
+  light-mode interpretations.
+- [ ] Compare light mode against approved exported light references.
+- [ ] Confirm dark mode remains visually and behaviorally unchanged against its
+  exported dark references.
+- [ ] Profile whether supporting both themes affects initial loading, bundle
+  size, memory, or renderer lifecycle.
 
 ---
 
@@ -363,7 +442,8 @@ passed; no test script exists. The build retained the known approximately
 
 **Status: planned. No boot component or readiness system exists.**
 
-- [ ] Create and approve the boot composition in Figma.
+- [ ] Create, approve, and store the boot composition as a theme-explicit
+  exported repository reference.
 - [ ] Identify genuinely critical homepage assets.
 - [ ] Track real readiness for the final spear, critical textures/materials, and initial scene.
 - [ ] Define the linear indicator and its relationship to the spear.
@@ -379,7 +459,8 @@ passed; no test script exists. The build retained the known approximately
 
 ## Stored design reference
 
-- [x] Store the `1440 × 900` desktop-idle export at `design/figma/references/homepage/homepage-desktop-idle-v1.png`.
+- [x] Store the `1440 × 900` dark desktop-idle export at
+  `design/figma/references/homepage/homepage-dark-desktop-idle-v1.png`.
 - [x] Track the frame as **In progress**, not approved.
 - [x] Implement corresponding identity, navigation, frame, divider, scene-label, watermark, footer, and page-index regions.
 - [x] Keep Projects and About available while Music and Playground are visibly disabled/planned.
@@ -390,22 +471,29 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Resolve the current copy and type-metric differences from the stored export.
 - [ ] Approve the complete 2D composition only after comparison evidence exists.
 
-## Spear staging
+## Theme-specific 3D motif staging
 
 - [x] Create a Home-owned React Three Fiber canvas with bounded DPR.
-- [x] Stage the shared procedural `SpearModel` with Home-owned camera, lights, transform, and scale.
-- [x] Keep the Home/Projects CSS spear silhouette present beneath the canvas.
+- [x] Stage the Rei-light shared procedural `RamielModel` with
+  Home-owned camera, lights, transform, scale, and CSS fallback.
+- [x] Restore the established dark Home Spear scene alongside the light Ramiel
+  scene and lazily dispatch both from a Home-owned motif boundary.
 - [ ] Replace procedural geometry with the final authored spear asset.
 - [ ] Revisit camera, lighting, scale, silhouette, rotation, and cropping with the final asset.
-- [ ] Compare the final 2D/3D composition against Figma.
+- [ ] Compare each implemented theme's final 2D/3D composition against its
+  approved exported reference.
 
 ## Homepage interaction
 
-**Status: planned beyond CSS focus feedback. Direct hash links navigate immediately.**
+**Status: partially staged.** Pointer and keyboard focus update one Home-owned
+target and the Rei-light Ramiel scene responds; the shared interaction-phase
+type is available, but direct hash links still navigate immediately and the
+complete commitment/impact sequence is planned.
 
 - [ ] Add Home-owned shared phase and target state using `idle`, `focused`, `committing`, `impact`, `transitioning`, and `settled` where needed.
-- [ ] Make pointer and keyboard focus update the same target state.
-- [ ] Make the spear orient toward a focused available target.
+- [x] Make pointer and keyboard focus update the same target state.
+- [x] Map focused targets to restrained Rei-light Ramiel orientations.
+- [ ] Make the dark-theme Spear orient toward a focused available target.
 - [ ] Supply a Blender or other authored reference for anticipation, impact, and follow-through.
 - [ ] Prove the complete interaction on one destination.
 - [ ] Use completion signals or shared events instead of unrelated duplicate timers.
@@ -425,6 +513,10 @@ passed; no test script exists. The build retained the known approximately
 - [x] Update document titles for implemented routes.
 - [x] Scroll to the top when the route state changes.
 - [x] Lazy-load About, Projects, and project detail.
+- [x] Lazy-load each feature's active Spear or Ramiel scene rather than placing
+  both theme implementations in the eager graph.
+- [x] Keep project route/title metadata in a lightweight index so document
+  titles do not eagerly import full Project records.
 - [x] Unmount the previous route component instead of retaining every scene.
 - [ ] Add Music only when its approved implementation begins.
 - [ ] Add Playground only when its approved implementation begins.
@@ -450,11 +542,18 @@ passed; no test script exists. The build retained the known approximately
 - [x] Implement the record-list archive route.
 - [x] Implement pointer and keyboard focus state.
 - [x] Implement first-tap focus and second-tap commitment for touch pointer events.
-- [x] Coordinate DOM and temporary spear responses through `useProjectTransition` phases.
+- [x] Coordinate DOM and each active-theme motif response through
+  motif-neutral `useProjectTransition` phases backed by the shared canonical
+  interaction-phase type.
+- [x] Reuse the shared `navigation-action` sweep, rail, label, focus, and
+  reduced-motion base while preserving Project-specific timing and phase rules.
 - [x] Implement commitment, impact styling, input lock, and delayed hash navigation.
-- [x] Provide a shortened reduced-motion code path.
+- [x] Use a semantic high-contrast on-disruption role for selected impact text.
+- [x] Provide a shortened reduced-motion code path and remove the Project
+  selection/interface displacement transforms under reduced motion.
 - [x] Clean up pending transition timers when the hook unmounts.
-- [ ] Create and approve the Projects Figma composition and focus/impact states.
+- [ ] Create, approve, and store theme-explicit Projects archive and
+  focus/impact exported references.
 - [ ] Replace provisional timeout values with reviewed timing or completion signals.
 - [ ] Define recovery/cancellation beyond the guaranteed navigation timeout.
 - [ ] Manually verify keyboard, touch, reduced-motion, and scene-failure behavior.
@@ -468,7 +567,8 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Add real narrative data for Context, Problem, System, Decisions, Outcome, and Reflection, adapting per project where needed.
 - [ ] Add meaningful information and demonstration regions.
 - [ ] Define software/system and 3D/game presentation modes only when real projects require them.
-- [ ] Resolve the post-transition spear outcome; the current code records `inactive-offstage` and detail renders no spear.
+- [ ] Resolve each theme's post-transition 3D motif outcome; the current code
+  records `inactive-offstage` and detail renders no 3D motif.
 - [ ] Implement logical entry focus.
 
 ---
@@ -484,12 +584,22 @@ passed; no test script exists. The build retained the known approximately
   4. Interactive Influences
   5. Current Direction
 - [x] Split chapters and repeated record UI into feature-owned components.
+- [x] Split the About stylesheet entry into shell, chapter-owned, and adaptive
+  files while preserving selector names and cascade order.
 - [x] Keep published content in focused modules under `src/features/about/data/` and editorial/draft source in `content/ABOUT_CONTENT.md`.
 - [x] Keep active chapter state cross-cutting and record/photo/influence selection local to each chapter.
+- [x] Isolate requested-versus-observed chapter selection in an About-owned
+  hook without merging it with active-chapter detection.
+- [x] Extract the photography controller, carousel, selected-photo
+  presentation, and live announcement into About-owned modules without
+  introducing a global carousel abstraction.
+- [x] Split the influence record list and selected detail along their existing
+  chapter-owned boundaries.
 - [x] Use standard vertical browser scrolling without full-screen scroll snapping.
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
-- [x] Store the approved About / Identity / Desktop / Idle export at `design/figma/references/about/about-identity-desktop-idle-v1.png`.
+- [x] Store the approved About / Identity / Dark / Desktop / Idle export at
+  `design/figma/references/about/about-identity-dark-desktop-idle-v1.png`.
 - [x] Remove the chapter-owned visible orange-numbered top-left headings while
   retaining a visually hidden `h2` and valid `aria-labelledby` relationship for
   every section.
@@ -497,12 +607,16 @@ passed; no test script exists. The build retained the known approximately
   and reflow or extend chapter-specific content into the reclaimed space while
   preserving the persistent top-right Current chapter status and right-side
   chapter navigation.
-- [x] Store the approved About / Trajectory / EDU-001 / Desktop / Idle export
+- [x] Store the approved About / Trajectory / EDU-001 / Dark / Desktop / Idle
+  export at
+  `design/figma/references/about/about-trajectory-edu-001-dark-desktop-idle-v1.png`
   and implement its full static composition plus bounded large-desktop
-  interpretation from Figma node `110:147`.
-- [x] Store the approved About / Outside the System / PHOTO-001 / Desktop /
-  Idle export and implement and compare its left-side static composition while
-  preserving the established right navigation and spear scene.
+  interpretation from that repository reference.
+- [x] Store the approved About / Outside the System / PHOTO-001 / Dark /
+  Desktop / Idle export at
+  `design/figma/references/about/about-outside-photo-001-dark-desktop-idle-v1.png`
+  and implement and compare its left-side static composition while preserving
+  the established right navigation and dark Spear composition.
 - [x] Normalize the implemented Identity, Trajectory, and Outside the System
   large display titles to the Identity character-width and typography
   treatment across desktop and narrow layouts.
@@ -515,7 +629,8 @@ passed; no test script exists. The build retained the known approximately
 
 - [x] Present Jaylan Wu, New York City, the opening statement, three axes, and `alter-egoist` as a restrained signature.
 - [x] Keep all axis statements visible rather than hover-gated.
-- [x] Implement the static About / Identity / Desktop / Idle composition from the approved `1440 × 900` reference.
+- [x] Implement the static About / Identity / Dark / Desktop / Idle composition
+  from the approved `1440 × 900` repository reference.
 - [x] Complete the original direct browser comparison at `1440 × 900`,
   including region proportions, the reference-era Identity indicator placement,
   type hierarchy, navigation placement, spear framing, spacing, and shared Home
@@ -557,8 +672,9 @@ passed; no test script exists. The build retained the known approximately
   overflowing the frame.
 - [x] Synchronize the revised EDU-001 copy and concise three-section experience
   narratives between `content/ABOUT_CONTENT.md` and runtime data.
-- [x] Browser-compare the original pre-reflow EDU-001 static frame with the live
-  Figma node and stored `1440 × 900` export; verify all five selected states, short
+- [x] Browser-compare the original pre-reflow EDU-001 static frame with the
+  stored dark `1440 × 900` export; the optional authoring provenance was also
+  inspected at that historical checkpoint. Verify all five selected states, short
   desktop, the `1920 × 1080` through `2560 × 1440` large-desktop
   interpretation, and the current narrow layout without panel movement,
   meaningful-content clipping, overlap, or internal scrolling; record the
@@ -588,12 +704,15 @@ passed; no test script exists. The build retained the known approximately
   touch selection while keeping photo state local to the gallery. The selected
   real thumbnail owns the carousel's roving Tab stop.
 - [ ] Verify all visible alternative text, locations, years, captions, and reflections with Jaylan.
-- [ ] Export web-appropriate image sizes and responsive variants; current JPEGs are high-resolution source-sized files.
+- [x] Export and serve 2000px WebP display images and 480px WebP thumbnails for
+  all seven records while retaining the original JPEGs as archival sources.
+- [ ] Decide whether additional responsive `srcset` variants are warranted and
+  profile route/image loading on representative devices.
 - [x] Prioritize `PHOTO-001`, provide intrinsic dimensions, and use explicit
   lazy-loading and asynchronous decoding for non-selected thumbnail imagery.
 - [x] Compare the original pre-reflow left-side photography composition against
   the approved `1440 × 900` export and inspect its bounded desktop and narrow
-  interpretations. The protected right navigation and spear composition were
+  interpretations. The protected right navigation and dark Spear composition were
   intentionally excluded from correction scope; the later selected-image
   reflow and preview-size reduction are recorded separately above.
 
@@ -617,19 +736,27 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Verify the public contact address and final exploration-area wording.
 - [ ] Create and compare against an approved final-chapter composition.
 
-## About spear and responsive behavior
+## About theme-specific 3D and responsive behavior
 
-- [x] Reuse the shared procedural spear within an About-owned canvas.
-- [x] Keep the desktop scene sticky and derive its layout from the canvas size.
-- [x] Rotate the spear counterclockwise continuously from the initial Identity view across every chapter in normal-motion mode.
-- [x] Reverse the spear clockwise while scrolling upward and return it counterclockwise while scrolling downward.
-- [x] Let scroll speed add axial momentum in the active direction without introducing a rotation endpoint.
-- [x] Stop continuous scroll-linked rotation and damp toward chapter values in reduced-motion mode.
-- [x] Keep the Identity spear quietly framed and free of pointer targeting, thrust, or impact while its axial rotation continues.
-- [x] Provide narrow-layout CSS that repositions the scene and compresses chapter navigation.
-- [ ] Supply authored chapter postures and transitions.
-- [ ] Layer authored quiet chapter progression over the continuous scroll-direction-responsive axial rotation.
-- [ ] Verify the spear never obscures essential content at representative viewport sizes.
+- [x] Keep the desktop scene sticky, About-owned, and derived from its canvas
+  size.
+- [x] Restore the recorded canonical dark behavior in the active About scene:
+  the Spear rotates continuously counterclockwise, reverses while scrolling upward,
+  gains restrained scroll-speed momentum, and becomes static in reduced motion.
+- [x] Implement the Rei-light Ramiel interpretation with About-owned stable
+  chapter orientations, long held intervals, restrained drift, and static
+  reduced-motion poses.
+- [x] Keep local record, photograph, and influence selection independent from
+  the 3D motif in both interpretations.
+- [x] Provide narrow-layout CSS that repositions the scene and compresses
+  chapter navigation.
+- [x] Restore the dark About Spear scene alongside the light Ramiel scene and
+  lazily dispatch both from an About-owned motif boundary.
+- [ ] Supply and compare authored per-theme chapter postures and transitions.
+- [ ] Preserve the dark continuous scroll-direction-responsive axial behavior
+  when layering its authored chapter progression.
+- [ ] Verify the active theme's motif never obscures essential content at
+  representative viewport sizes.
 - [ ] Manually verify normal and reduced-motion behavior across every chapter
   and representative viewport/device sizes; the recorded Identity checks do not
   cover that full matrix.
@@ -663,7 +790,7 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Define the smallest experiment contract after the first real experiment is selected.
 - [ ] Keep experiment cameras, controls, state, and resources experiment-owned.
 - [ ] Load experiments on demand and dispose resources after use.
-- [ ] Do not force the spear into every experiment.
+- [ ] Do not force the Spear, Ramiel, or another shared motif into every experiment.
 - [ ] Validate selection and descriptions even when a visual experiment has no full non-visual equivalent.
 
 ---
@@ -678,7 +805,8 @@ passed; no test script exists. The build retained the known approximately
 - [x] Add visible `:focus-visible` treatments to current primary controls.
 - [x] Keep essential content in the DOM rather than WebGL.
 - [x] Wrap all current canvases in `SceneErrorBoundary`.
-- [x] Keep a CSS spear silhouette beneath Home and Projects canvases.
+- [x] Keep theme-appropriate CSS Spear or Ramiel fallbacks beneath Home and
+  Projects canvases while lazily mounting only the active feature scene.
 - [x] Bound current canvas DPR to `[1, 1.5]`.
 - [x] Avoid frame-by-frame React state in current scenes.
 - [x] Clean up current media-query, scroll, resize, ResizeObserver, animation-frame, and timeout subscriptions in source.
@@ -692,7 +820,8 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Force WebGL initialization failure and verify Home, Projects, project detail, and About.
 - [ ] Verify sufficient color contrast and non-color state cues.
 - [ ] Measure initial route loading and About image loading.
-- [ ] Investigate and reduce or deliberately accept the current Vite initial-chunk warning.
+- [ ] Investigate and reduce or deliberately accept the current oversized
+  shared Three.js/WebGL lazy-chunk warning.
 - [ ] Verify no non-visible scene continues rendering after route changes.
 - [ ] Profile mid-range hardware before adding post-processing, physics, or heavy final assets.
 - [ ] Remove or justify unused runtime assets and installed-but-unused dependencies.
@@ -708,11 +837,12 @@ passed; no test script exists. The build retained the known approximately
 - [ ] Verify all official organization, role, degree, course, and date wording.
 - [ ] Verify the public contact method and every external action.
 - [ ] Remove fake system readings and any unsupported availability/status claims.
-- [ ] Review every use of red, lavender, and orange for semantic consistency.
-- [ ] Review every spear appearance for a meaningful page-specific role.
+- [ ] Review every theme's semantic color roles and contrast in context.
+- [ ] Review every Spear or Ramiel appearance for a meaningful,
+  theme-appropriate, page-specific role.
 - [ ] Review every continuous animation and remove motion that is only decorative.
 - [ ] Proofread all public content.
-- [ ] Complete Figma comparisons for every supplied frame.
+- [ ] Complete comparisons against every supplied exported reference.
 - [ ] Complete Blender/motion comparisons for every supplied authored reference.
 - [ ] Run type-check, lint, and build.
 - [ ] Complete keyboard, touch, responsive, reduced-motion, WebGL-fallback, and performance reviews.
@@ -724,17 +854,23 @@ passed; no test script exists. The build retained the known approximately
 1. Verify official About degree, school/program, role, course, date, contact, photo-metadata, and future Adjunct Professor wording; keep unverified future content unpublished.
 2. Curate and verify the real Projects archive before finalizing layouts around provisional records.
 3. Complete the cross-platform typography audit and migrate the Home `ARCHIVE:` font exception to an established token.
-4. Integrate the final authored spear asset and re-stage the homepage.
-5. Compare and approve the complete homepage desktop-idle composition at `1440 × 900` and representative shorter heights.
-6. Supply the homepage spear motion reference, then prove one complete accessible Home interaction.
-7. Implement boot around real readiness for the final spear and its critical scene assets.
-8. Create Projects Figma and motion references, replace provisional timing/content, and polish the archive transition.
-9. Build the project-detail narrative and demonstration framework from real case-study material.
-10. Create approved frames for Interactive Influences and Current Direction,
-    supply authored About chapter-motion references, optimize photography
-    delivery, and layer that authored progression over the continuous
-    scroll-direction-responsive spear rotation.
-11. Design and implement Playground, then Music, when their content and references are ready.
-12. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
+4. Approve light-mode exported references, design an accessible visible theme
+   control, and browser-verify the implemented dark-default runtime contract.
+5. Integrate the final authored dark-theme Spear asset and re-stage the homepage.
+6. Compare and approve the complete dark homepage desktop-idle composition at
+   `1440 × 900` and representative shorter heights.
+7. Supply the homepage Spear motion reference, then prove one complete accessible Home interaction.
+8. Implement boot around real readiness for the active theme's critical scene assets.
+9. Create and store Projects exported visual and motion references, replace provisional timing/content, and polish the archive transition.
+10. Build the project-detail narrative and demonstration framework from real case-study material.
+11. Create approved exported frames for Interactive Influences and Current
+    Direction, supply authored About chapter-motion references, decide whether
+    further responsive photography delivery is warranted, and layer authored
+    dark progression over the continuous scroll-direction-responsive Spear
+    rotation.
+12. Design and implement Playground, then Music, when their content and references are ready.
+13. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
 
-The order may change when a supplied Figma, Blender, content, or asset decision makes a later milestone actionable. Prefer polish over feature count.
+The order may change when a supplied exported visual reference, Blender or
+other motion reference, verified content, or asset decision makes a later
+milestone actionable. Prefer polish over feature count.

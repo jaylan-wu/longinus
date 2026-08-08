@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { HomePage } from './features/home/HomePage'
-import { getProjectBySlug } from './features/projects/projectData'
+import { getProjectRouteBySlug } from './features/projects/projectRouteData'
 
 const AboutPage = lazy(() => import('./features/about/AboutPage').then((module) => ({ default: module.AboutPage })))
 const ProjectsPage = lazy(() => import('./features/projects/ProjectsPage').then((module) => ({ default: module.ProjectsPage })))
@@ -28,7 +28,7 @@ function getDocumentTitle(route: Route) {
   if (route.name === 'about') return 'About — Jaylan Wu'
   if (route.name === 'projects') return 'Projects — Jaylan Wu'
   if (route.name === 'project-detail') {
-    const project = getProjectBySlug(route.slug)
+    const project = getProjectRouteBySlug(route.slug)
     return project ? `${project.title} — Jaylan Wu` : 'Project Not Found — Jaylan Wu'
   }
   return 'Jaylan Wu — Creative Developer'

@@ -19,12 +19,30 @@
   --color-primary-deep: #86131f;
   --color-primary-shadow: #510b14;
 
+  --color-atmosphere: var(--color-primary);
+  --color-atmosphere-rgb: var(--color-primary-rgb);
+  --color-atmosphere-soft: var(--color-secondary);
+  --color-atmosphere-soft-rgb: var(--color-secondary-rgb);
+  --color-structural-line: var(--color-foreground);
+  --color-structural-line-rgb: var(--color-foreground-rgb);
+  --color-disruption: var(--color-primary);
+  --color-disruption-rgb: var(--color-primary-rgb);
+  --color-on-disruption: #ffffff;
+  --color-on-disruption-rgb: 255, 255, 255;
+  --color-ambient-indicator: var(--color-highlight);
+  --color-ambient-indicator-rgb: var(--color-highlight-rgb);
+  --color-overlay-accent: var(--color-highlight);
+  --color-overlay-accent-rgb: var(--color-highlight-rgb);
+
+  --motion-ease-interface: cubic-bezier(0.22, 1, 0.36, 1);
+
   --font-display: "Times New Roman Condensed", "Times New Roman", Times, serif;
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   color: var(--color-foreground);
   background: var(--color-background);
+  color-scheme: dark;
   font-family: var(--font-sans);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -87,6 +105,21 @@
 
   --color-primary-deep: var(--rei-red-deep);
   --color-primary-shadow: var(--rei-red-deep);
+
+  --color-atmosphere: var(--rei-blue);
+  --color-atmosphere-rgb: var(--rei-blue-rgb);
+  --color-atmosphere-soft: var(--rei-blue-soft);
+  --color-atmosphere-soft-rgb: var(--rei-blue-soft-rgb);
+  --color-structural-line: var(--rei-blue-deep);
+  --color-structural-line-rgb: var(--rei-blue-deep-rgb);
+  --color-disruption: var(--rei-red);
+  --color-disruption-rgb: var(--rei-red-rgb);
+  --color-on-disruption: var(--rei-light);
+  --color-on-disruption-rgb: var(--rei-light-rgb);
+  --color-ambient-indicator: var(--rei-orange);
+  --color-ambient-indicator-rgb: var(--rei-orange-rgb);
+  --color-overlay-accent: var(--rei-orange);
+  --color-overlay-accent-rgb: var(--rei-orange-rgb);
 
   color-scheme: light;
 }

@@ -55,12 +55,17 @@ Use the repository documentation according to these ownership boundaries:
   publication intent, and verification flags.
 - `TASKS.md` owns implementation status, validation history, unresolved work,
   and recommended work order.
-- `design/figma/README.md` owns Figma handoff procedure, reference inventory,
-  and frame implementation or approval status.
+- `design/figma/README.md` owns the exported-reference handoff procedure,
+  reference inventory, theme-aware reference naming, and frame implementation
+  or approval status. The directory name records the authoring origin; it does
+  not imply that implementation requires direct Figma access.
 - `design/figma/foundations.md` owns audited visual measurements, current token
   mappings, and unresolved foundation decisions.
 - `design/figma/motion/*.md` owns transition-specific sequences, provisional
   timing, completion conditions, and unresolved motion decisions.
+- `design/experiments/*.md` records scoped art-direction studies and branch
+  evidence. An experiment does not override this file's durable product
+  direction or `TASKS.md` implementation status.
 - The source code and package manifest own executable behavior, dependencies,
   routes, scripts, and runtime values.
 - `README.md` is a concise GitHub-facing introduction and onboarding guide. It
@@ -197,11 +202,12 @@ Visible lines should communicate separation, connection, selection, state, or mo
 
 Do not add interface lines only for visual decoration.
 
-## Color Roles
+## Current Dark-Theme Color Roles
 
 Use the established Longinus color tokens from `src/index.css`.
 `design/figma/foundations.md` owns their audited values and current mappings;
-the semantic roles below remain authoritative.
+the semantic roles below remain authoritative for the established dark
+Longinus experience.
 
 - Background represents the primary system environment.
 - Surface defines secondary interface regions and structural depth.
@@ -218,6 +224,51 @@ Orange enters through system state. Lavender enters through identity and human c
 Do not use primary red as a generic hover, border, or decorative accent when the interaction has no relationship to the spear.
 
 Do not introduce additional colors without a clear visual, semantic, or interaction role.
+
+# Theme Direction
+
+Longinus has one established default direction and one planned alternate art
+direction. Theme support must preserve semantic application structure without
+pretending that every visual or physical behavior maps one-to-one.
+
+## Established Dark Theme
+
+The default Longinus experience is the existing dark, Spear-driven system.
+Its background, surface, foreground, muted, system-active, personal, and
+disruption roles follow **Current Dark-Theme Color Roles**. The Spear remains
+the recurring physical motif for this direction unless a later approved dark
+reference changes its role within a specific feature.
+
+## Planned Rei-Inspired Light-Mode Experiment
+
+The planned light mode is a deliberate alternate interpretation rather than a
+CSS inversion of the dark experience. Its direction includes:
+
+- a white or off-white environment;
+- pastel Rei-inspired blue as a major atmospheric and personal color;
+- a controlled red derived abstractly from the classroom-uniform ribbon;
+- Ramiel as the central motif of the experiment rather than a recolored Spear;
+  and
+- the option to reconsider typography when an approved light reference
+  establishes a quieter direction.
+
+Keep the underlying Longinus content, semantic DOM, information architecture,
+routes, accessibility behavior, and feature ownership recognizable where
+practical. An approved light reference may intentionally reinterpret layout or
+composition, but a dark reference is not an exact light-mode color or style
+target.
+
+Use shared semantic behavior where it is genuinely the same. Do not duplicate
+entire feature implementations merely to support a theme, and do not force
+Ramiel to inherit every Spear interaction. Theme-specific Home, Projects,
+About, Music, and Playground scene staging, lighting, camera behavior, motion,
+and asset loading remain feature-owned. Do not create one universal scene
+configuration for both motifs.
+
+Exported references must identify their theme. Accessibility, visible focus,
+contrast, touch behavior, and reduced-motion requirements apply to every
+theme. `TASKS.md` owns whether the experiment, a switcher, dark/light
+coexistence, or theme-specific assets are actually implemented.
 
 ## Interface Language
 
@@ -241,9 +292,28 @@ Avoid generic hacker terminology, meaningless technical phrases, and excessive f
 
 Longinus uses multiple sources of truth for different parts of the experience.
 
-Figma is the primary visual reference for page layout, spacing, hierarchy, color application, static 2D UI composition, and measurable typographic treatment such as font size, weight, line height, letter spacing, casing, wrapping, alignment, and cropping.
+Figma is the design authoring environment. Exported visual-reference images
+stored under `design/figma/references/` are the static visual implementation
+source available to Codex. Implementation must not depend on the Figma API,
+Figma MCP integrations, Dev Mode, paid implementation features, or a direct
+Figma URL.
 
-Figma is not the source of truth for font families. The runtime font tokens in `src/index.css` define the font families used throughout the website:
+The exported image defines visible evidence such as page layout, relative
+positioning, hierarchy, type scale and alignment, line breaks, negative space,
+color application, borders, visible grid relationships, relative dimensions,
+overlap, cropping, visible 2D/3D relationships, and the static state shown at
+the reference viewport. Do not invent hidden implementation details that the
+image cannot communicate.
+
+Written interaction requirements and targeted follow-up answers define
+behavior that a static image cannot show. Inspect existing implementation
+patterns first. Ask a specific follow-up question before making a major
+assumption about interaction, animation, state transitions, responsive
+composition, touch behavior, layering, or Three.js motion. Minor reversible
+details may be resolved from the reference, established Longinus rules, and
+the smallest compatible implementation.
+
+Exported references are not the source of truth for font families. The runtime font tokens in `src/index.css` define the font families used throughout the website:
 
 - Display: `var(--font-display)` — `"Times New Roman Condensed"`, `"Times New Roman"`, `Times`, `serif`
 - Sans/content: `var(--font-sans)` — `Arial`, `Helvetica`, `sans-serif`
@@ -257,11 +327,11 @@ This file defines project philosophy, visual-system rules, interaction intent, a
 
 The existing codebase defines engineering constraints and established implementation patterns.
 
-When a Figma design, exported frame, screenshot, or design specification is provided for a page:
+When an exported frame, screenshot, or design specification is provided for a page:
 
 - Inspect the reference before writing UI code.
 - Treat the design as the intended visual target, not loose inspiration.
-- Use the established runtime font tokens for every typographic role. Do not import, bundle, imitate, or substitute a font solely because it appears in a Figma reference.
+- Use the established runtime font tokens for every typographic role. Do not import, bundle, imitate, or substitute a font solely because it appears in an exported reference.
 - Match layout, scale, spacing, alignment, typographic hierarchy, font size, weight, line height, letter spacing, casing, wrapping, cropping, color roles, and visual weight as closely as practical using the established runtime stacks.
 - Reuse existing design tokens and components when they can reproduce the design accurately.
 - Do not invent additional cards, sections, buttons, labels, gradients, decorations, or content that are not present in the reference.
@@ -297,21 +367,22 @@ When reproducing a supplied Blender motion procedurally, preserve the motion's v
 
 If it is unclear whether an animation should be procedural or exported from Blender, explain the tradeoff before committing to an implementation.
 
-## Implementing From Figma
+## Implementing From Exported References
 
-When implementing a page from Figma:
+When implementing a page from an exported repository reference:
 
 1. Inspect the full frame before editing code.
 2. Identify the primary, system, navigation, and ambient interface regions.
 3. Identify the dominant compositional relationships between typography, negative space, and 3D elements.
-4. Map Figma typographic roles to the established runtime font tokens; do not carry Figma font-family names into the implementation.
+4. Map visible typographic roles to the established runtime font tokens; do not carry authoring-tool font-family names into the implementation.
 5. Identify reusable components and visual-system roles.
 6. Determine which elements belong to the DOM interface and which belong to the Three.js scene.
 7. Implement the static 2D composition.
 8. Stage required 3D elements so their position, scale, and camera relationship match the intended composition.
 9. Define shared interaction states between the 2D interface and 3D scene.
 10. Implement responsive behavior.
-11. Implement system, content, and spear motion according to their defined motion characteristics.
+11. Implement system, content, and theme-appropriate 3D motif motion according
+    to their defined motion characteristics.
 12. Compare the result against the reference at the intended viewport size.
 13. Fix the largest visual and compositional differences first.
 14. Profile and polish the final interaction.
@@ -418,6 +489,9 @@ Content remains restrained and readable.
 Do not synchronize independent systems using arbitrary duplicated timeout values when a shared animation event, state transition, or completion callback can coordinate them more reliably.
 
 # Core Experience
+
+Unless **Theme Direction** or an approved theme-specific reference says
+otherwise, this section defines the established dark Longinus experience.
 
 Longinus is an interactive portfolio organized through a structured 2D interface and a recurring 3D Spear of Longinus.
 
@@ -720,7 +794,7 @@ records, publication intent, and verification flags. Runtime data remains in
 focused modules under `src/features/about/data/`; synchronize approved
 editorial changes deliberately because Markdown edits do not update runtime
 data automatically. Use `TASKS.md` for implementation and validation status,
-and the Figma documents for approved compositions and measurements.
+and the exported-reference documents for approved compositions and measurements.
 
 The About page must not become:
 
@@ -754,10 +828,12 @@ Use stable identifiers:
 - `interactive-influences`
 - `current-direction`
 
-Each chapter owns a visible number-and-label indicator that moves naturally
-with its section. Right-side navigation must land the selected indicator at the
-same shared viewport anchor for every chapter. The compact navigator may
-shorten only `Interactive Influences` to `Influences`.
+Each chapter owns a semantic heading and a stable section target. The current
+composition keeps those headings visually hidden while the persistent
+top-right Current chapter status and right-side navigation communicate the
+active chapter. Right-side navigation must land each chapter's first content
+region at the same shared viewport anchor. The compact navigator may shorten
+only `Interactive Influences` to `Influences`.
 
 Use standard browser scrolling. Do not require hard full-screen scroll
 snapping. Chapter alignment and transitions may be subtle, but readers must be
@@ -786,7 +862,7 @@ Keep all three axis statements available without hover. Preserve the deliberate
 desktop composition, hierarchy, authored wrapping, negative space, shared
 chapter landing anchor, right navigation, spear relationship, and page-index
 treatment. Exact copy belongs to `content/ABOUT_CONTENT.md`; measured
-composition belongs to the approved Figma reference and
+composition belongs to the approved exported reference and
 `design/figma/foundations.md`.
 
 ### Trajectory
@@ -871,6 +947,10 @@ approved destinations; do not synthesize a résumé or contact action from an
 unfinished placeholder.
 
 ### Spear Role
+
+The behavior below defines the established dark-theme About motif. A future
+approved light-mode About reference may give Ramiel a quieter, chapter-owned
+role without inheriting the Spear's continuous axial behavior.
 
 On About, the spear is a quiet witness, spatial anchor, connective thread, and
 representation of narrative progression. It must not behave like the
@@ -1160,7 +1240,8 @@ Profile performance when adding complex Three.js scenes, post-processing, large 
 
 Use the existing design-token system whenever possible.
 
-When implementing a Figma design, extract repeated values into the token system when they represent a reusable visual rule.
+When implementing an exported design reference, extract repeated values into
+the token system when they represent a reusable visual rule.
 
 Do not create a token for every one-off measurement.
 
@@ -1168,13 +1249,15 @@ Prefer semantic tokens and visual roles over tokens named after individual pages
 
 ## Color
 
-Follow the palette and semantic rules in **Visual System → Color Roles**. Do not redefine page-local color meanings that conflict with those shared roles.
+Follow **Current Dark-Theme Color Roles** and **Theme Direction**. Do not
+redefine page-local color meanings that conflict with the applicable semantic
+roles.
 
 ## Typography
 
 Typography is part of the page composition.
 
-Use the authoritative runtime stacks and Figma boundary defined once in
+Use the authoritative runtime stacks and exported-reference boundary defined once in
 **Design Source of Truth**. Map display typography to `var(--font-display)`,
 content to `var(--font-sans)`, and system or identifier typography to
 `var(--font-mono)` rather than hardcoding feature-specific families.
@@ -1183,7 +1266,11 @@ Preserve typographic composition through font size, weight, line height, letter
 spacing, casing, line breaks, wrapping width, alignment, cropping, and
 surrounding negative space.
 
-Because the stacks use system fonts, the resolved face and exact metrics may vary by operating system. Validate that the hierarchy, line cadence, wrapping, spacing, and overall composition remain intentional across representative environments instead of changing the font family to force a pixel-identical Figma result.
+Because the stacks use system fonts, the resolved face and exact metrics may
+vary by operating system. Validate that the hierarchy, line cadence, wrapping,
+spacing, and overall composition remain intentional across representative
+environments instead of changing the font family to force a pixel-identical
+authoring-tool result.
 
 Typography should follow the established visual roles:
 
@@ -1342,7 +1429,7 @@ Before implementing a task:
 
 1. Read the relevant task and project instructions.
 2. Inspect the existing feature, components, styles, scene behavior, and data involved.
-3. Inspect supplied Figma references before implementing static interface composition.
+3. Inspect supplied exported repository references before implementing static interface composition.
 4. Inspect supplied Blender animations, renders, viewport recordings, or motion references before implementing referenced 3D motion.
 5. Identify which behavior belongs to the DOM interface and which belongs to the Three.js scene.
 6. Identify the meaningful interaction state shared between systems.
@@ -1353,7 +1440,7 @@ Do not begin by creating new abstractions or dependencies.
 
 ## Visual Implementation Workflow
 
-Follow **Design Source of Truth → Implementing From Figma** and the handoff
+Follow **Design Source of Truth → Implementing From Exported References** and the handoff
 procedure in `design/figma/README.md`. Implement and compare one complete state
 at the intended viewport before expanding to additional states. Correct the
 largest compositional differences before minor decoration or detailed motion.
@@ -1428,13 +1515,14 @@ Do not independently decide to:
 - Change the primary navigation model
 - Replace the Spear of Longinus interaction concept
 - Change the established color roles
-- Introduce a new visual theme
+- Introduce a visual theme beyond the documented dark direction and planned
+  Rei-inspired light experiment, or promote an experiment without approval
 - Change the relationship between Jaylan Wu, `alter-egoist`, and Longinus
 - Add major external services or APIs
 - Introduce a backend
 - Add a global state-management framework
-- Replace an approved Figma composition with a generic layout
-- Replace the established runtime font stacks solely to match a Figma reference
+- Replace an approved exported-reference composition with a generic layout
+- Replace the established runtime font stacks solely to match an exported reference
 - Replace distinctive authored Blender motion with unrelated animation
 
 These decisions affect product direction or architecture and should be explicitly resolved.
@@ -1459,7 +1547,12 @@ Use the established Longinus visual system to interpret missing details.
 
 ## Communicate Limitations
 
-If an intended result cannot be reproduced accurately because of missing assets, incomplete motion references, browser limitations, performance constraints, accessibility conflicts, or library limitations, state the limitation clearly. A font-family difference from a Figma reference is expected and should be resolved with the established runtime font stacks, not treated as a missing implementation asset.
+If an intended result cannot be reproduced accurately because of missing
+assets, incomplete motion references, browser limitations, performance
+constraints, accessibility conflicts, or library limitations, state the
+limitation clearly. A font-family difference from an exported reference is
+expected and should be resolved with the established runtime font stacks, not
+treated as a missing implementation asset.
 
 Implement the closest maintainable result only when the divergence is understood.
 

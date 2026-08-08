@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { HomeIdentity } from './HomeIdentity'
 import { HomeNavigation } from './HomeNavigation'
+import { HomeMotif } from './HomeMotif'
 import { navigationItems } from './navigation'
-import { PageIndex } from '../../components/PageIndex'
-import { RamielFallback } from '../../components/ramiel/RamielFallback'
+import { THEME_IDS } from '../../theme/theme'
+import { useTheme } from '../../theme/useTheme'
 import type { NavigationItem } from '../../types/navigation'
-import { HomeRamielScene } from './HomeRamielScene'
 import './home.css'
 
 const HOME_GRID_TARGET_CELL_SIZE_PX = 90
@@ -26,10 +26,7 @@ function updateHomeGrid(element: HTMLElement) {
 export function HomePage() {
   const homeRef = useRef<HTMLElement>(null)
   const [focusedTarget, setFocusedTarget] = useState<NavigationItem['id'] | null>(null)
-  const focusedIndex = Math.max(
-    0,
-    navigationItems.findIndex((item) => item.id === focusedTarget),
-  )
+  const { theme } = useTheme()
 
   useLayoutEffect(() => {
     const home = homeRef.current
@@ -45,7 +42,9 @@ export function HomePage() {
 
   return (
     <main className="home" id="home" ref={homeRef}>
-      <div className="home__watermark" aria-hidden="true">RAMIEL</div>
+      <div className="home__watermark" aria-hidden="true">
+        {theme === THEME_IDS.reiLight ? 'RAMIEL' : 'LONGINUS'}
+      </div>
 
       <section className="home__interface" aria-label="Introduction and site navigation">
         <HomeIdentity />
@@ -57,17 +56,7 @@ export function HomePage() {
         </footer>
       </section>
 
-      <aside className="home__scene" aria-label="Procedural blue crystalline geometric form">
-        <div className="home__scene-label" aria-hidden="true">Ramiel study / suspended form</div>
-        <RamielFallback
-          motionState={focusedTarget ? 'focused' : 'idle'}
-          focusIndex={focusedIndex}
-          energy={focusedTarget ? 1 : 0.18}
-          centered
-        />
-        <HomeRamielScene focusedTarget={focusedTarget} />
-        <PageIndex value="00" />
-      </aside>
+      <HomeMotif focusedTarget={focusedTarget} />
     </main>
   )
 }

@@ -141,7 +141,7 @@ export function HomeRamielScene({ focusedTarget }: HomeRamielSceneProps) {
   return (
     <SceneErrorBoundary>
       <Canvas
-        className="ramiel-canvas home__ramiel-canvas"
+        className="scene-canvas ramiel-canvas home__ramiel-canvas"
         camera={{ position: [0, 0, 10.8], fov: 32 }}
         dpr={[1, 1.5]}
         frameloop="always"

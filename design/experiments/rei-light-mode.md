@@ -3,7 +3,7 @@
 > **Branch-only art-direction study.** This document records the
 > `rei-light-mode` experiment. It does not replace the durable Longinus dark
 > direction in `AGENTS.md`, approve a new canonical palette, or revise the
-> implementation status of existing Figma references.
+> implementation status of existing exported dark references.
 
 ## Purpose
 
@@ -19,14 +19,20 @@ The visual translation is deliberately narrow:
 - pale and icy blues become the atmospheric and identity colors;
 - ribbon red becomes a scarce, high-intent interruption;
 - dark neutral typography replaces warm light typography; and
-- a procedural, original octahedral Ramiel study replaces the spear as the
-  branch's recurring 3D motif.
+- a procedural, original octahedral Ramiel study replaces the spear within the
+  light interpretation's recurring 3D role.
 
-The experiment is activated statically with `data-theme="rei-light"` on the
-root HTML element. It is not a runtime theme switcher or a generalized skin
-system. The canonical dark values remain unchanged in the base `:root`; the
-branch-specific selector aliases established semantic tokens to the Rei
-palette.
+The experiment began as a statically activated branch. Runtime now defaults to
+`data-theme="longinus-dark"` and exposes a typed `longinus-dark` / `rei-light`
+provider that can persist an explicitly set choice and synchronize the root
+attribute and browser theme color before application rendering. There is no
+visible switch control or system-preference policy yet. The canonical dark
+values remain unchanged in the base `:root`; the light selector aliases shared
+semantic roles to the Rei palette.
+
+No approved light-mode visual-reference export is stored in the repository.
+This branch study is implementation evidence, not a substitute for the
+theme-explicit exported-reference workflow in `design/figma/README.md`.
 
 ## Selected experimental palette
 
@@ -130,13 +136,15 @@ the white environment.
 
 ## Implementation tradeoffs
 
-- The static root attribute is intentionally less flexible than a theme
-  provider, but it is reversible and appropriate for a single experimental
-  branch.
-- Existing semantic aliases provide broad palette coherence without moving
-  page composition into global CSS. A few feature-owned atmospheric effects
-  still require deliberate blue/red interpretation rather than blind token
-  substitution.
+- The runtime provider establishes dark/light selection, persistence, and
+  initial-paint synchronization without inventing a visible control before its
+  placement and accessible behavior are designed.
+- Shared semantic aliases provide broad palette coherence without moving page
+  composition into global CSS. Feature-owned atmosphere variables still carry
+  deliberate blue/red interpretation rather than blind token substitution.
+- Each feature retains separate Spear and Ramiel scene modules and lazily
+  imports only the active one. This costs a small dispatch boundary per feature
+  while preserving theme-specific camera, lighting, staging, and motion.
 - A compact octahedron cannot inherit the spear's long visual footprint.
   Camera proximity, scale, asymmetry, cropping, and shadow footprint must carry
   equivalent visual weight without changing the underlying layout.
@@ -150,8 +158,9 @@ the white environment.
 ## Implemented branch scope
 
 - Home, Projects, and the implemented About chapters receive the Rei palette
-  through the scoped semantic layer plus feature-owned atmospheric styling.
-  Music, Playground, and unrelated staged work were not expanded.
+  when `rei-light` is active through the scoped semantic layer plus
+  feature-owned atmospheric styling. Music, Playground, and unrelated staged
+  work were not expanded.
 - A shared low-poly `OctahedronGeometry` supplies Ramiel's body, translucent
   shell, core, and edge definition. Geometry is allocated once at module
   scope; the scenes use bounded DPR, no shadow map, no transmission sampling,
@@ -167,21 +176,30 @@ the white environment.
 - Home and Projects retain a geometric CSS fallback when WebGL is unavailable.
   About preserves its existing failure invariant: the scene can disappear
   while all semantic content and navigation remain available.
-- The canonical Spear source remains in the repository as unreferenced branch
-  context, but no Home, Projects, or About runtime scene instantiates it. This
-  keeps the study reversible without introducing a generalized motif system.
+- The canonical procedural Spear now coexists as the default-dark scene in
+  feature-owned Home, Projects, and About modules. A theme-aware motif boundary
+  lazy-loads Spear or Ramiel without introducing a generalized camera, light,
+  or motion system.
 - About chapter DOM, content order, selected-record structures, header,
   chapter positions, observer behavior, and right-side navigation structure
-  are unchanged. No font-metric spacing repair remains after restoring the
-  canonical stacks. A later user-directed scale refinement enlarges the three
-  implemented About display titles while preserving their authored line breaks
-  and containers; it does not alter the chapter navigator.
-- About continues to receive the established chapter and scroll state, but its
-  visual response deliberately translates the spear's continuous velocity
-  reaction into chapter-owned orientations and long still intervals. This is
-  a motif-level motion change, not a navigation or observer change.
+  remain visually unchanged. Source ownership is narrower: requested chapter
+  arbitration, photography behavior/presentation, influence list/detail UI,
+  and chapter styles are separated into About-owned modules. No font-metric
+  spacing repair remains after restoring the canonical stacks. A later
+  user-directed scale refinement enlarges the three implemented About display
+  titles while preserving their authored line breaks and containers; it does
+  not alter the chapter navigator.
+- In Rei-light, About continues to receive the established chapter and scroll
+  state, but its visual response deliberately translates the spear's
+  continuous velocity reaction into chapter-owned orientations and long still
+  intervals. This is a motif-level motion change, not a navigation or observer
+  change.
 
 ## Validation snapshot — 2026-08-07
+
+This snapshot records the earlier statically activated light branch, before
+the runtime theme and lazy scene-dispatch refactor. It remains historical
+evidence and does not validate the new runtime boundary.
 
 The stored dark Home and About exports were compared with branch captures at
 equivalent `1440 × 900` viewports. Runtime checks also covered `1440 × 800`,
@@ -222,20 +240,28 @@ Selected contrast ratios are:
 
 | Pair | Ratio |
 | --- | ---: |
-| Supporting foreground / white | `16.36:1` |
-| Rei blue dark / white | `6.24:1` |
-| Ribbon red / white | `4.53:1` |
+| Supporting foreground / page environment | `15.54:1` |
+| Rei blue dark / page environment | `5.93:1` |
+| Ribbon red / page environment | `4.30:1` |
+| Ribbon red / derived surface | `4.23:1` |
 | Rei blue dark / derived surface | `5.83:1` |
 | Supporting foreground / Rei blue light | `7.59:1` |
-| Rei blue light / white | `2.16:1` — graphic or surface only |
-| Orange / white | `2.45:1` — non-text marker only |
+| Rei blue light / page environment | `2.05:1` — graphic or surface only |
+| Orange / page environment | `2.33:1` — non-text marker only |
 | Rei blue dark / Rei blue light | `2.90:1` — do not pair for small text |
 
-The final `typecheck`, full `lint`, production `build`, and `git diff --check`
-passed with Node `22.14.0`. No automated test script exists. Vite retains the
-known approximately `1.086 MB` initial JavaScript chunk (`299.24 kB` gzip) and
-its chunk-size warning. The procedural Ramiel adds no downloaded model or
-post-processing asset, and the experiment adds no font asset.
+The ribbon red clears `4.5:1` against pure white but not against either actual
+light-theme environment. Existing small red labels therefore require a color,
+size, or role adjustment before light-mode approval. Orange remains unsuitable
+for ordinary text, and its decorative selected-photo overlay still needs
+visual review against the full photograph set.
+
+For this 2026-08-07 snapshot, `typecheck`, full `lint`, production `build`, and
+`git diff --check` passed with Node `22.14.0`. No automated test script exists.
+Vite reported the then-current approximately `1.086 MB` initial JavaScript
+chunk (`299.24 kB` gzip) and its chunk-size warning. The procedural Ramiel adds
+no downloaded model or post-processing asset, and the experiment adds no font
+asset.
 
 ## Visual review still required
 

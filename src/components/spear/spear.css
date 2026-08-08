@@ -1,6 +1,4 @@
 .spear-canvas {
-  position: absolute !important;
-  z-index: 2;
   inset: -8% -10% -8% -12%;
   width: 122% !important;
   height: 116% !important;

@@ -1,31 +1,29 @@
 import type { CSSProperties } from 'react'
+import type { InteractionPhase } from '../../types/interaction'
 import './ramiel.css'
 
-export type RamielMotionState =
-  | 'idle'
-  | 'focused'
-  | 'committing'
-  | 'impact'
-  | 'transitioning'
-  | 'settled'
+export type RamielMotionState = InteractionPhase
+
+export type RamielFallbackPose = {
+  angleDegrees: number
+  verticalOffsetRem: number
+}
 
 type RamielFallbackProps = {
   motionState?: RamielMotionState
-  focusIndex?: number
+  pose: RamielFallbackPose
   energy?: number
-  centered?: boolean
 }
 
 export function RamielFallback({
   motionState = 'idle',
-  focusIndex = 0,
+  pose,
   energy = 0,
-  centered = false,
 }: RamielFallbackProps) {
   const normalizedEnergy = Math.min(1, Math.max(0, energy))
   const style = {
-    '--ramiel-angle': `${-4 + focusIndex * 7}deg`,
-    '--ramiel-y': centered ? '0rem' : `${(focusIndex - 1.5) * 1.4}rem`,
+    '--ramiel-angle': `${pose.angleDegrees}deg`,
+    '--ramiel-y': `${pose.verticalOffsetRem}rem`,
     '--ramiel-energy': normalizedEnergy,
   } as CSSProperties
 

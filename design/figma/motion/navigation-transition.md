@@ -2,12 +2,17 @@
 
 ## Current implementation status
 
-**Specification status: planned and awaiting an authored motion reference.**
+**Specification status: planned beyond focused-target response and awaiting an
+authored motion reference.**
 [`TASKS.md`](../../../TASKS.md) Milestone 3 owns the live implementation
 checklist. This file owns the intended transition sequence, coordination
 signals, fallback behavior, and motion decisions.
 
-The sequence below is approved interaction direction, not current or motion-approved behavior.
+The sequence below is approved interaction direction, not complete or
+motion-approved behavior. Runtime defaults to the dark Spear scene and can
+select the Rei-light Ramiel scene through the typed theme contract. Both scenes
+are Home-owned and lazy-loaded; only Ramiel currently maps target focus to a
+3D orientation. Ramiel must not inherit Spear impact behavior automatically.
 
 ## Purpose
 
@@ -17,10 +22,10 @@ Define how an available main-navigation choice coordinates the structured DOM in
 
 | System | Responsibility | Current status |
 | --- | --- | --- |
-| Navigation target | Communicate focus, commitment, lock, and destination | CSS focus/hover only |
+| Navigation target | Communicate focus, commitment, lock, and destination | Pointer/keyboard focus shares one target; Rei-light Ramiel interprets it, while commitment remains planned |
 | System UI | Report real target and interaction phase | Planned |
 | Home content | Exit or restructure legibly | Planned |
-| Home spear scene | Aim, anticipate, impact, and follow through | Planned; current model is static procedural staging |
+| Home 3D motif scene | Interpret focus and later commitment according to the active theme | Dark Spear and light Ramiel scenes coexist behind lazy feature dispatch; light Ramiel focus response is staged, while dark Spear focus and both commitment/impact interpretations remain planned |
 | Destination | Enter, settle, and receive logical focus | Planned |
 
 ## Canonical phases
@@ -31,6 +36,10 @@ rather than a second naming system:
 ```text
 idle → focused → committing → impact → transitioning → settled
 ```
+
+Source now defines this exact union once as `InteractionPhase`. Home currently
+derives only `idle` and `focused`; the shared type does not imply that the later
+phases or their transition rules are implemented.
 
 | Phase | Entry condition | DOM expectation | Spear expectation | Exit condition |
 | --- | --- | --- | --- | --- |
@@ -74,11 +83,17 @@ Do not copy the Projects timeout sequence into Home. Navigate at a reviewed even
 
 ## Failure behavior
 
-Home's semantic links and CSS spear silhouette already remain independent of successful canvas rendering. The future transition must preserve that property: if WebGL or motion fails, release any in-page lock and complete navigation without waiting indefinitely.
+Home's semantic links and active-theme CSS Spear or Ramiel fallback remain
+independent of successful canvas rendering. The active scene is lazy-loaded
+inside the same Home-owned boundary. This is source-level resilience only; the
+new runtime dispatch has not received browser failure validation. If WebGL or
+motion fails, release any in-page lock and complete navigation without waiting
+indefinitely.
 
 ## Unresolved decisions
 
-- Final spear asset and authored motion reference
+- Final dark Spear asset and authored motion reference
+- Approved light-mode exported reference and Ramiel-specific commitment role
 - Per-destination aim and follow-through
 - Exact durations, easing, impact event, and route-change cue
 - Destination entry and focus target

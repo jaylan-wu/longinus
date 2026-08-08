@@ -160,7 +160,7 @@ export function ProjectRamielScene({ phase, focusIndex }: ProjectRamielSceneProp
   return (
     <SceneErrorBoundary>
       <Canvas
-        className="ramiel-canvas projects__ramiel-canvas"
+        className="scene-canvas ramiel-canvas projects__ramiel-canvas"
         camera={{ position: [0, 0, 11], fov: 33 }}
         dpr={[1, 1.5]}
         frameloop="always"

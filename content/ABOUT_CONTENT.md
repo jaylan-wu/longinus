@@ -108,10 +108,10 @@ continue building on their own.
 
 The approved Identity desktop-idle reference is:
 
-`design/figma/references/about/about-identity-desktop-idle-v1.png`
+`design/figma/references/about/about-identity-dark-desktop-idle-v1.png`
 
-Figma handoff, measured layout, responsive comparison, navigation behavior, and
-spear motion belong to the design documentation, `TASKS.md`, and
+Exported-reference handoff, measured layout, responsive comparison, navigation
+behavior, and 3D motif motion belong to the design documentation, `TASKS.md`, and
 `AGENTS.md`. The notes here preserve only editorial presentation intent.
 
 The display statement uses four authored desktop lines:
@@ -605,11 +605,16 @@ come from my solo trips, friends, and candid moments.
 The canonical published sequence contains seven photographs, `PHOTO-001`
 through `PHOTO-007`, in the order below.
 
+The paths recorded below identify the original archival sources. Runtime
+delivery paths are executable implementation details owned by
+`src/features/about/data/photographs.ts`, which currently imports separate
+WebP display and thumbnail variants for every published record.
+
 ### Photograph
 
 Identifier: PHOTO-001
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-001-fuji-2025.jpg`
 
@@ -654,7 +659,7 @@ lucky to catch Fuji on a clear day, and the experience felt surreal.
 
 Identifier: PHOTO-002
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-002-sendai-lilies-2025.jpg`
 
@@ -698,7 +703,7 @@ Floral images are fun to take.
 
 Identifier: PHOTO-003
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-003-otaru-2025.jpg`
 
@@ -742,7 +747,7 @@ This is just a surreal image of a torii gate at the top of Mount Otaru.
 
 Identifier: PHOTO-004
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-004-toyama-ramen-2025.JPG`
 
@@ -786,7 +791,7 @@ A personal favorite meal that I had during my trip
 
 Identifier: PHOTO-005
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-005-hakodate-2025.JPG`
 
@@ -830,7 +835,7 @@ I stayed around this specific spot for a couple hours waiting for just the right
 
 Identifier: PHOTO-006
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-006-jimbocho-2025.JPG`
 
@@ -874,7 +879,7 @@ I really liked the orientation and structure of the photo, no matter where you l
 
 Identifier: PHOTO-007
 
-Runtime asset path:
+Archival source asset path:
 
 `src/features/about/assets/photography/PHOTO-007-chicago-2026.JPG`
 

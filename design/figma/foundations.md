@@ -8,6 +8,8 @@ and validation history.
 ## Audit scope
 
 Audited against source and the recorded browser comparisons on **2026-08-06**.
+Theme-architecture and source-ownership notes were reconciled against source
+on **2026-08-08** without adding new browser or visual-comparison evidence.
 
 The values below cover the current Home implementation, the browser-compared
 About Identity composition, the full static About Trajectory EDU-001
@@ -18,11 +20,13 @@ chapters. Home values are not comparison-approved. Interactive Influences and
 Current Direction still have no approved static frames; their measurements
 below document current runtime geometry rather than frame approval.
 
-## Color palette
+## Theme and color architecture
 
-The application palette is defined by CSS custom properties in `src/index.css`;
-scene code mirrors required values in `src/styles/colors.ts`.
-[`AGENTS.md`](../../AGENTS.md) defines the semantic rules.
+The base `:root` palette in `src/index.css` defines the established dark
+Longinus values; scene code mirrors required values in `src/styles/colors.ts`.
+[`AGENTS.md`](../../AGENTS.md) defines the semantic rules and theme direction.
+
+### Established dark palette
 
 | Role | Value | CSS token | Current status |
 | --- | --- | --- | --- |
@@ -41,6 +45,42 @@ The Trajectory reference uses pure white for some dominant typography and
 dominant text uses `var(--color-foreground)` (`#e8e4dc`) and the panel uses
 `var(--color-surface)` (`#141317`).
 
+### Theme runtime and Rei light-mode experiment
+
+The application now defaults to `data-theme="longinus-dark"`. A typed theme
+provider recognizes `longinus-dark` and `rei-light`, persists an explicitly
+set choice, restores a valid choice in the document head before the application
+module loads, and synchronizes the browser `theme-color`. No visible switch
+control or system-preference policy exists yet.
+
+The shared CSS contract maps both themes through semantic atmosphere,
+structural-line, disruption, on-disruption, ambient-indicator, and overlay
+roles. Home and Projects then refine those roles through feature-local custom
+properties; About continues to use its shared semantic DOM without a duplicate
+theme implementation. Ramiel's own geometric fallback retains its explicit
+light palette because it is a theme-specific motif rather than general page
+styling.
+
+Home, Projects, and About each own separate dark Spear and light Ramiel scenes.
+Their feature motif boundaries lazily import only the active theme's scene;
+camera, lighting, staging, and animation do not pass through a universal scene
+configuration. [`../experiments/rei-light-mode.md`](../experiments/rei-light-mode.md)
+owns the experimental palette and dated light-branch validation evidence.
+
+This architecture establishes code-level coexistence, not visual approval:
+
+- No approved Rei-light exported reference exists.
+- Storage persistence is implemented but not yet user-reachable. The visible
+  selection control, its keyboard and announcement behavior, and the
+  system-preference policy remain undesigned.
+- CSS theme values and Three.js material values remain deliberately separate;
+  each feature scene still needs authored per-theme review.
+- Conditional loading, renderer teardown, dark-reference regression, contrast,
+  responsive behavior, and reduced motion have not been browser-validated for
+  the new runtime boundary.
+
+The remaining validation matrix belongs in [`TASKS.md`](../../TASKS.md).
+
 ## Typography
 
 No font files are present by design. The table records the established runtime
@@ -53,7 +93,7 @@ font tokens and the known Home exception:
 | Metadata/identifier | `var(--font-mono)` → `"SFMono-Regular", Consolas, "Liberation Mono", monospace` | System labels, indices, footer metadata | Established system stack; rendered face varies by device |
 | Homepage structural label | `"Archivo Narrow", "Arial Narrow", sans-serif` | `ARCHIVE:` label | Known one-off exception; migrate to an established token unless a new token is explicitly approved |
 
-Use these tokens according to the runtime-font and Figma source-of-truth policy
+Use these tokens according to the runtime-font and exported-reference policy
 in [`AGENTS.md`](../../AGENTS.md). The measurements below audit composition
 without changing the established font families.
 
@@ -66,8 +106,8 @@ without changing the established font families.
 | Random title-card phrase | `var(--font-display)`, `2.875rem`, weight `700` | Selected from six phrases once when the module loads; content and longest-line fit require review |
 | Primary navigation labels | `var(--font-display)`, `3.05rem`, line height `0.88`, weight `600`, letter spacing `-0.06em` | Pointer/keyboard focus styling exists; exact metrics are unverified |
 | System/footer labels | `var(--font-mono)`, generally `0.875rem` | Media queries adjust some desktop sizes |
-| `LONGINUS` watermark | `var(--font-display)`, outlined, weight `400` | Ambient, cropped, and non-interactive |
-| `00` scene index | `var(--font-display)`, `clamp(21rem, 31vw, 38rem)`, weight `700` | Shared `PageIndex` treatment; unverified against Figma |
+| Theme watermark (`LONGINUS` or `RAMIEL`) | `var(--font-display)`, outlined, weight `400` | Active-theme label; ambient, cropped, and non-interactive |
+| `00` scene index | `var(--font-display)`, `clamp(21rem, 31vw, 38rem)`, weight `700` | Shared `PageIndex` treatment; unverified against the exported reference |
 
 ### Current About Identity mapping
 
@@ -102,7 +142,7 @@ without changing the established font families.
 | Selected-photo metadata | `var(--font-mono)`, `12px` baseline for system label, identifier, personal caption, and reflection | Lavender identifies personal context; all seven selected states fit without overflow |
 | Thumbnail identifiers | `var(--font-mono)`, `10px` baseline, visible beneath every thumbnail | Labels remain a deliberate divergence from the approved export and use lavender only for the selected record |
 
-Do not add or bundle fonts solely to match a Figma reference. Any future change
+Do not add or bundle fonts solely to match an exported reference. Any future change
 to the established runtime stacks requires explicit product direction and a
 coordinated update to `src/index.css`, `AGENTS.md`, and this document.
 
@@ -146,7 +186,7 @@ unrelated large-desktop override set.
 | Home ambient grid | `90px × 90px` background lines | Implemented visual treatment; not an approved component grid |
 | Home outer frame | Fixed insets defined in `src/features/home/home.css` | Implemented; comparison unverified |
 | About Identity desktop split | `67.64% / 32.36%`, shared by header, narrative, and sticky scene | Compared at the canonical viewport |
-| About Trajectory desktop composition | Canonical `75px` left inset; `460 × 426px` selector; `40px` gap; `360 × 673px` runtime selected-record panel; `860px` total width at `1440 × 900` | The panel extends upward from `y=151` while retaining the selector's shared `y=824` bottom; the Figma node and stored export retain the earlier `325 × 607px` baseline |
+| About Trajectory desktop composition | Canonical `75px` left inset; `460 × 426px` selector; `40px` gap; `360 × 673px` runtime selected-record panel; `860px` total width at `1440 × 900` | The panel extends upward from `y=151` while retaining the selector's shared `y=824` bottom; the stored dark export retains the earlier `325 × 607px` baseline |
 | About Trajectory stable frame | `360 × 673px` at the canonical viewport with chapter-specific responsive height extensions; stable internal title, record-metadata, narrative, and footer regions | Outer bounds remain identical across EDU-001 and EXP-001 through EXP-004 at a given viewport; the complete post-reflow large-desktop matrix still requires remeasurement |
 | About Outside desktop composition | Canonical `75px` left inset; approximately `821px` content width; approximately `480 × 320px` selected image from `y=330–650` with an adjacent metadata column | The preview uses part of the reclaimed chapter space while giving the caption column more width; the fixed right boundary remains the shared `67.64% / 32.36%` About split |
 | About Outside carousel | Approximately `821px` total width from `y=675–789`, with five visible records plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; previous/next rings align to the thumbnail-image center after compensating for the label block, while the active outline and corner marker provide a non-color cue |
@@ -177,7 +217,7 @@ At `1440 × 900`, the selector measures `460 × 426` at approximately
 `x=75, y=398`; the runtime selected-record panel measures `360 × 673px` at
 approximately `x=575, y=151`. Their `40px` column gap and shared `y=824` bottom
 edge remain stable within sub-pixel browser rounding. The display title also
-begins at approximately `x=75, y=151`. The Figma reference retains its
+begins at approximately `x=75, y=151`. The exported dark reference retains its
 `325 × 607px` panel and visible top-left chapter heading; the wider panel,
 upward extension, hidden semantic heading, and first-content reflow are
 intentional user-directed post-reference refinements.
@@ -242,10 +282,12 @@ balanced section space rather than stretching an individual content record.
 
 - The Home outer frame, navigation separators, main divider, and scene circle are current structural treatments.
 - Available Home links, About's site-level `Index` link, the right-side About
-  chapter controls, and Trajectory role rows share the `navigation-action`
+  chapter controls, Trajectory role rows, and Project records share the
+  `navigation-action`
   primitive: a `320ms` displaced label, `400ms` background wipe, `240ms` edge,
   and a `2px` `:focus-visible` outline. Home, `Index`, and Trajectory roles use
-  orange; the chapter controls use red.
+  orange; the chapter controls use red. Project records override only their
+  feature-specific distances and provisional durations.
 - Reduced motion removes the shared padding/skew displacement while retaining
   the scoped edge, wipe, text, and outline feedback.
 - The About chapter navigator retains its compact layout while reusing the Home
@@ -264,13 +306,12 @@ balanced section space rather than stretching an individual content record.
 ## Iconography and imagery
 
 - Home does not currently use runtime iconography.
-- The spear pictured in Figma defines intended silhouette and staging. Home and
-  Projects currently render temporary Three.js primitive geometry plus a CSS
-  silhouette beneath the canvas.
-- About reuses the same procedural geometry in an About-owned scene and has no
-  CSS spear silhouette. Its Identity framing was compared against the
-  reference, but the placeholder cannot reproduce the authored forked and
-  twisting silhouette.
+- The spear pictured in the exported dark references defines intended
+  silhouette and staging. Runtime defaults to the shared procedural Spear
+  geometry in separate Home-, Projects-, and About-owned scenes. The optional
+  Rei-light theme dispatches the shared procedural Ramiel geometry through
+  separate feature-owned scenes. Home and Projects retain theme-appropriate
+  CSS fallbacks; About keeps semantic content when either scene is unavailable.
 - About Trajectory reuses one feature-owned NYU mark for EDU-001, EXP-001, and
   EXP-004, plus the feature-owned Mets and MLB marks for their associated
   records. Named portrait, large-square, and compact-wide rules preserve
@@ -280,10 +321,12 @@ balanced section space rather than stretching an individual content record.
   scaling, and the Mets and MLB intrinsic transparent-edge offsets remain below
   one rendered pixel. MLB uses the supplied transparent `3840 × 2160` PNG; the
   superseded checker-backed WebP has been removed.
-- About Outside renders seven feature-owned landscape JPEGs. Their intrinsic
-  dimensions preserve the `3:2` selected-photo frame, `PHOTO-001` is
-  prioritized, and thumbnail images use explicit lazy loading and asynchronous
-  decoding. The source-sized files still require responsive delivery variants.
+- About Outside retains seven feature-owned archival JPEGs and serves separate
+  2000px WebP display images plus 480px WebP thumbnails from runtime data.
+  Their intrinsic dimensions preserve the `3:2` selected-photo frame,
+  `PHOTO-001` is prioritized, and image decoding/loading behavior remains
+  explicit. Broader responsive `srcset` delivery and route-level performance
+  review remain open.
 
 ## Verification boundary
 
@@ -294,6 +337,11 @@ remaining verification work.
 
 ## Open decisions
 
+- Accessible visible theme-control design and system-preference policy
+- Browser verification of persisted no-flash initialization, metadata
+  synchronization, conditional scene loading, teardown, and memory use
+- Approved light-mode exported references and final semantic palette
+- Dark-reference regression review after runtime theme coexistence
 - Cross-platform validation of hierarchy, wrapping, line cadence, and spacing
   with the established system stacks
 - Migration of the Home `ARCHIVE:` one-off font stack to an established token,
