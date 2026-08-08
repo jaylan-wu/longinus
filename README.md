@@ -31,11 +31,26 @@ comparisons with documented post-reference refinements. See
 
 ## Theme status
 
-Runtime now defaults to the canonical `longinus-dark` theme. A typed theme
-provider can select `longinus-dark` or `rei-light`, persists an explicitly set
-choice, restores a valid choice before the application module loads, and keeps
-the root theme attribute and browser `theme-color` synchronized. There is no
-visible switch control or system-preference policy yet.
+The fresh-session fallback remains the canonical `longinus-dark` theme. Before
+the application module loads, a valid saved `longinus-theme` choice overrides
+that fallback; the provider then keeps the root theme attribute and browser
+`theme-color` synchronized. A temporary application-shell QA control in the
+top-right of every current route switches between `longinus-dark` and
+`rei-light` without navigating or reloading. Its explicit selection persists
+through internal route changes and refreshes.
+
+The QA control is present only to compare the two art directions on the
+`rei-light-mode` branch. It does not consult the operating-system color
+preference, and the final production selector behavior has not been decided.
+This task does not merge the branch or modify `main`.
+
+Headless Chromium QA against both local Vite development and production
+preview builds covered 24 combinations across all current route outcomes at
+three viewports and verified mouse/keyboard switching, saved-choice and route
+persistence, active-scene replacement, and one healthy final canvas/render
+loop after repeated swaps. A bounded detached-node increase remains open for
+profiling; this evidence is not human, cross-browser, cross-device, or final
+light-mode visual approval.
 
 Home, Projects, and About retain separate feature-owned dark Spear and light
 Ramiel scenes. Each feature lazily dispatches only the active theme's scene;
@@ -149,9 +164,9 @@ explicit focus transfer after navigation is not implemented.
 │   │   └── projects/           # Route/data records, archive/detail UI, transition state, and theme scenes
 │   ├── hooks/                  # Shared reduced-motion media-query hook
 │   ├── styles/                 # Color values used by Three.js scenes
-│   ├── theme/                  # Typed runtime theme contract, persistence, and provider
+│   ├── theme/                  # Runtime theme contract, persistence, provider, and temporary QA control
 │   ├── types/                  # Shared navigation, interaction-phase, and personal-axis types
-│   ├── App.tsx                 # Hash-route parsing and route-level lazy imports
+│   ├── App.tsx                 # Application shell, QA theme control, hash routing, and lazy route imports
 │   ├── index.css               # Global tokens, reset, shared page index, reduced-motion baseline
 │   └── main.tsx                # React entry point
 ├── AGENTS.md                   # Product direction plus current engineering constraints

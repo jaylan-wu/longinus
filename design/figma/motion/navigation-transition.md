@@ -9,10 +9,22 @@ checklist. This file owns the intended transition sequence, coordination
 signals, fallback behavior, and motion decisions.
 
 The sequence below is approved interaction direction, not complete or
-motion-approved behavior. Runtime defaults to the dark Spear scene and can
-select the Rei-light Ramiel scene through the typed theme contract. Both scenes
-are Home-owned and lazy-loaded; only Ramiel currently maps target focus to a
-3D orientation. Ramiel must not inherit Spear impact behavior automatically.
+motion-approved behavior. A fresh session without a valid saved preference
+uses the dark Spear scene; a valid `longinus-theme` choice is restored first.
+The temporary manual app-shell QA control can switch to the Rei-light Ramiel
+scene without participating in Home's navigation phases or changing its route.
+Both scenes are Home-owned and lazy-loaded; only Ramiel currently maps target
+focus to a 3D orientation. Ramiel must not inherit Spear impact behavior
+automatically.
+
+Headless Chromium verified live Home theme switching in local development and
+production preview builds at three viewports without changing the hash,
+content, or `main` bounds. The expected single motif canvas replaced its
+counterpart, reduced motion remained stable, Home hover followed by About
+navigation still completed, and six warmed swaps ended with one active
+canvas/context and stable listener and animation-frame measurements. This does
+not approve the planned commitment/impact motion or replace human
+cross-browser/device review.
 
 ## Purpose
 
@@ -85,8 +97,8 @@ Do not copy the Projects timeout sequence into Home. Navigate at a reviewed even
 
 Home's semantic links and active-theme CSS Spear or Ramiel fallback remain
 independent of successful canvas rendering. The active scene is lazy-loaded
-inside the same Home-owned boundary. This is source-level resilience only; the
-new runtime dispatch has not received browser failure validation. If WebGL or
+inside the same Home-owned boundary. Current browser QA exercised successful
+scene replacement but did not force WebGL initialization failure. If WebGL or
 motion fails, release any in-page lock and complete navigation without waiting
 indefinitely.
 

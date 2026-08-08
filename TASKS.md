@@ -10,6 +10,56 @@ what remains.
 
 Status reviewed against source on **2026-08-08**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
+Pre-merge theme-comparison source status on 2026-08-08: `rei-light-mode` now
+mounts one temporary top-right theme control at the application shell so Home,
+Projects, project detail or not-found, and About share the same runtime
+selection without a route change or reload. A valid saved `longinus-theme`
+choice wins during initialization; otherwise the established
+`longinus-dark` fallback remains active. Manual selection is persisted for
+internal route changes and refreshes, and no `prefers-color-scheme` policy is
+applied. This is a QA control, not an approved production selector or light-mode
+visual approval. The work remains on `rei-light-mode`; this task performs no
+merge and makes no change to `main`.
+
+Final source validation passed `corepack yarn typecheck`, `corepack yarn lint`,
+`corepack yarn build --outDir /tmp/longinus-toggle-build`, and
+`git diff --check`; no automated test script exists. The production build
+transformed 119 modules, kept the eager entry at `202.59 kB` (`64.20 kB` gzip),
+and emitted six separate theme-scene chunks. The lazily loaded shared
+Three.js/WebGL `SceneCanvas` chunk is `882.01 kB` (`234.36 kB` gzip) and retains
+Vite's existing `500 kB` chunk-size warning.
+
+Headless Chromium passed the same 24 route/viewport combinations against local
+Vite development and production preview builds at `1440 × 900`, `390 × 844`,
+and `320 × 568`: Home, Projects, all three valid project details, a missing
+project detail, About, and the unknown-hash Home fallback. Every case retained
+exactly one in-bounds, non-overlapping toggle.
+Mouse, Enter, and Space changed themes in both directions with visible focus
+and the expected accessible state while the hash, content, and `main` bounds
+stayed unchanged; each route exposed the correct active motif canvas or no
+motif canvas. Saved light and dark choices survived reload, while empty and
+invalid storage fell back to dark. `Light Home → Projects → About` and
+`Dark About → Projects → Home` retained their selected theme.
+
+The same headless pass covered reduced motion, Home hover followed by About
+navigation, About chapter selection, and Projects hover followed by project
+detail; no browser or console error was recorded. Six warmed rapid theme swaps
+on each of Home, Projects, and About created six replacement renderers and lost
+all six retired contexts, ending with exactly one healthy context and canvas.
+The measured animation rate remained `60 → 60`, one frame request remained
+pending, and scene modules produced no repeated network responses.
+
+The shared `SceneCanvas` now explicitly calls `gl.dispose()` after a
+disconnected canvas unmount, removing three Three.js canvas listeners from each
+retired renderer. An independent, uninstrumented Chrome DevTools Protocol pass
+after five seconds plus garbage collection kept document and listener counts
+flat, but consistently retained three additional detached DOM nodes per
+six-switch batch on each motif route. Record that bounded residual for further
+profiling; the evidence does not indicate an active renderer, listener, or
+animation-frame leak. Screenshots were inspected only in headless Chromium, so
+human cross-browser/device review and final light-mode visual approval remain
+open.
+
 Pre-refactor repository modularity, theme-readiness, documentation, and
 reference-workflow audit on 2026-08-08: the then-seven CSS files, the
 implemented React/TypeScript and Three.js ownership boundaries, all nine
@@ -401,12 +451,13 @@ passed; no test script exists. The build retained the known approximately
 
 # Milestone 1A — Theme Architecture and Rei Light-Mode Production Readiness
 
-**Status: runtime architecture implemented; visual approval and user-facing
-selection remain incomplete.** The application defaults to `longinus-dark`,
-restores a valid persisted choice before module loading, and supports
-coexisting feature-owned Spear and Ramiel scenes. It does not expose a visible
-theme control or system-preference policy, and no approved light reference is
-stored.
+**Status: runtime architecture and temporary QA selection implemented; visual
+approval and final production selection remain incomplete.** A fresh session
+defaults to `longinus-dark`, while a valid persisted choice is restored before
+module loading. One application-shell control exposes both coexisting
+feature-owned Spear and Ramiel interpretations on every current route. This QA
+flow is deliberately manual and does not use system color preference; no
+approved light reference or final production selector is established.
 
 - [x] Audit the current semantic-token, feature CSS, metadata, and Three.js
   theme boundaries.
@@ -420,8 +471,12 @@ stored.
   persisted-choice policy, and no-flash initial-paint contract.
 - [x] Synchronize the root theme attribute and browser metadata through the
   runtime contract.
-- [ ] Design and implement an accessible visible theme control, then decide
-  whether system preference participates in initial selection.
+- [x] Implement one semantic, keyboard-operable temporary app-shell QA control
+  with explicit current-state text and visible focus styling.
+- [x] Keep pre-merge QA selection manual and do not consult
+  `prefers-color-scheme` during initialization.
+- [ ] Decide and approve the final production selector design, placement,
+  labeling, default behavior, and whether system preference participates.
 - [x] Implement coexisting light-mode DOM styling without duplicating complete
   feature styles or replacing the established dark styling.
 - [x] Restore and preserve feature-owned dark Spear scenes alongside
@@ -433,8 +488,17 @@ stored.
 - [ ] Compare light mode against approved exported light references.
 - [ ] Confirm dark mode remains visually and behaviorally unchanged against its
   exported dark references.
-- [ ] Profile whether supporting both themes affects initial loading, bundle
-  size, memory, or renderer lifecycle.
+- [ ] Complete broader bundle and memory profiling. The bounded headless audit
+  found three additional detached DOM nodes per six-switch batch on each motif
+  route, despite flat active document/listener counts and one healthy final
+  renderer/canvas/animation loop.
+- [x] Browser-verify the temporary control across Home, Projects, project
+  detail or not-found, and About in both directions without route or content
+  changes at `1440 × 900`, `390 × 844`, and `320 × 568` in headless Chromium.
+- [x] Browser-verify saved route/refresh persistence and six warmed theme swaps
+  on Home, Projects, and About. Each batch ended with one active canvas/context,
+  stable listener and animation-frame measurements, and all retired contexts
+  lost; the bounded detached-node residual remains in the profiling item above.
 
 ---
 
@@ -854,8 +918,9 @@ complete commitment/impact sequence is planned.
 1. Verify official About degree, school/program, role, course, date, contact, photo-metadata, and future Adjunct Professor wording; keep unverified future content unpublished.
 2. Curate and verify the real Projects archive before finalizing layouts around provisional records.
 3. Complete the cross-platform typography audit and migrate the Home `ARCHIVE:` font exception to an established token.
-4. Approve light-mode exported references, design an accessible visible theme
-   control, and browser-verify the implemented dark-default runtime contract.
+4. Follow up on the bounded detached-node result, complete human cross-browser
+   and device review, approve light-mode exported references, then decide the
+   final production selector and system-preference policy.
 5. Integrate the final authored dark-theme Spear asset and re-stage the homepage.
 6. Compare and approve the complete dark homepage desktop-idle composition at
    `1440 × 900` and representative shorter heights.

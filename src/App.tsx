@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { HomePage } from './features/home/HomePage'
 import { getProjectRouteBySlug } from './features/projects/projectRouteData'
+import { ThemeToggle } from './theme/ThemeToggle'
 
 const AboutPage = lazy(() => import('./features/about/AboutPage').then((module) => ({ default: module.AboutPage })))
 const ProjectsPage = lazy(() => import('./features/projects/ProjectsPage').then((module) => ({ default: module.ProjectsPage })))
@@ -55,8 +56,11 @@ export function App() {
   if (route.name === 'project-detail') page = <ProjectDetailPage slug={route.slug} />
 
   return (
-    <Suspense fallback={<main className="route-pending" aria-busy="true" aria-label="Loading view" />}>
-      {page}
-    </Suspense>
+    <>
+      <ThemeToggle />
+      <Suspense fallback={<main className="route-pending" aria-busy="true" aria-label="Loading view" />}>
+        {page}
+      </Suspense>
+    </>
   )
 }

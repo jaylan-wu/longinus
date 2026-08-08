@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Canvas } from '@react-three/fiber'
 import { SpearModel } from '../../components/spear/SpearModel'
 import { canCreateWebGLContext } from '../../components/three/canCreateWebGLContext'
+import { SceneCanvas } from '../../components/three/SceneCanvas'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { longinusColors } from '../../styles/colors'
 
@@ -22,7 +22,7 @@ export function HomeSpearScene() {
 
   return (
     <SceneErrorBoundary>
-      <Canvas
+      <SceneCanvas
         className="scene-canvas spear-canvas home__spear-canvas"
         camera={{ position: [0, 0, 14], fov: 35 }}
         dpr={[1, 1.5]}
@@ -48,7 +48,7 @@ export function HomeSpearScene() {
           distance={10}
         />
         <HomeSpear />
-      </Canvas>
+      </SceneCanvas>
     </SceneErrorBoundary>
   )
 }

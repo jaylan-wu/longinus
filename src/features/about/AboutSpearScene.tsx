@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { MathUtils, type Group } from 'three'
 import { SpearModel } from '../../components/spear/SpearModel'
 import { canCreateWebGLContext } from '../../components/three/canCreateWebGLContext'
+import { SceneCanvas } from '../../components/three/SceneCanvas'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { longinusColors } from '../../styles/colors'
@@ -106,7 +107,7 @@ export function AboutSpearScene({ activeChapter }: AboutSceneState) {
 
   return (
     <SceneErrorBoundary>
-      <Canvas
+      <SceneCanvas
         className="scene-canvas about__spear-canvas"
         camera={{ position: [0, 0, 12], fov: 34 }}
         dpr={[1, 1.5]}
@@ -126,7 +127,7 @@ export function AboutSpearScene({ activeChapter }: AboutSceneState) {
           distance={12}
         />
         <AboutSpear activeChapter={activeChapter} />
-      </Canvas>
+      </SceneCanvas>
     </SceneErrorBoundary>
   )
 }

@@ -47,11 +47,14 @@ dominant text uses `var(--color-foreground)` (`#e8e4dc`) and the panel uses
 
 ### Theme runtime and Rei light-mode experiment
 
-The application now defaults to `data-theme="longinus-dark"`. A typed theme
-provider recognizes `longinus-dark` and `rei-light`, persists an explicitly
-set choice, restores a valid choice in the document head before the application
-module loads, and synchronizes the browser `theme-color`. No visible switch
-control or system-preference policy exists yet.
+The application retains `data-theme="longinus-dark"` as its fresh-session
+fallback. A typed provider recognizes `longinus-dark` and `rei-light`, restores
+a valid saved `longinus-theme` choice in the document head before the
+application module loads, persists later manual selections, and synchronizes
+the browser `theme-color`. A temporary fixed application-shell control exposes
+both themes for pre-merge QA across every current route. This flow intentionally
+does not consult system color preference; its final production selector policy
+remains undecided.
 
 The shared CSS contract maps both themes through semantic atmosphere,
 structural-line, disruption, on-disruption, ambient-indicator, and overlay
@@ -70,14 +73,24 @@ owns the experimental palette and dated light-branch validation evidence.
 This architecture establishes code-level coexistence, not visual approval:
 
 - No approved Rei-light exported reference exists.
-- Storage persistence is implemented but not yet user-reachable. The visible
-  selection control, its keyboard and announcement behavior, and the
-  system-preference policy remain undesigned.
+- Storage persistence is user-reachable through the temporary semantic QA
+  control, whose current state is communicated through text, `aria-pressed`,
+  an accessible label, and visible focus styling. Headless Chromium verified
+  mouse, Enter, Space, visible focus, accessible state, and bounds at three
+  viewports, but this is not final production-control approval or human
+  cross-browser/device accessibility validation.
+- The QA control is explicitly manual-only. Whether system preference should
+  participate in a later production policy remains undecided.
 - CSS theme values and Three.js material values remain deliberately separate;
   each feature scene still needs authored per-theme review.
-- Conditional loading, renderer teardown, dark-reference regression, contrast,
-  responsive behavior, and reduced motion have not been browser-validated for
-  the new runtime boundary.
+- Headless Chromium verified conditional scene replacement, renderer teardown,
+  route and refresh persistence, reduced motion, and control placement against
+  local development and production preview builds at `1440 × 900`,
+  `390 × 844`, and `320 × 568`. It did not close human cross-browser/device
+  review, dark-reference regression, full-theme contrast, or final light-mode
+  visual approval. Repeated swaps left one healthy active canvas/context and
+  stable active listeners/animation-frame sampling, while a bounded three
+  detached DOM nodes per six-switch batch remains open for profiling.
 
 The remaining validation matrix belongs in [`TASKS.md`](../../TASKS.md).
 
@@ -307,11 +320,12 @@ balanced section space rather than stretching an individual content record.
 
 - Home does not currently use runtime iconography.
 - The spear pictured in the exported dark references defines intended
-  silhouette and staging. Runtime defaults to the shared procedural Spear
-  geometry in separate Home-, Projects-, and About-owned scenes. The optional
-  Rei-light theme dispatches the shared procedural Ramiel geometry through
-  separate feature-owned scenes. Home and Projects retain theme-appropriate
-  CSS fallbacks; About keeps semantic content when either scene is unavailable.
+  silhouette and staging. The `longinus-dark` theme dispatches the shared
+  procedural Spear geometry in separate Home-, Projects-, and About-owned
+  scenes; `rei-light` dispatches the shared procedural Ramiel geometry through
+  the corresponding feature-owned scenes. Home and Projects retain
+  theme-appropriate CSS fallbacks; About keeps semantic content when either
+  scene is unavailable.
 - About Trajectory reuses one feature-owned NYU mark for EDU-001, EXP-001, and
   EXP-004, plus the feature-owned Mets and MLB marks for their associated
   records. Named portrait, large-square, and compact-wide rules preserve
@@ -337,9 +351,13 @@ remaining verification work.
 
 ## Open decisions
 
-- Accessible visible theme-control design and system-preference policy
-- Browser verification of persisted no-flash initialization, metadata
-  synchronization, conditional scene loading, teardown, and memory use
+- Final production theme-selector design and whether system preference should
+  participate; the current control is deliberately temporary and manual-only
+- Human cross-browser/device verification of no-flash initialization and
+  browser-metadata synchronization
+- Follow-up profiling of the consistent three detached DOM nodes retained per
+  six-switch batch on each motif route; active documents, listeners, renderer,
+  canvas, context, and animation-frame measurements remained healthy
 - Approved light-mode exported references and final semantic palette
 - Dark-reference regression review after runtime theme coexistence
 - Cross-platform validation of hierarchy, wrapping, line cadence, and spacing

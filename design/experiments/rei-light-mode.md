@@ -22,13 +22,20 @@ The visual translation is deliberately narrow:
 - a procedural, original octahedral Ramiel study replaces the spear within the
   light interpretation's recurring 3D role.
 
-The experiment began as a statically activated branch. Runtime now defaults to
-`data-theme="longinus-dark"` and exposes a typed `longinus-dark` / `rei-light`
-provider that can persist an explicitly set choice and synchronize the root
-attribute and browser theme color before application rendering. There is no
-visible switch control or system-preference policy yet. The canonical dark
-values remain unchanged in the base `:root`; the light selector aliases shared
-semantic roles to the Rei palette.
+The experiment began as a statically activated branch. Runtime retains
+`data-theme="longinus-dark"` as the fallback when no valid preference exists,
+while a saved `longinus-theme` choice is restored before application rendering.
+The provider synchronizes the root attribute and browser theme color, and a
+temporary top-right application-shell control now exposes both themes for
+pre-merge comparison without navigating or reloading. Explicit selection
+persists across internal routes and refreshes. This QA flow does not consult
+system color preference; the final production selector behavior remains
+undecided. The canonical dark values remain unchanged in the base `:root`; the
+light selector aliases shared semantic roles to the Rei palette.
+
+This work remains on `rei-light-mode`. It does not merge either branch or
+modify `main`, and the temporary control does not promote the experiment to an
+approved production theme.
 
 No approved light-mode visual-reference export is stored in the repository.
 This branch study is implementation evidence, not a substitute for the
@@ -137,8 +144,9 @@ the white environment.
 ## Implementation tradeoffs
 
 - The runtime provider establishes dark/light selection, persistence, and
-  initial-paint synchronization without inventing a visible control before its
-  placement and accessible behavior are designed.
+  initial-paint synchronization. One restrained, semantic app-shell button
+  exposes that contract for temporary pre-merge QA; it is not an approved
+  production selector design.
 - Shared semantic aliases provide broad palette coherence without moving page
   composition into global CSS. Feature-owned atmosphere variables still carry
   deliberate blue/red interpretation rather than blind token substitution.
@@ -157,6 +165,12 @@ the white environment.
 
 ## Implemented branch scope
 
+- One fixed top-right `ThemeToggle` is mounted at the application shell rather
+  than duplicated across features. It reports the active theme in text and an
+  accessible pressed state, switches without changing the current hash, and
+  writes the existing `longinus-theme` preference for later routes and
+  refreshes. Initial selection remains manual-only: valid storage first, then
+  the canonical dark fallback, with no system-preference branch.
 - Home, Projects, and the implemented About chapters receive the Rei palette
   when `rei-light` is active through the scoped semantic layer plus
   feature-owned atmospheric styling. Music, Playground, and unrelated staged
@@ -194,6 +208,42 @@ the white environment.
   continuous velocity reaction into chapter-owned orientations and long still
   intervals. This is a motif-level motion change, not a navigation or observer
   change.
+
+## Runtime-toggle validation snapshot — 2026-08-08
+
+Headless Chromium passed the same 24 combinations against local Vite
+development and production preview builds, spanning Home, Projects, all three
+valid project details, missing project detail, About, and unknown-hash Home
+fallback at `1440 × 900`, `390 × 844`, and `320 × 568`.
+Every case contained exactly one in-bounds, non-overlapping toggle. Mouse,
+Enter, and Space changed themes in both directions with visible focus and the
+expected label/pressed state while the hash, content, and `main` bounds stayed
+unchanged. Each route exposed the correct active motif canvas or correctly
+contained no motif canvas.
+
+Saved light and dark choices survived reload; empty or invalid storage fell
+back to dark. The sequences `Light Home → Projects → About` and
+`Dark About → Projects → Home` retained their selections. Reduced-motion
+behavior, Home hover followed by About navigation, About chapter selection,
+and Projects hover followed by detail navigation also passed without browser
+or console errors.
+
+Six warmed rapid swaps on each of Home, Projects, and About created six
+replacement renderers, lost all six retired contexts, and ended with exactly
+one healthy final context and canvas. Animation-frame sampling remained
+`60 → 60` with one request pending, and scene modules produced no repeated
+network responses. The shared `SceneCanvas` explicitly disposes its renderer
+after a disconnected canvas unmount, fixing three retained Three.js canvas
+listeners per retired renderer.
+
+An independent uninstrumented Chrome DevTools Protocol run, sampled after five
+seconds plus garbage collection, kept active document and listener counts flat
+but consistently retained three additional detached DOM nodes per six-switch
+batch on each motif route. This bounded residual remains an open profiling
+question; no active renderer, listener, or animation-frame leak was observed.
+Screenshots were inspected in headless Chromium only. These results do not
+constitute human, cross-browser/device, exported-reference, or final light-mode
+visual approval.
 
 ## Validation snapshot — 2026-08-07
 

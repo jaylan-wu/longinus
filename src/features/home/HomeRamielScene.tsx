@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { MathUtils, type Group } from 'three'
 import { RamielModel } from '../../components/ramiel/RamielModel'
 import { canCreateWebGLContext } from '../../components/three/canCreateWebGLContext'
+import { SceneCanvas } from '../../components/three/SceneCanvas'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { reiColors } from '../../styles/colors'
@@ -140,7 +141,7 @@ export function HomeRamielScene({ focusedTarget }: HomeRamielSceneProps) {
 
   return (
     <SceneErrorBoundary>
-      <Canvas
+      <SceneCanvas
         className="scene-canvas ramiel-canvas home__ramiel-canvas"
         camera={{ position: [0, 0, 10.8], fov: 32 }}
         dpr={[1, 1.5]}
@@ -153,7 +154,7 @@ export function HomeRamielScene({ focusedTarget }: HomeRamielSceneProps) {
         <pointLight position={[-5, -4, 4]} intensity={4.5} color={reiColors.blueInk} distance={12} />
         <pointLight position={[3, -3, 2]} intensity={1.6} color={reiColors.red} distance={8} />
         <HomeRamiel focusedTarget={focusedTarget} />
-      </Canvas>
+      </SceneCanvas>
     </SceneErrorBoundary>
   )
 }
