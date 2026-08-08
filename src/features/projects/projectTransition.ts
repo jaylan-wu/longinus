@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import type { InteractionPhase } from '../../types/interaction'
 import type { Project } from './projectData'
 
-export type ProjectTransitionPhase = 'idle' | 'focused' | 'committing' | 'impact' | 'transitioning' | 'settled'
-export type SpearPostTransitionDestination = 'inactive-offstage'
+export type ProjectTransitionPhase = InteractionPhase
+export type ProjectScenePostTransitionDestination = 'inactive-offstage'
 
 // Change this value (and the destination handling in the future detail composition)
-// when the spear's final navbar/detail-page behavior has been designed.
-export const PROJECT_SPEAR_DESTINATION: SpearPostTransitionDestination = 'inactive-offstage'
+// when each theme's final navbar/detail-page motif behavior has been designed.
+export const PROJECT_SCENE_DESTINATION: ProjectScenePostTransitionDestination = 'inactive-offstage'
 
 const COMMIT_DURATION_MS = 420
 const IMPACT_DURATION_MS = 280
@@ -69,6 +70,6 @@ export function useProjectTransition({ reducedMotion, onNavigate }: UseProjectTr
     locked,
     focusProject,
     selectProject,
-    spearDestination: PROJECT_SPEAR_DESTINATION,
+    sceneDestination: PROJECT_SCENE_DESTINATION,
   }
 }

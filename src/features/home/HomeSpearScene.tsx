@@ -1,6 +1,8 @@
-import { Canvas } from '@react-three/fiber'
-import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
+import { useState } from 'react'
 import { SpearModel } from '../../components/spear/SpearModel'
+import { canCreateWebGLContext } from '../../components/three/canCreateWebGLContext'
+import { SceneCanvas } from '../../components/three/SceneCanvas'
+import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { longinusColors } from '../../styles/colors'
 
 function HomeSpear() {
@@ -14,20 +16,39 @@ function HomeSpear() {
 }
 
 export function HomeSpearScene() {
+  const [webGLAvailable] = useState(canCreateWebGLContext)
+
+  if (!webGLAvailable) return null
+
   return (
     <SceneErrorBoundary>
-      <Canvas
-        className="spear-canvas"
+      <SceneCanvas
+        className="scene-canvas spear-canvas home__spear-canvas"
         camera={{ position: [0, 0, 14], fov: 35 }}
         dpr={[1, 1.5]}
+        frameloop="always"
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <ambientLight intensity={0.42} color={longinusColors.foreground} />
-        <directionalLight position={[-5, 6, 7]} intensity={2.8} color={longinusColors.primary} />
-        <pointLight position={[5, 1, 5]} intensity={9} color={longinusColors.secondary} distance={12} />
-        <pointLight position={[-4, -5, 3]} intensity={6} color={longinusColors.highlight} distance={10} />
+        <directionalLight
+          position={[-5, 6, 7]}
+          intensity={2.8}
+          color={longinusColors.primary}
+        />
+        <pointLight
+          position={[5, 1, 5]}
+          intensity={9}
+          color={longinusColors.secondary}
+          distance={12}
+        />
+        <pointLight
+          position={[-4, -5, 3]}
+          intensity={6}
+          color={longinusColors.highlight}
+          distance={10}
+        />
         <HomeSpear />
-      </Canvas>
+      </SceneCanvas>
     </SceneErrorBoundary>
   )
 }

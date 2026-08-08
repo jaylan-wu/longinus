@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { MathUtils, type Group } from 'three'
 import { SpearModel } from '../../components/spear/SpearModel'
+import { canCreateWebGLContext } from '../../components/three/canCreateWebGLContext'
+import { SceneCanvas } from '../../components/three/SceneCanvas'
 import { SceneErrorBoundary } from '../../components/three/SceneErrorBoundary'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { longinusColors } from '../../styles/colors'
@@ -25,23 +27,6 @@ const SPEAR_MAX_SCROLL_BOOST = 2.8
 const SPEAR_SCROLL_DAMPING = 6.5
 const SPEAR_PANEL_HORIZONTAL_POSITION = 0.577
 const COMPACT_SCENE_MAX_WIDTH = 320
-let webGLAvailability: boolean | undefined
-
-function canCreateWebGLContext() {
-  if (typeof document === 'undefined') return false
-  if (webGLAvailability !== undefined) return webGLAvailability
-
-  try {
-    const canvas = document.createElement('canvas')
-    webGLAvailability = Boolean(
-      canvas.getContext('webgl2') ?? canvas.getContext('webgl'),
-    )
-  } catch {
-    webGLAvailability = false
-  }
-
-  return webGLAvailability
-}
 
 function AboutSpear({ activeChapter }: AboutSceneState) {
   const targetAxialRotation = STAGED_REDUCED_MOTION_AXIAL_ROTATIONS[activeChapter]
@@ -122,8 +107,8 @@ export function AboutSpearScene({ activeChapter }: AboutSceneState) {
 
   return (
     <SceneErrorBoundary>
-      <Canvas
-        className="about__spear-canvas"
+      <SceneCanvas
+        className="scene-canvas about__spear-canvas"
         camera={{ position: [0, 0, 12], fov: 34 }}
         dpr={[1, 1.5]}
         frameloop="always"
@@ -142,7 +127,7 @@ export function AboutSpearScene({ activeChapter }: AboutSceneState) {
           distance={12}
         />
         <AboutSpear activeChapter={activeChapter} />
-      </Canvas>
+      </SceneCanvas>
     </SceneErrorBoundary>
   )
 }

@@ -1,10 +1,11 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { HomeIdentity } from './HomeIdentity'
 import { HomeNavigation } from './HomeNavigation'
+import { HomeMotif } from './HomeMotif'
 import { navigationItems } from './navigation'
-import { PageIndex } from '../../components/PageIndex'
-import { SpearFallback } from '../../components/spear/SpearFallback'
-import { HomeSpearScene } from './HomeSpearScene'
+import { THEME_IDS } from '../../theme/theme'
+import { useTheme } from '../../theme/useTheme'
+import type { NavigationItem } from '../../types/navigation'
 import './home.css'
 
 const HOME_GRID_TARGET_CELL_SIZE_PX = 90
@@ -24,6 +25,8 @@ function updateHomeGrid(element: HTMLElement) {
 
 export function HomePage() {
   const homeRef = useRef<HTMLElement>(null)
+  const [focusedTarget, setFocusedTarget] = useState<NavigationItem['id'] | null>(null)
+  const { theme } = useTheme()
 
   useLayoutEffect(() => {
     const home = homeRef.current
@@ -39,11 +42,13 @@ export function HomePage() {
 
   return (
     <main className="home" id="home" ref={homeRef}>
-      <div className="home__watermark" aria-hidden="true">LONGINUS</div>
+      <div className="home__watermark" aria-hidden="true">
+        {theme === THEME_IDS.reiLight ? 'RAMIEL' : 'LONGINUS'}
+      </div>
 
       <section className="home__interface" aria-label="Introduction and site navigation">
         <HomeIdentity />
-        <HomeNavigation items={navigationItems} />
+        <HomeNavigation items={navigationItems} onFocusTarget={setFocusedTarget} />
         <footer className="home__footer" aria-label="Site status">
           <span>NYC / 40.7128° N</span>
           <span>VER-001</span>
@@ -51,12 +56,7 @@ export function HomePage() {
         </footer>
       </section>
 
-      <aside className="home__scene" aria-label="Procedural Spear of Longinus illustration">
-        <div className="home__scene-label" aria-hidden="true">Spear of Longinus</div>
-        <SpearFallback />
-        <HomeSpearScene />
-        <PageIndex value="00" />
-      </aside>
+      <HomeMotif focusedTarget={focusedTarget} />
     </main>
   )
 }

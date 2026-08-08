@@ -2,13 +2,20 @@
 
 ## Current implementation status
 
-**Staged.** The Projects archive has a feature-owned phase/selection hook, matching DOM and procedural-spear responses, an input lock, a two-tap touch path, reduced-motion timing, and hash navigation. It has not been compared with a Projects Figma frame, final spear model, or authored motion reference.
+**Staged.** The Projects archive has a feature-owned phase/selection hook,
+matching DOM and active-theme procedural Spear/Ramiel responses, an input lock,
+a two-tap touch path, reduced-motion timing, and hash navigation. The separate
+feature-owned scenes coexist behind lazy theme dispatch, but neither theme has
+been compared with an approved Projects exported reference or authored motion
+reference.
 
 [`TASKS.md`](../../../TASKS.md) Milestone 5 owns the live implementation
 checklist. This file owns the transition-specific current sequence, provisional
 timings, intended signals, fallback behavior, and unresolved motion decisions.
 
-Current code in `src/features/projects/projectTransition.ts` uses:
+Current code in `src/features/projects/projectTransition.ts` uses the shared
+canonical `InteractionPhase` union while retaining all timing and transitions
+inside the Projects feature:
 
 - `idle`, `focused`, `committing`, `impact`, and `transitioning` phases;
 - a `settled` type value that is never reached because hash navigation unmounts the archive;
@@ -17,7 +24,7 @@ Current code in `src/features/projects/projectTransition.ts` uses:
 - navigation at `920ms` from commitment; and
 - a reduced-motion navigation delay of `120ms`.
 
-These are named provisional timeouts, not approved motion. Navigation currently happens during `transitioning`, not from an animation completion event. Project detail has no spear or explicit entry-focus handling, and the recorded current spear destination is `inactive-offstage`.
+These are named provisional timeouts, not approved motion. Navigation currently happens during `transitioning`, not from an animation completion event. Project detail has no 3D motif or explicit entry-focus handling, and the recorded current scene destination is `inactive-offstage`.
 
 ## Purpose
 
@@ -27,12 +34,12 @@ Define the intended coordinated transition from a focused archive record to its 
 
 | System | Current implementation | Remaining work |
 | --- | --- | --- |
-| Project record | Pointer/keyboard focus, selected/disabled state, orange focus, red impact treatment | Figma and manual accessibility review |
+| Project record | Pointer/keyboard focus, selected/disabled state, shared navigation-action base, orange focus, and disruption impact treatment with a semantic high-contrast text role | Exported-reference and manual accessibility review |
 | Archive metadata | Footer phase and scene label update from current state | Final metadata behavior and copy review |
 | Archive interface | Selected row and interface translate during provisional phases | Approved exit composition/motion |
-| R3F spear | Procedural geometry damped toward phase/focus-index targets | Final model and authored motion |
-| CSS spear silhouette | Responds to the same phase classes beneath the canvas | Fallback/manual review |
-| Project detail | Correct staged record data or not-found DOM state | Narrative, demonstration, entry motion, focus, and spear outcome |
+| R3F motif | Active dark Spear or light Ramiel geometry responds to the same phase/focus-index inputs through separate lazy feature scenes | Approved per-theme model, authored motion, and browser lifecycle review |
+| CSS motif fallback | Active-theme Spear or Ramiel fallback responds to the same phase classes beneath the canvas | Per-theme fallback/manual review |
+| Project detail | Correct staged record data or not-found DOM state | Narrative, demonstration, entry motion, focus, and motif outcome |
 
 ## Current code sequence
 
@@ -45,6 +52,10 @@ Define the intended coordinated transition from a focused archive record to its 
 
 Pending timers are cleared on hook cleanup. There is no cancellation UI, completion callback, explicit lock release before navigation, or detail-page focus transfer.
 
+The reduced-motion stylesheet preserves state and disruption contrast while
+removing selected-record, target, fallback, and interface displacement. This
+is implemented source behavior, not a claim of browser validation.
+
 ## Intended phase mapping
 
 Use the canonical Longinus terms defined in
@@ -53,6 +64,9 @@ Use the canonical Longinus terms defined in
 ```text
 idle → focused → committing → impact → transitioning → settled
 ```
+
+Ramiel fallback state and the Projects hook consume the same shared phase type;
+the project timers and motif interpretations remain deliberately separate.
 
 | Phase | Project UI | Spear | Intended completion signal |
 | --- | --- | --- | --- |
@@ -75,9 +89,12 @@ Keep these concerns separate but coordinated through explicit state/events:
 
 Changing one concern should not require embedding target-specific animation logic in record buttons or duplicating timing across DOM and scene code.
 
-## Post-transition spear placement
+## Post-transition 3D motif placement
 
-Current staged code records `inactive-offstage`, and project detail renders no spear. That is an implementation placeholder, not an approved destination.
+Current staged code records `inactive-offstage`, and project detail renders no
+3D motif. That is an implementation placeholder, not an approved destination.
+The table describes dark Spear candidates; light-mode Ramiel needs its own
+reviewed role rather than inheriting one automatically.
 
 | Candidate | Meaning | Status |
 | --- | --- | --- |
@@ -99,7 +116,7 @@ Record the approved outcome after the project-detail composition is designed.
 
 ## Unresolved decisions
 
-- Projects and project-detail Figma frames
+- Projects and project-detail exported visual references for each implemented theme
 - Final spear asset and authored focus/commit/impact motion
 - Approved durations, easing, route-change event, and fallback deadline
 - Detail entry composition and focus destination

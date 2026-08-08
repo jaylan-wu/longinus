@@ -1,3 +1,5 @@
+import { projectRouteRecords, type ProjectRouteRecord } from './projectRouteData'
+
 export type Project = {
   id: string
   slug: string
@@ -10,11 +12,10 @@ export type Project = {
   status: string
 }
 
-export const projects: Project[] = [
-  {
-    id: 'project-001',
-    slug: 'longinus-interface',
-    title: 'Longinus Interface',
+type ProjectDetails = Omit<Project, keyof ProjectRouteRecord>
+
+const projectDetails: Record<ProjectRouteRecord['id'], ProjectDetails> = {
+  'project-001': {
     shortDescription: 'A cinematic portfolio navigated through a reactive 3D artifact.',
     description:
       'An ongoing exploration of how real-time 3D, editorial typography, and physical-feeling motion can turn a personal portfolio into a coherent interactive world.',
@@ -23,10 +24,7 @@ export const projects: Project[] = [
     year: '2026',
     status: 'In development',
   },
-  {
-    id: 'project-002',
-    slug: 'signal-archive',
-    title: 'Signal Archive',
+  'project-002': {
     shortDescription: 'An experimental interface for preserving personal audio transmissions.',
     description:
       'A tactile digital archive that treats listening as an intentional ritual, bringing together curated audio, kinetic layouts, and responsive visual systems.',
@@ -35,10 +33,7 @@ export const projects: Project[] = [
     year: '2026',
     status: 'Prototype',
   },
-  {
-    id: 'project-003',
-    slug: 'unit-cerberus',
-    title: 'Unit Cerberus',
+  'project-003': {
     shortDescription: 'A real-time systems visualization for complex operational signals.',
     description:
       'A speculative monitoring environment focused on making dense system states legible through hierarchy, spatial organization, and restrained motion.',
@@ -47,7 +42,12 @@ export const projects: Project[] = [
     year: '2025',
     status: 'Concept study',
   },
-]
+}
+
+export const projects: Project[] = projectRouteRecords.map((project) => ({
+  ...project,
+  ...projectDetails[project.id],
+}))
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug)

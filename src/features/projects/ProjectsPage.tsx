@@ -1,11 +1,9 @@
 import { useCallback } from 'react'
-import { PageIndex } from '../../components/PageIndex'
-import { SpearFallback } from '../../components/spear/SpearFallback'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import type { Project } from './projectData'
 import { projects } from './projectData'
 import { ProjectList } from './ProjectList'
-import { ProjectSpearScene } from './ProjectSpearScene'
+import { ProjectMotif } from './ProjectMotif'
 import { useProjectTransition } from './projectTransition'
 import './projects.css'
 
@@ -21,7 +19,7 @@ export function ProjectsPage() {
     <main
       className="projects"
       data-phase={transition.phase}
-      data-spear-destination={transition.spearDestination}
+      data-scene-destination={transition.sceneDestination}
     >
       <div className="projects__grid" aria-hidden="true" />
       <section className="projects__interface" aria-labelledby="projects-title">
@@ -50,15 +48,11 @@ export function ProjectsPage() {
         </footer>
       </section>
 
-      <aside className="projects__scene" aria-label="Spear of Longinus project selector">
-        <div className="projects__scene-label" aria-hidden="true">
-          <span>Target acquisition</span>
-          <span>{transition.focusedId ?? 'Awaiting input'}</span>
-        </div>
-        <SpearFallback motionState={transition.phase} focusIndex={focusedIndex} />
-        <ProjectSpearScene phase={transition.phase} focusIndex={focusedIndex} />
-        <PageIndex value="01" />
-      </aside>
+      <ProjectMotif
+        phase={transition.phase}
+        focusIndex={focusedIndex}
+        focusedId={transition.focusedId}
+      />
     </main>
   )
 }

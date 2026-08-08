@@ -19,18 +19,111 @@
   --color-primary-deep: #86131f;
   --color-primary-shadow: #510b14;
 
+  --color-atmosphere: var(--color-primary);
+  --color-atmosphere-rgb: var(--color-primary-rgb);
+  --color-atmosphere-soft: var(--color-secondary);
+  --color-atmosphere-soft-rgb: var(--color-secondary-rgb);
+  --color-structural-line: var(--color-foreground);
+  --color-structural-line-rgb: var(--color-foreground-rgb);
+  --color-disruption: var(--color-primary);
+  --color-disruption-rgb: var(--color-primary-rgb);
+  --color-on-disruption: #ffffff;
+  --color-on-disruption-rgb: 255, 255, 255;
+  --color-ambient-indicator: var(--color-highlight);
+  --color-ambient-indicator-rgb: var(--color-highlight-rgb);
+  --color-overlay-accent: var(--color-highlight);
+  --color-overlay-accent-rgb: var(--color-highlight-rgb);
+
+  --motion-ease-interface: cubic-bezier(0.22, 1, 0.36, 1);
+
   --font-display: "Times New Roman Condensed", "Times New Roman", Times, serif;
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   color: var(--color-foreground);
   background: var(--color-background);
+  color-scheme: dark;
   font-family: var(--font-sans);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root[data-theme="rei-light"] {
+  --rei-bg: #f8f9fc;
+  --rei-surface: #f5f7fd;
+  --rei-surface-blue: #9dafe9;
+  --rei-blue-soft: #9dafe9;
+  --rei-foreground: #172127;
+  --rei-muted: #545d93;
+  --rei-blue: #9dafe9;
+  --rei-blue-ink: #545d93;
+  --rei-blue-deep: #545d93;
+  --rei-highlight: #545d93;
+  --rei-orange: #f28c28;
+  --rei-red: #e7211f;
+  --rei-red-deep: #e7211f;
+  --rei-focus: #545d93;
+  --rei-line: #9dafe9;
+  --rei-light: #ffffff;
+  --rei-shadow: #545d93;
+
+  --rei-bg-rgb: 248, 249, 252;
+  --rei-surface-rgb: 245, 247, 253;
+  --rei-surface-blue-rgb: 157, 175, 233;
+  --rei-blue-soft-rgb: 157, 175, 233;
+  --rei-foreground-rgb: 23, 33, 39;
+  --rei-muted-rgb: 84, 93, 147;
+  --rei-blue-rgb: 157, 175, 233;
+  --rei-blue-ink-rgb: 84, 93, 147;
+  --rei-blue-deep-rgb: 84, 93, 147;
+  --rei-highlight-rgb: 84, 93, 147;
+  --rei-orange-rgb: 242, 140, 40;
+  --rei-red-rgb: 231, 33, 31;
+  --rei-red-deep-rgb: 231, 33, 31;
+  --rei-focus-rgb: 84, 93, 147;
+  --rei-line-rgb: 157, 175, 233;
+  --rei-light-rgb: 255, 255, 255;
+  --rei-shadow-rgb: 84, 93, 147;
+
+  --color-background: var(--rei-bg);
+  --color-surface: var(--rei-surface);
+  --color-foreground: var(--rei-foreground);
+  --color-muted: var(--rei-muted);
+  --color-primary: var(--rei-red);
+  --color-secondary: var(--rei-blue-ink);
+  --color-highlight: var(--rei-highlight);
+
+  --color-background-rgb: var(--rei-bg-rgb);
+  --color-surface-rgb: var(--rei-surface-rgb);
+  --color-foreground-rgb: var(--rei-foreground-rgb);
+  --color-muted-rgb: var(--rei-muted-rgb);
+  --color-primary-rgb: var(--rei-red-rgb);
+  --color-secondary-rgb: var(--rei-blue-ink-rgb);
+  --color-highlight-rgb: var(--rei-highlight-rgb);
+
+  --color-primary-deep: var(--rei-red-deep);
+  --color-primary-shadow: var(--rei-red-deep);
+
+  --color-atmosphere: var(--rei-blue);
+  --color-atmosphere-rgb: var(--rei-blue-rgb);
+  --color-atmosphere-soft: var(--rei-blue-soft);
+  --color-atmosphere-soft-rgb: var(--rei-blue-soft-rgb);
+  --color-structural-line: var(--rei-blue-deep);
+  --color-structural-line-rgb: var(--rei-blue-deep-rgb);
+  --color-disruption: var(--rei-red);
+  --color-disruption-rgb: var(--rei-red-rgb);
+  --color-on-disruption: var(--rei-light);
+  --color-on-disruption-rgb: var(--rei-light-rgb);
+  --color-ambient-indicator: var(--rei-orange);
+  --color-ambient-indicator-rgb: var(--rei-orange-rgb);
+  --color-overlay-accent: var(--rei-orange);
+  --color-overlay-accent-rgb: var(--rei-orange-rgb);
+
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
 }

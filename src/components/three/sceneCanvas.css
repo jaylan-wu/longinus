@@ -1,0 +1,4 @@
+.scene-canvas {
+  position: absolute !important;
+  z-index: 2;
+}

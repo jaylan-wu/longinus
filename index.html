@@ -1,12 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="longinus-dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0D1117" />
+    <meta name="theme-color" content="#09090b" />
     <meta name="description" content="Jaylan Wu — software engineer and creative developer." />
     <title>Jaylan Wu — Creative Developer</title>
+    <script>
+      (() => {
+        const defaultTheme = 'longinus-dark'
+        const lightTheme = 'rei-light'
+        let theme = defaultTheme
+
+        try {
+          const storedTheme = window.localStorage.getItem('longinus-theme')
+          if (storedTheme === defaultTheme || storedTheme === lightTheme) {
+            theme = storedTheme
+          }
+        } catch {
+          // Keep the dark default when storage is unavailable.
+        }
+
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === lightTheme ? '#f8f9fc' : '#09090b'
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

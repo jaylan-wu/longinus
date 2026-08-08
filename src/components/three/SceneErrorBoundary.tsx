@@ -11,7 +11,7 @@ export class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, Scene
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.warn('WebGL scene unavailable; preserving the accessible DOM interface.', error, info)
+    console.warn('3D scene unavailable; preserving the accessible DOM interface.', error, info)
   }
 
   render() {

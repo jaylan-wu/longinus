@@ -1,68 +1,17 @@
-import { useEffect, useState } from 'react'
 import { PageIndex } from '../../components/PageIndex'
 import '../../components/navigation/navigationAction.css'
 import { AboutChapterNavigation } from './components/AboutChapterNavigation'
 import { AboutChapters } from './components/AboutChapters'
 import { getAboutChapter } from './data/chapters'
-import { AboutSpearScene } from './AboutSpearScene'
+import { AboutMotif } from './AboutMotif'
 import { useActiveAboutChapter } from './hooks/useActiveAboutChapter'
-import type { AboutChapterId } from './types/about'
+import { useAboutChapterSelection } from './hooks/useAboutChapterSelection'
 import './about.css'
-
-const SCROLL_INTERRUPTION_KEYS = new Set([
-  'ArrowDown',
-  'ArrowUp',
-  'End',
-  'Home',
-  'PageDown',
-  'PageUp',
-  ' ',
-])
 
 export function AboutPage() {
   const detectedChapter = useActiveAboutChapter()
-  const [requestedChapter, setRequestedChapter] = useState<AboutChapterId | null>(null)
-  const activeChapter = requestedChapter ?? detectedChapter
+  const { activeChapter, selectChapter } = useAboutChapterSelection(detectedChapter)
   const currentChapter = getAboutChapter(activeChapter)
-
-  useEffect(() => {
-    if (requestedChapter !== detectedChapter) return
-
-    const animationFrame = window.requestAnimationFrame(() => {
-      setRequestedChapter((currentChapter) => (
-        currentChapter === detectedChapter ? null : currentChapter
-      ))
-    })
-
-    return () => window.cancelAnimationFrame(animationFrame)
-  }, [detectedChapter, requestedChapter])
-
-  useEffect(() => {
-    if (requestedChapter === null) return
-
-    const clearRequestedChapter = () => {
-      setRequestedChapter(null)
-    }
-    const clearForKeyboardScroll = (event: KeyboardEvent) => {
-      if (SCROLL_INTERRUPTION_KEYS.has(event.key)) clearRequestedChapter()
-    }
-
-    window.addEventListener('pointerdown', clearRequestedChapter)
-    window.addEventListener('touchstart', clearRequestedChapter, { passive: true })
-    window.addEventListener('wheel', clearRequestedChapter, { passive: true })
-    window.addEventListener('keydown', clearForKeyboardScroll)
-
-    return () => {
-      window.removeEventListener('pointerdown', clearRequestedChapter)
-      window.removeEventListener('touchstart', clearRequestedChapter)
-      window.removeEventListener('wheel', clearRequestedChapter)
-      window.removeEventListener('keydown', clearForKeyboardScroll)
-    }
-  }, [requestedChapter])
-
-  const selectChapter = (chapterId: AboutChapterId) => {
-    setRequestedChapter(chapterId)
-  }
 
   return (
     <main className="about" data-active-chapter={activeChapter}>
@@ -96,12 +45,10 @@ export function AboutPage() {
           <AboutChapters />
         </div>
 
-        <aside
-          className="about__scene"
-          aria-label={`Spear of Longinus posture for ${currentChapter.label}`}
-        >
-          <AboutSpearScene activeChapter={activeChapter} />
-        </aside>
+        <AboutMotif
+          activeChapter={activeChapter}
+          chapterLabel={currentChapter.label}
+        />
       </div>
     </main>
   )

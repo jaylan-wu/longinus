@@ -9,9 +9,9 @@ import { TrajectoryRecordDetail } from './TrajectoryRecordDetail'
 import { TrajectoryRecordList } from './TrajectoryRecordList'
 
 export function TrajectoryChapter({ chapter }: AboutChapterComponentProps) {
-  const [focusedId, setFocusedId] = useState<ExperienceRecord['id']>(trajectory.records[0].id)
-  const focusedExperience = trajectory.records.find((experience) => (
-    experience.id === focusedId
+  const [selectedId, setSelectedId] = useState<ExperienceRecord['id']>(trajectory.records[0].id)
+  const selectedExperience = trajectory.records.find((experience) => (
+    experience.id === selectedId
   )) ?? trajectory.records[0]
 
   return (
@@ -28,10 +28,10 @@ export function TrajectoryChapter({ chapter }: AboutChapterComponentProps) {
       <div className="trajectory-records">
         <TrajectoryRecordList
           records={trajectory.records}
-          selectedId={focusedExperience.id}
-          onSelect={setFocusedId}
+          selectedId={selectedExperience.id}
+          onSelect={setSelectedId}
         />
-        <TrajectoryRecordDetail experience={focusedExperience} />
+        <TrajectoryRecordDetail experience={selectedExperience} />
       </div>
     </AboutChapter>
   )

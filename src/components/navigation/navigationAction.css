@@ -1,6 +1,19 @@
 .navigation-action {
   --navigation-action-accent: var(--color-highlight);
   --navigation-action-accent-rgb: var(--color-highlight-rgb);
+  --navigation-action-hover-padding-left: 0.85rem;
+  --navigation-action-padding-duration: 320ms;
+  --navigation-action-sweep-background: linear-gradient(
+    90deg,
+    rgba(var(--navigation-action-accent-rgb), 0.14),
+    transparent 76%
+  );
+  --navigation-action-sweep-duration: 400ms;
+  --navigation-action-rail-duration: 240ms;
+  --navigation-action-label-duration: 320ms;
+  --navigation-action-label-transform: skewX(-3deg) scaleX(1.025);
+  --navigation-action-focus-z-index: 2;
+  --navigation-action-focus-outline-offset: 3px;
 
   position: relative;
   overflow: hidden;
@@ -8,21 +21,17 @@
   color: var(--color-foreground);
   transition:
     color 220ms ease,
-    padding-left 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    padding-left var(--navigation-action-padding-duration) var(--motion-ease-interface);
 }
 
 .navigation-action::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--navigation-action-accent-rgb), 0.14),
-    transparent 76%
-  );
+  background: var(--navigation-action-sweep-background);
   content: "";
   transform: translateX(-102%);
-  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--navigation-action-sweep-duration) var(--motion-ease-interface);
 }
 
 .navigation-action::after {
@@ -34,19 +43,19 @@
   background: var(--navigation-action-accent);
   content: "";
   transform: scaleY(0);
-  transition: transform 240ms ease;
+  transition: transform var(--navigation-action-rail-duration) ease;
 }
 
 .navigation-action__label {
   transform-origin: left center;
   transition:
     color 220ms ease,
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform var(--navigation-action-label-duration) var(--motion-ease-interface);
 }
 
 .navigation-action:hover,
 .navigation-action:focus-visible {
-  padding-left: 0.85rem;
+  padding-left: var(--navigation-action-hover-padding-left);
 }
 
 .navigation-action:hover::before,
@@ -62,13 +71,13 @@
 .navigation-action:hover .navigation-action__label,
 .navigation-action:focus-visible .navigation-action__label {
   color: var(--navigation-action-accent);
-  transform: skewX(-3deg) scaleX(1.025);
+  transform: var(--navigation-action-label-transform);
 }
 
 .navigation-action:focus-visible {
-  z-index: 2;
+  z-index: var(--navigation-action-focus-z-index);
   outline: 2px solid var(--navigation-action-accent);
-  outline-offset: 3px;
+  outline-offset: var(--navigation-action-focus-outline-offset);
 }
 
 @media (prefers-reduced-motion: reduce) {
