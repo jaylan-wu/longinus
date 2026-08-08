@@ -8,142 +8,19 @@ About editorial material; and
 tracker. This file records what the repository has actually established and
 what remains.
 
-Status reviewed against source on **2026-08-08**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
+Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
-Pre-merge theme-comparison source status on 2026-08-08: `rei-light-mode` now
-mounts one temporary top-right theme control at the application shell so Home,
-Projects, project detail or not-found, and About share the same runtime
-selection without a route change or reload. A valid saved `longinus-theme`
-choice wins during initialization; otherwise the established
-`longinus-dark` fallback remains active. Manual selection is persisted for
-internal route changes and refreshes, and no `prefers-color-scheme` policy is
-applied. This is a QA control, not an approved production selector or light-mode
-visual approval. The work remains on `rei-light-mode`; this task performs no
-merge and makes no change to `main`.
-
-Final source validation passed `corepack yarn typecheck`, `corepack yarn lint`,
-`corepack yarn build --outDir /tmp/longinus-toggle-build`, and
-`git diff --check`; no automated test script exists. The production build
-transformed 119 modules, kept the eager entry at `202.59 kB` (`64.20 kB` gzip),
-and emitted six separate theme-scene chunks. The lazily loaded shared
-Three.js/WebGL `SceneCanvas` chunk is `882.01 kB` (`234.36 kB` gzip) and retains
-Vite's existing `500 kB` chunk-size warning.
-
-Headless Chromium passed the same 24 route/viewport combinations against local
-Vite development and production preview builds at `1440 × 900`, `390 × 844`,
-and `320 × 568`: Home, Projects, all three valid project details, a missing
-project detail, About, and the unknown-hash Home fallback. Every case retained
-exactly one in-bounds, non-overlapping toggle.
-Mouse, Enter, and Space changed themes in both directions with visible focus
-and the expected accessible state while the hash, content, and `main` bounds
-stayed unchanged; each route exposed the correct active motif canvas or no
-motif canvas. Saved light and dark choices survived reload, while empty and
-invalid storage fell back to dark. `Light Home → Projects → About` and
-`Dark About → Projects → Home` retained their selected theme.
-
-The same headless pass covered reduced motion, Home hover followed by About
-navigation, About chapter selection, and Projects hover followed by project
-detail; no browser or console error was recorded. Six warmed rapid theme swaps
-on each of Home, Projects, and About created six replacement renderers and lost
-all six retired contexts, ending with exactly one healthy context and canvas.
-The measured animation rate remained `60 → 60`, one frame request remained
-pending, and scene modules produced no repeated network responses.
-
-The shared `SceneCanvas` now explicitly calls `gl.dispose()` after a
-disconnected canvas unmount, removing three Three.js canvas listeners from each
-retired renderer. An independent, uninstrumented Chrome DevTools Protocol pass
-after five seconds plus garbage collection kept document and listener counts
-flat, but consistently retained three additional detached DOM nodes per
-six-switch batch on each motif route. Record that bounded residual for further
-profiling; the evidence does not indicate an active renderer, listener, or
-animation-frame leak. Screenshots were inspected only in headless Chromium, so
-human cross-browser/device review and final light-mode visual approval remain
-open.
-
-Pre-refactor repository modularity, theme-readiness, documentation, and
-reference-workflow audit on 2026-08-08: the then-seven CSS files, the
-implemented React/TypeScript and Three.js ownership boundaries, all nine
-tracked Markdown files, and all four stored visual references were inspected.
-The four unambiguous `1440 × 900`
-dark exports were renamed with explicit `dark` segments and verified
-byte-identical to their originals; no application source imports them. Every
-relative Markdown link resolves, and no old reference filename remains.
-Safe source cleanup removed only unreachable anchor/button CSS branches, added
-a dark semantic fallback to the light photo-overlay token, and made two local
-state names motif- or selection-neutral. `corepack yarn typecheck`,
-`corepack yarn lint`, `corepack yarn build`, and `git diff --check` passed with
-Node `24.18.0`; no automated test script exists. The build retained the known
-`1,086.12 kB` initial JavaScript chunk (`299.25 kB` gzip) and its chunk-size
-warning. Browser tooling was unavailable for this audit, so it records no new
-visual, keyboard, touch, reduced-motion, or WebGL-fallback approval.
-
-Approved repository refactors implemented on 2026-08-08 establish a typed,
-persisted `longinus-dark` / `rei-light` runtime contract with dark as the
-default and pre-module root/theme-color synchronization. Home, Projects, and
-About now retain feature-owned Spear and Ramiel scenes and lazily dispatch only
-the active theme's scene. The same pass introduced the shared six-value
-interaction-phase type, semantic theme roles, a lightweight Project route
-index, the shared navigation-action base for Project records, About-local
-chapter/photo/influence modules, and chapter-owned About stylesheets.
-`corepack yarn typecheck`, `corepack yarn lint`, and `git diff --check` passed
-after these changes, and the final production build passed. The build reduced
-the eager entry JavaScript to `202.13 kB` (`64.05 kB` gzip) and emitted six
-separate theme-scene chunks. A lazily loaded shared Three.js/WebGL chunk remains
-`881.70 kB` (`234.25 kB` gzip) and still triggers Vite's `500 kB` chunk-size
-warning. No browser comparison or manual interaction approval was performed
-for this refactor.
-
-Branch-only Rei light-mode validation on 2026-08-07: the
-`rei-light-mode` experiment translated Home, Projects, and the implemented
-About chapters to the selected cool white `#F8F9FC`, Rei blue light `#9DAFE9`,
-Rei blue dark `#545D93`, ribbon red `#E7211F`, and orange `#F28C28` palette;
-and replaced those features' runtime spear scenes with a shared procedural
-octahedral Ramiel study. A supporting blue-black foreground and a pale surface
-derived from Rei blue light preserve readable type and quiet depth without
-expanding the accent palette. The canonical dark tokens and product direction
-remain intact. Canonical, all-Plex clinical, and Newsreader/Plex editorial type
-systems were browser-compared on Home and About Identity at `1440 × 900`.
-The trial web fonts were removed and the canonical dark-mode font tokens were
-restored because their exact metrics best preserve established text placement,
-line breaks, symmetry, and negative space; no compensating font-metric spacing
-adjustment remains. A later user-directed refinement enlarged the Identity,
-Trajectory, and Outside the System display titles without changing their font
-stack, authored line breaks, chapter structure, or navigation geometry. At
-`1440 × 900`, the Identity title resolves to `92.88px`, and the visible bottom
-of `THE SYSTEM.` aligns with the adjacent introduction copy and vertical rule.
-Responsive title checks at `1440 × 800`, `1024 × 768`, and `390 × 844` retained
-viewport-width root documents without new horizontal page scrolling.
-The subsequent Home reference-staging pass placed Ramiel at the exact center of
-the desktop right-side scene. WebGL idle and focus poses now retain a zero
-position while rotation and scale carry interaction response; the CSS fallback
-and its shadow use the same centered anchor. A `1440 × 900` capture placed the
-fallback silhouette at the right panel's approximately `(1045px, 450px)`
-midpoint without changing the `45.14% / 54.86%` page split.
-
-Stored dark Home/About exports and light runtime captures were compared at
-`1440 × 900`; responsive checks also covered `1440 × 800`, `1920 × 1080`, and
-`390 × 844`. About's chapter DOM and protected right navigation were unchanged;
-its navigator retained the existing `200 × 301px` desktop and approximately
-`390 × 58.58px` narrow geometry. All five Trajectory records and seven Outside
-photographs fit without page-level horizontal overflow, organization marks
-remained grayscale, and photo labels remained present. Keyboard focus and
-target response, reduced motion, normal WebGL, forced-unavailable WebGL, and
-core token contrast were inspected.
-
-The shared Outside-the-System carousel fix replaces repeated 23–24 megapixel
-source decodes with seven 2000px WebP display assets and seven 480px WebP
-thumbnails. Cold-browser checks completed all 15 cloned thumbnail nodes at
-natural width 480 and every selected `PHOTO-001` through `PHOTO-007` image at
-natural width 2000, with `200 image/webp` responses and no loading or decoding
-errors. The original photography files remain as archival sources. The same
-isolated fix is applied to both `rei-light-mode` and `main`.
-
-`typecheck`, full `lint`, production `build`, and `git diff --check` passed with
-Node `22.14.0`; no automated test script exists. The build retained the known
-approximately `1.086 MB` initial JavaScript chunk (`299.28 kB` gzip) and its
-chunk-size warning. This entry records branch evidence only and is not visual
-approval or a change to canonical Longinus direction; the full experiment
-record is in [`design/experiments/rei-light-mode.md`](design/experiments/rei-light-mode.md).
+Outside-the-System carousel reliability validation on 2026-08-07: the seven
+5,794–6,000px source photographs were valid, but the cloned carousel was asking
+the browser to decode the 23–24 megapixel originals for 15 thumbnails as well
+as the selected image. The runtime now uses seven 2000px WebP display assets
+and seven 480px WebP thumbnails while retaining the originals as archival
+sources. Cold-browser checks completed all 15 thumbnail nodes at natural width
+480 and every selected `PHOTO-001` through `PHOTO-007` image at natural width
+2000; every request returned `200 image/webp`, with no loading or decoding
+errors. `typecheck`, full `lint`, production `build`, and `git diff --check`
+passed with Node `22.14.0`. The fix is shared unchanged by `main` and the
+`rei-light-mode` experiment branch.
 
 Audit validation on 2026-07-21: the pinned Yarn `4.17.1` completed an immutable install without changing `yarn.lock`; `typecheck`, `lint`, and `build` passed through Corepack. The install reported an existing transitive peer-requirement warning (`pfda40d`, involving `tunnel-rat`, `zustand`, and React). Vite reported an approximately `1.08 MB` initial JavaScript chunk (`298 kB` gzip) and its chunk-size warning. No automated tests or Markdown-lint command exist.
 
