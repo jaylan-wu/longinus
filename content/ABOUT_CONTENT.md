@@ -108,7 +108,7 @@ continue building on their own.
 
 The approved Identity desktop-idle reference is:
 
-`design/figma/references/about/about-identity-dark-desktop-idle-v1.png`
+`design/figma/references/dark/about-identity-desktop-idle-v1.png`
 
 Exported-reference handoff, measured layout, responsive comparison, navigation
 behavior, and 3D motif motion belong to the design documentation, `TASKS.md`, and

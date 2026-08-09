@@ -3,9 +3,9 @@
 ## Purpose
 
 This directory records Figma as the design authoring environment and owns the
-repository-export handoff process, reference naming rules, and approved-frame
-tracker. [`AGENTS.md`](../../AGENTS.md) defines the full source-of-truth
-hierarchy;
+repository-export handoff process, theme-directory organization, reference
+naming rules, and approved-frame tracker. [`AGENTS.md`](../../AGENTS.md) defines
+the full source-of-truth hierarchy;
 [`foundations.md`](foundations.md) records audited visual values and open design
 decisions; and [`TASKS.md`](../../TASKS.md) owns detailed implementation and
 validation status.
@@ -77,30 +77,36 @@ About / Identity / Dark / Desktop / Idle
 
 ## Reference export rules
 
-Images under `references/` are visual comparison references, not runtime assets. Each export should:
+Images under `references/` are visual comparison references, not runtime assets.
+Store each export in the `dark/` or `light/` directory directly beneath
+`references/`. Keep this theme-first layer flat: the filename already identifies
+the page or section, so additional page directories would duplicate information
+and multiply folders across themes.
 
-- use a clear, semantic filename with an explicit `dark` or `light` theme
-  segment;
+Each export should:
+
+- use a clear, semantic filename without repeating the theme represented by
+  its parent directory;
 - represent an approved checkpoint;
 - avoid capturing every minor design iteration;
 - preferably use `.png`, `.jpg`, or `.webp`; and
 - never be imported into the application as full-page UI.
 
-Use the general structure:
+Use the general path structure:
 
 ```text
-<section>-<view>-<theme>-<viewport>-<state>-v<version>.<ext>
+references/<theme>/<section>-<view>-<viewport>-<state>-v<version>.<ext>
 ```
 
-Omit or extend a segment only when the page has no meaningful subview or needs
-a stable record identifier. Examples:
+`<theme>` is `dark` or `light`. Omit or extend a filename segment only when the
+page has no meaningful subview or needs a stable record identifier. Examples:
 
 ```text
-homepage-dark-desktop-idle-v1.png
-projects-archive-dark-desktop-hover-v1.png
-project-detail-longinus-dark-desktop-default-v1.png
-about-identity-dark-desktop-idle-v1.png
-about-identity-light-desktop-idle-v1.png
+references/dark/homepage-desktop-idle-v1.png
+references/dark/projects-archive-desktop-hover-v1.png
+references/dark/project-detail-longinus-desktop-default-v1.png
+references/dark/about-identity-desktop-idle-v1.png
+references/light/about-identity-desktop-idle-v1.png
 ```
 
 Avoid ambiguous names such as `final-final-2.png`.
@@ -112,8 +118,8 @@ invent light references before they are exported and approved.
 
 1. Design and review a specific frame in Figma.
 2. Export the approved reference image.
-3. Store it in the corresponding repository reference directory with a
-   theme-explicit filename.
+3. Store it in the corresponding `references/dark/` or `references/light/`
+   directory with a semantic, theme-free filename.
 4. Update the approved-frame table below.
 5. Have Codex inspect the repository image and identify what is visually clear.
 6. Have Codex identify meaningful behavior or responsive decisions that the
@@ -144,18 +150,18 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 
 | Page | Frame | Viewport | State | Repository Reference | Optional Authoring Provenance | Implementation Status | Notes |
 |---|---|---|---|---|---|---|---|
-| Homepage | Homepage / Dark / Desktop / Idle | 1440 × 900 | Idle | `references/homepage/homepage-dark-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
-| About | About / Identity / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-identity-dark-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. The later user-directed removal of the visible top-left chapter heading and first-content reflow are intentional post-reference changes. |
-| About | About / Trajectory / EDU-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-trajectory-edu-001-dark-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, the procedural spear, the Identity-matched display-title proportions, and the later visible-heading removal with a `360 × 673px` canonical panel are documented post-reference differences. |
-| About | About / Outside the System / PHOTO-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/about/about-outside-photo-001-dark-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the left-side chapter composition. The established right navigation and spear scene remain protected prior work. Visible `PHOTO-*` carousel labels, Identity-matched display-title proportions, and the later visible-heading removal with selected-image reflow are intentional runtime refinements. |
+| Homepage | Homepage / Dark / Desktop / Idle | 1440 × 900 | Idle | `references/dark/homepage-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
+| About | About / Identity / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-identity-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. The later user-directed removal of the visible top-left chapter heading and first-content reflow are intentional post-reference changes. |
+| About | About / Trajectory / EDU-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-trajectory-edu-001-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, the procedural spear, the Identity-matched display-title proportions, and the later visible-heading removal with a `360 × 673px` canonical panel are documented post-reference differences. |
+| About | About / Outside the System / PHOTO-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-outside-photo-001-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the left-side chapter composition. The established right navigation and spear scene remain protected prior work. Visible `PHOTO-*` carousel labels, Identity-matched display-title proportions, and the later visible-heading removal with selected-image reflow are intentional runtime refinements. |
 
 Authoring provenance is optional and may be omitted. A direct link never
 substitutes for a repository export and is not a prerequisite for approval or
 implementation. Do not mark a frame approved until explicit approval exists.
 
-All references currently tracked above are dark-theme exports. No approved
-light-mode reference exists yet; future light rows and files must be added only
-after an actual export is supplied and approved.
+All references currently tracked above are under `references/dark/`. No
+approved light-mode reference exists yet; add `references/light/` with the
+first approved light export rather than reserving it with an empty placeholder.
 
 ## Responsibility boundaries
 
@@ -179,7 +185,7 @@ after an actual export is supplied and approved.
 
 Reference:
 
-`references/homepage/homepage-dark-desktop-idle-v1.png`
+`references/dark/homepage-desktop-idle-v1.png`
 
 ### Implementation boundaries
 
@@ -202,7 +208,7 @@ Milestone 3 for detailed progress, validation, and remaining work.
 
 Reference:
 
-`references/about/about-identity-dark-desktop-idle-v1.png`
+`references/dark/about-identity-desktop-idle-v1.png`
 
 ### Implementation boundaries
 
@@ -259,7 +265,7 @@ reference is stored.
 
 Reference:
 
-`references/about/about-trajectory-edu-001-dark-desktop-idle-v1.png`
+`references/dark/about-trajectory-edu-001-desktop-idle-v1.png`
 
 ### Implementation boundaries
 
@@ -359,7 +365,7 @@ compositions.
 
 Reference:
 
-`references/about/about-outside-photo-001-dark-desktop-idle-v1.png`
+`references/dark/about-outside-photo-001-desktop-idle-v1.png`
 
 ### Implementation boundaries
 

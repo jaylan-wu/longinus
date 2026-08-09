@@ -150,7 +150,8 @@ explicit focus transfer after navigation is not implemented.
 │       ├── README.md           # Exported-reference handoff and frame tracker
 │       ├── foundations.md      # Current design foundations and unresolved decisions
 │       ├── motion/             # Planned navigation and project-transition specifications
-│       └── references/         # Theme-explicit design-review exports; never runtime page images
+│       └── references/         # Theme-first, flat design-review exports; never runtime page images
+│           └── dark/           # Current approved/staged dark-reference exports
 ├── public/                     # Site favicon
 ├── src/
 │   ├── components/
@@ -210,7 +211,8 @@ silhouette; camera, lighting, staging, and animation remain page-owned.
 - [`TASKS.md`](TASKS.md) is the detailed implementation-status and validation
   authority.
 - [`design/figma/README.md`](design/figma/README.md) owns the exported-reference
-  handoff, theme-aware naming, and approved-frame tracker. Figma remains an
+  handoff, theme-directory organization, naming, and approved-frame tracker.
+  Figma remains an
   optional authoring environment; implementation does not require its API,
   MCP integration, Dev Mode, paid features, or direct URLs.
 - [`design/figma/foundations.md`](design/figma/foundations.md) records audited

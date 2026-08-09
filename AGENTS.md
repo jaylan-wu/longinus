@@ -56,9 +56,10 @@ Use the repository documentation according to these ownership boundaries:
 - `TASKS.md` owns implementation status, validation history, unresolved work,
   and recommended work order.
 - `design/figma/README.md` owns the exported-reference handoff procedure,
-  reference inventory, theme-aware reference naming, and frame implementation
-  or approval status. The directory name records the authoring origin; it does
-  not imply that implementation requires direct Figma access.
+  reference inventory, theme-directory organization, reference naming, and
+  frame implementation or approval status. The directory name records the
+  authoring origin; it does not imply that implementation requires direct
+  Figma access.
 - `design/figma/foundations.md` owns audited visual measurements, current token
   mappings, and unresolved foundation decisions.
 - `design/figma/motion/*.md` owns transition-specific sequences, provisional
@@ -265,10 +266,12 @@ About, Music, and Playground scene staging, lighting, camera behavior, motion,
 and asset loading remain feature-owned. Do not create one universal scene
 configuration for both motifs.
 
-Exported references must identify their theme. Accessibility, visible focus,
-contrast, touch behavior, and reduced-motion requirements apply to every
-theme. `TASKS.md` owns whether the experiment, a switcher, dark/light
-coexistence, or theme-specific assets are actually implemented.
+Exported references must identify their theme through the containing `dark/`
+or `light/` directory directly beneath `design/figma/references/`; do not
+repeat the theme in the image filename. Accessibility, visible focus, contrast,
+touch behavior, and reduced-motion requirements apply to every theme.
+`TASKS.md` owns whether the experiment, a switcher, dark/light coexistence, or
+theme-specific assets are actually implemented.
 
 ## Interface Language
 

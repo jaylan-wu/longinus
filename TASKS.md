@@ -210,7 +210,7 @@ JavaScript chunk (`298 kB` gzip) and its chunk-size warning.
 
 Scoped About Outside the System validation on 2026-08-05: the approved static
 export at
-`design/figma/references/about/about-outside-photo-001-dark-desktop-idle-v1.png`
+`design/figma/references/dark/about-outside-photo-001-desktop-idle-v1.png`
 was compared directly with the implemented left-side `PHOTO-001` composition
 at `1440 × 900`. The persistent header, right chapter navigation, divider,
 page index, and About spear scene remained protected prior work; their source
@@ -284,9 +284,11 @@ passed; no test script exists. The build retained the known approximately
 - [x] Remove implementation dependence on direct Figma URLs, APIs, MCP
   integrations, Dev Mode, and paid implementation features.
 - [x] Document the exported-reference workflow and targeted-question boundary.
-- [x] Establish the dark/light reference naming convention.
-- [x] Update every unambiguous stored dark reference name.
-- [x] Verify Markdown paths after reference renaming.
+- [x] Establish direct dark/light reference directories with theme-free export
+  filenames.
+- [x] Move every stored dark reference into the flat `references/dark/`
+  directory.
+- [x] Verify Markdown paths after reference reorganization.
 
 ## Verified repository baseline
 
@@ -383,8 +385,8 @@ approved light reference or final production selector is established.
 
 **Status: planned. No boot component or readiness system exists.**
 
-- [ ] Create, approve, and store the boot composition as a theme-explicit
-  exported repository reference.
+- [ ] Create, approve, and store the boot composition in the matching theme
+  reference directory.
 - [ ] Identify genuinely critical homepage assets.
 - [ ] Track real readiness for the final spear, critical textures/materials, and initial scene.
 - [ ] Define the linear indicator and its relationship to the spear.
@@ -401,7 +403,7 @@ approved light reference or final production selector is established.
 ## Stored design reference
 
 - [x] Store the `1440 × 900` dark desktop-idle export at
-  `design/figma/references/homepage/homepage-dark-desktop-idle-v1.png`.
+  `design/figma/references/dark/homepage-desktop-idle-v1.png`.
 - [x] Track the frame as **In progress**, not approved.
 - [x] Implement corresponding identity, navigation, frame, divider, scene-label, watermark, footer, and page-index regions.
 - [x] Keep Projects and About available while Music and Playground are visibly disabled/planned.
@@ -493,8 +495,8 @@ complete commitment/impact sequence is planned.
 - [x] Provide a shortened reduced-motion code path and remove the Project
   selection/interface displacement transforms under reduced motion.
 - [x] Clean up pending transition timers when the hook unmounts.
-- [ ] Create, approve, and store theme-explicit Projects archive and
-  focus/impact exported references.
+- [ ] Create, approve, and store Projects archive and focus/impact exports in
+  the matching theme reference directory.
 - [ ] Replace provisional timeout values with reviewed timing or completion signals.
 - [ ] Define recovery/cancellation beyond the guaranteed navigation timeout.
 - [ ] Manually verify keyboard, touch, reduced-motion, and scene-failure behavior.
@@ -540,7 +542,7 @@ complete commitment/impact sequence is planned.
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
 - [x] Store the approved About / Identity / Dark / Desktop / Idle export at
-  `design/figma/references/about/about-identity-dark-desktop-idle-v1.png`.
+  `design/figma/references/dark/about-identity-desktop-idle-v1.png`.
 - [x] Remove the chapter-owned visible orange-numbered top-left headings while
   retaining a visually hidden `h2` and valid `aria-labelledby` relationship for
   every section.
@@ -550,12 +552,12 @@ complete commitment/impact sequence is planned.
   chapter navigation.
 - [x] Store the approved About / Trajectory / EDU-001 / Dark / Desktop / Idle
   export at
-  `design/figma/references/about/about-trajectory-edu-001-dark-desktop-idle-v1.png`
+  `design/figma/references/dark/about-trajectory-edu-001-desktop-idle-v1.png`
   and implement its full static composition plus bounded large-desktop
   interpretation from that repository reference.
 - [x] Store the approved About / Outside the System / PHOTO-001 / Dark /
   Desktop / Idle export at
-  `design/figma/references/about/about-outside-photo-001-dark-desktop-idle-v1.png`
+  `design/figma/references/dark/about-outside-photo-001-desktop-idle-v1.png`
   and implement and compare its left-side static composition while preserving
   the established right navigation and dark Spear composition.
 - [x] Normalize the implemented Identity, Trajectory, and Outside the System

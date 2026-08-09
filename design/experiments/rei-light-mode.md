@@ -39,7 +39,7 @@ approved production theme.
 
 No approved light-mode visual-reference export is stored in the repository.
 This branch study is implementation evidence, not a substitute for the
-theme-explicit exported-reference workflow in `design/figma/README.md`.
+theme-directory exported-reference workflow in `design/figma/README.md`.
 
 ## Selected experimental palette
 
