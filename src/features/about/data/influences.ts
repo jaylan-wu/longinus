@@ -4,7 +4,7 @@ import kafkaImage from '../assets/influences/kafka.webp'
 import metaphorImage from '../assets/influences/metaphor.webp'
 import persona4GoldenImage from '../assets/influences/persona4golden.webp'
 
-export const creativeInfluencesIntroduction = 'These records have given me the inspiration to create new things. They’ve become a part of who I am today and these are my reflections.'
+export const creativeInfluencesIntroduction = 'These works have shaped how I think about identity, atmosphere, relationships, and interactive systems. Each one left me with something I want to carry into what I create.'
 
 const influenceRecords = [
   {

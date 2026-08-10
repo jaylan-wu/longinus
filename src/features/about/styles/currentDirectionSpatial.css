@@ -1,0 +1,798 @@
+.direction-spatial {
+  width: 100%;
+}
+
+.direction-spatial__page--system {
+  box-sizing: border-box;
+  display: grid;
+  height: 100svh;
+  min-height: 100svh;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  padding: var(--about-chapter-content-top) 0 clamp(1.5rem, 3svh, 2.5rem);
+}
+
+.direction-spatial__introduction {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 3.2vw, 3.25rem);
+  align-items: start;
+}
+
+.direction-spatial__title {
+  font-size: clamp(2.25rem, 2.8vw, 2.75rem);
+  transform: scaleX(0.82);
+  white-space: nowrap;
+}
+
+.direction-spatial__journey {
+  width: min(100%, 58rem);
+  margin: clamp(0.35rem, 0.7svh, 0.55rem) 0 clamp(0.45rem, 0.8svh, 0.7rem);
+}
+
+.direction-spatial__statement {
+  width: 100%;
+  margin: 0;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.8vw, 0.875rem);
+  line-height: 1.42;
+}
+
+.direction-spatial__system {
+  display: grid;
+  width: min(100%, 58rem);
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.direction-spatial__system-header {
+  display: grid;
+  grid-template-columns: auto minmax(2rem, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--about-text-identifier);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__system-header::after {
+  height: 1px;
+  background: rgba(var(--color-foreground-rgb), 0.22);
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.direction-spatial__system-header span:last-child {
+  grid-column: 3;
+}
+
+.direction-spatial__field {
+  position: relative;
+  height: 100%;
+  min-height: clamp(15.5rem, 36svh, 22rem);
+  border-bottom: 1px solid rgba(var(--color-foreground-rgb), 0.18);
+  isolation: isolate;
+}
+
+.direction-spatial__field::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 49%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(var(--color-foreground-rgb), 0.11) 24%,
+    rgba(var(--color-foreground-rgb), 0.11) 78%,
+    transparent
+  );
+  content: "";
+}
+
+.direction-spatial__connections {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.direction-spatial__connection {
+  fill: none;
+  stroke: rgba(var(--color-foreground-rgb), 0.25);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke 420ms var(--motion-ease-interface),
+    stroke-width 420ms var(--motion-ease-interface),
+    opacity 420ms var(--motion-ease-interface);
+}
+
+.direction-spatial__connection--output {
+  stroke: rgba(var(--color-secondary-rgb), 0.45);
+}
+
+.direction-spatial__junction {
+  fill: var(--color-background);
+  stroke: rgba(var(--color-secondary-rgb), 0.68);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.direction-spatial__field:not([data-active-axis="all"])
+  .direction-spatial__connection:not(.direction-spatial__connection--output) {
+  opacity: 0.32;
+}
+
+.direction-spatial__field[data-active-axis="engineering"]
+  .direction-spatial__connection--engineering,
+.direction-spatial__field[data-active-axis="game-design"]
+  .direction-spatial__connection--game-design,
+.direction-spatial__field[data-active-axis="education"]
+  .direction-spatial__connection--education {
+  opacity: 1;
+  stroke: var(--color-highlight);
+  stroke-width: 2;
+}
+
+.direction-spatial__core {
+  --direction-spatial-core-x: 0rem;
+  --direction-spatial-core-y: 0rem;
+
+  position: absolute;
+  z-index: 3;
+  top: 52%;
+  left: 50%;
+  width: min(23%, 11.5rem);
+  padding: 0 0 0.8rem 1rem;
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.62);
+  transform:
+    translate(
+      calc(-50% + var(--direction-spatial-core-x)),
+      calc(-50% + var(--direction-spatial-core-y))
+    );
+  transition: transform 520ms var(--motion-ease-interface);
+}
+
+.direction-spatial__core::before {
+  position: absolute;
+  top: 0.15rem;
+  bottom: -1px;
+  left: 0;
+  width: 0.25rem;
+  background: var(--color-secondary);
+  content: "";
+  transition: background-color 320ms ease;
+}
+
+.direction-spatial__core-index,
+.direction-spatial__core-focus,
+.direction-spatial__core-status {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--about-text-identifier);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__core-index {
+  color: var(--color-muted);
+}
+
+.direction-spatial__core-focus {
+  margin: 0.55rem 0 0;
+  color: var(--color-secondary);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__core-status {
+  margin-top: 0.6rem;
+  color: var(--color-muted);
+  transition: color 320ms ease;
+}
+
+.direction-spatial__field:not([data-active-axis="all"])
+  .direction-spatial__core::before {
+  background: var(--color-highlight);
+}
+
+.direction-spatial__field:not([data-active-axis="all"])
+  .direction-spatial__core-focus {
+  color: var(--color-highlight);
+}
+
+.direction-spatial__field[data-active-axis="engineering"]
+  .direction-spatial__core {
+  --direction-spatial-core-x: -0.45rem;
+  --direction-spatial-core-y: -0.3rem;
+}
+
+.direction-spatial__field[data-active-axis="game-design"]
+  .direction-spatial__core {
+  --direction-spatial-core-x: 0.6rem;
+  --direction-spatial-core-y: -0.1rem;
+}
+
+.direction-spatial__field[data-active-axis="education"]
+  .direction-spatial__core {
+  --direction-spatial-core-x: -0.35rem;
+  --direction-spatial-core-y: 0.55rem;
+}
+
+.direction-spatial__axes {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.direction-spatial__axis {
+  --direction-spatial-axis-x: 0rem;
+  --direction-spatial-axis-y: 0rem;
+
+  position: absolute;
+  width: min(35%, 18rem);
+  transform:
+    translate(
+      var(--direction-spatial-axis-x),
+      var(--direction-spatial-axis-y)
+    );
+  transition: transform 520ms var(--motion-ease-interface);
+  pointer-events: auto;
+}
+
+.direction-spatial__axis--engineering {
+  top: 3%;
+  left: 1%;
+}
+
+.direction-spatial__axis--game-design {
+  top: 4%;
+  right: 0;
+  width: min(38%, 19rem);
+}
+
+.direction-spatial__axis--education {
+  top: auto;
+  bottom: 2%;
+  left: 3%;
+  width: min(35%, 17.5rem);
+}
+
+.direction-spatial__axis-button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: clamp(2.3rem, 3.2vw, 3rem) minmax(0, 1fr);
+  padding: 0.5rem 0 0;
+  border: 0;
+  border-top: 1px solid rgba(var(--color-foreground-rgb), 0.32);
+  color: var(--color-foreground);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 320ms ease,
+    color 320ms ease;
+}
+
+.direction-spatial__axis-heading {
+  display: contents;
+  font-family: var(--font-mono);
+  font-size: var(--about-text-identifier);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__axis-heading > span {
+  color: var(--color-muted);
+}
+
+.direction-spatial__axis-heading strong {
+  font-size: inherit;
+  font-weight: 400;
+  transition: color 320ms ease;
+}
+
+.direction-spatial__axis-statement,
+.direction-spatial__axis-supporting {
+  grid-column: 2;
+}
+
+.direction-spatial__axis-statement {
+  margin-top: 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__axis-supporting {
+  max-width: 31ch;
+  margin-top: 0.45rem;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: clamp(0.6875rem, 0.72vw, 0.8rem);
+  line-height: 1.3;
+  transition: color 320ms ease;
+}
+
+.direction-spatial__axis.is-emphasized .direction-spatial__axis-button {
+  border-top-color: var(--color-highlight);
+}
+
+.direction-spatial__axis.is-emphasized
+  .direction-spatial__axis-heading strong {
+  color: var(--color-highlight);
+}
+
+.direction-spatial__axis.is-emphasized
+  .direction-spatial__axis-supporting {
+  color: var(--color-foreground);
+}
+
+.direction-spatial__field[data-active-axis="engineering"]
+  .direction-spatial__axis--engineering {
+  --direction-spatial-axis-x: 1.1rem;
+  --direction-spatial-axis-y: 0.65rem;
+}
+
+.direction-spatial__field[data-active-axis="engineering"]
+  .direction-spatial__axis--game-design {
+  --direction-spatial-axis-x: 0.2rem;
+  --direction-spatial-axis-y: -0.15rem;
+}
+
+.direction-spatial__field[data-active-axis="engineering"]
+  .direction-spatial__axis--education {
+  --direction-spatial-axis-x: -0.2rem;
+  --direction-spatial-axis-y: 0.2rem;
+}
+
+.direction-spatial__field[data-active-axis="game-design"]
+  .direction-spatial__axis--game-design {
+  --direction-spatial-axis-x: -1.15rem;
+  --direction-spatial-axis-y: 0.5rem;
+}
+
+.direction-spatial__field[data-active-axis="game-design"]
+  .direction-spatial__axis--engineering {
+  --direction-spatial-axis-x: -0.2rem;
+  --direction-spatial-axis-y: -0.1rem;
+}
+
+.direction-spatial__field[data-active-axis="game-design"]
+  .direction-spatial__axis--education {
+  --direction-spatial-axis-x: 0.2rem;
+  --direction-spatial-axis-y: 0.15rem;
+}
+
+.direction-spatial__field[data-active-axis="education"]
+  .direction-spatial__axis--education {
+  --direction-spatial-axis-x: 1rem;
+  --direction-spatial-axis-y: -0.65rem;
+}
+
+.direction-spatial__field[data-active-axis="education"]
+  .direction-spatial__axis--engineering {
+  --direction-spatial-axis-x: -0.15rem;
+  --direction-spatial-axis-y: -0.15rem;
+}
+
+.direction-spatial__field[data-active-axis="education"]
+  .direction-spatial__axis--game-design {
+  --direction-spatial-axis-x: 0.2rem;
+  --direction-spatial-axis-y: 0.15rem;
+}
+
+.direction-spatial__explorations {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 2%;
+  width: 38%;
+}
+
+.direction-spatial__explorations h4 {
+  margin: 0 0 0.7rem;
+  color: var(--color-highlight);
+  font-family: var(--font-mono);
+  font-size: var(--about-text-identifier);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.direction-spatial__explorations ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(var(--color-secondary-rgb), 0.55);
+  list-style: none;
+}
+
+.direction-spatial__explorations li {
+  min-height: 4rem;
+  padding: 0.45rem 0.5rem 0.4rem;
+  border-left: 1px solid rgba(var(--color-foreground-rgb), 0.18);
+}
+
+.direction-spatial__explorations li:nth-child(2) {
+  transform: translateY(0.8rem);
+}
+
+.direction-spatial__explorations li:nth-child(3) {
+  transform: translateY(1.6rem);
+}
+
+.direction-spatial__explorations li > span,
+.direction-spatial__explorations li > strong {
+  display: block;
+}
+
+.direction-spatial__explorations li > span {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--about-text-identifier);
+  line-height: 1.2;
+}
+
+.direction-spatial__explorations li > strong {
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__system-header,
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__core,
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__axis-button,
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__explorations {
+  animation: direction-spatial-resolve 460ms var(--motion-ease-interface) backwards;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__axis--engineering
+  .direction-spatial__axis-button {
+  animation-delay: 70ms;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__axis--game-design
+  .direction-spatial__axis-button {
+  animation-delay: 120ms;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__axis--education
+  .direction-spatial__axis-button {
+  animation-delay: 170ms;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__explorations {
+  animation-delay: 220ms;
+}
+
+.about[data-observed-chapter="current-direction"]
+  .direction-spatial__connection {
+  animation: direction-spatial-connection-resolve 520ms var(--motion-ease-interface) 230ms backwards;
+}
+
+@keyframes direction-spatial-resolve {
+  from {
+    opacity: 0;
+    translate: 0 0.65rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes direction-spatial-connection-resolve {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 1240px) {
+  .direction-spatial__page--system {
+    display: block;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .direction-spatial__statement {
+    width: 100%;
+  }
+
+  .direction-spatial__system {
+    margin-top: clamp(3rem, 7svh, 5rem);
+  }
+
+  .direction-spatial__system-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .direction-spatial__system-header span:last-child {
+    display: none;
+  }
+
+  .direction-spatial__field {
+    display: grid;
+    height: auto;
+    min-height: 0;
+    gap: 3rem;
+    padding: 2.75rem 0 3rem;
+  }
+
+  .direction-spatial__field::before,
+  .direction-spatial__connections {
+    display: none;
+  }
+
+  .direction-spatial__core {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(72%, 19rem);
+    margin-left: auto;
+    transform: none;
+  }
+
+  .direction-spatial__axes {
+    position: static;
+    display: grid;
+    gap: 2rem;
+    pointer-events: auto;
+  }
+
+  .direction-spatial__axis {
+    position: static;
+    width: min(88%, 30rem);
+    transform: none;
+  }
+
+  .direction-spatial__axis--game-design {
+    margin-left: auto;
+  }
+
+  .direction-spatial__axis--education {
+    margin-left: 7%;
+  }
+
+  .direction-spatial__axis-statement {
+    font-size: clamp(1.3rem, 2.8vw, 1.65rem);
+  }
+
+  .direction-spatial__axis-supporting {
+    max-width: 38ch;
+    font-size: clamp(0.82rem, 1.7vw, 0.95rem);
+  }
+
+  .direction-spatial__explorations {
+    position: static;
+    width: min(92%, 34rem);
+    margin-left: auto;
+  }
+
+  .direction-spatial__explorations li > strong {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+  }
+}
+
+@media (max-width: 1080px) {
+  .direction-spatial__introduction {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .direction-spatial__title {
+    font-size: clamp(3rem, 6vw, 4rem);
+    white-space: normal;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 1241px) {
+  .direction-spatial__page--system {
+    padding-bottom: 1rem;
+  }
+
+  .direction-spatial__journey {
+    margin-block: 0.25rem 0.35rem;
+  }
+
+  .direction-spatial__field {
+    min-height: 15rem;
+  }
+
+  .direction-spatial__core {
+    width: min(20%, 9.5rem);
+  }
+
+  .direction-spatial__axis--game-design {
+    width: min(40%, 18rem);
+  }
+
+  .direction-spatial__axis-statement {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+  }
+
+  .direction-spatial__axis-supporting {
+    margin-top: 0.35rem;
+    font-size: 0.625rem;
+    line-height: 1.22;
+  }
+
+  .direction-spatial__explorations li {
+    min-height: 3.5rem;
+  }
+
+  .direction-spatial__explorations li > strong {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .direction-spatial__introduction {
+    display: block;
+  }
+
+  .direction-spatial__title {
+    font-size: clamp(2.75rem, 13vw, 3.75rem);
+    white-space: normal;
+  }
+
+  .direction-spatial__statement {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.48;
+  }
+
+  .direction-spatial__system {
+    margin-top: 4rem;
+  }
+
+  .direction-spatial__field {
+    gap: 2.75rem;
+    padding-block: 2.25rem 2.75rem;
+  }
+
+  .direction-spatial__core {
+    width: min(88%, 18rem);
+  }
+
+  .direction-spatial__core-focus {
+    font-size: clamp(2.4rem, 12vw, 3.25rem);
+  }
+
+  .direction-spatial__axes {
+    gap: 2.25rem;
+  }
+
+  .direction-spatial__axis {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .direction-spatial__axis-button {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .direction-spatial__axis-statement {
+    font-size: 1.35rem;
+  }
+
+  .direction-spatial__axis-supporting {
+    font-size: 0.9rem;
+  }
+
+  .direction-spatial__explorations {
+    width: 100%;
+  }
+
+  .direction-spatial__explorations ol {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 0;
+  }
+
+  .direction-spatial__explorations li {
+    min-height: 0;
+    padding: 0.75rem 0 0.85rem 1rem;
+    border-top: 1px solid rgba(var(--color-secondary-rgb), 0.5);
+    border-left: 0;
+  }
+
+  .direction-spatial__explorations li:nth-child(2) {
+    width: calc(100% - 1.25rem);
+    margin-left: 1.25rem;
+    transform: none;
+  }
+
+  .direction-spatial__explorations li:nth-child(3) {
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem;
+    transform: none;
+  }
+
+  .direction-spatial__explorations li > strong {
+    margin-top: 0.45rem;
+    font-size: 1.05rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .direction-spatial__connection,
+  .direction-spatial__core,
+  .direction-spatial__axis,
+  .direction-spatial__axis-button,
+  .direction-spatial__axis-heading,
+  .direction-spatial__axis-heading strong,
+  .direction-spatial__axis-statement,
+  .direction-spatial__axis-supporting {
+    transition: none;
+  }
+
+  .direction-spatial__field[data-active-axis] .direction-spatial__core {
+    --direction-spatial-core-x: 0rem;
+    --direction-spatial-core-y: 0rem;
+  }
+
+  .direction-spatial__field[data-active-axis] .direction-spatial__axis {
+    --direction-spatial-axis-x: 0rem;
+    --direction-spatial-axis-y: 0rem;
+  }
+
+  .about[data-observed-chapter="current-direction"]
+    .direction-spatial__system-header,
+  .about[data-observed-chapter="current-direction"]
+    .direction-spatial__core,
+  .about[data-observed-chapter="current-direction"]
+    .direction-spatial__axis-button,
+  .about[data-observed-chapter="current-direction"]
+    .direction-spatial__explorations,
+  .about[data-observed-chapter="current-direction"]
+    .direction-spatial__connection {
+    animation: none;
+  }
+}

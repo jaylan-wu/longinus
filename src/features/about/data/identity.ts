@@ -9,7 +9,7 @@ export const identity = {
     context: 'For a long time, the arts and engineering felt like separate parts of my life.',
     pivot: 'They were never separate.',
     realization: 'I just had not learned how to connect them yet.',
-    connection: 'Engineering taught me how to build a system. Games taught me to ask what that system could make someone feel. Teaching taught me how to help someone else understand it.',
+    connection: 'Engineering taught me how to build a system. Game design taught me to ask what that system could make someone feel. Teaching taught me how to help someone else understand it.',
   },
   axes: [
     {
@@ -17,21 +17,21 @@ export const identity = {
       axis: 'engineering',
       shortStatement: 'Design, build, test, and refine.',
       shortStatementLines: ['Design, build,', 'test, and refine.'],
-      supportingStatement: 'I learn by making something real, then letting each version reveal what the next iteration needs.',
+      supportingStatement: 'I learn by building real systems, testing them, and letting each iteration reveal what the next version needs.',
     },
     {
       id: 'AX-02',
       axis: 'game-design',
       shortStatement: 'Create interactions people can feel.',
       shortStatementLines: ['Create interactions', 'people can feel.'],
-      supportingStatement: 'I bring systems, story, sounds and dreams together to create an experience that represents what I feel.',
+      supportingStatement: 'I bring systems, story, sound, visual direction, and interaction together to create experiences that communicate a feeling.',
     },
     {
       id: 'AX-03',
       axis: 'education',
       shortStatement: 'Make the unfamiliar approachable.',
       shortStatementLines: ['Make the unfamiliar', 'approachable.'],
-      supportingStatement: 'I teach the next set of curious individuals the skills and confidence to continue building on their own.',
+      supportingStatement: 'I give people the understanding and confidence to keep learning and building on their own.',
     },
   ],
 } satisfies IdentityContent

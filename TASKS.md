@@ -10,6 +10,35 @@ what remains.
 
 Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
+About editorial synchronization validation on 2026-08-10: the canonical
+editorial source and published runtime data were synchronized for Identity;
+all five published Trajectory records, including the revised EXP-002 live
+operations and technical-support narrative; the Outside the System
+introduction and all seven photograph records; the Interactive Influences
+introduction; and Current Direction's published conclusion, three exploration
+areas, Longinus reflection, closing, and three approved actions. EXP-005
+remains unpublished, the résumé action remains omitted, all four influence
+quote-verification notes remain open, and no factual-verification flag was
+closed. Copy fitting required one editorial tightening to the Education axis
+statement and one dark-theme Spear inset adjustment below `361px`; no chapter
+structure, selector count, navigation behavior, data schema, or established
+breakpoint changed. Headless Chrome `151.0.7922.109` inspected all five
+chapters at `1440 × 900`, `1440 × 800`, `1920 × 1080`, `390 × 844`, and
+`320 × 568`, including all five Trajectory records, seven photographs, four
+influences, and the default Current Direction state. The in-progress alternate
+Current Direction variants were smoke-checked at `1440 × 900` and `390 × 844`;
+dark and Rei-light states were checked at those same two viewports. The audit
+recorded no page-level horizontal overflow, content-driven panel overflow,
+console errors, or runtime exceptions. Keyboard activation, visible focus,
+photo Arrow/Home/End behavior, emulated touch selection, reduced motion, and a
+forced WebGL-unavailable state passed; the latter retained all five chapters,
+five chapter controls, five Trajectory records, seven photographs, four
+influences, and three final actions without a canvas. This remains headless
+Chromium evidence rather than human cross-browser or physical-device approval.
+`corepack yarn typecheck`, `corepack yarn lint`, `corepack yarn build`, and
+`git diff --check` passed; no test script exists. The build retains the known
+approximately `882 kB` (`234 kB` gzip) `SceneCanvas` chunk warning.
+
 Follow-up About Influences and Trajectory validation on 2026-08-09: all four
 Influence records now load explicitly supplied `1024px`-wide WebPs. Kafka was
 reduced from `244,555` to `73,556` bytes, Metaphor from `106,045` to `78,354`
@@ -325,7 +354,7 @@ passed; no test script exists. The build retained the known approximately
 
 - [x] Audit every tracked Markdown file against the repository.
 - [x] Preserve Jaylan Wu as the primary identity and `alter-egoist` as a secondary creative identity.
-- [x] Preserve Engineering, Game design, and Education as the three personal axes.
+- [x] Preserve Engineering, Game Design, and Education as the three personal axes.
 - [x] Define shared `engineering`, `game-design`, and `education` axis identifiers with canonical interface labels.
 - [x] Preserve Figma as the optional design authoring environment and exported
   repository images as the static visual implementation source.
@@ -641,7 +670,10 @@ complete commitment/impact sequence is planned.
 - [x] Verify the shorter `1440 × 800` desktop layout remains usable without an internal chapter scrollbar.
 - [x] Reuse and browser-verify the Home available-navigation hover/focus treatment for About's site-level `Index` action and right chapter controls; keep the controls compact and use the About-scoped red accent.
 - [x] Verify direct `#about` entry, About Identity keyboard focus, chapter selection, reduced-motion feedback, semantic content with WebGL unavailable, and canvas teardown after route exit.
-- [ ] Perform final copy and typography review.
+- [x] Synchronize the audited Identity opening and axis copy and verify that it
+  remains contained in the established desktop, short-desktop, and narrow
+  compositions.
+- [ ] Perform final cross-platform typography review.
 
 ## Trajectory
 
@@ -672,7 +704,9 @@ complete commitment/impact sequence is planned.
   text to the `11px` canonical baseline without moving the footer or
   overflowing the frame.
 - [x] Synchronize the revised EDU-001 copy and concise three-section experience
-  narratives between `content/ABOUT_CONTENT.md` and runtime data.
+  narratives between `content/ABOUT_CONTENT.md` and runtime data, including
+  EXP-002's audited live-operations, equipment-support, escalation, and public-
+  communication framing.
 - [x] Browser-compare the original pre-reflow EDU-001 static frame with the
   stored dark `1440 × 900` export; the optional authoring provenance was also
   inspected at that historical checkpoint. Verify all five selected states, short
@@ -705,6 +739,9 @@ complete commitment/impact sequence is planned.
 - [x] Respect reduced motion for programmatic carousel scrolling.
 - [x] Preserve visible `PHOTO-001` through `PHOTO-007` thumbnail labels, with
   lavender selected/focus treatment and a non-color structural marker.
+- [x] Synchronize the audited travel-and-photography statement and the visible
+  alternative text, captions, and reflections for `PHOTO-001` through
+  `PHOTO-007` between the editorial source and runtime data.
 - [x] Support Enter, Space, Left and Right Arrow, Home, End, Tab, pointer, and
   touch selection while keeping photo state local to the gallery. The selected
   real thumbnail owns the carousel's roving Tab stop.
@@ -731,6 +768,8 @@ complete commitment/impact sequence is planned.
   the compact chapter navigator.
 - [x] Avoid ratings and rankings; use the explicitly supplied image for each
   record through optimized WebP website assets and useful alternative text.
+- [x] Synchronize the revised chapter introduction while preserving all four
+  record bodies, order, selected images, quotes, and verification notes.
 - [ ] Verify the featured-quote wording, punctuation, translations, speakers, and source scenes or editions identified in `content/ABOUT_CONTENT.md`.
 - [x] Create and directly compare against the approved `1440 × 900` chapter
   composition while preserving stable `INF-*` identifiers, existing About
@@ -741,10 +780,13 @@ complete commitment/impact sequence is planned.
 
 ## Current Direction
 
-- [x] Render a direction statement, Longinus statement, exploration areas, closing, and actions.
+- [x] Render and synchronize the audited published direction statement,
+  Longinus reflection, `Interface / menu design`, `Sound and music for games`,
+  `3D modeling with Blender`, closing, and actions.
 - [x] Provide working Projects, email Contact, and Home actions.
 - [x] Omit the résumé action because no destination is supplied.
-- [ ] Verify the public contact address and final exploration-area wording.
+- [x] Resolve the final exploration-area wording through the editorial audit.
+- [ ] Verify the public contact address.
 - [ ] Create and compare against an approved final-chapter composition.
 
 ## About theme-specific 3D and responsive behavior

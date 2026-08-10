@@ -30,8 +30,9 @@ const COMPACT_SCENE_MAX_WIDTH = 320
 
 function AboutSpear({ activeChapter }: AboutSceneState) {
   const targetAxialRotation = STAGED_REDUCED_MOTION_AXIAL_ROTATIONS[activeChapter]
+  const [initialAxialRotation] = useState(targetAxialRotation)
   const spear = useRef<Group>(null)
-  const axialRotation = useRef(targetAxialRotation)
+  const axialRotation = useRef(initialAxialRotation)
   const angularVelocity = useRef(-SPEAR_BASE_ROTATION_SPEED)
   const rotationDirection = useRef<-1 | 1>(-1)
   const previousScrollY = useRef(window.scrollY)
@@ -92,7 +93,7 @@ function AboutSpear({ activeChapter }: AboutSceneState) {
     <group
       ref={spear}
       position={position}
-      rotation={[0, targetAxialRotation, 0]}
+      rotation={[0, initialAxialRotation, 0]}
       scale={scale}
     >
       <SpearModel />

@@ -1,13 +1,13 @@
 import type { AboutAction } from '../types/about'
 
 export const currentDirection = {
-  statement: 'I want to keep developing as an engineer while working toward becoming an educator in the design space. I hope to contribute to game design and eventually create a game of my own. Right now, I am exploring expressive menu interfaces, sound design, and Blender so I can better understand what makes an interactive experience feel cohesive.',
+  statement: 'I do not see my future as only conventional software engineering. I want to work where technical systems, game design, interactive experiences, creative technology, and education meet. Over time, I hope to contribute meaningfully to game design and create a game of my own. I also want education to remain part of that future through teaching in technical and design-oriented spaces.',
   explorationAreas: [
-    'Sound design',
-    'User interface and user design',
-    '3D modeling in Blender',
+    'Interface / menu design',
+    'Sound and music for games',
+    '3D modeling with Blender',
   ],
-  longinusStatement: 'Longinus is a creative starting point and a testing ground for the skills I developed in college and those I want to build next. Its direction is rooted in the lasting effect Evangelion\'s creative choices had on me at a vulnerable time in my life. Building the portfolio as an interactive system lets me bring those influences together in a form that reflects the work I want to pursue.',
+  longinusStatement: 'Longinus is a testing ground where I bring the software engineering skills I already have together with disciplines I want to develop further: interaction design, 3D graphics, visual composition, motion, and creative coding. Its game-interface influences and Evangelion-inspired visual direction give that experimentation a coherent frame. Building it lets me explore how technical systems and deliberate art direction can become one interactive experience.',
   closing: 'You are (not) alone.',
   actions: [
     { label: 'View Projects', href: '#projects' },

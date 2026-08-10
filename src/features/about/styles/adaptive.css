@@ -317,6 +317,15 @@
   .about__chapter-nav button span:last-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .about__composition { display: block; width: auto; margin: 0; }
   .about__scene { position: absolute; top: 7rem; right: -4rem; width: 16rem; height: 22rem; border: 0; background: transparent; pointer-events: none; }
+  html[data-theme="longinus-dark"]
+    .about[data-observed-chapter="current-direction"]
+    .about__scene {
+    position: fixed;
+    top: clamp(6rem, 14svh, 8rem);
+    right: -7.75rem;
+    width: 14rem;
+    height: min(72svh, 28rem);
+  }
   .about-chapter { min-height: auto; padding: 9rem 1.2rem 7rem; }
   .about-chapter--identity { min-height: 100svh; padding-top: var(--about-chapter-content-top); }
   .about-identity__display { max-width: 11ch; font-size: clamp(3.2rem, 15.25vw, 5.25rem); }
@@ -446,7 +455,18 @@
     font-size: 0.625rem;
     line-height: 1.35;
   }
-  .about-chapter--direction { min-height: 100svh; padding-bottom: 9rem; }
+  .about-chapter--direction {
+    min-height: 200svh;
+    padding: 0 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  html[data-theme="longinus-dark"]
+    .about[data-observed-chapter="current-direction"]
+    .about__scene {
+    right: -9.5rem;
+  }
 }
 
 @media (max-width: 420px) {

@@ -15,7 +15,7 @@ import photo007Thumbnail from '../assets/photography/PHOTO-007-chicago-2026-thum
 import type { PhotographyRecord } from '../types/about'
 
 export const outsideSystem = {
-  introduction: 'I fell in love with traveling in high school on my first international trip to Taiwan and Japan. On that trip I explored my own culture alongside one that was unfamiliar. Studying abroad in Paris and later taking a six-week solo trip through Japan strengthened the independence and curiosity that I brought to unfamiliar places. When I take my camera out, I usually look for symmetry in nature and build my photos around a central subject. The highlighted images come from my solo trips, friends, and candid moments.',
+  introduction: 'Travel has taught me to enter unfamiliar places with curiosity and independence, then slow down enough to observe them. Photography has sharpened my attention to place: I look for the details that give a setting its character, often building images around symmetry and a central subject. During my solo trip through Japan, a train ride near Sapporo made me realize that a photograph or written description could not fully communicate how the moment felt. That gap made me think about interactive media as a way to translate an experience into something another person could encounter for themselves.',
   photos: [
     {
       id: 'PHOTO-001',
@@ -30,10 +30,10 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: true,
-      alt: 'Fisherman in the lake.',
+      alt: 'A person fishing from a lake beneath a snow-streaked mountain partly covered by clouds.',
       caption: 'fishing',
       camera: 'Sony α6000',
-      reflection: 'This was one of my favorite photos that I was able to capture in Japan. I was lucky to catch Fuji on a clear day, and the experience felt surreal.',
+      reflection: 'This is one of my favorite photographs from Japan. I was lucky to see Fuji on a clear day, and the moment felt surreal.',
     },
     {
       id: 'PHOTO-002',
@@ -48,10 +48,10 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: false,
-      alt: 'Blooming lily in a sea of lily pads.',
+      alt: 'A pink water lily blooming among overlapping green and red lily pads.',
       caption: 'Lilies.',
       camera: 'Sony α6000',
-      reflection: 'Floral images are fun to take.',
+      reflection: 'I enjoy photographing flowers and the patterns that form around them.',
     },
     {
       id: 'PHOTO-003',
@@ -66,10 +66,10 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: true,
-      alt: 'Torii gate at the top of the world.',
+      alt: 'A red torii gate beside a stairway on a green hillside beneath an open sky.',
       caption: 'sky torii',
       camera: 'Sony α6000',
-      reflection: 'This is a surreal image of a torii gate at the top of Mount Otaru.',
+      reflection: 'The torii gate against the open sky made the scene feel surreal.',
     },
     {
       id: 'PHOTO-004',
@@ -84,10 +84,10 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: false,
-      alt: 'Ramen in Toyama.',
+      alt: 'A bowl of ramen topped with sliced pork, halved eggs, green onions, bamboo shoots, and seaweed.',
       caption: 'ramen',
       camera: 'Sony α6000',
-      reflection: 'A personal favorite meal from my trip.',
+      reflection: 'This was one of my favorite meals from the trip.',
     },
     {
       id: 'PHOTO-005',
@@ -102,7 +102,7 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: false,
-      alt: 'Hakodate port at sunset.',
+      alt: 'The sun setting beyond dark hills, casting a golden reflection across a harbor dotted with boats.',
       caption: 'a port at sunset',
       camera: 'Sony α6000',
       reflection: 'I stayed around this spot for a couple of hours waiting for the right photograph. I was glad to catch the sunset, and the evening has stayed memorable for me.',
@@ -120,7 +120,7 @@ export const outsideSystem = {
       country: 'Japan',
       year: 2025,
       featured: false,
-      alt: 'The inside of a bookstore located in bookstore town.',
+      alt: 'Shelves and stacks of books and manga filling the interior of a crowded bookstore.',
       caption: 'stories.',
       camera: 'Sony α6000',
       reflection: 'I liked the structure of this photograph: wherever you look, there is another book containing a story that someone put their all into.',
@@ -138,7 +138,7 @@ export const outsideSystem = {
       country: 'United States of America',
       year: 2026,
       featured: false,
-      alt: 'Two friends sitting on a bench in front of a lake.',
+      alt: 'Two people seated on a bench facing a calm lake beneath the branches of a large tree.',
       caption: 'a bench at noon',
       camera: 'Sony α6000',
       reflection: 'I like the composition of this photograph and how it shows the intimacy of people\'s relationships with one another.',

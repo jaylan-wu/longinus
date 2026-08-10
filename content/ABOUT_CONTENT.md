@@ -10,7 +10,7 @@ Do not treat unfinished notes as confirmed facts. Do not invent dates, titles, m
 
 ## Ownership and synchronization
 
-Editorial inventory reviewed on **2026-08-05**.
+Editorial inventory reviewed on **2026-08-10**.
 
 - [`AGENTS.md`](../AGENTS.md) owns durable product direction, visual-system
   rules, interaction intent, and engineering constraints.
@@ -51,7 +51,7 @@ Creative signature: alter-egoist
 ## Personal Axes
 
 * Engineering
-* Game design
+* Game Design
 * Education
 
 ## Display Statement
@@ -65,9 +65,9 @@ life.
 
 They were never separate. I just had not learned how to connect them yet.
 
-Engineering taught me how to build a system. Games taught me to ask what that
-system could make someone feel. Teaching taught me how to help someone else
-understand it.
+Engineering taught me how to build a system. Game design taught me to ask what
+that system could make someone feel. Teaching taught me how to help someone
+else understand it.
 
 ## Identity Axes
 
@@ -79,8 +79,8 @@ Design, build, test, and refine.
 
 Supporting statement:
 
-I learn by making something real, then letting each version reveal what the
-next iteration needs.
+I learn by building real systems, testing them, and letting each iteration
+reveal what the next version needs.
 
 ### AX-02 — Game Design
 
@@ -90,8 +90,8 @@ Create interactions people can feel.
 
 Supporting statement:
 
-I bring systems, story, sounds and dreams together to create an experience
-that represents what I feel.
+I bring systems, story, sound, visual direction, and interaction together to
+create experiences that communicate a feeling.
 
 ### AX-03 — Education
 
@@ -101,8 +101,8 @@ Make the unfamiliar approachable.
 
 Supporting statement:
 
-I teach the next set of curious individuals the skills and confidence to
-continue building on their own.
+I give people the understanding and confidence to keep learning and building
+on their own.
 
 ## Identity Editorial Presentation Notes
 
@@ -237,7 +237,7 @@ carry personality, atmosphere, and play.
 
 Personal axes:
 
-Engineering, Game design
+Engineering, Game Design
 
 Supporting themes:
 
@@ -350,21 +350,22 @@ May 2023 - October 2023
 
 Context:
 
-I worked with the Technology Solutions department on the business-operations
-side at Citi Field, learning how technology supports a sports organization and
-its audience.
+At Citi Field, I supported ticket scanners, facial-recognition ticketing
+kiosks, and security-screening equipment during live games and events, working
+alongside ticketing staff, security personnel, employees, and patrons.
 
-Application:
+Operations:
 
-I supported adoption of an opt-in facial-recognition ticketing system by
-speaking directly with fans, explaining its benefits, analyzing patron data,
-and creating presentations about how to market the technology.
+Stationed around major entry gates, I troubleshot physical equipment, replaced
+hardware when appropriate, escalated technical issues to engineers, and
+tracked recurring problems around the ballpark.
 
 Reflection:
 
-Explaining unfamiliar technology to a broad audience taught me to make
-technical ideas approachable in a physical, public setting. It also helped me
-see entertainment technology as a meaningful professional direction.
+Supporting technology in a live physical environment changed how I understood
+technical systems: reliability depends on equipment, spaces, staff, and
+communication. Helping patrons understand the opt-in express-entry system also
+taught me to explain unfamiliar technology with clarity and patience.
 
 Personal axes:
 
@@ -372,7 +373,7 @@ Engineering
 
 Supporting themes:
 
-Physical Technology, Technology Solutions
+Live Operations, Technical Support
 
 ## Major League Baseball
 
@@ -592,13 +593,14 @@ design documentation.
 
 Approved introductory statement:
 
-I fell in love with traveling in high school on my first international trip to
-Taiwan and Japan. On that trip I explored my own culture alongside one that was
-unfamiliar. Studying abroad in Paris and later taking a six-week solo trip
-through Japan strengthened the independence and curiosity that I brought to
-unfamiliar places. When I take my camera out, I usually look for symmetry in
-nature and build my photos around a central subject. The highlighted images
-come from my solo trips, friends, and candid moments.
+Travel has taught me to enter unfamiliar places with curiosity and
+independence, then slow down enough to observe them. Photography has sharpened
+my attention to place: I look for the details that give a setting its
+character, often building images around symmetry and a central subject. During
+my solo trip through Japan, a train ride near Sapporo made me realize that a
+photograph or written description could not fully communicate how the moment
+felt. That gap made me think about interactive media as a way to translate an
+experience into something another person could encounter for themselves.
 
 ## Photography Records
 
@@ -640,7 +642,8 @@ true
 
 Alt text describing what is visibly present:
 
-Fisherman in the lake.
+A person fishing from a lake beneath a snow-streaked mountain partly covered
+by clouds.
 
 Personal caption:
 
@@ -652,8 +655,8 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-This was one of my favorite photos that I was able to capture in Japan. I was
-lucky to catch Fuji on a clear day, and the experience felt surreal.
+This is one of my favorite photographs from Japan. I was lucky to see Fuji on
+a clear day, and the moment felt surreal.
 
 ### Photograph
 
@@ -685,7 +688,7 @@ false
 
 Alt text describing what is visibly present:
 
-Blooming lily in a sea of lilypads.
+A pink water lily blooming among overlapping green and red lily pads.
 
 Personal caption:
 
@@ -697,7 +700,7 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-Floral images are fun to take.
+I enjoy photographing flowers and the patterns that form around them.
 
 ### Photograph
 
@@ -729,7 +732,7 @@ true
 
 Alt text describing what is visibly present:
 
-Torii gate at the top of the world
+A red torii gate beside a stairway on a green hillside beneath an open sky.
 
 Personal caption:
 
@@ -741,7 +744,7 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-This is just a surreal image of a torii gate at the top of Mount Otaru.
+The torii gate against the open sky made the scene feel surreal.
 
 ### Photograph
 
@@ -773,7 +776,8 @@ false
 
 Alt text describing what is visibly present:
 
-Ramen in Toyama
+A bowl of ramen topped with sliced pork, halved eggs, green onions, bamboo
+shoots, and seaweed.
 
 Personal caption:
 
@@ -785,7 +789,7 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-A personal favorite meal that I had during my trip
+This was one of my favorite meals from the trip.
 
 ### Photograph
 
@@ -817,7 +821,8 @@ false
 
 Alt text describing what is visibly present:
 
-Hakodate port at sunset
+The sun setting beyond dark hills, casting a golden reflection across a harbor
+dotted with boats.
 
 Personal caption:
 
@@ -829,7 +834,9 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-I stayed around this specific spot for a couple hours waiting for just the right photo to take. I was really glad to have caught the sunset on this day since and it has been really memorable for me
+I stayed around this spot for a couple of hours waiting for the right
+photograph. I was glad to catch the sunset, and the evening has stayed
+memorable for me.
 
 ### Photograph
 
@@ -861,7 +868,8 @@ false
 
 Alt text describing what is visibly present:
 
-The inside of a bookstore located in bookstore town
+Shelves and stacks of books and manga filling the interior of a crowded
+bookstore.
 
 Personal caption:
 
@@ -873,7 +881,8 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-I really liked the orientation and structure of the photo, no matter where you look there's a book and each of those contains a story that someone put their all into.
+I liked the structure of this photograph: wherever you look, there is another
+book containing a story that someone put their all into.
 
 ### Photograph
 
@@ -905,7 +914,8 @@ false
 
 Alt text describing what is visibly present:
 
-Two friends sitting on a bench in front of a lake
+Two people seated on a bench facing a calm lake beneath the branches of a large
+tree.
 
 Personal caption:
 
@@ -917,7 +927,8 @@ Sony α6000
 
 Why this photograph belongs in the sequence:
 
-I like the composition of this photo and really shows the intimacy and relationships people have with each other. 
+I like the composition of this photograph and how it shows the intimacy of
+people's relationships with one another.
 
 ---
 
@@ -950,8 +961,9 @@ visual rhythm; the record title and editorial references retain the official
 
 Chapter introduction:
 
-These records have given me the inspiration to create new things. They’ve
-become a part of who I am today and these are my reflections.
+These works have shaped how I think about identity, atmosphere, relationships,
+and interactive systems. Each one left me with something I want to carry into
+what I create.
 
 ## Influence Record
 
@@ -1307,43 +1319,36 @@ removing the possibility of hope.
 
 ## Direction Statement
 
-Write 3–6 sentences answering:
+Published statement:
 
-* What kind of software engineer do I want to become?
-* What kinds of systems or experiences do I want to build?
-* How do games, real-time graphics, and interactive technology fit?
-* How does teaching remain part of my future?
-* What qualities should my future work combine?
-
-Draft:
-
-My goal is to become an educator specifically in the design space. Hopefully I can contribute to the game design field in a way and I have a game in mind that I want to be able to create some day. However, right now, I really want to dive into creating beautiful menu UI as well as learn more about the music and sound effects that go into games.
+I do not see my future as only conventional software engineering. I want to
+work where technical systems, game design, interactive experiences, creative
+technology, and education meet. Over time, I hope to contribute meaningfully
+to game design and create a game of my own. I also want education to remain
+part of that future through teaching in technical and design-oriented spaces.
 
 ## Current Areas of Exploration
 
-Only include areas I am actively exploring.
+Approved active areas:
 
-* Sound design
-* User Interface and User Design
-* 3D modeling specifically Blender
+* Interface / menu design
+* Sound and music for games
+* 3D modeling with Blender
 
 ## What Longinus Represents
 
-Write 2–4 sentences explaining:
+Published reflection:
 
-* Why this portfolio is an interactive system
-* What skills and interests it brings together
-* What I am learning through the project
-
-Draft:
-
-Longinus is a creative starting point for me that also shows other my love of Evangelion. I watched the show at a very vulnerable time of my life and it really effected me in a way that other shows haven't done before. the creative direction of the show and how the ending is so different from other shows was something that I thought about for days. With the skills that I've developed in college and with the skills I'm looking to build upon, Longinus was the testing ground that I feel really encapsulates what I want to work on.
+Longinus is a testing ground where I bring the software engineering skills I
+already have together with disciplines I want to develop further: interaction
+design, 3D graphics, visual composition, motion, and creative coding. Its
+game-interface influences and Evangelion-inspired visual direction give that
+experimentation a coherent frame. Building it lets me explore how technical
+systems and deliberate art direction can become one interactive experience.
 
 ## Closing Statement
 
-Write a concise and forward-looking closing statement.
-
-Draft:
+Published closing:
 
 You are (not) alone.
 

@@ -14,7 +14,11 @@ export function AboutPage() {
   const currentChapter = getAboutChapter(activeChapter)
 
   return (
-    <main className="about" data-active-chapter={activeChapter}>
+    <main
+      className="about"
+      data-active-chapter={activeChapter}
+      data-observed-chapter={detectedChapter}
+    >
       <h1 className="about__page-title">About Jaylan Wu</h1>
       <PageIndex value="04" />
 

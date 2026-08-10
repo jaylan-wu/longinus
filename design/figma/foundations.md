@@ -317,11 +317,17 @@ overflow.
 
 ### About Current Direction spacing audit
 
-Current Direction has no approved static frame. Removing its visible heading
-also removes the former one-sided first-statement offset. At the canonical
-viewport, the complete content group remains centered within its section with
-approximately `144px` of space above and `145px` below. This chapter uses
-balanced section space rather than stretching an individual content record.
+Current Direction has no approved static frame. The in-progress default
+spatial prototype uses natural multi-screen flow rather than the earlier
+centered content group. During the scoped 2026-08-10 content-fit audit, its
+published statement measured approximately `672 × 137px` at `1440 × 900`, and
+the perspective field measured approximately `824 × 630px`; the host and
+Longinus reflection remained contained at every required desktop and narrow
+viewport. At `320 × 568`, the dark-theme scene container is inset to
+`right: -9.5rem` (approximately `x=248–472`) so the Spear remains clear of the
+statement while the fixed bottom chapter navigation remains unchanged. This
+small fitting rule does not affect the Rei-light Ramiel staging and does not
+constitute approval of the prototype or a final Current Direction frame.
 
 ## Borders, dividers, and focus
 

@@ -25,7 +25,7 @@ When choosing between adding features and polishing existing interactions, prefe
 
 # Portfolio Intent
 
-Longinus should reflect my long-term interest in game development, interactive technology, and teaching in higher education.
+Longinus should reflect my long-term interest in game design, interactive technology, and teaching in higher education.
 
 The portfolio should position me as a software engineer with a strong interest in interactive systems, game technology, creative engineering, and technical education.
 
@@ -155,7 +155,7 @@ primary visual rule throughout the system.
 The portfolio represents three connected areas of interest:
 
 - Engineering
-- Game design
+- Game Design
 - Education
 
 Projects and experiences may exist across multiple axes.
@@ -717,7 +717,7 @@ Projects may use different presentation modes based on their content.
 
 Consistency should come from typography, color roles, interface language, interaction state, and compositional principles rather than identical page templates.
 
-Projects may relate to one or more personal axes: Engineering, Game design, and Education.
+Projects may relate to one or more personal axes: Engineering, Game Design, and Education.
 
 Do not force each project into a single category or display arbitrary percentage scores for each axis.
 
@@ -788,7 +788,7 @@ The Playground is the region of Longinus where experimental interaction may be l
 ## About
 
 The About page is the human center of Longinus. It connects Jaylan's
-engineering background, game-development interests, teaching, professional
+engineering background, game-design interests, teaching, professional
 experience, travel, photography, and personal influences into one coherent
 narrative.
 
@@ -848,7 +848,7 @@ Jaylan Wu is the primary identity. The opening composition should make his
 perspective and the three connected personal axes immediately understandable:
 
 - Engineering
-- Game design
+- Game Design
 - Education
 
 The axes are a conceptual framework, not categories, percentages, or skill
@@ -940,7 +940,7 @@ source scenes, and their verification flags belong to
 
 Current Direction should connect the preceding chapters to Jaylan's present
 work and future interests. It should communicate that Longinus combines
-software engineering, interactive systems, game development, 3D technology,
+software engineering, interactive systems, game design, 3D technology,
 visual experimentation, and technical education without becoming a generic
 job-search statement.
 

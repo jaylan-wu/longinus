@@ -97,23 +97,23 @@ export const trajectory = {
       titleVariant: 'long',
       period: 'May 2023 - October 2023',
       detailMetadata: [
-        'Technology Solutions / Business Operations',
-        'Citi Field',
+        'Live Events / Technical Support',
+        'Citi Field / Major Entry Gates',
       ],
       context: {
         label: 'Context',
-        body: 'I worked with the Technology Solutions department on the business-operations side at Citi Field, learning how technology supports a sports organization and its audience.',
+        body: 'At Citi Field, I supported ticket scanners, facial-recognition ticketing kiosks, and security-screening equipment during live games and events, working alongside ticketing staff, security personnel, employees, and patrons.',
       },
       definingContribution: {
-        label: 'Application',
-        body: 'I supported adoption of an opt-in facial-recognition ticketing system by speaking directly with fans, explaining its benefits, analyzing patron data, and creating presentations about how to market the technology.',
+        label: 'Operations',
+        body: 'Stationed around major entry gates, I troubleshot physical equipment, replaced hardware when appropriate, escalated technical issues to engineers, and tracked recurring problems around the ballpark.',
       },
       reflection: {
         label: 'Reflection',
-        body: 'Explaining unfamiliar technology to a broad audience taught me to make technical ideas approachable in a physical, public setting. It also helped me see entertainment technology as a meaningful professional direction.',
+        body: 'Supporting technology in a live physical environment changed how I understood technical systems: reliability depends on equipment, spaces, staff, and communication. Helping patrons understand the opt-in express-entry system also taught me to explain unfamiliar technology with clarity and patience.',
       },
       personalAxes: ['engineering'],
-      supportingThemes: ['Physical Technology', 'Technology Solutions'],
+      supportingThemes: ['Live Operations', 'Technical Support'],
       organizationMark: 'new-york-mets',
     },
     {
