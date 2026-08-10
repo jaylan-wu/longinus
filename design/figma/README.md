@@ -152,8 +152,9 @@ Valid implementation status values include `Not started`, `In progress`, `Implem
 |---|---|---|---|---|---|---|---|
 | Homepage | Homepage / Dark / Desktop / Idle | 1440 × 900 | Idle | `references/dark/homepage-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=15-3&t=HHY6a7bF5595h5wr-4) | In progress | Major DOM regions are staged. Browser comparison, final 3D model, complete 2D/3D review, motion, and boot remain open. |
 | About | About / Identity / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-identity-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=64-24&t=4yJDN38gz5xqZBrG-4) | Implemented | Compared in-browser at the canonical viewport and reviewed at `1440 × 800`, `1680 × 1050`, `1920 × 1200`, `2240 × 1400`, and `2560 × 1600`. The established runtime font stacks and procedural spear are documented implementation differences from the export. The later user-directed removal of the visible top-left chapter heading and first-content reflow are intentional post-reference changes. |
-| About | About / Trajectory / EDU-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-trajectory-edu-001-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, the procedural spear, the Identity-matched display-title proportions, and the later visible-heading removal with a `360 × 673px` canonical panel are documented post-reference differences. |
+| About | About / Trajectory / EDU-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-trajectory-edu-001-desktop-idle-v1.png` | [Optional authoring frame](https://www.figma.com/design/rUjkiEK09hYodbltprw6kk/Longinus?node-id=110-147&t=jypyhZZFKMRF2Urs-4) | Implemented | The full static runtime frame was compared at the canonical viewport and its bounded desktop interpretation was reviewed at `1920 × 1080`, `2500 × 1350`, and `2560 × 1440`. The shared record anatomy applies to EDU-001 and EXP-001 through EXP-004. Runtime fonts, the wider canonical panel, the procedural spear, the trajectory-specific display-title fit, and the later visible-heading removal with a `360 × 673px` canonical panel are documented post-reference differences. |
 | About | About / Outside the System / PHOTO-001 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-outside-photo-001-desktop-idle-v1.png` | — | Implemented | The approved export defined and was directly compared with the left-side chapter composition. The established right navigation and spear scene remain protected prior work. Visible `PHOTO-*` carousel labels, Identity-matched display-title proportions, and the later visible-heading removal with selected-image reflow are intentional runtime refinements. |
+| About | About / Interactive Influences / Display 01 / Dark / Desktop / Idle | 1440 × 900 (16:10) | Idle | `references/dark/about-influences-inf-001-desktop-idle-v1.png` | — | Implemented | The full left and center composition was directly compared at the canonical viewport. Display positions and identifiers now share the reference order from Evangelion `INF-001` through Metaphor `INF-004`; the established font tokens, header, right navigation, procedural spear, page index, and temporary theme control remain intact. All four explicitly supplied images are available as optimized WebPs. |
 
 Authoring provenance is optional and may be omitted. A direct link never
 substitutes for a repository export and is not a prerequisite for approval or
@@ -292,6 +293,11 @@ Reference:
   refinements.
   The panel keeps fixed title, record-metadata, narrative, and footer regions so
   record selection cannot move or resize its outer border.
+- The runtime-font display title uses a less-condensed `0.81` horizontal stage
+  and an `80px` canonical size driven by the directory's responsive inline
+  unit. Its text ink ends near `x=532.6` at the canonical viewport—approximately
+  `2.4px` before the directory divider endpoint and `42.4px` before the panel—
+  while preserving the same near-edge relationship on larger desktops.
 - Selected-record titles use named `standard`, `long`, and `extra-long`
   variants. Authored two-line breaks remain data-owned. Long selector-title
   variants keep EDU-001, EXP-002, and EXP-003 clear of the visible state
@@ -428,3 +434,64 @@ The original photography files remain archival JPEG sources. Runtime data uses
 2000px WebP display images and 480px WebP thumbnails; broader responsive
 `srcset` delivery and loading/performance review remain open in
 [`TASKS.md`](../../TASKS.md).
+
+## About Interactive Influences dark desktop idle
+
+Reference:
+
+`references/dark/about-influences-inf-001-desktop-idle-v1.png`
+
+### Implementation boundaries
+
+- This checkpoint implements and directly compares the Interactive Influences
+  left-directory and selected-record composition at `1440 × 900`.
+- The existing fixed header, top-right Current chapter status, right-side
+  chapter navigation, page index, About motif scene, and chapter-level state
+  remain protected shared work. Influence selection stays local and does not
+  target, animate, or remount the spear.
+- The composition begins at `x=75, y=150`, uses a `460px` directory, a `40px`
+  gap, and a `325 × 675px` selected panel. The directory introduction occupies
+  the first `175px`; four approximately `125px` rows fill the remaining
+  `500px`. The initial Evangelion image remains approximately `300 × 200px`,
+  the quote divider ends at `y=434`, and the categories divider remains
+  bottom-anchored at `y=719`.
+- The directory uses display positions `01` through `04` in the reference order,
+  and the identifiers now follow that same order: Evangelion `INF-001`, Kafka
+  `INF-002`, Persona `INF-003`, and Metaphor `INF-004`.
+- The `INFLUENCES` display title uses a less-condensed `0.89` horizontal stage
+  and an inline-unit-driven `72px` canonical size. It ends approximately
+  `3.8px` before the directory divider at `1440 × 900` and preserves the same
+  near-edge relationship across the reviewed large-desktop range.
+- Rows reuse the shared `navigation-action` background sweep, leading rail,
+  label treatment, visible focus outline, and reduced-motion behavior with the
+  highlight-orange analytical-state accent. Selected state also remains
+  explicit through `SELECTED`, `aria-pressed`, and paired orange rules.
+- The selected panel renders only stable metadata, an optional record-owned
+  image, quote, Personal Reflection, and Influence Categories. A flex spacer
+  after the reflection pins categories to the panel bottom for every record.
+  Each record uses its explicitly supplied image. The Kafka and Metaphor JPEGs
+  have optimized WebP derivatives, and the Persona WebP is resized and
+  re-encoded for the website. Images retain their native aspect ratios, remain
+  centered, and use a `300px` width cap rather than a shared cover crop.
+
+### Responsive and editorial interpretation
+
+- The canonical composition scales through the shared bounded About inline and
+  block units. It was browser-inspected at `1440 × 800` and `1920 × 1080`; at
+  `1240px` and below, the introduction, directory, and selected panel stack in
+  normal document flow.
+- Selected imagery remains at or below `300px` wide across desktop and stacked
+  layouts. Viewports narrower than the cap shrink the image to the available
+  panel width without changing its intrinsic ratio.
+- The stacked interpretation was inspected at `1080 × 900`, `390 × 844`, and
+  `320 × 568` without page-level horizontal overflow. Content remains available
+  through normal scrolling, including when the About WebGL scene is unavailable.
+- Runtime typography uses the established display, sans/content, and
+  mono/system tokens. The selected panel uses the canonical full release range
+  `1995–1997`; its identifier now agrees with the export.
+  The existing longer Current chapter label, temporary theme QA control,
+  procedural spear silhouette, and page-index rendering are protected runtime
+  differences rather than changes owned by this chapter.
+- All four featured quotations retain their open wording, punctuation,
+  translation, attribution, edition, speaker, or source-scene verification
+  flags in [`content/ABOUT_CONTENT.md`](../../content/ABOUT_CONTENT.md).

@@ -105,10 +105,23 @@ export type PhotographyRecord = {
 
 export type InfluenceRecord = {
   id: `INF-${string}`
+  directoryOrder: number
+  directoryTitleParts: readonly {
+    text: string
+    prominence: 'primary' | 'supporting'
+  }[]
+  directoryTitleVariant?: 'compact'
   title: string
   medium: string
+  displayMedium?: string
   creator?: string
   releaseYear: string
+  image?: {
+    src: string
+    alt: string
+    width: number
+    height: number
+  }
   includedWorks?: readonly string[]
   featuredQuote: string
   quoteAttribution?: string

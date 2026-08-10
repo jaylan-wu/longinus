@@ -35,8 +35,11 @@
 }
 
 .trajectory-introduction__title {
-  font-size: calc(5.625 * var(--trajectory-block-unit));
+  font-size: calc(5 * var(--trajectory-inline-unit));
   white-space: nowrap;
+  transform:
+    translateY(var(--about-display-title-offset-y))
+    scaleX(0.81);
 }
 
 .about-chapter--trajectory .about-chapter__lead {
@@ -430,4 +433,3 @@
   from { opacity: 0; }
   to { opacity: var(--organization-mark-opacity); }
 }
-

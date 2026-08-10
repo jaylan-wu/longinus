@@ -15,28 +15,41 @@ export function InfluenceRecordList({
 }: InfluenceRecordListProps) {
   return (
     <ul className="influence-records__index" aria-label="Creative influence records">
-      {records.map((influence) => {
+      {records.map((influence, index) => {
         const isSelected = influence.id === selectedId
 
         return (
           <li key={influence.id}>
             <button
               type="button"
-              className={isSelected ? 'is-active' : undefined}
+              className={`navigation-action${isSelected ? ' is-active' : ''}`}
+              data-influence-id={influence.id}
               aria-controls={detailId}
               aria-pressed={isSelected}
               onClick={() => onSelect(influence.id)}
             >
               <span className="influence-records__identifier">
-                <span>{influence.id}</span>
+                <span>{String(index + 1).padStart(2, '0')}</span>
                 <span>{isSelected ? 'Selected' : 'View'}</span>
               </span>
-              <strong>{influence.title}</strong>
-              <span className="influence-records__metadata">
-                <span>{influence.medium}</span>
-                <span aria-hidden="true">/</span>
-                <span>{influence.releaseYear}</span>
-              </span>
+              <strong
+                className="influence-records__title-parts navigation-action__label"
+              >
+                <span className="about__visually-hidden">{influence.title}</span>
+                <span
+                  className={`influence-records__visual-title${influence.directoryTitleVariant ? ` influence-records__visual-title--${influence.directoryTitleVariant}` : ''}`}
+                  aria-hidden="true"
+                >
+                  {influence.directoryTitleParts.map((part) => (
+                    <span
+                      className={`influence-records__title-part influence-records__title-part--${part.prominence}`}
+                      key={`${influence.id}-${part.text}`}
+                    >
+                      {part.text}
+                    </span>
+                  ))}
+                </span>
+              </strong>
             </button>
           </li>
         )

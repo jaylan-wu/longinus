@@ -7,18 +7,19 @@ and validation history.
 
 ## Audit scope
 
-Audited against source and the recorded browser comparisons on **2026-08-06**.
+Audited against source and the recorded browser comparisons on **2026-08-09**.
 Theme-architecture and source-ownership notes were reconciled against source
 on **2026-08-08** without adding new browser or visual-comparison evidence.
 
 The values below cover the current Home implementation, the browser-compared
 About Identity composition, the full static About Trajectory EDU-001
 composition plus its bounded large-desktop interpretation, the compared
-left-side About Outside the System PHOTO-001 composition, and the later
+left-side About Outside the System PHOTO-001 composition, the full About
+Interactive Influences display-01 composition, and the later
 user-directed chapter-header removal and content reflow across all five About
-chapters. Home values are not comparison-approved. Interactive Influences and
-Current Direction still have no approved static frames; their measurements
-below document current runtime geometry rather than frame approval.
+chapters. Home values are not comparison-approved. Current Direction still has
+no approved static frame; its measurements below document current runtime
+geometry rather than frame approval.
 
 ## Theme and color architecture
 
@@ -138,7 +139,7 @@ without changing the established font families.
 
 | Element | Current implementation | Verification note |
 | --- | --- | --- |
-| `TRAJECTORY` display title | `var(--font-display)`, `72px / 68.1px` at the `1440 × 900` baseline, weight `700`, `-0.045em` tracking, and `0.882` desktop horizontal staging | Uses the shared Identity display-title proportions while its size continues to follow the block unit above the baseline |
+| `TRAJECTORY` display title | `var(--font-display)`, `80px / 75.68px` at the `1440 × 900` baseline, weight `700`, `-0.045em` tracking, and chapter-specific `0.81` desktop horizontal staging | The less-condensed title follows the responsive inline unit so its glyph ink ends within approximately `2.4–4.3px` of the directory divider across the reviewed desktop range; narrow stacked layouts remove the horizontal staging |
 | Introductory statement | `var(--font-sans)`, `16px / 20px` at the baseline, `-0.05em` tracking, `460px` baseline width | Preserves the reference's four-line wrapping throughout the reviewed desktop matrix |
 | Record-selector titles | `var(--font-display)`, standard `20px / 20px` and long `18px / 20px` at the baseline; narrow layouts use the shared wrapping treatment | EDU-001, EXP-002, and EXP-003 use the long selector variant to clear `SELECTED`; EXP-004 uses the approved `Lab Facilities Manager` constrained title while the selected record retains the official title |
 | Selector system metadata | `var(--font-mono)`, `12px / 20px` at the baseline | Applies to index, organization, and visible record state; size and cadence follow the block unit |
@@ -155,17 +156,29 @@ without changing the established font families.
 | Selected-photo metadata | `var(--font-mono)`, `12px` baseline for system label, identifier, personal caption, and reflection | Lavender identifies personal context; all seven selected states fit without overflow |
 | Thumbnail identifiers | `var(--font-mono)`, `10px` baseline, visible beneath every thumbnail | Labels remain a deliberate divergence from the approved export and use lavender only for the selected record |
 
+### Current About Interactive Influences mapping
+
+| Element | Current implementation | Verification note |
+| --- | --- | --- |
+| `INFLUENCES` display title | `var(--font-display)`, `72px / 68.11px` at the `1440 × 900` baseline, weight `700`, `-0.045em` tracking, and chapter-owned `0.89` horizontal staging | The less-condensed title follows the responsive inline unit and ends within approximately `3.8–6.9px` of the directory divider across the reviewed desktop range |
+| Chapter introduction | `var(--font-sans)`, `16px / 20px` at the baseline with `-0.04em` tracking | Uses the content stack and preserves the approved three-line wording and cadence |
+| Directory title parts | `var(--font-display)`, weight `400`, normal style, shared `-0.04em` tracking and `0.86` line height; every record uses the same primary `48px` and supporting `16px` baseline roles | Data-owned title segments preserve the mixed-scale single-baseline hierarchy while using one consistent font treatment. Evangelion fits as a complete title through a slight responsive horizontal stage rather than smaller word sizes. |
+| Directory metadata | `var(--font-mono)`, `11px / 12px` at the baseline | Display positions and `SELECTED` / `VIEW` remain distinct from stable `INF-*` identifiers |
+| Selected-record metadata and categories | `var(--font-mono)`, `9px / 12px` at the baseline | Orange remains limited to analytical selection state; categories use a two-column, column-first layout |
+| Personal Reflection | `var(--font-sans)`, `11px / 13px` at the baseline | Keeps the complete approved reflection readable within the fixed canonical panel and grows for stacked narrow layouts |
+
 Do not add or bundle fonts solely to match an exported reference. Any future change
 to the established runtime stacks requires explicit product direction and a
 coordinated update to `src/index.css`, `AGENTS.md`, and this document.
 
-Identity, Trajectory, and Outside the System are the implemented chapters with
-explicit large display titles. They share one typographic rule for family,
+Identity, Trajectory, Outside the System, and Interactive Influences are the
+implemented chapters with explicit large display titles. The first three share one typographic rule for family,
 weight, line-height ratio, tracking, casing, and character-width staging while
 retaining composition-owned font sizes and wraps. At `1080px` and below, all
-three return to natural horizontal width together. Interactive Influences and
-Current Direction do not yet define large chapter display titles; their record
-title and closing statement remain separate content roles.
+three return to natural horizontal width together. Interactive Influences maps
+the same display family, weight, tracking, and casing into its approved
+chapter-owned width and scale; Current Direction does not yet define a large
+chapter display title.
 
 ## Layout and canonical viewport
 
@@ -203,6 +216,7 @@ unrelated large-desktop override set.
 | About Trajectory stable frame | `360 × 673px` at the canonical viewport with chapter-specific responsive height extensions; stable internal title, record-metadata, narrative, and footer regions | Outer bounds remain identical across EDU-001 and EXP-001 through EXP-004 at a given viewport; the complete post-reflow large-desktop matrix still requires remeasurement |
 | About Outside desktop composition | Canonical `75px` left inset; approximately `821px` content width; approximately `480 × 320px` selected image from `y=330–650` with an adjacent metadata column | The preview uses part of the reclaimed chapter space while giving the caption column more width; the fixed right boundary remains the shared `67.64% / 32.36%` About split |
 | About Outside carousel | Approximately `821px` total width from `y=675–789`, with five visible records plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; previous/next rings align to the thumbnail-image center after compensating for the label block, while the active outline and corner marker provide a non-color cue |
+| About Interactive Influences desktop composition | Canonical `75px` left inset; `460px` directory; `40px` gap; `325 × 675px` selected panel; `825px` total width at `1440 × 900` | The introduction, four-row directory, and panel share `y=150–825`; the initial Evangelion image remains approximately `300 × 200px`, while other images keep their native ratios at the same width cap |
 | About first-content anchor | `151px` at `1440 × 900`, `120px` on short desktop and tablet, and `100px` on mobile | The visible orange-numbered headings are removed; each section retains a visually hidden `h2`, while the persistent top-right Current chapter status and right navigation remain visible |
 | About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | The shared shell was reviewed previously; the post-reflow Trajectory and Outside size matrix requires refreshed measurement |
 | About short desktop | Shared `120px` first-content anchor with height-aware chapter-specific reflow; no internal chapter scroller | Implemented and browser-measured |
@@ -230,7 +244,12 @@ At `1440 × 900`, the selector measures `460 × 426` at approximately
 `x=75, y=398`; the runtime selected-record panel measures `360 × 673px` at
 approximately `x=575, y=151`. Their `40px` column gap and shared `y=824` bottom
 edge remain stable within sub-pixel browser rounding. The display title also
-begins at approximately `x=75, y=151`. The exported dark reference retains its
+begins at approximately `x=75, y=151`. Its runtime-font text ink ends near
+`x=532.6`, leaving approximately `42.4px` before the selected panel at `x=575`;
+the chapter-specific `0.81` horizontal staging and inline-unit-driven font size
+keep the final `Y` visible while using nearly the complete directory measure.
+The
+exported dark reference retains its
 `325 × 607px` panel and visible top-left chapter heading; the wider panel,
 upward extension, hidden semantic heading, and first-content reflow are
 intentional user-directed post-reference refinements.
@@ -276,12 +295,25 @@ comparisons remain open.
 
 ### About Interactive Influences spacing audit
 
-Interactive Influences has no approved static frame. In the current
-`1440 × 900` runtime, its visually hidden `h2`, record index, and detail region
-begin at the shared `y=151` first-content anchor. The four-row index extends to
-`y=824`, matching the canonical Trajectory lower boundary while distributing
-the reclaimed space evenly across its selectable records. Its index returns to
-natural row height when the composition stacks.
+At `1440 × 900`, the runtime composition directly matches the approved
+reference's dominant geometry: the full frame spans approximately
+`x=75–900, y=150–825`; its `460px` directory and `325px` panel are separated by
+`40px`. The introduction occupies `175px`; the directory begins at `y=325` and
+its four rows each measure approximately `125px`. The panel's `12.5px` inline
+inset yields a `300 × 200px` Evangelion image at `x=587.5, y=185`. The quote
+divider ends at `y=434`; Personal Reflection begins at `y=448`; and Influence
+Categories remain anchored at `y=719–812` with a `13px` panel-bottom inset.
+The less-condensed display title ends near `x=531.2`, approximately `3.8px`
+before the directory divider endpoint and `43.8px` before the selected panel.
+
+The selected panel retains identical `325 × 675px` outer bounds across all four
+records. Category blocks keep the same bottom edge even when a long category
+wraps, and remaining space appears only after Personal Reflection. The
+directory and selected panel use the same ascending visual and identifier order
+from Evangelion `01 / INF-001` through Metaphor `04 / INF-004`. At `1240px` and
+below, the composition stacks and returns to natural height; the `1080 × 900`,
+`390 × 844`, and `320 × 568` inspections recorded no page-level horizontal
+overflow.
 
 ### About Current Direction spacing audit
 
@@ -311,6 +343,10 @@ balanced section space rather than stretching an individual content record.
   role displacement. Selection retains orange top/bottom rules plus the
   visible `SELECTED` label and `aria-pressed`; keyboard focus retains the
   shared `2px` orange outline, so state is not communicated by color alone.
+- Interactive Influences rows reuse the same orange sweep, leading rail,
+  title treatment, and `2px` focus outline. `SELECTED`, paired horizontal rules,
+  visual directory position, and `aria-pressed` preserve non-color state; local
+  selection does not affect the About motif.
 - Outside selection uses a `2px` lavender outline, a structural corner marker,
   the selected identifier treatment, `aria-pressed`, and `aria-current`.
   Keyboard focus uses a `2px` lavender outline and does not rely on color alone.
@@ -341,6 +377,13 @@ balanced section space rather than stretching an individual content record.
   `PHOTO-001` is prioritized, and image decoding/loading behavior remains
   explicit. Broader responsive `srcset` delivery and route-level performance
   review remain open.
+- About Interactive Influences uses explicitly supplied imagery for every
+  record. Evangelion remains `1024 × 683`; the Kafka and Metaphor JPEGs have
+  `1024px`-wide optimized WebP derivatives, and Persona is resized and
+  re-encoded to `1024 × 576`. Runtime data records each derivative's intrinsic
+  dimensions and useful alternative text. Selected images are centered at
+  their native aspect ratio with a `300px` width cap, shrinking only when the
+  available panel width is narrower.
 
 ## Verification boundary
 
@@ -368,7 +411,6 @@ remaining verification work.
 - Resolution of stored-export versus implementation copy/type differences
 - Projects and project-detail static compositions, including the settled
   project-detail spear placement
-- Approved static compositions for Interactive Influences and Current
-  Direction
+- Approved static composition for Current Direction
 - Final narrow-layout compositions and mobile-navigation treatment
 - Approved visible-focus treatment and color contrast

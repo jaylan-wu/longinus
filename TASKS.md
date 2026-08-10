@@ -10,6 +10,59 @@ what remains.
 
 Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
+Follow-up About Influences and Trajectory validation on 2026-08-09: all four
+Influence records now load explicitly supplied `1024px`-wide WebPs. Kafka was
+reduced from `244,555` to `73,556` bytes, Metaphor from `106,045` to `78,354`
+bytes, and Persona from `190,064` to `75,164` bytes while resizing Persona from
+`1920 × 1080` to `1024 × 576`; the original Kafka and Metaphor JPEGs remain as
+source assets. Display positions and identifiers now agree from Evangelion
+`01 / INF-001` through Metaphor `04 / INF-004`, and the redundant `Selected
+influence` panel label is absent. In-browser selection confirmed all four
+images, intrinsic dimensions, alternative text, quotes, reflections, category
+switching, equal `325 × 675px` panel bounds, no internal overflow, and a common
+`y=812` category bottom. A follow-up image check retained each source ratio at
+a `300px` width cap: Evangelion rendered at approximately `300 × 200.1`, Kafka
+at `300 × 176.4`, and Persona and Metaphor at `300 × 168.75`; at `320px` the
+image shrank to the available panel width without horizontal overflow. The
+Trajectory title now uses a less-condensed `0.81` horizontal stage and an
+inline-unit-driven `80px` canonical size. Its final `Y` ends approximately
+`2.4px` before the directory divider endpoint and clears the selected panel by
+approximately `42.4px` at `1440 × 900`; the same relationship scales with the
+directory at larger desktops. The `INFLUENCES` title now follows the same
+width-aware principle with a less-condensed `0.89` stage, ending approximately
+`3.8–6.9px` before its directory divider throughout the reviewed desktop
+range. Browser checks at `1440 × 900`,
+`1440 × 800`, `1920 × 1080`, `1241 × 900`, `1080 × 900`, `390 × 844`, and
+`320 × 568` recorded no page-level horizontal overflow or page errors. The
+Evangelion directory title now uses the same primary and supporting type sizes
+as Kafka, Persona, and Metaphor; responsive whole-title horizontal fitting
+preserves those shared sizes without clipping the longer title.
+`corepack yarn typecheck`, `corepack yarn lint`, production `build`, and
+`git diff --check` passed; no test script exists. The build retains the known
+SceneCanvas chunk-size warning.
+
+Scoped About Interactive Influences validation on 2026-08-09: the supplied
+`1440 × 900` dark export was inspected and directly compared with the runtime
+Display-01 Evangelion state. The runtime composition measured `460px` for the
+directory, a `40px` gap, and `325 × 675px` for the selected panel; its four
+directory rows measured approximately `125px` each, the image measured
+`300 × 200px`, and the bottom-anchored categories divider remained at `y=719`.
+All four selected states retained the same panel bounds and bottom edge while
+updating the stable `INF-*` identifier, quote, complete Personal Reflection,
+and categories; only the Evangelion record had supplied imagery at that
+checkpoint. Pointer hover,
+Enter, Space, focus retention, visible focus, explicit `SELECTED` text,
+`aria-pressed`, reduced-motion displacement removal, and chapter-navigation
+entry passed. Influence selection preserved the same About canvas instance,
+and forcing WebGL unavailable left all four semantic controls and the selected
+panel usable. Browser smoke checks at `1440 × 800`, `1920 × 1080`,
+`1080 × 900`, `390 × 844`, and `320 × 568` had no page-level horizontal
+overflow; the minimum-width title segments remained inside their buttons.
+`corepack yarn typecheck`, `corepack yarn lint`, production `build`, and
+`git diff --check` passed. No test script exists. The build reported the known
+chunk-size warning for the approximately `882 kB` SceneCanvas chunk
+(`234 kB` gzip).
+
 Outside-the-System carousel reliability validation on 2026-08-07: the seven
 5,794–6,000px source photographs were valid, but the cloned carousel was asking
 the browser to decode the 23–24 megapixel originals for 15 thumbnails as well
@@ -563,10 +616,15 @@ complete commitment/impact sequence is planned.
 - [x] Normalize the implemented Identity, Trajectory, and Outside the System
   large display titles to the Identity character-width and typography
   treatment across desktop and narrow layouts.
-- [ ] Create and approve complete static frames for Interactive Influences and
-  Current Direction.
-- [ ] Record full visual comparisons for the two remaining chapter frames and
-  the finished narrow-layout reinterpretation.
+- [x] Store the approved About / Interactive Influences / Display 01 / Dark /
+  Desktop / Idle export at
+  `design/figma/references/dark/about-influences-inf-001-desktop-idle-v1.png`
+  and implement its full left-directory and selected-record composition.
+- [ ] Create and approve a complete static frame for Current Direction.
+- [x] Record the canonical desktop comparison and bounded desktop/narrow smoke
+  checks for Interactive Influences.
+- [ ] Record the Current Direction comparison and approve the finished
+  narrow-layout reinterpretation across the complete About narrative.
 
 ## Identity
 
@@ -628,6 +686,10 @@ complete commitment/impact sequence is planned.
 - [x] Reuse the right-directory `navigation-action` hover/focus sequence for
   Trajectory role rows with the highlight-orange accent, preserving selected,
   reduced-motion, and narrow-layout behavior.
+- [x] Constrain the runtime-font `TRAJECTORY` display-title ink to its
+  introduction column so the final `Y` remains clear of the selected-record
+  panel, using a less-condensed treatment that follows the directory's
+  responsive inline measure.
 - [ ] Verify official organization, role, degree, school/program, course, and date wording.
 - [ ] Publish an Adjunct Professor record only after the role begins and official wording is verified.
 - [ ] Add related-project links only when corresponding case studies exist.
@@ -667,9 +729,15 @@ complete commitment/impact sequence is planned.
   canonical chapter name exposed by the persistent Current chapter status and
   visually hidden section heading; use the shorter `Influences` label only in
   the compact chapter navigator.
-- [x] Avoid ratings, rankings, and copied screenshots or promotional artwork.
+- [x] Avoid ratings and rankings; use the explicitly supplied image for each
+  record through optimized WebP website assets and useful alternative text.
 - [ ] Verify the featured-quote wording, punctuation, translations, speakers, and source scenes or editions identified in `content/ABOUT_CONTENT.md`.
-- [ ] Create and compare against an approved chapter composition.
+- [x] Create and directly compare against the approved `1440 × 900` chapter
+  composition while preserving stable `INF-*` identifiers, existing About
+  navigation, and spear behavior.
+- [x] Scale the `INFLUENCES` display title from the directory's responsive
+  inline measure so it uses the full divider width without entering the panel
+  gap.
 
 ## Current Direction
 
@@ -807,11 +875,10 @@ complete commitment/impact sequence is planned.
 8. Implement boot around real readiness for the active theme's critical scene assets.
 9. Create and store Projects exported visual and motion references, replace provisional timing/content, and polish the archive transition.
 10. Build the project-detail narrative and demonstration framework from real case-study material.
-11. Create approved exported frames for Interactive Influences and Current
-    Direction, supply authored About chapter-motion references, decide whether
-    further responsive photography delivery is warranted, and layer authored
-    dark progression over the continuous scroll-direction-responsive Spear
-    rotation.
+11. Create an approved exported frame for Current Direction, supply authored
+    About chapter-motion references, decide whether further responsive
+    photography delivery is warranted, and layer authored dark progression
+    over the continuous scroll-direction-responsive Spear rotation.
 12. Design and implement Playground, then Music, when their content and references are ready.
 13. Reinterpret completed desktop experiences for narrow/touch layouts and complete the outstanding manual accessibility, fallback, and performance validation.
 

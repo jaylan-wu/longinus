@@ -925,21 +925,39 @@ I like the composition of this photo and really shows the intimacy and relations
 
 The canonical published sequence contains four mixed-media influence records:
 
-1. `INF-001` — *Metaphor: ReFantazio* — video game
-2. `INF-002` — *Persona 4 Golden* — video game
-3. `INF-003` — *Kafka on the Shore* — novel
-4. `INF-004` — *Neon Genesis Evangelion* and *The End of Evangelion* — anime
+1. `INF-001` — *Neon Genesis Evangelion* and *The End of Evangelion* — anime
    television series and film
+2. `INF-002` — *Kafka on the Shore* — novel
+3. `INF-003` — *Persona 4 Golden* — video game
+4. `INF-004` — *Metaphor: ReFantazio* — video game
 
 Do not rank them.
 
 Do not write conventional reviews.
 
+The approved directory composition presents the records in the same order as
+their identifiers:
+
+1. `01` — `INF-001` — *Neon Genesis Evangelion*
+2. `02` — `INF-002` — *Kafka on the Shore*
+3. `03` — `INF-003` — *Persona 4 Golden*
+4. `04` — `INF-004` — directory display label `METAPHOR REFANTAZIO`
+
+This presentation order is not a ranking.
+The directory intentionally omits the colon from the canonical work title for
+visual rhythm; the record title and editorial references retain the official
+*Metaphor: ReFantazio* punctuation.
+
+Chapter introduction:
+
+These records have given me the inspiration to create new things. They’ve
+become a part of who I am today and these are my reflections.
+
 ## Influence Record
 
 Identifier:
 
-INF-001
+INF-004
 
 Publication status:
 
@@ -956,6 +974,20 @@ Video game
 Release year:
 
 2024
+
+Selected image:
+
+`src/features/about/assets/influences/metaphor.webp`
+
+Selected image alternative text:
+
+Illustrated profile of the Metaphor: ReFantazio protagonist against an abstract
+blue-and-red background.
+
+Image presentation note:
+
+The website uses a `1024 × 576` optimized WebP derived from the supplied JPEG
+and presents it at its native aspect ratio with a `300px` width cap.
 
 Featured quote:
 
@@ -1001,7 +1033,7 @@ spaces the player must pass through to return to it.
 
 Identifier:
 
-INF-002
+INF-003
 
 Publication status:
 
@@ -1018,6 +1050,20 @@ Video game
 Release year:
 
 2012
+
+Selected image:
+
+`src/features/about/assets/influences/persona4golden.webp`
+
+Selected image alternative text:
+
+The Persona 4 Golden cast lying in a circle and looking upward toward the
+viewer.
+
+Image presentation note:
+
+The supplied WebP is resized from `1920 × 1080` to `1024 × 576`, re-encoded for
+the website, and presented at its native aspect ratio with a `300px` width cap.
 
 Featured quote:
 
@@ -1074,7 +1120,7 @@ the story, and the gameplay.
 
 Identifier:
 
-INF-003
+INF-002
 
 Publication status:
 
@@ -1095,6 +1141,20 @@ Haruki Murakami
 Original publication year:
 
 2002
+
+Selected image:
+
+`src/features/about/assets/influences/kafka.webp`
+
+Selected image alternative text:
+
+Gold-toned folding-screen painting of black crows in flight and perched among
+bare branches.
+
+Image presentation note:
+
+The website uses a `1024 × 602` optimized WebP derived from the supplied JPEG
+and presents it at its native aspect ratio with a `300px` width cap.
 
 Featured quote:
 
@@ -1145,7 +1205,7 @@ meaning is fully understood.
 
 Identifier:
 
-INF-004
+INF-001
 
 Publication status:
 
@@ -1167,6 +1227,21 @@ Anime television series and film
 Release years:
 
 1995–1997
+
+Selected image:
+
+`src/features/about/assets/influences/evangelion.webp`
+
+Selected image alternative text:
+
+Illustrated Evangelion scene with Shinji and Asuka facing a monumental image
+of Rei beneath a starry sky.
+
+Image presentation note:
+
+This is the explicitly supplied image for the approved `INF-001` selected
+state. All four records now have supplied selected imagery; every asset keeps
+its natural source aspect ratio and uses a `300px` width cap.
 
 Featured quote:
 

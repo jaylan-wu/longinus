@@ -8,6 +8,7 @@ type InfluenceDetailProps = {
 
 export function InfluenceDetail({ detailId, influence }: InfluenceDetailProps) {
   const titleId = `influence-${influence.id.toLowerCase()}-title`
+  const categoriesId = `influence-${influence.id.toLowerCase()}-categories`
 
   return (
     <article
@@ -17,31 +18,24 @@ export function InfluenceDetail({ detailId, influence }: InfluenceDetailProps) {
       aria-live="polite"
     >
       <div className="influence-detail__content" key={influence.id}>
+        <h3 className="about__visually-hidden" id={titleId}>
+          {influence.title}
+        </h3>
         <p className="influence-detail__eyebrow">
-          <span>{influence.id} / Selected influence</span>
-          <span>{influence.medium} / {influence.releaseYear}</span>
+          <span>{influence.id}</span>
+          <span>{influence.displayMedium ?? influence.medium} / {influence.releaseYear}</span>
         </p>
-        <h3 id={titleId}>{influence.title}</h3>
 
-        {influence.creator || influence.includedWorks ? (
-          <dl className="influence-detail__work-metadata">
-            {influence.creator ? (
-              <div>
-                <dt>Creator</dt>
-                <dd>{influence.creator}</dd>
-              </div>
-            ) : null}
-            {influence.includedWorks ? (
-              <div>
-                <dt>Included works</dt>
-                <dd>
-                  <ul>
-                    {influence.includedWorks.map((work) => <li key={work}>{work}</li>)}
-                  </ul>
-                </dd>
-              </div>
-            ) : null}
-          </dl>
+        {influence.image ? (
+          <img
+            className="influence-detail__image"
+            src={influence.image.src}
+            alt={influence.image.alt}
+            width={influence.image.width}
+            height={influence.image.height}
+            loading="lazy"
+            decoding="async"
+          />
         ) : null}
 
         <figure className="influence-detail__quote">
@@ -53,34 +47,21 @@ export function InfluenceDetail({ detailId, influence }: InfluenceDetailProps) {
           ) : null}
         </figure>
 
-        <section className="influence-detail__categories" aria-labelledby={`influence-${influence.id.toLowerCase()}-categories`}>
-          <h4 id={`influence-${influence.id.toLowerCase()}-categories`}>Influence categories</h4>
-          <ul>
-            {influence.categories.map((category) => <li key={category}>{category}</li>)}
-          </ul>
-        </section>
-
-        <InfluenceNarrative
-          heading="Specific influence"
-          paragraphs={influence.specificElement}
-        />
         <InfluenceNarrative
           className="influence-detail__reflection"
           heading="Personal reflection"
           paragraphs={influence.displayReflection}
         />
-        <InfluenceNarrative
-          className="influence-detail__takeaway"
-          heading="Design takeaway"
-          paragraphs={[influence.designTakeaway]}
-        />
-        {influence.connectionToLonginus ? (
-          <InfluenceNarrative
-            className="influence-detail__connection"
-            heading="Connection to Longinus"
-            paragraphs={influence.connectionToLonginus}
-          />
-        ) : null}
+
+        <section
+          className="influence-detail__categories"
+          aria-labelledby={categoriesId}
+        >
+          <h4 id={categoriesId}>Influence categories</h4>
+          <ul>
+            {influence.categories.map((category) => <li key={category}>{category}</li>)}
+          </ul>
+        </section>
       </div>
     </article>
   )

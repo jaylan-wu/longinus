@@ -1,11 +1,28 @@
 import type { InfluenceRecord } from '../types/about'
+import evangelionImage from '../assets/influences/evangelion.webp'
+import kafkaImage from '../assets/influences/kafka.webp'
+import metaphorImage from '../assets/influences/metaphor.webp'
+import persona4GoldenImage from '../assets/influences/persona4golden.webp'
 
-export const creativeInfluences = [
+export const creativeInfluencesIntroduction = 'These records have given me the inspiration to create new things. They’ve become a part of who I am today and these are my reflections.'
+
+const influenceRecords = [
   {
-    id: 'INF-001',
+    id: 'INF-004',
+    directoryOrder: 4,
+    directoryTitleParts: [
+      { text: 'Metaphor', prominence: 'primary' },
+      { text: 'ReFantazio', prominence: 'supporting' },
+    ],
     title: 'Metaphor: ReFantazio',
-    medium: 'Video Game',
+    medium: 'Video game',
     releaseYear: '2024',
+    image: {
+      src: metaphorImage,
+      alt: 'Illustrated profile of the Metaphor: ReFantazio protagonist against an abstract blue-and-red background.',
+      width: 1024,
+      height: 576,
+    },
     featuredQuote: '“It is okay to dream of a fantasy.”',
     quoteVerificationNote: 'Confirm the exact wording, capitalization, and punctuation from the game before final publication.',
     categories: [
@@ -25,10 +42,21 @@ export const creativeInfluences = [
     designTakeaway: 'Treat menus and supporting systems as part of the experience rather than as spaces the player must pass through to return to it.',
   },
   {
-    id: 'INF-002',
+    id: 'INF-003',
+    directoryOrder: 3,
+    directoryTitleParts: [
+      { text: 'Persona 4', prominence: 'primary' },
+      { text: 'Golden', prominence: 'supporting' },
+    ],
     title: 'Persona 4 Golden',
     medium: 'Video game',
     releaseYear: '2012',
+    image: {
+      src: persona4GoldenImage,
+      alt: 'The Persona 4 Golden cast lying in a circle and looking upward toward the viewer.',
+      width: 1024,
+      height: 576,
+    },
     featuredQuote: '“Next year and the year after that... No matter what happens, I’m sure we’ll be okay.”',
     quoteAttribution: 'Yukiko Amagi',
     quoteVerificationNote: 'Confirm the exact wording, capitalization, punctuation, speaker, and scene before final publication.',
@@ -50,11 +78,23 @@ export const creativeInfluences = [
     designTakeaway: 'Build relationships across the entire cast, not only between each character and the protagonist. Give every character a meaningful place within the group, the story, and the gameplay.',
   },
   {
-    id: 'INF-003',
+    id: 'INF-002',
+    directoryOrder: 2,
+    directoryTitleParts: [
+      { text: 'Kafka', prominence: 'primary' },
+      { text: 'on the', prominence: 'supporting' },
+      { text: 'Shore', prominence: 'primary' },
+    ],
     title: 'Kafka on the Shore',
     medium: 'Novel',
     creator: 'Haruki Murakami',
     releaseYear: '2002',
+    image: {
+      src: kafkaImage,
+      alt: 'Gold-toned folding-screen painting of black crows in flight and perched among bare branches.',
+      width: 1024,
+      height: 602,
+    },
     featuredQuote: '“Silence, I discover, is something you can actually hear.”',
     quoteVerificationNote: 'Confirm the exact wording and punctuation against the edition used before final publication.',
     categories: [
@@ -76,10 +116,23 @@ export const creativeInfluences = [
     designTakeaway: 'Use atmosphere, symbolism, and ambiguity to create spaces that audiences can interpret for themselves. An environment can communicate a feeling before its meaning is fully understood.',
   },
   {
-    id: 'INF-004',
+    id: 'INF-001',
+    directoryOrder: 1,
+    directoryTitleParts: [
+      { text: 'Neon Genesis', prominence: 'supporting' },
+      { text: 'Evangelion', prominence: 'primary' },
+    ],
+    directoryTitleVariant: 'compact',
     title: 'Neon Genesis Evangelion',
     medium: 'Anime television series and film',
+    displayMedium: 'Anime',
     releaseYear: '1995–1997',
+    image: {
+      src: evangelionImage,
+      alt: 'Illustrated Evangelion scene with Shinji and Asuka facing a monumental image of Rei beneath a starry sky.',
+      width: 1024,
+      height: 683,
+    },
     includedWorks: [
       'Neon Genesis Evangelion, Episodes 1–26',
       'The End of Evangelion',
@@ -108,3 +161,9 @@ export const creativeInfluences = [
     designTakeaway: 'Use visual and technical systems to communicate emotions that dialogue alone cannot fully express. Difficult feelings can be presented honestly without removing the possibility of hope.',
   },
 ] satisfies InfluenceRecord[]
+
+export const creativeInfluences: readonly InfluenceRecord[] = [
+  ...influenceRecords,
+].sort((first, second) => first.directoryOrder - second.directoryOrder)
+
+export const influenceDirectory = creativeInfluences

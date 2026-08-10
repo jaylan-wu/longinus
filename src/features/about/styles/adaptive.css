@@ -114,6 +114,53 @@
   .about-outside__content {
     position: static;
   }
+
+  .about-chapter--influences {
+    --influence-record-hover-shift: 0.85rem;
+
+    min-height: 120svh;
+    padding:
+      var(--about-chapter-content-top)
+      var(--about-content-right)
+      9rem
+      var(--about-content-left);
+  }
+
+  .influence-records {
+    position: static;
+    width: 100%;
+    height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .influence-records__directory {
+    display: block;
+  }
+
+  .influence-records__introduction {
+    width: min(100%, 36rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .influence-records__title {
+    font-size: clamp(3.875rem, 6.5vw, 4.875rem);
+  }
+
+  .influence-records__lead {
+    margin-top: 1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1rem);
+  }
+
+  .influence-records__index {
+    grid-template-rows: repeat(4, minmax(7.5rem, auto));
+  }
+
+  .influence-detail {
+    width: min(100%, 32rem);
+    height: auto;
+    justify-self: start;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -237,12 +284,7 @@
     margin-bottom: 1.5rem;
   }
 
-  .trajectory-records, .influence-records { grid-template-columns: 1fr; }
-  .influence-records__index {
-    position: static;
-    min-height: 0;
-    grid-template-rows: none;
-  }
+  .trajectory-records { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -339,18 +381,83 @@
   .about-direction__areas, .about-direction__actions { grid-template-columns: 1fr; }
   .about-direction__areas li:nth-child(odd), .about-direction__actions a:nth-child(odd) { border-right: 0; }
   .about-direction__areas li:nth-child(even) { padding-left: 0; }
-  .about-chapter--influences { padding-top: var(--about-chapter-content-top); }
-  .influence-records { gap: 2.5rem; }
-  .influence-records__index button { min-height: 5.75rem; }
-  .influence-detail { min-height: 0; padding: 1.25rem; }
-  .influence-detail__eyebrow { display: grid; }
-  .influence-detail__eyebrow span:last-child { text-align: left; }
-  .influence-detail h3 { margin-top: 3rem; font-size: clamp(2.5rem, 13vw, 4.2rem); }
-  .influence-detail__work-metadata div { grid-template-columns: 1fr; gap: 0.35rem; }
+  .about-chapter--influences {
+    --influence-record-hover-shift: 0rem;
+
+    min-height: auto;
+    padding: var(--about-chapter-content-top) 1.2rem 7rem;
+  }
+  .influence-records__title {
+    font-size: clamp(2.4rem, 12.3vw, 3.25rem);
+  }
+  .influence-records__lead {
+    font-size: 1rem;
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+  }
+  .influence-records__index {
+    grid-template-rows: repeat(4, minmax(6.5rem, auto));
+  }
+  .influence-records__index button {
+    padding-inline: 0.35rem;
+  }
+  .influence-records__visual-title {
+    gap: 0.35rem;
+  }
+  .influence-records__title-part--primary {
+    font-size: clamp(2.05rem, 10vw, 2.65rem);
+  }
+  .influence-records__title-part--supporting {
+    font-size: 0.875rem;
+  }
+  .influence-records__visual-title--compact {
+    transform: scaleX(0.85);
+  }
+  .influence-detail {
+    width: 100%;
+    min-height: 0;
+    padding: 1rem;
+  }
+  .influence-detail__eyebrow {
+    display: grid;
+    font-size: 0.625rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
+  .influence-detail__eyebrow span:last-child {
+    text-align: left;
+  }
+  .influence-detail__reflection {
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+  }
+  .influence-detail__reflection h4,
+  .influence-detail__categories h4 {
+    font-size: 0.625rem;
+  }
+  .influence-detail__reflection p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+  .influence-detail__categories {
+    margin-top: 2.5rem;
+  }
+  .influence-detail__categories ul {
+    font-size: 0.625rem;
+    line-height: 1.35;
+  }
   .about-chapter--direction { min-height: 100svh; padding-bottom: 9rem; }
 }
 
 @media (max-width: 420px) {
+  .influence-records__title-part--primary {
+    font-size: clamp(1.75rem, 8.6vw, 2.15rem);
+  }
+
+  .influence-records__title-part--supporting {
+    font-size: 0.75rem;
+  }
+
   .about-chapter--trajectory {
     --trajectory-index-row-height: 6.875rem;
   }
@@ -391,6 +498,16 @@
   }
 }
 
+@media (max-width: 340px) {
+  .influence-records__visual-title {
+    gap: 0.2rem;
+  }
+
+  .influence-records__visual-title--compact {
+    transform: scaleX(0.76);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about__chapter-nav button.navigation-action:hover,
   .about__chapter-nav button.navigation-action:focus-visible {
@@ -400,6 +517,11 @@
   .trajectory-records__index button.navigation-action:hover,
   .trajectory-records__index button.navigation-action:focus-visible {
     padding-left: var(--trajectory-record-inline-padding);
+  }
+
+  .influence-records__index button.navigation-action:hover,
+  .influence-records__index button.navigation-action:focus-visible {
+    padding-left: var(--influence-record-inline-padding);
   }
 
   .experience-detail__organization-mark-image { animation: none !important; }
