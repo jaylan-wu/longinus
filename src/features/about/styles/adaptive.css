@@ -139,7 +139,7 @@
   }
 
   .influence-records__introduction {
-    width: min(100%, 36rem);
+    width: 100%;
     margin-bottom: 2.5rem;
   }
 

@@ -27,7 +27,7 @@ export function CurrentDirectionSpatial() {
       >
         <header className="direction-spatial__introduction">
           <h3
-            className="about-chapter__display-title direction-spatial__title"
+            className="about-chapter__display-title direction-spatial__title about-motion-group about-motion-group--title"
             id="direction-spatial-title"
           >
             Current Direction

@@ -10,6 +10,12 @@ export const ABOUT_CHAPTER_IDS = {
 
 export type AboutChapterId = (typeof ABOUT_CHAPTER_IDS)[keyof typeof ABOUT_CHAPTER_IDS]
 
+export type AboutChapterMotionState =
+  | 'inactive'
+  | 'preceding'
+  | 'active'
+  | 'following'
+
 export type AboutChapterDefinition = {
   id: AboutChapterId
   index: string

@@ -8,7 +8,10 @@ type TrajectoryRecordListProps = {
 
 export function TrajectoryRecordList({ records, selectedId, onSelect }: TrajectoryRecordListProps) {
   return (
-    <ul className="trajectory-records__index" aria-label="Experience records">
+    <ul
+      className="trajectory-records__index about-motion-group about-motion-group--structure about-motion-rule"
+      aria-label="Experience records"
+    >
       {records.map((experience, index) => (
         <li key={experience.id}>
           <button

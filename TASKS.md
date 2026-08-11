@@ -10,6 +10,82 @@ what remains.
 
 Status reviewed against source on **2026-08-07**. Checkmarks confirm repository evidence only. They do not imply visual approval or hands-on browser/device validation unless the item says so.
 
+About first-pass scroll-driven DOM motion validation on 2026-08-10: the five
+chapter sections now expose an About-owned positional motion state derived
+from the existing physically observed chapter: `preceding`, `active`,
+`following`, or `inactive`. Downward reading moves a nearby chapter from
+`following → active → preceding`; upward reading reverses that progression.
+Active and distant chapters retain the established static geometry, while only
+the adjacent chapter groups use restrained `translate` and opacity staging.
+Identity stages its display statement, opening, axes and structural frame, and
+metadata; Trajectory stages its title, lead, record directory/rule, and stable
+selected-record panel; Outside the System stages its title, introduction,
+selected-photo composition and existing lavender rule, and carousel;
+Interactive Influences stages its title, introduction, directory/rule, and
+stable selected panel. Current Direction adds only title staging because its
+unapproved prototype already owns observed-state journey, system, and
+connection animation. Local record, photograph, influence, and Current
+Direction axis state remains independent, and the Spear and Ramiel scenes are
+unchanged. No new scroll listener, scroll-position React state, custom scroll
+container, snapping, or wheel interception was introduced.
+
+The motion uses feature-owned CSS transitions, the shared interface easing,
+small directional displacements, limited opacity reduction, and extension of
+existing structural rules. Settle delays and movement reduce at `1080px`; the
+`390px` interpretation removes horizontal staging, limits displacement to
+approximately `6–10px`, shortens the stagger, and keeps adjacent content at
+`0.95` opacity. Reduced motion forces every group immediately into its settled
+opacity and position, restores every structural rule to full length, and
+removes the new transitions and stagger while preserving observed chapter and
+navigation state. A forced-colors fallback restores the original semantic
+borders without relying on background-image rules. A title-clipping study was
+intentionally rejected because even a small mask could remove authored glyphs
+or alter intentional text overflow.
+
+Headless Chromium `140.0.7339.16` exercised direct `#about` and `#/about`
+entry, exact normal downward and reverse chapter sequences, every
+chapter-navigation control in both directions, interrupted and rapid
+multi-chapter scrolling, resize convergence, and normal-versus-reduced settled geometry at
+`1440 × 900`, `1440 × 800`, `1920 × 1080`, `1080 × 900`, and `390 × 844`.
+Every navigation landing retained the existing section-top anchor within
+sub-pixel rounding, and the audit recorded no horizontal page overflow,
+stuck intermediate state, DOM layout drift, console error, or runtime
+exception. Trajectory, photography-carousel, Influence, focus, and Current
+Direction action smoke checks passed; the DOM motion was also smoke-checked
+under dark and Rei-light themes at `1440 × 900` and `390 × 844`. This is
+automated headless evidence rather than human cross-browser or physical-device
+approval. Motion
+timing remains provisional because no authored About motion reference exists.
+Human review should decide whether the desktop title displacement and the
+adjacent structural-rule length feel sufficiently weighted without competing
+with reading, and Current Direction still awaits its approved composition.
+`corepack yarn typecheck`, `corepack yarn lint`, `corepack yarn build`, and
+`git diff --check` passed; no test script exists. The build retains the known
+approximately `882 kB` (`234 kB` gzip) `SceneCanvas` chunk warning.
+
+Interactive Influences large-viewport refinement validation on 2026-08-10:
+the user-directed introduction now uses the complete directory measure at
+every reviewed layout, including the stacked breakpoint, while the approved
+`1440 × 900` directory, row, gap, and panel geometry remains unchanged. At
+`2560 × 1440` and larger, the four-row directory index is ten percent shorter
+than its earlier proportional height. The selected image now follows the
+panel's inner width throughout desktop scaling. At `1920 × 1080`, its
+`400 / 433.3px` image-to-panel proportion matches the canonical
+`300 / 325px` relationship. At `3840 × 2160`, the introduction and directory
+both end at `x=951.1`, the rows measure approximately `199.75px` each, and all four
+existing `1024px`-wide WebPs render at approximately `533.3px` wide while
+retaining their intrinsic ratios. There is no separate 4K Influence asset in
+the repository. Headless Chromium `140.0.7339.16` inspected `1440 × 900`,
+`1920 × 1080`, `1241 × 900`, `1240 × 900`, `390 × 844`, `320 × 568`,
+`2560 × 1440`, and `3840 × 2160`, plus all four selected records at the
+`1920 × 1080` and 4K viewports. The audit
+recorded no page-level horizontal overflow, detail-panel overflow, console
+errors, or runtime exceptions; reduced motion and explicit `aria-pressed`
+selection state remained intact. `corepack yarn typecheck`, `corepack yarn
+lint`, `corepack yarn build`, and `git diff --check` passed; no test script
+exists. The build retains the known approximately `882 kB` (`234 kB` gzip)
+`SceneCanvas` chunk warning.
+
 About editorial synchronization validation on 2026-08-10: the canonical
 editorial source and published runtime data were synchronized for Identity;
 all five published Trajectory records, including the revised EXP-002 live
@@ -622,6 +698,13 @@ complete commitment/impact sequence is planned.
   chapter-owned boundaries.
 - [x] Use standard vertical browser scrolling without full-screen scroll snapping.
 - [x] Implement `IntersectionObserver`-driven active-chapter detection with a scroll/resize fallback and complete observer, listener, and animation-frame cleanup.
+- [x] Derive `preceding`, `active`, `following`, and `inactive` DOM-motion
+  states from the physically observed chapter without adding another scroll
+  listener, and stage only a small number of chapter-owned content groups.
+- [x] Settle active and distant chapter content at the established static
+  geometry; reverse adjacent staging naturally for upward reading, collapse
+  the motion on narrow layouts, and restore every group and structural rule
+  immediately under reduced motion.
 - [x] Implement keyboard-accessible chapter navigation and reduced-motion-aware scrolling.
 - [x] Store the approved About / Identity / Dark / Desktop / Idle export at
   `design/figma/references/dark/about-identity-desktop-idle-v1.png`.
@@ -777,6 +860,12 @@ complete commitment/impact sequence is planned.
 - [x] Scale the `INFLUENCES` display title from the directory's responsive
   inline measure so it uses the full divider width without entering the panel
   gap.
+- [x] Extend the chapter introduction through the full directory measure in
+  desktop and stacked layouts.
+- [x] Tighten the Influence index at `2560 × 1440` and larger while scaling the
+  existing WebP imagery with the selected panel's inner width across desktop
+  layouts; verify the full four-record state at `1920 × 1080` and
+  `3840 × 2160`.
 
 ## Current Direction
 

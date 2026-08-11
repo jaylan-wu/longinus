@@ -78,7 +78,7 @@ export function PhotographyCarousel({
 }: PhotographyCarouselProps) {
   return (
     <div
-      className="photo-carousel"
+      className="photo-carousel about-motion-group about-motion-group--structure"
       role="region"
       aria-label="Photography archive carousel"
       aria-busy={isWrapping || undefined}

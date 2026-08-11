@@ -161,7 +161,7 @@ without changing the established font families.
 | Element | Current implementation | Verification note |
 | --- | --- | --- |
 | `INFLUENCES` display title | `var(--font-display)`, `72px / 68.11px` at the `1440 × 900` baseline, weight `700`, `-0.045em` tracking, and chapter-owned `0.89` horizontal staging | The less-condensed title follows the responsive inline unit and ends within approximately `3.8–6.9px` of the directory divider across the reviewed desktop range |
-| Chapter introduction | `var(--font-sans)`, `16px / 20px` at the baseline with `-0.04em` tracking | Uses the content stack and preserves the approved three-line wording and cadence |
+| Chapter introduction | `var(--font-sans)`, `16px / 20px` at the baseline with `-0.04em` tracking and the full `460px` directory measure | Uses the content stack, preserves the three-line cadence, and reaches the directory divider in desktop and stacked layouts |
 | Directory title parts | `var(--font-display)`, weight `400`, normal style, shared `-0.04em` tracking and `0.86` line height; every record uses the same primary `48px` and supporting `16px` baseline roles | Data-owned title segments preserve the mixed-scale single-baseline hierarchy while using one consistent font treatment. Evangelion fits as a complete title through a slight responsive horizontal stage rather than smaller word sizes. |
 | Directory metadata | `var(--font-mono)`, `11px / 12px` at the baseline | Display positions and `SELECTED` / `VIEW` remain distinct from stable `INF-*` identifiers |
 | Selected-record metadata and categories | `var(--font-mono)`, `9px / 12px` at the baseline | Orange remains limited to analytical selection state; categories use a two-column, column-first layout |
@@ -217,6 +217,7 @@ unrelated large-desktop override set.
 | About Outside desktop composition | Canonical `75px` left inset; approximately `821px` content width; approximately `480 × 320px` selected image from `y=330–650` with an adjacent metadata column | The preview uses part of the reclaimed chapter space while giving the caption column more width; the fixed right boundary remains the shared `67.64% / 32.36%` About split |
 | About Outside carousel | Approximately `821px` total width from `y=675–789`, with five visible records plus persistent identifier labels | The active record occupies the middle slot through ordinary selection and the wrapping boundary; previous/next rings align to the thumbnail-image center after compensating for the label block, while the active outline and corner marker provide a non-color cue |
 | About Interactive Influences desktop composition | Canonical `75px` left inset; `460px` directory; `40px` gap; `325 × 675px` selected panel; `825px` total width at `1440 × 900` | The introduction, four-row directory, and panel share `y=150–825`; the initial Evangelion image remains approximately `300 × 200px`, while other images keep their native ratios at the same width cap |
+| About Interactive Influences responsive refinement | An inline-unit-driven selected image across desktop sizes, plus a `28.125` block-unit index from `2560 × 1440`; approximately `800px` index, four `199.75px` rows, and a `533.3px` image width at `3840 × 2160` | Preserves the canonical `300 / 325px` image-to-panel proportion while scaling, shortens only the oversized large-desktop directory, and uses the existing `1024px` WebPs at the panel's full inner width |
 | About first-content anchor | `151px` at `1440 × 900`, `120px` on short desktop and tablet, and `100px` on mobile | The visible orange-numbered headings are removed; each section retains a visually hidden `h2`, while the persistent top-right Current chapter status and right navigation remain visible |
 | About larger desktop | Relative tracks plus the bounded inline/block units; no full-page transform | The shared shell was reviewed previously; the post-reflow Trajectory and Outside size matrix requires refreshed measurement |
 | About short desktop | Shared `120px` first-content anchor with height-aware chapter-specific reflow; no internal chapter scroller | Implemented and browser-measured |
@@ -314,6 +315,16 @@ from Evangelion `01 / INF-001` through Metaphor `04 / INF-004`. At `1240px` and
 below, the composition stacks and returns to natural height; the `1080 × 900`,
 `390 × 844`, and `320 × 568` inspections recorded no page-level horizontal
 overflow.
+
+The later user-directed large-desktop refinement preserves that canonical
+geometry while extending the introduction to the directory divider at every
+reviewed layout. The selected image uses the panel's inline scale throughout
+desktop sizing, preserving the canonical image-to-panel proportion. Beginning
+at `2560 × 1440`, the directory index uses `28.125` block units instead of
+filling the panel height. At `3840 × 2160`, the `817.78px` introduction
+and directory end together near `x=951.1`; the index measures `800px`, its four
+rows measure approximately `199.75px` each, and each `1024px`-wide WebP renders
+at approximately `533.3px` wide without panel or page overflow.
 
 ### About Current Direction spacing audit
 

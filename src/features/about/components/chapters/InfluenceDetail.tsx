@@ -12,7 +12,7 @@ export function InfluenceDetail({ detailId, influence }: InfluenceDetailProps) {
 
   return (
     <article
-      className="influence-detail"
+      className="influence-detail about-motion-group about-motion-group--detail"
       id={detailId}
       aria-labelledby={titleId}
       aria-live="polite"

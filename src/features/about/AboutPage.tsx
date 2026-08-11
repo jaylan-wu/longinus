@@ -46,7 +46,7 @@ export function AboutPage() {
 
       <div className="about__composition">
         <div className="about__narrative">
-          <AboutChapters />
+          <AboutChapters observedChapter={detectedChapter} />
         </div>
 
         <AboutMotif

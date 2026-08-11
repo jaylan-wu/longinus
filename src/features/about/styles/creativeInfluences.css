@@ -62,7 +62,7 @@
 }
 
 .influence-records__lead {
-  width: min(100%, calc(22 * var(--influence-block-unit)));
+  width: 100%;
   margin: calc(1.4375 * var(--influence-block-unit)) 0 0;
   font-family: var(--font-sans);
   font-size: var(--influence-block-unit);
@@ -215,7 +215,7 @@
 
 .influence-detail__image {
   display: block;
-  width: 18.75rem;
+  width: calc(18.75 * var(--influence-inline-unit));
   max-width: 100%;
   height: auto;
   flex: 0 0 auto;
@@ -348,6 +348,15 @@
 .influence-detail__categories li::before {
   color: var(--color-highlight);
   content: "+";
+}
+
+@media (min-width: 2560px) and (min-height: 1440px) {
+  .influence-records__directory {
+    grid-template-rows:
+      var(--influence-introduction-height)
+      calc(28.125 * var(--influence-block-unit));
+    align-content: start;
+  }
 }
 
 @keyframes about-influence-detail-in {

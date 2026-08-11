@@ -15,7 +15,7 @@ export function TrajectoryRecordDetail({ experience }: TrajectoryRecordDetailPro
 
   return (
     <article
-      className={`experience-detail experience-detail--title-${experience.titleVariant}`}
+      className={`experience-detail experience-detail--title-${experience.titleVariant} about-motion-group about-motion-group--detail`}
       id="trajectory-current-record"
       aria-live="polite"
     >

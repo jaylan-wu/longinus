@@ -472,7 +472,8 @@ Reference:
   Each record uses its explicitly supplied image. The Kafka and Metaphor JPEGs
   have optimized WebP derivatives, and the Persona WebP is resized and
   re-encoded for the website. Images retain their native aspect ratios, remain
-  centered, and use a `300px` width cap rather than a shared cover crop.
+  centered, and render at `300px` wide in the canonical frame rather than using
+  a shared cover crop.
 
 ### Responsive and editorial interpretation
 
@@ -480,9 +481,15 @@ Reference:
   block units. It was browser-inspected at `1440 × 800` and `1920 × 1080`; at
   `1240px` and below, the introduction, directory, and selected panel stack in
   normal document flow.
-- Selected imagery remains at or below `300px` wide across desktop and stacked
-  layouts. Viewports narrower than the cap shrink the image to the available
-  panel width without changing its intrinsic ratio.
+- A later user-directed refinement extends the introduction to the directory
+  divider in both desktop and stacked layouts. The existing WebP image scales
+  with the panel's inner width, preserving the canonical image-to-panel ratio;
+  the image reaches approximately `533.3px` at
+  `3840 × 2160`. This is a responsive interpretation rather than evidence from
+  a separate approved 4K export.
+- From `2560 × 1440`, the refinement also shortens the four-row index by ten
+  percent. Viewports narrower than the image's calculated width shrink it to
+  the available panel width without changing its intrinsic ratio.
 - The stacked interpretation was inspected at `1080 × 900`, `390 × 844`, and
   `320 × 568` without page-level horizontal overflow. Content remains available
   through normal scrolling, including when the About WebGL scene is unavailable.

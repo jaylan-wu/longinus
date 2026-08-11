@@ -14,7 +14,10 @@ export function InfluenceRecordList({
   onSelect,
 }: InfluenceRecordListProps) {
   return (
-    <ul className="influence-records__index" aria-label="Creative influence records">
+    <ul
+      className="influence-records__index about-motion-group about-motion-group--structure about-motion-rule"
+      aria-label="Creative influence records"
+    >
       {records.map((influence, index) => {
         const isSelected = influence.id === selectedId
 

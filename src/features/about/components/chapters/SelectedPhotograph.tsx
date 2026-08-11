@@ -12,7 +12,7 @@ export function SelectedPhotograph({ photo, prioritize }: {
     : 'photo-selected__title'
 
   return (
-    <div className="photo-selected">
+    <div className="photo-selected about-motion-group about-motion-group--detail">
       <div className="photo-selected__visual" key={`visual-${photo.id}`}>
         <figure className="photo-image photo-image--selected">
           <img
@@ -31,7 +31,10 @@ export function SelectedPhotograph({ photo, prioritize }: {
         </figure>
       </div>
 
-      <div className="photo-selected__caption" key={`caption-${photo.id}`}>
+      <div
+        className="photo-selected__caption about-motion-rule about-motion-rule--vertical"
+        key={`caption-${photo.id}`}
+      >
         <p className="photo-selected__eyebrow">
           <span>Selected image</span>
           <strong>{photo.id}</strong>

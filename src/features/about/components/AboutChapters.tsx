@@ -3,6 +3,7 @@ import { aboutChapters } from '../data/chapters'
 import {
   ABOUT_CHAPTER_IDS,
   type AboutChapterId,
+  type AboutChapterMotionState,
 } from '../types/about'
 import type { AboutChapterComponentProps } from './AboutChapter'
 import { CreativeInfluencesChapter } from './chapters/CreativeInfluencesChapter'
@@ -19,12 +20,44 @@ const chapterComponents = {
   [ABOUT_CHAPTER_IDS.currentDirection]: CurrentDirectionChapter,
 } satisfies Record<AboutChapterId, ComponentType<AboutChapterComponentProps>>
 
-export function AboutChapters() {
+function getChapterMotionState(
+  chapterIndex: number,
+  observedChapterIndex: number,
+): AboutChapterMotionState {
+  const distanceFromObserved = chapterIndex - observedChapterIndex
+
+  if (distanceFromObserved === 0) return 'active'
+  if (distanceFromObserved === -1) return 'preceding'
+  if (distanceFromObserved === 1) return 'following'
+  return 'inactive'
+}
+
+type AboutChaptersProps = {
+  observedChapter: AboutChapterId
+}
+
+export function AboutChapters({ observedChapter }: AboutChaptersProps) {
+  const observedChapterIndex = Math.max(
+    0,
+    aboutChapters.findIndex((chapter) => chapter.id === observedChapter),
+  )
+
   return (
     <>
-      {aboutChapters.map((chapter) => {
+      {aboutChapters.map((chapter, chapterIndex) => {
         const Chapter = chapterComponents[chapter.id]
-        return <Chapter chapter={chapter} key={chapter.id} />
+        const motionState = getChapterMotionState(
+          chapterIndex,
+          observedChapterIndex,
+        )
+
+        return (
+          <Chapter
+            chapter={chapter}
+            key={chapter.id}
+            motionState={motionState}
+          />
+        )
       })}
     </>
   )

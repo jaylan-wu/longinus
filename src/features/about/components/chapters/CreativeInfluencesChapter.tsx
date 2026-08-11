@@ -13,7 +13,10 @@ import { InfluenceRecordList } from './InfluenceRecordList'
 
 const SELECTED_INFLUENCE_DETAIL_ID = 'selected-influence-detail'
 
-export function CreativeInfluencesChapter({ chapter }: AboutChapterComponentProps) {
+export function CreativeInfluencesChapter({
+  chapter,
+  motionState,
+}: AboutChapterComponentProps) {
   const [selectedId, setSelectedId] = useState<InfluenceRecord['id']>(
     influenceDirectory[0].id,
   )
@@ -22,17 +25,21 @@ export function CreativeInfluencesChapter({ chapter }: AboutChapterComponentProp
   )) ?? influenceDirectory[0]
 
   return (
-    <AboutChapter chapter={chapter} modifier="influences">
+    <AboutChapter
+      chapter={chapter}
+      modifier="influences"
+      motionState={motionState}
+    >
       <div className="influence-records">
         <div className="influence-records__directory">
           <div className="influence-records__introduction">
             <p
-              className="about-chapter__display-title influence-records__title"
+              className="about-chapter__display-title influence-records__title about-motion-group about-motion-group--title"
               aria-hidden="true"
             >
               Influences
             </p>
-            <p className="influence-records__lead">
+            <p className="influence-records__lead about-motion-group about-motion-group--lead">
               {creativeInfluencesIntroduction}
             </p>
           </div>

@@ -1,0 +1,243 @@
+/*
+ * First-pass About chapter motion. The section remains the observer and
+ * scrollIntoView anchor; only its existing content groups move. Values are
+ * intentionally provisional until an authored About motion reference exists.
+ */
+.about-motion-group {
+  --about-motion-distance-x: 0.5rem;
+  --about-motion-distance-y: 0.875rem;
+  --about-motion-offset-x: 0rem;
+  --about-motion-offset-y: 0rem;
+  --about-motion-prepared-opacity: 0.9;
+  --about-motion-opacity: 1;
+  --about-motion-settle-delay: 0ms;
+  --about-motion-delay: 0ms;
+  --about-motion-duration: 580ms;
+  --about-motion-opacity-duration: 320ms;
+
+  opacity: var(--about-motion-opacity);
+  translate:
+    var(--about-motion-offset-x)
+    var(--about-motion-offset-y);
+  transition:
+    translate var(--about-motion-duration) var(--motion-ease-interface)
+      var(--about-motion-delay),
+    opacity var(--about-motion-opacity-duration) ease
+      var(--about-motion-delay);
+}
+
+.about-motion-group--title {
+  --about-motion-distance-x: 0.875rem;
+  --about-motion-distance-y: 1.5rem;
+  --about-motion-prepared-opacity: 0.86;
+  --about-motion-settle-delay: 0ms;
+  --about-motion-duration: 620ms;
+  --about-motion-opacity-duration: 340ms;
+}
+
+.about-motion-group--lead {
+  --about-motion-distance-x: 0.375rem;
+  --about-motion-distance-y: 1.125rem;
+  --about-motion-prepared-opacity: 0.92;
+  --about-motion-settle-delay: 50ms;
+  --about-motion-duration: 500ms;
+  --about-motion-opacity-duration: 280ms;
+}
+
+.about-motion-group--structure {
+  --about-motion-distance-x: 0.375rem;
+  --about-motion-distance-y: 0.875rem;
+  --about-motion-prepared-opacity: 0.95;
+  --about-motion-settle-delay: 90ms;
+  --about-motion-duration: 580ms;
+}
+
+.about-motion-group--detail {
+  --about-motion-distance-x: 0.5rem;
+  --about-motion-distance-y: 0.75rem;
+  --about-motion-prepared-opacity: 0.96;
+  --about-motion-settle-delay: 120ms;
+  --about-motion-duration: 620ms;
+  --about-motion-opacity-duration: 320ms;
+}
+
+.about-motion-group--metadata {
+  --about-motion-distance-x: 0.25rem;
+  --about-motion-distance-y: 0.625rem;
+  --about-motion-prepared-opacity: 0.95;
+  --about-motion-settle-delay: 120ms;
+  --about-motion-duration: 480ms;
+  --about-motion-opacity-duration: 260ms;
+}
+
+.about-chapter[data-motion-state="preceding"] .about-motion-group {
+  --about-motion-offset-x: calc(0rem - var(--about-motion-distance-x));
+  --about-motion-offset-y: calc(0rem - var(--about-motion-distance-y));
+  --about-motion-opacity: var(--about-motion-prepared-opacity);
+  --about-motion-delay: 0ms;
+}
+
+.about-chapter[data-motion-state="following"] .about-motion-group {
+  --about-motion-offset-x: var(--about-motion-distance-x);
+  --about-motion-offset-y: var(--about-motion-distance-y);
+  --about-motion-opacity: var(--about-motion-prepared-opacity);
+  --about-motion-delay: 0ms;
+}
+
+.about-chapter[data-motion-state="active"] .about-motion-group {
+  --about-motion-delay: var(--about-motion-settle-delay);
+}
+
+.about-motion-rule {
+  --about-motion-rule-size: 100%;
+
+  border-top-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    rgba(var(--color-foreground-rgb), 0.18),
+    rgba(var(--color-foreground-rgb), 0.18)
+  );
+  background-origin: border-box;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: var(--about-motion-rule-size) 1px;
+  transition: background-size 600ms var(--motion-ease-interface)
+    var(--about-motion-delay);
+}
+
+.about-motion-group.about-motion-rule {
+  transition:
+    translate var(--about-motion-duration) var(--motion-ease-interface)
+      var(--about-motion-delay),
+    opacity var(--about-motion-opacity-duration) ease
+      var(--about-motion-delay),
+    background-size 600ms var(--motion-ease-interface)
+      var(--about-motion-delay);
+}
+
+.about-motion-rule--frame {
+  border-bottom-color: transparent;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--color-foreground-rgb), 0.18),
+      rgba(var(--color-foreground-rgb), 0.18)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--color-foreground-rgb), 0.18),
+      rgba(var(--color-foreground-rgb), 0.18)
+    );
+  background-position: left top, left bottom;
+  background-size:
+    var(--about-motion-rule-size) 1px,
+    var(--about-motion-rule-size) 1px;
+}
+
+.about-motion-rule--vertical {
+  border-left-color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    var(--color-secondary),
+    var(--color-secondary)
+  );
+  background-position: left top;
+  background-size: 0.125rem var(--about-motion-rule-size);
+}
+
+.about-chapter[data-motion-state="preceding"] .about-motion-rule,
+.about-chapter[data-motion-state="following"] .about-motion-rule {
+  --about-motion-rule-size: 68%;
+}
+
+@media (max-width: 1080px) {
+  .about-motion-group {
+    --about-motion-distance-x: 0.25rem;
+    --about-motion-distance-y: 0.625rem;
+  }
+
+  .about-motion-group--title {
+    --about-motion-distance-x: 0.5rem;
+    --about-motion-distance-y: 0.875rem;
+  }
+
+  .about-motion-group--lead,
+  .about-motion-group--structure,
+  .about-motion-group--detail,
+  .about-motion-group--metadata {
+    --about-motion-distance-y: 0.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-motion-group {
+    --about-motion-distance-x: 0rem;
+    --about-motion-distance-y: 0.4rem;
+    --about-motion-prepared-opacity: 0.95;
+    --about-motion-duration: 440ms;
+    --about-motion-opacity-duration: 240ms;
+  }
+
+  .about-motion-group--title {
+    --about-motion-distance-x: 0rem;
+    --about-motion-distance-y: 0.625rem;
+  }
+
+  .about-chapter[data-motion-state="active"] .about-motion-group {
+    --about-motion-delay: var(--about-motion-settle-delay);
+  }
+
+  .about-motion-group--lead {
+    --about-motion-settle-delay: 30ms;
+  }
+
+  .about-motion-group--structure {
+    --about-motion-settle-delay: 60ms;
+  }
+
+  .about-motion-group--detail,
+  .about-motion-group--metadata {
+    --about-motion-settle-delay: 90ms;
+  }
+
+  .about-chapter[data-motion-state="preceding"] .about-motion-rule,
+  .about-chapter[data-motion-state="following"] .about-motion-rule {
+    --about-motion-rule-size: 88%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about .about-motion-group {
+    --about-motion-delay: 0ms;
+    --about-motion-offset-x: 0rem;
+    --about-motion-offset-y: 0rem;
+    --about-motion-opacity: 1;
+    opacity: 1;
+    translate: none;
+    clip-path: none;
+    transition: none;
+  }
+
+  .about .about-chapter[data-motion-state] .about-motion-rule {
+    --about-motion-rule-size: 100%;
+
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .about .about-motion-rule {
+    --about-motion-rule-size: 100%;
+
+    border-top-color: CanvasText;
+    background-image: none;
+  }
+
+  .about .about-motion-rule--frame {
+    border-bottom-color: CanvasText;
+  }
+
+  .about .about-motion-rule--vertical {
+    border-left-color: CanvasText;
+  }
+}

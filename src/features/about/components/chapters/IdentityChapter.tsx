@@ -5,12 +5,19 @@ import {
   type AboutChapterComponentProps,
 } from '../AboutChapter'
 
-export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
+export function IdentityChapter({
+  chapter,
+  motionState,
+}: AboutChapterComponentProps) {
   return (
-    <AboutChapter chapter={chapter} modifier="identity">
+    <AboutChapter
+      chapter={chapter}
+      modifier="identity"
+      motionState={motionState}
+    >
       <div className="about-identity__content">
         <div className="about-identity__introduction">
-          <p className="about-chapter__display-title about-identity__display">
+          <p className="about-chapter__display-title about-identity__display about-motion-group about-motion-group--title">
             {identity.displayStatement.map((line) => (
               <span key={line} aria-hidden="true">{line}</span>
             ))}
@@ -18,7 +25,7 @@ export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
               {identity.displayStatement.join(' ')}
             </span>
           </p>
-          <div className="about-identity__statement">
+          <div className="about-identity__statement about-motion-group about-motion-group--lead">
             <p>{identity.openingStatement.context}</p>
             <p className="about-identity__pivot">
               <strong>{identity.openingStatement.pivot}</strong>{' '}
@@ -27,7 +34,10 @@ export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
             <p>{identity.openingStatement.connection}</p>
           </div>
         </div>
-        <ul className="about-identity__axes" aria-label="Primary areas of interest">
+        <ul
+          className="about-identity__axes about-motion-group about-motion-group--structure about-motion-rule about-motion-rule--frame"
+          aria-label="Primary areas of interest"
+        >
           {identity.axes.map((axis) => (
             <li key={axis.id}>
               <p className="about-identity__axis-heading">
@@ -46,7 +56,7 @@ export function IdentityChapter({ chapter }: AboutChapterComponentProps) {
             </li>
           ))}
         </ul>
-        <div className="about-identity__metadata">
+        <div className="about-identity__metadata about-motion-group about-motion-group--metadata">
           <dl aria-label="Identity metadata">
             <div>
               <dt>Name</dt>
